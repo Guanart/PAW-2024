@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <base href="url">
+    <title>Local</title>
+    <meta charset="utf-8">
+    <meta name="description" content="Esta página es un formulario para reservar en un local en especifico">
+    <meta name="keywords" content="reservar, local">
+    <meta name="author" content="Kevin Neiel Monti">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+    <header>
+        <img src="images/logo.png" alt="Logo de la empresa" width="100" height="100">
+        <nav>
+            <a href="reservas.html" rel="LINKtype">Reservas</a>
+            <a href="menu.html" rel="LINKtype">Menu</a>
+            <a href="URL" rel="LINKtype">Hacer Pedido</a>
+            <a href="reservas.html" rel="LINKtype">Locales</a>
+            <a href="login.html" rel="LINKtype">Log in</a>
+        </nav>
+    </header>
+
+    <main>
+        <h1>Llene los datos de su reserva</h1>
+        <form>
+            <fieldset>
+                <legend>Horarios Disponibles</legend>
+                <input type="radio" id="hora1" name="horario" value="9:00">
+                <label for="hora1">9:00 AM</label><br>
+                <input type="radio" id="hora2" name="horario" value="9:30">
+                <label for="hora2">9:30 AM</label><br>
+                <input type="radio" id="hora3" name="horario" value="10:00">
+                <label for="hora3">10:00 PM</label><br>
+                <!-- Agregar más opciones de horario según sea necesario -->
+            </fieldset>
+            <input type="submit" value="Seleccionar Horario">
+        </form>
+        <form>
+            <label for="fecha">Seleccione un día:</label>
+            <input type="date" id="fecha" name="fecha">
+            <input type="submit" value="Seleccionar Día">
+        </form>
+        <form>
+            <label for="texto">Nombre de los reservantes:</label>
+            <input type="text" id="texto" name="texto">
+            <input type="submit" value="Enviar">
+        </form>
+        <a href="seleccion_mesa.html">Seleccionar Mesa</a>
+    </main>
+
+    <footer>
+        <a href="URL" rel="LINKtype">Politica de privacidad</a>
+        <a href="URL" rel="LINKtype">Defensa del consumidor</a>
+        <a href="URL" rel="LINKtype">Contactos</a>
+        <a href="URL" rel="LINKtype">Derechos registrados</a>
+    </footer>
+</body>
+</html>
