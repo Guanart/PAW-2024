@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
     <title>Seleccionar Mesa</title>
     <meta name="description" content="Esta página permite elegir la mesa de la reserva">
     <meta name="keywords" content="reservar, mesas">
@@ -11,19 +11,21 @@
 </head>
 <body>
     <header>
-        <img src="images/logo.png" alt="Logo de la empresa" width="100" height="100">
-        <nav>
-            <a href="reservas.html" rel="LINKtype">Reservas</a>
-            <a href="menu.html" rel="LINKtype">Menu</a>
-            <a href="hacer_pedido.html" rel="LINKtype">Hacer Pedido</a>
-            <a href="reservas.html" rel="LINKtype">Locales</a>
-            <a href="login.html" rel="LINKtype">Log in</a>
-        </nav>
+        <a href="index.html">
+            <input type="image" name="inputImage" src="images/Logo.png" width="100" height="100"/>
+        </a>
     </header>
-
+    <nav>
+        <a href="reservas.html" rel="LINKtype">Reservas</a>
+        <a href="menu.html" rel="LINKtype">Menu</a>
+        <a href="hacer_pedido.html" rel="LINKtype">Hacer Pedido</a>
+        <a href="reservas.html" rel="LINKtype">Locales</a>
+        <a href="login.html" rel="LINKtype">Log in</a>
+    </nav>
     <main>
         <h1>Llene los datos de su reserva</h1>
-        <form>
+        <img id="imagen-de-fondo" src="images/imagen_publicitaria1.jpg" alt="background">
+        <form action="mensaje_fin_reserva.html" method="post">
             <fieldset>
                 <legend>Seleccione una mesa:</legend>
                 <input type="radio" id="mesa1" name="mesa" value="1">
@@ -44,22 +46,22 @@
             <li>
                 <a href="#">
     
-                    <img id="footer-instagram" src="/images/instagram.png" alt="icon">
+                    <img id="footer-instagram" src="images/instagram.png" alt="icon" width="30" height="30">
                 </a>
             </li>
             <li>
                 <a href="#">
     
-                    <img id="footer-facebook" src="/images/facebook.png" alt="icon">
+                    <img id="footer-facebook" src="images/facebook.png" alt="icon" width="30" height="30">
                 </a>
             </li>
             <li>
                 <a href="#">
-                    <img id="footer-twitter" src="/images/twitter.png" alt="icon">
+                    <img id="footer-twitter" src="images/twitter.png" alt="icon" width="30" height="30">
                 </a>
             </li>
             <li>
-                <img src="/images/email.png" alt="icon">
+                <img id="footer-email" src="images/email.png" alt="icon" width="30" height="30">
                 burger@gmail.com
             </li>
             <li>

@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="/favicon.ico" type="image/x-icon">
-    <title>Local</title>
-    <meta name="description" content="Esta página muestra el formulario de reserva del local elegido">
-    <meta name="keywords" content="reservar, local, cantidad de personas, a nombre de">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <title>Seleccionar Mesa</title>
+    <meta name="description" content="Esta página permite elegir la mesa de la reserva">
+    <meta name="keywords" content="reservar, mesas">
     <meta name="author" content="Kevin Neiel Monti">
 </head>
 <body>
@@ -23,31 +23,9 @@
         <a href="login.html" rel="LINKtype">Log in</a>
     </nav>
     <main>
-        <h1>Llene los datos de su reserva</h1>
-        <form>
-            <fieldset>
-                <legend>Horarios Disponibles</legend>
-                <input type="radio" id="hora1" name="horario" value="9:00">
-                <label for="hora1">9:00 AM</label><br>
-                <input type="radio" id="hora2" name="horario" value="9:30">
-                <label for="hora2">9:30 AM</label><br>
-                <input type="radio" id="hora3" name="horario" value="10:00">
-                <label for="hora3">10:00 PM</label><br>
-                <!-- Agregar más opciones de horario según sea necesario -->
-            </fieldset>
-            <input type="submit" value="Seleccionar Horario">
-        </form>
-        <form>
-            <label for="fecha">Seleccione un día:</label>
-            <input type="date" id="fecha" name="fecha">
-            <input type="submit" value="Seleccionar Día">
-        </form>
-        <form>
-            <label for="texto">Nombre de los reservantes:</label>
-            <input type="text" id="texto" name="texto">
-            <input type="submit" value="Enviar">
-        </form>
-        <a href="seleccion_mesa.html">Seleccionar Mesa</a>
+        <h1>Reserva registrada!</h1>
+        <img id="imagen-de-fondo" src="images/imagen_publicitaria1.jpg" alt="background">
+        <a href="index.html">Volver al inicio</a>
     </main>
 
     <footer>
