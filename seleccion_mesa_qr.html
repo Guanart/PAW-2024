@@ -2,12 +2,12 @@
 <html lang="es">
 <head>
     <meta charset="utf-8">
-    <title>Burger Heaven - Defensa del consumidor</title>
+    <title>Ingresa tu mesa</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="expires" content="300000">
     <link rel="icon" href="favicon.ico" type="image/x-icon">
-    <meta name="description" content="Pagina acerca de la defensa del consumidor">
-    <meta name="keywords" content="defensa, consumidor">
+    <meta name="description" content="Pagina para ingresar el codigo de mesa">
+    <meta name="keywords" content="qr, codigo, mesa, ingresar">
 </head>
     <body>
         <header>
@@ -26,11 +26,15 @@
         <main>
             <article>
                 <h2>
-                    Defensa del consumidor
+                    Escanea el codigo QR de tu mesa!
                 </h2>
-                <p>
-                    Lorem ipsum dolor sit, amet consectetur adipisicing elit. Obcaecati exercitationem quas, reprehenderit dicta velit ratione esse consequatur deleniti voluptatem, itaque harum reiciendis culpa iure illo aspernatur architecto rerum eveniet recusandae.
-                </p>
+                <img src="images/qr_placeholder.png" alt="Placeholder lector de codigo Qr">
+            </article>
+            <article>
+                <form id="formulario">
+                    <input type="text" id="codigo" placeholder="Escribe el codigo acá"><br>
+                    <button type="button" onclick="enviarCorreo()">Confirmar</button>
+                  </form>
             </article>
         </main>
         <footer>
