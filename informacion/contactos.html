@@ -10,17 +10,21 @@
 </head>
     <body>
         <header>
-            <img src="images/logo.png" alt="Logo de la empresa" width="100" height="100">
+            <a href="index.html">
+                <img src="images/logo.png" alt="pawpower" width="100" height="100">
+            </a>
             <h1>
                 Información Organizacional
             </h1>
         </header>
         <nav>
-            <a href="reservas.html" rel="LINKtype">Reservas</a>
-            <a href="menu.html" rel="LINKtype">Menu</a>
-            <a href="hacer_pedido.html" rel="LINKtype">Hacer Pedido</a>
-            <a href="reservas.html" rel="LINKtype">Locales</a>
-            <a href="login.html" rel="LINKtype">Log in</a>
+            <menu>
+                <li><a href="reservas.html">Reservas</a></li>
+                <li><a href="menu.html">Menu</a></li>
+                <li><a href="hacer_pedido.html">Hacer Pedido</a></li>
+                <li><a href="reservas.html">Locales</a></li>
+                <li><a href="login.html">Log in</a></li>
+            </menu>
         </nav>
         <main>
             <article>
@@ -34,7 +38,7 @@
                     <input type="text" id="asunto" placeholder="Asunto"><br>
                     <textarea id="mensaje" placeholder="Detalle de tu consulta o problema"></textarea><br>
                     <button type="button" onclick="enviarCorreo()">Enviar</button>
-                  </form>
+                </form>
             </article>
             <article>
                 <h2>
