@@ -1,80 +1,87 @@
 <!DOCTYPE html>
 <html lang="es">
-    <head>
-        <meta charset="utf-8">
-        <tittle>Burger Heaven - Novedades</tittle>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta http-equiv="expires" content="300000">
-        <link rel="icon" href="favicon.ico" type="image/x-icon">
-    </head>
-    <body>
-        <header>
-            <a href="index.html">
-                <img alt="pawpower" src="images/Logo.png" width="100" height="100"/>
+
+<head>
+    <meta charset="utf-8">
+    <title>Novedades</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="/images/favicon.ico" type="image/x-icon">
+</head>
+
+<body>
+    <header>
+        <h1>
+            <a href="/">
+                <picture>
+                    <source srcset="/images/Logo.png" media="(min-width: 600px)">
+                    <img alt="pawpower" src="/images/Logo.png">
+                </picture>
             </a>
-            <h1>
-                Novedades
-            </h1>
-        </header>
+        </h1>
+        <h2>
+            Novedades
+        </h2>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="/reserva/reservas.html">Reservas</a></li>
+            <li><a href="/menu.html">Menu</a></li>
+            <li><a href="/pedido/armar_pedido.html">Hacer Pedido</a></li>
+            <li><a href="/reserva/local.html">Locales</a></li>
+            <li><a href="/usurio/login.html">Log in</a></li>
+        </ul>
+    </nav>
+    <main>
+        <article>
+            <h3>Noticia importante 1</h3>
+        </article>
+        <article>
+            <h3>Noticia importante 2</h3>
+        </article>
+    </main>
+    <section>
+        <h3>
+            Últimas novedades
+        </h3>
+        <article>
+            <h4>noticia 1</h4>
+        </article>
+        <article>
+            <h4>noticia 1</h4>
+        </article>
+        <article>
+            <h4>noticia 1</h4>
+        </article>
+    </section>
+    <section>
+        <h3>
+            Reseñas
+        </h3>
+        <article>
+            <h4>Muy rico</h4>
+        </article>
+        <article>
+            <h4>Muy rico</h4>
+        </article>
+        <a href="#">
+            <p>Ver más...</p>
+        </a>
+    </section>
+    <footer>
         <nav>
-            <menu>
-                <li><a href="reservas.html">Reservas</a></li>
-                <li><a href="menu.html">Menu</a></li>
-                <li><a href="hacer_pedido.html">Hacer Pedido</a></li>
-                <li><a href="reservas.html">Locales</a></li>
-                <li><a href="login.html">Log in</a></li>
-            </menu>
-        </nav>
-        <main>
-            <article>
-                Noticia importante 1
-            </article>
-            <article>
-                Noticia importante 2
-            </article>
-        </main>
-        <section>
-            <h2>
-                Últimas novedades
-            </h2>
-            <article>
-                noticia 1
-            </article>
-            <article>
-                noticia 2
-            </article>
-            <article>
-                noticia 3
-            </article>
-        </section>
-        <section>
-            <h2>
-                Reseñas
-            </h2>
-            <article>
-                Muy rico
-            </article>
-            <article>
-                Buen servicio
-            </article>
-            <label for="inputButton">
-                <input type="button" name="inputButton" value="Ver más..."/>
-            </label>
-        </section>
-        <footer>
             <ul>
                 <li>
-                    <a href="#">
+                    <a href="#" rel="external" target="_blank">
                         Instagram
                     </a>
                 </li>
                 <li>
-                    <a href="#">
+                    <a href="#" rel="external" target="_blank">
                         Facebook
                     </a>
                 </li>
                 <li>
-                    <a href="#">
+                    <a href="#" rel="external" target="_blank">
                         X
                     </a>
                 </li>
@@ -82,12 +89,14 @@
                     <a href="mailto:pawpower@gmail.com">pawpower@gmail.com</a>
                 </li>
                 <li>
-                    <a href="politica_privacidad.html"><small>Políticas de privacidad</small></a> 
+                    <a href="/informacion/politica_privacidad.html"><small>Políticas de privacidad</small></a> 
                 </li>
                 <li>
                     <a href="#" rel="external"><small>Derechos registrados</small></a>
                 </li>
             </ul>
-        </footer>
-    </body>
+        </nav>
+    </footer>
+</body>
+
 </html>

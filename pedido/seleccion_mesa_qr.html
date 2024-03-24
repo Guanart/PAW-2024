@@ -1,60 +1,65 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="utf-8">
     <title>Ingresa tu mesa</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="expires" content="300000">
-    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="icon" href="/images/favicon.ico" type="image/x-icon">
     <meta name="description" content="Pagina para ingresar el codigo de mesa">
     <meta name="keywords" content="qr, codigo, mesa, ingresar">
 </head>
-    <body>
-        <header>
-            <a href="index.html">
-                <img src="images/logo.png" alt="pawpower" width="100" height="100">
+
+<body>
+    <header>
+        <h1>
+            <a href="/">
+                <picture>
+                    <source srcset="/images/Logo.png" media="(min-width: 600px)">
+                    <img alt="pawpower" src="/images/Logo.png">
+                </picture>
             </a>
-            <h1>
-                Información Organizacional
-            </h1>
-        </header>
+        </h1>
+        <h2>
+            Información Organizacional
+        </h2>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="/reserva/reservas.html">Reservas</a></li>
+            <li><a href="/menu.html">Menu</a></li>
+            <li><a href="/pedido/armar_pedido.html">Hacer Pedido</a></li>
+            <li><a href="/reserva/local.html">Locales</a></li>
+            <li><a href="/usurio/login.html">Log in</a></li>
+        </ul>
+    </nav>
+    <main>
+        <article>
+            <h3>
+                Escanea el codigo QR de tu mesa!
+            </h3>
+            <form id="formulario">
+                <label for="codigo">Código</label>
+                <input type="text" id="codigo" placeholder="Escribe el código acá">
+                <input type="submit" value="Confirmar">
+            </form>
+        </article>
+    </main>
+    <footer>
         <nav>
-            <menu>
-                <li><a href="reservas.html">Reservas</a></li>
-                <li><a href="menu.html">Menu</a></li>
-                <li><a href="hacer_pedido.html">Hacer Pedido</a></li>
-                <li><a href="reservas.html">Locales</a></li>
-                <li><a href="login.html">Log in</a></li>
-            </menu>
-        </nav>
-        <main>
-            <article>
-                <h2>
-                    Escanea el codigo QR de tu mesa!
-                </h2>
-                <img src="images/qr_placeholder.png" alt="Placeholder lector de codigo Qr">
-            </article>
-            <article>
-                <form id="formulario">
-                    <input type="text" id="codigo" placeholder="Escribe el codigo acá"><br>
-                    <button type="button" onclick="enviarCorreo()">Confirmar</button>
-                </form>
-            </article>
-        </main>
-        <footer>
             <ul>
                 <li>
-                    <a href="#">
+                    <a href="#" rel="external" target="_blank">
                         Instagram
                     </a>
                 </li>
                 <li>
-                    <a href="#">
+                    <a href="#" rel="external" target="_blank">
                         Facebook
                     </a>
                 </li>
                 <li>
-                    <a href="#">
+                    <a href="#" rel="external" target="_blank">
                         X
                     </a>
                 </li>
@@ -62,12 +67,14 @@
                     <a href="mailto:pawpower@gmail.com">pawpower@gmail.com</a>
                 </li>
                 <li>
-                    <a href="politica_privacidad.html"><small>Políticas de privacidad</small></a> 
+                    <a href="/informacion/politica_privacidad.html"><small>Políticas de privacidad</small></a> 
                 </li>
                 <li>
                     <a href="#" rel="external"><small>Derechos registrados</small></a>
                 </li>
             </ul>
-        </footer>
-    </body>
+        </nav>
+    </footer>
+</body>
+
 </html>

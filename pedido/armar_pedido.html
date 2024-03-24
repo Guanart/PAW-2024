@@ -1,39 +1,47 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="favicon.ico" type="image/x-icon">
     <title>Elegir local</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="/images/favicon.ico" type="image/x-icon">
 </head>
+
 <body>
     <header>
-        <a href="index.html">
-            <img src="images/logo.png" alt="pawpower" width="100" height="100">
-        </a>
-        <h1>Pedido</h1>
+        <h1>
+            <a href="/">
+                <picture>
+                    <source srcset="/images/Logo.png" media="(min-width: 600px)">
+                    <img alt="pawpower" src="/images/Logo.png">
+                </picture>
+            </a>
+        </h1>
+        <h2>Pedido</h2>
     </header>
     <nav>
-        <menu>
-            <li><a href="reservas.html">Reservas</a></li>
-            <li><a href="menu.html">Menu</a></li>
-            <li><a href="hacer_pedido.html">Hacer Pedido</a></li>
-            <li><a href="reservas.html">Locales</a></li>
-            <li><a href="login.html">Log in</a></li>
-        </menu>
+        <ul>
+            <li><a href="/reserva/reservas.html">Reservas</a></li>
+            <li><a href="/menu.html">Menu</a></li>
+            <li><a href="/pedido/armar_pedido.html">Hacer Pedido</a></li>
+            <li><a href="/reserva/local.html">Locales</a></li>
+            <li><a href="/usurio/login.html">Log in</a></li>
+        </ul>
     </nav>
     <main>
-        <h2>Arme su pedido</h2>
+        <h3>Arme su pedido</h3>
         <form>
-            <input type="text" placeholder="Ingrese lo que busca...">
-            <button type="submit">Buscar</button>
+            <label for="buscar">Buscar</label>
+            <input type="text" id="buscar" placeholder="Ingrese lo que busca...">
+            <input type="submit" value="Buscar">
         </form>
         <section>
-            <h2>Hamburguesas</h2>
+            <h4>Hamburguesas</h4>
             <ul>
                 <li>
                     <article>
-                        <h3>Hamburguesa 1</h3>
+                        <h5>Hamburguesa 1</h5>
                         <p>Descripción 1</p>
                         <form>
                             <label>
@@ -45,7 +53,7 @@
                 </li>
                 <li>
                     <article>
-                        <h3>Hamburguesa 2</h3>
+                        <h5>Hamburguesa 2</h5>
                         <p>Descripción 2</p>
                         <form>
                             <label>
@@ -57,10 +65,10 @@
                 </li>
                 <li>
                     <article>
-                        <h3>Hamburguesa 3</h3>
+                        <h5>Hamburguesa 3</h5>
                         <p>Descripción 3</p>
                         <form>
-                            <label >
+                            <label>
                                 Cantidad:
                                 <input type="number" value="0" min="0" step="1.0">
                             </label>
@@ -70,11 +78,11 @@
             </ul>
         </section>
         <section>
-            <h2>Otros platos</h2>
+            <h4>Otros platos</h4>
             <ul>
                 <li>
                     <article>
-                        <h3>Plato 1</h3>
+                        <h5>Plato 1</h5>
                         <p>Descripción 1</p>
                         <form>
                             <label>
@@ -86,7 +94,7 @@
                 </li>
                 <li>
                     <article>
-                        <h3>Plato 2</h3>
+                        <h5>Plato 2</h5>
                         <p>Descripción 2</p>
                         <form>
                             <label>
@@ -98,7 +106,7 @@
                 </li>
                 <li>
                     <article>
-                        <h3>Plato 3</h3>
+                        <h5>Plato 3</h5>
                         <p>Descripción 3</p>
                         <form>
                             <label>
@@ -110,37 +118,40 @@
                 </li>
             </ul>
         </section>
-            <button type="submit">
-                Continuar
-            </button>
+        <button type="submit">
+            Continuar
+        </button>
     </main>
     <footer>
-        <ul>
-            <li>
-                <a href="#">
-                    Instagram
-                </a>
-            </li>
-            <li>
-                <a href="#">
-                    Facebook
-                </a>
-            </li>
-            <li>
-                <a href="#">
-                    X
-                </a>
-            </li>
-            <li>
-                <a href="mailto:pawpower@gmail.com">pawpower@gmail.com</a>
-            </li>
-            <li>
-                <a href="politica_privacidad.html"><small>Políticas de privacidad</small></a> 
-            </li>
-            <li>
-                <a href="#" rel="external"><small>Derechos registrados</small></a>
-            </li>
-        </ul>
+        <nav>
+            <ul>
+                <li>
+                    <a href="#" rel="external" target="_blank">
+                        Instagram
+                    </a>
+                </li>
+                <li>
+                    <a href="#" rel="external" target="_blank">
+                        Facebook
+                    </a>
+                </li>
+                <li>
+                    <a href="#" rel="external" target="_blank">
+                        X
+                    </a>
+                </li>
+                <li>
+                    <a href="mailto:pawpower@gmail.com">pawpower@gmail.com</a>
+                </li>
+                <li>
+                    <a href="/informacion/politica_privacidad.html"><small>Políticas de privacidad</small></a> 
+                </li>
+                <li>
+                    <a href="#" rel="external"><small>Derechos registrados</small></a>
+                </li>
+            </ul>
+        </nav>
     </footer>
 </body>
+
 </html>

@@ -3,11 +3,9 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Reserva registrada</title>
+    <title>Elegir local</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="/images/favicon.ico" type="image/x-icon">
-    <meta name="description" content="Confirmacion de que la reserva fue registrada">
-    <meta name="keywords" content="Registrada, reserva">
 </head>
 
 <body>
@@ -20,6 +18,7 @@
                 </picture>
             </a>
         </h1>
+        <h2>Pedido</h2>
     </header>
     <nav>
         <ul>
@@ -31,10 +30,17 @@
         </ul>
     </nav>
     <main>
-        <h2>Reserva registrada!</h2>
-        <a href="/">Volver al inicio</a>
+        <form>
+            <fieldset>
+                <legend>Elegí el local</legend>
+                <input type="radio" value="Moreno">
+                <input type="radio" value="Rodríguez">
+                <input type="radio" value="Luján">
+                <input type="radio" value="Chivilcoy">
+            </fieldset>
+            <input type="submit" value="Enviar">
+        </form>
     </main>
-
     <footer>
         <nav>
             <ul>

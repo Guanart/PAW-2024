@@ -1,15 +1,11 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
     <meta charset="UTF-8">
-    <title>Reserva registrada</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="/images/favicon.ico" type="image/x-icon">
-    <meta name="description" content="Confirmacion de que la reserva fue registrada">
-    <meta name="keywords" content="Registrada, reserva">
+    <title>Ingresar dirección</title>
 </head>
-
 <body>
     <header>
         <h1>
@@ -20,6 +16,7 @@
                 </picture>
             </a>
         </h1>
+        <h2>Pedido</h2>
     </header>
     <nav>
         <ul>
@@ -31,10 +28,20 @@
         </ul>
     </nav>
     <main>
-        <h2>Reserva registrada!</h2>
-        <a href="/">Volver al inicio</a>
+        <form action="/ingresar_direccion.php" method="POST">
+            <fieldset>
+                <label for="localidad">Localidad</label>
+                <input id="localidad" type="text" placeholder="Localidad" required>
+                <label for="altura">Altura</label>
+                <input id="altura" type="text" placeholder="Altura" required>
+                <label for="departamento">Departamento</label>
+                <input id="departamento" type="text" placeholder="Departamento">
+                <label for="descripcion">Descripcion de la ubicación</label>
+                <textarea id="descripcion" placeholder="Descripción de la ubicación" rows="4" cols="50"></textarea>
+            </fieldset>
+            <input type="submit" value="Enviar">
+        </form>
     </main>
-
     <footer>
         <nav>
             <ul>
@@ -66,5 +73,4 @@
         </nav>
     </footer>
 </body>
-
 </html>

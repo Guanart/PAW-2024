@@ -4,58 +4,65 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="icon" href="/images/favicon.ico" type="image/x-icon">
     <title>Verificar cuenta</title>
 </head>
 
 <body>
     <header>
-        <a href="index.html">
-            <img src="/images/Logo.png" alt="pawpower">
-        </a>
         <h1>
-            Verificar cuenta
+            <a href="/">
+                <picture>
+                    <source srcset="/images/Logo.png" media="(min-width: 600px)">
+                    <img alt="pawpower" src="/images/Logo.png">
+                </picture>
+            </a>
         </h1>
+        <h2>
+            Verificar cuenta
+        </h2>
     </header>
     <nav>
-        <menu>
-            <li><a href="reservas.html">Reservas</a></li>
-            <li><a href="menu.html">Menu</a></li>
-            <li><a href="hacer_pedido.html">Hacer Pedido</a></li>
-            <li><a href="reservas.html">Locales</a></li>
-            <li><a href="login.html">Log in</a></li>
-        </menu>
+        <ul>
+            <li><a href="/reserva/reservas.html">Reservas</a></li>
+            <li><a href="/menu.html">Menu</a></li>
+            <li><a href="/pedido/armar_pedido.html">Hacer Pedido</a></li>
+            <li><a href="/reserva/local.html">Locales</a></li>
+            <li><a href="/usurio/login.html">Log in</a></li>
+        </ul>
     </nav>
     <main>
         <p>Código de verificación enviado a {{ email }}. Ingresa al link que te hemos enviado para restablecer tu contraseña.</p>
     </main>
     <footer>
-        <ul>
-            <li>
-                <a href="#">
-                    Instagram
-                </a>
-            </li>
-            <li>
-                <a href="#">
-                    Facebook
-                </a>
-            </li>
-            <li>
-                <a href="#">
-                    X
-                </a>
-            </li>
-            <li>
-                <a href="mailto:pawpower@gmail.com">pawpower@gmail.com</a>
-            </li>
-            <li>
-                <a href="politica_privacidad.html"><small>Políticas de privacidad</small></a> 
-            </li>
-            <li>
-                <a href="#" rel="external"><small>Derechos registrados</small></a>
-            </li>
-        </ul>
+        <nav>
+            <ul>
+                <li>
+                    <a href="#" rel="external" target="_blank">
+                        Instagram
+                    </a>
+                </li>
+                <li>
+                    <a href="#" rel="external" target="_blank">
+                        Facebook
+                    </a>
+                </li>
+                <li>
+                    <a href="#" rel="external" target="_blank">
+                        X
+                    </a>
+                </li>
+                <li>
+                    <a href="mailto:pawpower@gmail.com">pawpower@gmail.com</a>
+                </li>
+                <li>
+                    <a href="/informacion/politica_privacidad.html"><small>Políticas de privacidad</small></a> 
+                </li>
+                <li>
+                    <a href="#" rel="external"><small>Derechos registrados</small></a>
+                </li>
+            </ul>
+        </nav>
     </footer>
 </body>
 

@@ -1,106 +1,117 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="utf-8">
-    <title>Burger Heaven - Contactos</title>
+    <title>Contactos</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="icon" href="/images/favicon.ico" type="image/x-icon">
     <meta name="description" content="Vias de contacto con Burger Heaven">
     <meta name="keywords" content="contactos">
 </head>
-    <body>
-        <header>
-            <a href="index.html">
-                <img src="images/logo.png" alt="pawpower" width="100" height="100">
+
+<body>
+    <header>
+        <h1>
+            <a href="/">
+                <picture>
+                    <source srcset="/images/Logo.png" media="(min-width: 600px)">
+                    <img alt="pawpower" src="/images/Logo.png">
+                </picture>
             </a>
-            <h1>
-                Información Organizacional
-            </h1>
-        </header>
+        </h1>
+        <h2>
+            Información Organizacional
+        </h2>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="/reserva/reservas.html">Reservas</a></li>
+            <li><a href="/menu.html">Menu</a></li>
+            <li><a href="/pedido/armar_pedido.html">Hacer Pedido</a></li>
+            <li><a href="/reserva/local.html">Locales</a></li>
+            <li><a href="/usurio/login.html">Log in</a></li>
+        </ul>
+    </nav>
+    <main>
+        <h3>
+            Contactanos!
+        </h3>
+        <form id="formulario">
+            <label for="nombres">Nombres: </label>
+            <input type="text" id="nombres" placeholder="Nombres" required>
+            <label for="apellidos">Apellidos: </label>
+            <input type="text" id="apellidos" placeholder="Apellidos" required>
+            <label for="email">Correo electrónico: </label>
+            <input type="text" id="email" placeholder="Correo electrónico" required>
+            <label for="asunto">Asunto: </label>
+            <input type="text" id="asunto" placeholder="Asunto" required>
+            <label for="mensaje">Detalles de la consulta:</label>
+            <textarea id="mensaje" placeholder="Detalle su consulta o problema" required></textarea>
+            <input type="submit" value="Enviar">
+        </form>
+    </main>
+    <section>
+        <h3>
+            Otras vías de contacto:
+        </h3>
+        <ul>
+            <li>
+                <a href="#">
+                    Instagram
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    Facebook
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    X
+                </a>
+            </li>
+            <li>
+                <a href="mailto:pawpower@gmail.com">pawpower@gmail.com</a>
+            </li>
+            <li>
+                <a href="/informacion/politica_privacidad.html"><small>Políticas de privacidad</small></a>
+            </li>
+            <li>
+                <a href="#" rel="external"><small>Derechos registrados</small></a>
+            </li>
+        </ul>
+    </section>
+    <footer>
         <nav>
-            <menu>
-                <li><a href="reservas.html">Reservas</a></li>
-                <li><a href="menu.html">Menu</a></li>
-                <li><a href="hacer_pedido.html">Hacer Pedido</a></li>
-                <li><a href="reservas.html">Locales</a></li>
-                <li><a href="login.html">Log in</a></li>
-            </menu>
-        </nav>
-        <main>
-            <article>
-                <h2>
-                    Contactanos!
-                </h2>
-                <form id="formulario">
-                    <input type="text" id="nombres" placeholder="Nombres"><br>
-                    <input type="text" id="apellidos" placeholder="Apellidos"><br>
-                    <input type="text" id="email" placeholder="Correo electrónico"><br>
-                    <input type="text" id="asunto" placeholder="Asunto"><br>
-                    <textarea id="mensaje" placeholder="Detalle de tu consulta o problema"></textarea><br>
-                    <button type="button" onclick="enviarCorreo()">Enviar</button>
-                </form>
-            </article>
-            <article>
-                <h2>
-                    Otras vias de contacto:
-                </h2>
-                <ul>
-                    <li>
-                        <a href="#">
-                            <img id="contact-instagram" src="/images/instagram.png" alt="icon">
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#">
-                            <img id="contact-facebook" src="/images/facebook.png" alt="icon">
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#">
-                            <img id="contact-twitter" src="/images/twitter.png" alt="icon">
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#">
-                            <img id="contact-linkedin" src="/images/linkedin.png" alt="icon">
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#">
-                            <img id="contact-whatsapp" src="/images/whatsapp.png" alt="icon">
-                        </a>
-                    </li>
-                </ul>
-            </article>
-        </main>
-        <footer>
             <ul>
                 <li>
-                    <a href="#">
-                        <img id="footer-instagram" src="/images/instagram.png" alt="icon">
+                    <a href="#" rel="external" target="_blank">
+                        Instagram
                     </a>
                 </li>
                 <li>
-                    <a href="#">
-                        <img id="footer-facebook" src="/images/facebook.png" alt="icon">
+                    <a href="#" rel="external" target="_blank">
+                        Facebook
                     </a>
                 </li>
                 <li>
-                    <a href="#">
-                        <img id="footer-twitter" src="/images/twitter.png" alt="icon">
+                    <a href="#" rel="external" target="_blank">
+                        X
                     </a>
                 </li>
                 <li>
-                    <img src="/images/email.png" alt="icon">
-                    burger@gmail.com
+                    <a href="mailto:pawpower@gmail.com">pawpower@gmail.com</a>
                 </li>
                 <li>
-                    Políticas de privacidad
+                    <a href="/informacion/politica_privacidad.html"><small>Políticas de privacidad</small></a> 
                 </li>
                 <li>
-                    Derechos registrados
+                    <a href="#" rel="external"><small>Derechos registrados</small></a>
                 </li>
             </ul>
-        </footer>
-    </body>
+        </nav>
+    </footer>
+</body>
+
 </html>

@@ -1,63 +1,72 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="icon" href="/images/favicon.ico" type="image/x-icon">
     <title>Hacer pedido</title>
 </head>
+
 <body>
     <header>
-        <a href="index.html">
-            <img alt="pawpower" src="images/Logo.png" width="100" height="100"/>
-        </a>
+        <h1>
+            <a href="/">
+                <picture>
+                    <source srcset="/images/Logo.png" media="(min-width: 600px)">
+                    <img alt="pawpower" src="/images/Logo.png">
+                </picture>
+            </a>
+        </h1>
     </header>
     <nav>
-        <menu>
-            <li><a href="reservas.html">Reservas</a></li>
-            <li><a href="menu.html">Menu</a></li>
-            <li><a href="hacer_pedido.html">Hacer Pedido</a></li>
-            <li><a href="reservas.html">Locales</a></li>
-            <li><a href="login.html">Log in</a></li>
-        </menu>
+        <ul>
+            <li><a href="/reserva/reservas.html">Reservas</a></li>
+            <li><a href="/menu.html">Menu</a></li>
+            <li><a href="/pedido/armar_pedido.html">Hacer Pedido</a></li>
+            <li><a href="/reserva/local.html">Locales</a></li>
+            <li><a href="/usurio/login.html">Log in</a></li>
+        </ul>
     </nav>
     <main>
-        <img src="#" alt="Imagen decorativa">
-        <h1>HACE TU PEDIDO, YA!</h1>
         <section>
-            <h2>¿Cómo lo querés hacer?</h2>
-            <a href=elegir_local.html>Para llevar</a>
+            <h2>HACE TU PEDIDO, YA!</h2>
+            <p>¿Cómo lo querés hacer?</p>
+            <a href="elegir_local.html">Para llevar</a>
             <a href="ingresar_direccion.html">Delivery</a>
             <a href="seleccion_mesa_qr.html">Pedido desde la mesa</a>
         </section>
     </main>
     <footer>
-        <ul>
-            <li>
-                <a href="#">
-                    Instagram
-                </a>
-            </li>
-            <li>
-                <a href="#">
-                    Facebook
-                </a>
-            </li>
-            <li>
-                <a href="#">
-                    X
-                </a>
-            </li>
-            <li>
-                <a href="mailto:pawpower@gmail.com">pawpower@gmail.com</a>
-            </li>
-            <li>
-                <a href="politica_privacidad.html"><small>Políticas de privacidad</small></a> 
-            </li>
-            <li>
-                <a href="#" rel="external"><small>Derechos registrados</small></a>
-            </li>
-        </ul>
+        <nav>
+            <ul>
+                <li>
+                    <a href="#" rel="external" target="_blank">
+                        Instagram
+                    </a>
+                </li>
+                <li>
+                    <a href="#" rel="external" target="_blank">
+                        Facebook
+                    </a>
+                </li>
+                <li>
+                    <a href="#" rel="external" target="_blank">
+                        X
+                    </a>
+                </li>
+                <li>
+                    <a href="mailto:pawpower@gmail.com">pawpower@gmail.com</a>
+                </li>
+                <li>
+                    <a href="/informacion/politica_privacidad.html"><small>Políticas de privacidad</small></a> 
+                </li>
+                <li>
+                    <a href="#" rel="external"><small>Derechos registrados</small></a>
+                </li>
+            </ul>
+        </nav>
     </footer>
 </body>
+
 </html>
