@@ -33,12 +33,24 @@
         <form>
             <fieldset>
                 <legend>Elegí el local</legend>
-                <input type="radio" value="Moreno">
-                <input type="radio" value="Rodríguez">
-                <input type="radio" value="Luján">
-                <input type="radio" value="Chivilcoy">
+                <label for="input_localidad">
+                    Moreno
+                    <input name="input_localidad" type="radio" value="Moreno">
+                </label>
+                <label for="input_localidad">
+                    Rodríguez
+                    <input name="input_localidad" type="radio" value="Rodríguez">
+                </label>
+                <label for="input_localidad">
+                    Luján
+                    <input name="input_localidad" type="radio" value="Luján">
+                </label>
+                <label for="input_localidad">
+                    Chivilcoy
+                    <input name="input_localidad" type="radio" value="Chivilcoy">
+                </label>
             </fieldset>
-            <input type="submit" value="Enviar">
+            <input type="submit" id="boton_enviar" name="boton_enviar">
         </form>
     </main>
     <footer>

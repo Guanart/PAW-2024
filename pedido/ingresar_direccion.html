@@ -31,13 +31,13 @@
         <form action="/ingresar_direccion.php" method="POST">
             <fieldset>
                 <label for="localidad">Localidad</label>
-                <input id="localidad" type="text" placeholder="Localidad" required>
+                <input id="localidad" name="localidad" type="text" placeholder="Localidad" required>
                 <label for="altura">Altura</label>
-                <input id="altura" type="text" placeholder="Altura" required>
+                <input id="altura" name="altura" type="text" placeholder="Altura" required>
                 <label for="departamento">Departamento</label>
-                <input id="departamento" type="text" placeholder="Departamento">
+                <input id="departamento" name="departamento" type="text" placeholder="Departamento">
                 <label for="descripcion">Descripcion de la ubicación</label>
-                <textarea id="descripcion" placeholder="Descripción de la ubicación" rows="4" cols="50"></textarea>
+                <textarea id="descripcion" name="descripcion" placeholder="Descripción de la ubicación" rows="4" cols="50"></textarea>
             </fieldset>
             <input type="submit" value="Enviar">
         </form>

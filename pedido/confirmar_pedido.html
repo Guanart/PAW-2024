@@ -30,36 +30,34 @@
     <main>
         <h3>Confirme su pedido</h3>
         <section>
-            <ul>
-                <li>
-                    <article>
-                        <h4>Hamburguesa 1</h4>
-                        <p>Descripción 1</p>
-                        <p>Cantidad: 2</p>
-                    </article>
-                </li>
-                <li>
-                    <article>
-                        <h4>Hamburguesa 2</h4>
-                        <p>Descripción 2</p>
-                        <p>Cantidad: 1</p>
-                    </article>
-                </li>
-                <li>
-                    <article>
-                        <h4>Hamburguesa 3</h4>
-                        <p>Descripción 3</p>
-                        <p>Cantidad: 3</p>
-                    </article>
-                </li>
-            </ul>
+            <article>
+                <h4>Hamburguesa 1</h4>
+                <p>Descripción 1</p>
+                <p>Cantidad: 2</p>
+            </article>
+            <article>
+                <h4>Hamburguesa 2</h4>
+                <p>Descripción 2</p>
+                <p>Cantidad: 1</p>
+            </article>
+            <article>
+                <h4>Hamburguesa 3</h4>
+                <p>Descripción 3</p>
+                <p>Cantidad: 3</p>
+            </article>
         </section>
         <form>
             <fieldset>
-                <input type="text" placeholder="A nombre de">
-                <input type="text" placeholder="Información adicional">
+                <label for="input_nombre">
+                    A nombre de:
+                    <input id="input_nombre" name="input_nombre" type="text" placeholder="Ej: Francisco Guerra">
+                </label>
+                <label for="input_info_adicional">
+                    Información adicional:
+                    <input id="input_info_adicional" name="input_info_adicional" type="text">
+                </label>
             </fieldset>
-            <input type="submit" value="Continuar">
+            <input type="submit" id="boton_confirmar" name="boton_confirmar" value="Confirmar">
         </form>
     </main>
     <footer>
