@@ -6,15 +6,14 @@
     <link rel="icon" href="/images/favicon.ico" type="image/x-icon">
     <title>Seleccionar Mesa</title>
     <meta name="description" content="Esta página permite elegir la mesa de la reserva">
-    <meta name="keywords" content="reservar, mesas">
 </head>
 <body>
     <header>
         <h1>
             <a href="/">
                 <picture>
-                    <source srcset="/images/Logo.png" media="(min-width: 600px)">
-                    <img alt="pawpower" src="/images/Logo.png">
+                    <source srcset="/images/Logo.svg" media="(min-width: 600px)">
+                    <img alt="pawpower" src="/images/Logo.svg">
                 </picture>
             </a>
         </h1>
@@ -30,7 +29,7 @@
     </nav>
     <main>
         <h2>Llene los datos de su reserva</h2>
-        <form action="fin_reserva.php" method="post">
+        <form name="form_seleccion_mesa" action="seleccion_mesa.php" method="post">
             <fieldset>
                 <legend>Seleccione una mesa:</legend>
                 <input type="radio" id="mesa1" name="mesa" value="1">

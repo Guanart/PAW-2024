@@ -7,7 +7,6 @@
     <link rel="icon" href="/images/favicon.ico" type="image/x-icon">
     <title>Local</title>
     <meta name="description" content="Esta página muestra el formulario de reserva del local elegido">
-    <meta name="keywords" content="reservar, local, cantidad de personas, a nombre de">
 </head>
 
 <body>
@@ -15,8 +14,8 @@
         <h1>
             <a href="/">
                 <picture>
-                    <source srcset="/images/Logo.png" media="(min-width: 600px)">
-                    <img alt="pawpower" src="/images/Logo.png">
+                    <source srcset="/images/Logo.svg" media="(min-width: 600px)">
+                    <img alt="pawpower" src="/images/Logo.svg">
                 </picture>
             </a>
         </h1>
@@ -33,7 +32,7 @@
     </nav>
     <main>
         <h3>Llene los datos de su reserva</h3>
-        <form>
+        <form name="form_local" action="local.php" method="post">
             <fieldset>
                 <legend>Horarios Disponibles</legend>
                 <input type="radio" id="hora1" name="horario" value="9:00">
@@ -49,7 +48,7 @@
             <input type="submit" value="Seleccionar Día">
             <label for="texto">Nombre de los reservantes:</label>
             <input type="text" id="texto" name="texto">
-            <input type="submit" value="Siguiente"> <!-- BACKEND: Enviar a /reserva/seleccion_mesa -->
+            <input type="submit" value="Siguiente"> <!-- BACKEND: Redireccionar a /reserva/seleccion_mesa -->
         </form>
     </main>
 

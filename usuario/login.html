@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="/images/favicon.ico" type="image/x-icon">
     <title>Login</title>
+    <meta name="description" content="Aquí puedes iniciar sesión">
 </head>
 
 <body>
@@ -13,8 +14,8 @@
         <h1>
             <a href="/">
                 <picture>
-                    <source srcset="/images/Logo.png" media="(min-width: 600px)">
-                    <img alt="pawpower" src="/images/Logo.png">
+                    <source srcset="/images/Logo.svg" media="(min-width: 600px)">
+                    <img alt="pawpower" src="/images/Logo.svg">
                 </picture>
             </a>
         </h1>
@@ -30,7 +31,7 @@
         </ul>
     </nav>
     <main>
-        <form action="login.php" method="POST">
+        <form name="form_login" action="login.php" method="POST">
             <label for="mail">Correo electrónico</label>
             <input type="email" id="mail" name="email" tabindex="1" required autocomplete="on" autofocus>
             <label for="password">Contraseña</label>

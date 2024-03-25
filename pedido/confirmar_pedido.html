@@ -1,18 +1,21 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <title>Confirmar pedido</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="/images/favicon.ico" type="image/x-icon">
+    <meta name="description" content="Pagina de confirmacion del pedido">
 </head>
+
 <body>
     <header>
         <h1>
             <a href="/">
                 <picture>
-                    <source srcset="/images/Logo.png" media="(min-width: 600px)">
-                    <img alt="pawpower" src="/images/Logo.png">
+                    <source srcset="/images/Logo.svg" media="(min-width: 600px)">
+                    <img alt="pawpower" src="/images/Logo.svg">
                 </picture>
             </a>
         </h1>
@@ -28,8 +31,8 @@
         </ul>
     </nav>
     <main>
-        <h3>Confirme su pedido</h3>
         <section>
+            <h3>Confirme su pedido</h3>
             <article>
                 <h4>Hamburguesa 1</h4>
                 <p>Descripción 1</p>
@@ -46,7 +49,7 @@
                 <p>Cantidad: 3</p>
             </article>
         </section>
-        <form>
+        <form name="form_confirmar_pedido" action="confirmar_pedido.php" method="post">
             <fieldset>
                 <label for="input_nombre">
                     A nombre de:
@@ -57,7 +60,7 @@
                     <input id="input_info_adicional" name="input_info_adicional" type="text">
                 </label>
             </fieldset>
-            <input type="submit" id="boton_confirmar" name="boton_confirmar" value="Confirmar">
+            <input type="submit" value="Confirmar">
         </form>
     </main>
     <footer>
@@ -82,7 +85,7 @@
                     <a href="mailto:pawpower@gmail.com">pawpower@gmail.com</a>
                 </li>
                 <li>
-                    <a href="/informacion/politica_privacidad.html"><small>Políticas de privacidad</small></a> 
+                    <a href="/informacion/politica_privacidad.html"><small>Políticas de privacidad</small></a>
                 </li>
                 <li>
                     <a href="#" rel="external"><small>Derechos registrados</small></a>
@@ -91,4 +94,5 @@
         </nav>
     </footer>
 </body>
+
 </html>

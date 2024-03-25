@@ -5,14 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="/images/favicon.ico" type="image/x-icon">
     <title>Ingresar dirección</title>
+    <meta name="description" content="Aquí debes ingresar la dirección a la que sera enviado tu pedido">
 </head>
 <body>
     <header>
         <h1>
             <a href="/">
                 <picture>
-                    <source srcset="/images/Logo.png" media="(min-width: 600px)">
-                    <img alt="pawpower" src="/images/Logo.png">
+                    <source srcset="/images/Logo.svg" media="(min-width: 600px)">
+                    <img alt="pawpower" src="/images/Logo.svg">
                 </picture>
             </a>
         </h1>
@@ -28,18 +29,18 @@
         </ul>
     </nav>
     <main>
-        <form action="/ingresar_direccion.php" method="POST">
+        <form name="form_ingresar_direccion" action="ingresar_direccion.php" method="post">
             <fieldset>
                 <label for="localidad">Localidad</label>
-                <input id="localidad" name="localidad" type="text" placeholder="Localidad" required>
+                <input id="localidad" name="localidad" type="text" required><!-- Poner un combo con filtro, cargar localidades en la BD-->
                 <label for="altura">Altura</label>
-                <input id="altura" name="altura" type="text" placeholder="Altura" required>
+                <input id="altura" name="altura" type="text" required>
                 <label for="departamento">Departamento</label>
-                <input id="departamento" name="departamento" type="text" placeholder="Departamento">
+                <input id="departamento" name="departamento" type="text">
                 <label for="descripcion">Descripcion de la ubicación</label>
-                <textarea id="descripcion" name="descripcion" placeholder="Descripción de la ubicación" rows="4" cols="50"></textarea>
+                <textarea id="descripcion" name="descripcion" rows="4" cols="50"></textarea>
             </fieldset>
-            <input type="submit" value="Enviar">
+            <input type="submit">
         </form>
     </main>
     <footer>

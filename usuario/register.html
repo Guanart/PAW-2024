@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="/images/favicon.ico" type="image/x-icon">
     <title>Registro</title>
+    <meta name="description" content="Página de registro de usuarios">
 </head>
 
 <body>
@@ -13,8 +14,8 @@
         <h1>
             <a href="/">
                 <picture>
-                    <source srcset="/images/Logo.png" media="(min-width: 600px)">
-                    <img alt="pawpower" src="/images/Logo.png">
+                    <source srcset="/images/Logo.svg" media="(min-width: 600px)">
+                    <img alt="pawpower" src="/images/Logo.svg">
                 </picture>
             </a>
         </h1>
@@ -32,7 +33,7 @@
         </ul>
     </nav>
     <main>
-        <form action="register.php" method="POST">
+        <form name="form_register" action="register.php" method="POST">
             <label for="nombre">Nombre</label>
             <input type="text" id="nombre" name="nombre" tabindex="1" required autofocus>
             <label for="email">Correo electrónico</label>
