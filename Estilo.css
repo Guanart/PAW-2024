@@ -1,13 +1,16 @@
 @import url('https://fonts.googleapis.com/css2?family=Archivo+Black&display=swap');
 
 header, footer {
+    color: #ffffff;
     display: flex; /* Usamos flexbox para colocar los elementos en una sola línea */
-    background-color: #f0f0f0;
-    box-shadow: 0px 0px 8px -2px rgba(45,36,69,0.87);
-    border-radius: 1em; /* Añadimos esquinas redondeadas */
+    background-color: #231f20;
+    box-shadow: 0px 0px 6px -2px rgba(45,36,69,0.87);
+    /*border-radius: 1em; /* Añadimos esquinas redondeadas */
 }
 
+
 header {
+    min-height: 80px;
     padding: 0.5em;
     align-items: center;
     justify-content: space-between;
@@ -49,11 +52,11 @@ h1 > a > picture > img:hover{
     width: 67%;
 }
 
-header nav {
+nav {
     display: flex;
-    align-items: center;
+    align-items: right;
     margin: auto;
-    margin-right: 10px;
+    /* margin-right: 10px; */
 }
 
 footer nav {
@@ -91,16 +94,23 @@ nav ul li a:hover, a[href="pedido/armar_pedido.html"]:hover {
     box-shadow: inset 0px 0px 8px -2px rgba(45,36,69,0.69);
 }
 
+main, section, header, footer, nav{
+    max-width: 1500px;
+    margin: 0 auto;
+    margin-bottom: 20px; /* Añadimos un margen inferior entre las secciones */
+}
+
 main {
     display: flex;
     margin: auto;
     align-items: center;
     justify-content: space-between;
     height: 100%;
+    margin-top: 20px;
 }
 
 section {
-    margin-bottom: 20px; /* Añadimos un margen inferior entre las secciones */
+
     display: block;
 }
 
@@ -111,8 +121,11 @@ h3 {
 }
 
 article {
-    display: flex; /* Usamos flexbox para colocar los artículos en una línea */
-    margin-right: 10px; /* Añadimos un margen derecho entre los artículos */
+
+    display: flexbox; /* Usamos flexbox para colocar los artículos en una línea */
+    margin-right: 15px; /* Añadimos un margen derecho entre los artículos */
+    margin-left: 15px;
+    margin-top:5px;
     background-image: url('/images/Hamburguesa.jpg'); /* Ruta a tu imagen */
     background-size: cover; /* Ajusta el tamaño de la imagen para cubrir el artículo */
     background-position: center; /* Centra la imagen dentro del artículo */
