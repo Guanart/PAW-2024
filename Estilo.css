@@ -152,13 +152,19 @@ article:hover {
 form {
     background-color: #231f20;
     border-radius: 15px;
-    box-sizing: border-box;
-    padding: 40px;
-    display: inline-block;
-    flex-direction: column;
-    width: 80%;
+    /* box-sizing: border-box; */
+    padding: 50px;
+    width: auto;
     margin: auto;
+
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-content: space-evenly;
+    align-items: center;
 }
+
+
 
 label {
     color: #65657b;
@@ -168,6 +174,7 @@ label {
     transition: transform 200ms, color 200ms;
     margin-bottom: 2%;
     width: 100%;
+    display: flex;
     /* top: 20px; */
 }
 
@@ -179,12 +186,13 @@ input {
     outline-color: rgb(235, 166, 18);
     height: 100%;
     width: 100%;
-    margin: 2%;
+    margin-bottom: 2%;
     line-height: 28px;
     padding: 8px 16px;
     min-height: 44px;
     /* border: unset; */
     display: flex;
+    flex-grow: 1;
     border-radius: 4px;
 }
 
@@ -199,15 +207,17 @@ input {
 .submit {
     background-color: rgb(235, 166, 18);
     border-radius: 12px;
-    border: 0;
     box-sizing: border-box;
     color: #eee;
     cursor: pointer;
     font-size: 18px;
+    margin-top: 10px;
     text-align: center;
     width: 100%;
-    margin: 10px;
+    display: flex;
+    /* flex: 2; */
     align-self: center;
+    /* margin: ; */
 }
 
 .submit:active {
@@ -215,14 +225,17 @@ input {
 }
 
 form a {
-    padding: 10px;
+    /* padding: 10px; */
     display: flex;
-    margin: auto;
+    margin-top: 10px;
     justify-content: center;
     font-size: 0.9rem;
-    color:#65657b
+    color:#65657b;
+    text-align: center;
 }
 
 fieldset {
-    
+    border: none;
+    /* margin: 0;
+    padding: 0; */
 }
