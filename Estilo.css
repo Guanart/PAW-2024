@@ -54,9 +54,11 @@ h1 > a > picture > img:hover{
 
 nav {
     display: flex;
-    align-items: right;
     margin: auto;
-    /* margin-right: 10px; */
+}
+
+header nav {
+    margin: 0;
 }
 
 footer nav {
@@ -72,8 +74,7 @@ nav ul {
 }
 
 nav ul li {
-    display: inline; /* Hacemos que los elementos li se muestren en línea */
-    margin-right: 10px;
+    /* margin-right: 10px; */
 }
 
 nav ul li a, a[href="pedido/armar_pedido.html"]{
@@ -96,7 +97,6 @@ nav ul li a:hover, a[href="pedido/armar_pedido.html"]:hover {
 }
 
 main, section, header, footer, nav{
-    max-width: 1500px;
     margin: 0 auto;
     margin-bottom: 20px; /* Añadimos un margen inferior entre las secciones */
 }
