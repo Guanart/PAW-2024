@@ -162,6 +162,8 @@ form {
     flex-wrap: wrap;
     align-content: space-evenly;
     align-items: center;
+    font-family: Century Gothic,CenturyGothic,AppleGothic,sans-serif; 
+    color: #65657b;
 }
 
 
@@ -175,6 +177,7 @@ label {
     margin-bottom: 2%;
     width: 100%;
     display: flex;
+    font-family: Century Gothic,CenturyGothic,AppleGothic,sans-serif; 
     /* top: 20px; */
 }
 
