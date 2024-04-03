@@ -8,6 +8,7 @@
     <title>Local</title>
     <meta name="description" content="Esta página muestra el formulario de reserva del local elegido">
     <link rel="stylesheet" href="/Estilo.css">
+    <link rel="stylesheet" href="estilo_reserva.css">
 </head>
 
 <body>
@@ -21,18 +22,18 @@
             </a>
         </h1>
         <h2>Reservar</h2>
+        <nav class="navMenu">
+            <ul>
+                <li><a href="/reserva/reservas.html">Reservas</a></li>
+                <li><a href="/menu.html">Menu</a></li>
+                <li><a href="/pedido/armar_pedido.html">Hacer Pedido</a></li>
+                <li><a href="/reserva/local.html">Locales</a></li>
+                <li><a href="/usuario/login.html">Log in</a></li>
+            </ul>
+        </nav>
     </header>
-    <nav>
-        <ul>
-            <li><a href="/reserva/reservas.html">Reservas</a></li>
-            <li><a href="/menu.html">Menu</a></li>
-            <li><a href="/pedido/armar_pedido.html">Hacer Pedido</a></li>
-            <li><a href="/reserva/local.html">Locales</a></li>
-            <li><a href="/usuario/login.html">Log in</a></li>
-        </ul>
-    </nav>
     <main>
-        <h3>Llene los datos de su reserva</h3>
+        <h2>Llene los datos de su reserva</h2>
         <form name="form_local" action="local.php" method="post">
             <fieldset>
                 <legend>Horarios Disponibles</legend>
