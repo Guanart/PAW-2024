@@ -106,7 +106,3 @@ a.volver {
     color: transparent;
     
 }
-
-a:not(:last-child) {
-    margin-right: 5vh; /* Ajusta el valor según sea necesario */
-}
