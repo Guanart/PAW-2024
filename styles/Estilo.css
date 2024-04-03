@@ -115,4 +115,27 @@ h3 {
     font-family: Century Gothic,CenturyGothic,AppleGothic,sans-serif; 
 }
 
+.facebook, .email, .instagram, .twitter {
+    background-color: transparent;
+    color: transparent;
+    background-size: cover; /* Ajusta el tamaño de la imagen para cubrir el artículo */
+    background-position: center; /* Centra la imagen dentro del artículo */
+    height: 2vh;
+    width: 2vh;
+}
 
+.facebook {
+    background-image: url('/images/facebook.png');
+}
+
+.instagram {
+    background-image: url('/images/instagram.png');
+}
+
+.twitter {
+    background-image: url('/images/twitter.png');
+}
+
+.email {
+    background-image: url('/images/email.png');
+}
