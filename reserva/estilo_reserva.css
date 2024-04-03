@@ -2,11 +2,24 @@ body {
     min-height: 100%;
 }
 
+h2,h3 {
+    color: #fbad18;
+}
+
+h2 {
+    margin-top: 30px;
+}
+
 main {
-    display: block;
+    border-radius: 3vh;
+    text-align: center;
+    display: flexbox;
     overflow-y: auto;
     justify-content: center; /* Centra horizontalmente */
     align-items: center; /* Centra verticalmente */
+    background-color: #231f20;
+    
+    /*max-width: fit-content;*/
 }
 
 form {
@@ -30,11 +43,18 @@ fieldset {
 section {
     display: grid;
     gap: 20px; /* Espacio entre los elementos */
-    grid-template-areas:
+    /* grid-template-areas:
         'header header'
         'first-article second-article'
-        'third-article fourth-article';
+        'third-article fourth-article'; */
+    grid-template-columns: 1fr 1fr;
     max-height: 100;
+    margin-left: 20px;
+    margin-right: 20px;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.6)), url('/images/Hamburguesa.jpg');
+    background-size: cover; /* Ajusta el tamaño de la imagen para cubrir el artículo */
+    background-position: center; /* Centra la imagen dentro del artículo */
+    border-radius: 3vh;
 }
 
 h2 {
@@ -53,30 +73,16 @@ article {
     padding: 20px; /* Añadir relleno para visualización */
     width: auto;
     height: auto;
-    background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.5)), url('/images/Hamburguesa.jpg');
+    text-align: center;
 }
 
-article:nth-child(0) {
-    grid-area: first-article; /* Primer artículo en la primera fila */
-}
 
-article:nth-child(1) {
-    grid-area: second-article; /* Segundo artículo en la primera fila */
-}
-
-article:nth-child(2) {
-    grid-area: third-article; /* Tercer artículo en la segunda fila */
-}
-
-article:nth-child(3) {
-    grid-area: fourth-article; /* Cuarto artículo en la segunda fila */
-}
 
 figure > picture > img{
     height: auto; /* La imagen no será más grande que el ancho del contenedor */
     max-width: 100%; /* Mantiene el aspect ratio de la imagen */
     border-radius: 3vh; /* Añadimos esquinas redondeadas */
-    border: solid #fbad18; 4px;
+    border: solid #fbad18;
 }
 
 figcaption > a {
