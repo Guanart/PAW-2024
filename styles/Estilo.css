@@ -79,9 +79,6 @@ nav ul {
     align-items: right;
 }
 
-nav ul li {
-    /* margin-right: 10px; */
-}
 
 nav ul li a, a[href="pedido/armar_pedido.html"]{
     display: inline-block; /* Hacemos que los elementos a se muestren en línea */
@@ -107,18 +104,8 @@ main, section, header, footer, nav{
     margin-bottom: 20px; /* Añadimos un margen inferior entre las secciones */
 }
 
-main {
-    display: flex;
-    margin: auto;
-    align-items: center;
-    justify-content: space-between;
-    height: 100%;
-    margin-top: 20px;
-    min-height: 100vh; /* Mínimo 100% de la altura de la ventana visible */
-}
-
-section {
-
+main, section {
+    max-width: 1500px;
     display: block;
 }
 
@@ -128,119 +115,4 @@ h3 {
     font-family: Century Gothic,CenturyGothic,AppleGothic,sans-serif; 
 }
 
-article {
 
-    display: flexbox; /* Usamos flexbox para colocar los artículos en una línea */
-    margin-right: 15px; /* Añadimos un margen derecho entre los artículos */
-    margin-left: 15px;
-    margin-top:5px;
-    background-image: url('/images/Hamburguesa.jpg'); /* Ruta a tu imagen */
-    background-size: cover; /* Ajusta el tamaño de la imagen para cubrir el artículo */
-    background-position: center; /* Centra la imagen dentro del artículo */
-    text-align: center; /* Alinea el texto en el centro */
-    color: white; /* Color del texto para que se vea en la imagen */
-    padding: 4em; /* Agrega un poco de espacio alrededor del texto */
-    border-radius: 3vh; /* Añadimos esquinas redondeadas */
-    transition: box-shadow 0.7s ease;
-    transition: transform 0.3s ease; 
-    font-family: Century Gothic,CenturyGothic,AppleGothic,sans-serif; 
-}
-
-/* article:last-child {
-    margin-right: 0; /* Quitamos el margen derecho del último artículo 
-} */
-
-article:hover {
-    box-shadow: inset 0px 0px 30px -2px rgba(17,14,26,0.53);
-    transform: scale(1.02);
-}
-
-form {
-    background-color: #231f20;
-    border-radius: 3vh; /* Añadimos esquinas redondeadas */
-    padding: 50px;
-    width: auto;
-    margin: auto;
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-    align-content: space-evenly;
-    align-items: center;
-    font-family: Century Gothic,CenturyGothic,AppleGothic,sans-serif; 
-    color: #65657b;
-}
-
-label {
-    color: #65657b;
-    pointer-events: none;
-    /* position: relative; */
-    transform-origin: 0 50%;
-    transition: transform 200ms, color 200ms;
-    margin-bottom: 2%;
-    width: 100%;
-    display: flex;
-    font-family: Century Gothic,CenturyGothic,AppleGothic,sans-serif; 
-    /* top: 20px; */
-}
-
-input {
-    background-color: #303245;
-    border: 0;
-    box-sizing: border-box;
-    color: #eee;
-    outline-color: rgb(235, 166, 18);
-    height: 100%;
-    width: 100%;
-    margin-bottom: 2%;
-    line-height: 28px;
-    padding: 8px 16px;
-    min-height: 44px;
-    /* border: unset; */
-    display: flex;
-    flex-grow: 1;
-    border-radius: 4px;
-}
-
-/* input::after {
-    content: "asdfadsfasdfaasdf";
-    height: 100px;
-    width: 100%;
-    background: aqua;
-    display: inline-block;
-} */
-
-.submit {
-    background-color: rgb(235, 166, 18);
-    border-radius: 12px;
-    box-sizing: border-box;
-    color: #eee;
-    cursor: pointer;
-    font-size: 18px;
-    margin-top: 10px;
-    text-align: center;
-    width: 100%;
-    display: flex;
-    /* flex: 2; */
-    align-self: center;
-    /* margin: ; */
-}
-
-.submit:active {
-    background-color: rgb(243, 191, 79);
-}
-
-form a {
-    /* padding: 10px; */
-    display: flex;
-    margin-top: 10px;
-    justify-content: center;
-    font-size: 0.9rem;
-    color:#65657b;
-    text-align: center;
-}
-
-fieldset {
-    border: none;
-    /* margin: 0;
-    padding: 0; */
-}
