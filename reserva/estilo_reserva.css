@@ -5,13 +5,26 @@ body {
 main {
     display: block;
     overflow-y: auto;
+    justify-content: center; /* Centra horizontalmente */
+    align-items: center; /* Centra verticalmente */
 }
 
 form {
-    height: auto;
+    max-height: 90%;
     margin-bottom:1rem;
-    margin-left: 3vh;
-    margin-right: 3vh;
+    width: fit-content;
+    align-items: first baseline;
+}
+
+fieldset input[type="radio"] {
+    /* Estilos para los radios dentro del fieldset */
+    /* Por ejemplo */
+    width: 3.0vh;
+    height: 3.0vh;
+}
+
+fieldset {
+    margin-bottom: 4vh; /* Ajusta el valor según sea necesario */
 }
 
 section {
@@ -27,6 +40,13 @@ section {
 h2 {
     text-align: center;
     grid-area: header;
+    display: block;
+}
+
+h2.mensaje {
+    margin-top: 30vh;
+    font-size: 5vh;
+    margin-bottom: 2vh;
 }
 
 article {
@@ -62,6 +82,23 @@ figure > picture > img{
 figcaption > a {
     color: #fbad18;
     text-decoration: none;
+}
+
+a {
+    text-align: center;
+    display: block;
+}
+
+a.volver {
+    background-image: url('/images/arrow-left.png');
+    background-size: cover; /* Ajusta el tamaño de la imagen para cubrir el artículo */
+    background-position: center; /* Centra la imagen dentro del artículo */
+    max-width: fit-content;
+    padding: 2.6vh 0.1vh; 
+    margin-left: auto;
+    margin-right: auto;
+    color: transparent;
+    
 }
 
 a:not(:last-child) {
