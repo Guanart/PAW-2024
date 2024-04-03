@@ -7,6 +7,7 @@
     <link rel="icon" href="/images/favicon.ico" type="image/x-icon">
     <title>Verificar cuenta</title>
     <meta name="description" content="Aquí debes ingresar el codigo de verificación, para recuperar tu cuenta">
+    <link rel="stylesheet" href="/Estilo.css">
 </head>
 
 <body>
@@ -22,19 +23,21 @@
         <h2>
             Verificar cuenta
         </h2>
+        <nav>
+            <ul>
+                <li><a href="/reserva/reservas.html">Reservas</a></li>
+                <li><a href="/menu.html">Menu</a></li>
+                <li><a href="/pedido/armar_pedido.html">Hacer Pedido</a></li>
+                <li><a href="/reserva/local.html">Locales</a></li>
+                <li><a href="/usuario/login.html">Log in</a></li>
+            </ul>
+        </nav>
     </header>
-    <nav>
-        <ul>
-            <li><a href="/reserva/reservas.html">Reservas</a></li>
-            <li><a href="/menu.html">Menu</a></li>
-            <li><a href="/pedido/armar_pedido.html">Hacer Pedido</a></li>
-            <li><a href="/reserva/local.html">Locales</a></li>
-            <li><a href="/usuario/login.html">Log in</a></li>
-        </ul>
-    </nav>
     <main>
-        <p>Código de verificación enviado a {{ email }}. Ingresa al link que te hemos enviado para restablecer tu
-            contraseña.</p>
+        <section>
+            <p>Código de verificación enviado a {{ email }}. Ingresa al link que te hemos enviado para restablecer tu
+                contraseña.</p>
+        </section>
     </main>
     <footer>
         <nav>

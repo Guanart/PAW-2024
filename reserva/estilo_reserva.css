@@ -1,0 +1,106 @@
+body {
+    min-height: 100%;
+}
+
+main {
+    display: block;
+    overflow-y: auto;
+    justify-content: center; /* Centra horizontalmente */
+    align-items: center; /* Centra verticalmente */
+}
+
+form {
+    max-height: 90%;
+    margin-bottom:1rem;
+    width: fit-content;
+    align-items: first baseline;
+}
+
+fieldset input[type="radio"] {
+    /* Estilos para los radios dentro del fieldset */
+    /* Por ejemplo */
+    width: 3.0vh;
+    height: 3.0vh;
+}
+
+fieldset {
+    margin-bottom: 4vh; /* Ajusta el valor según sea necesario */
+}
+
+section {
+    display: grid;
+    gap: 20px; /* Espacio entre los elementos */
+    grid-template-areas:
+        'header header'
+        'first-article second-article'
+        'third-article fourth-article';
+    max-height: 100;
+}
+
+h2 {
+    text-align: center;
+    grid-area: header;
+    display: block;
+}
+
+h2.mensaje {
+    margin-top: 30vh;
+    font-size: 5vh;
+    margin-bottom: 2vh;
+}
+
+article {
+    padding: 20px; /* Añadir relleno para visualización */
+    width: auto;
+    height: auto;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.5)), url('/images/Hamburguesa.jpg');
+}
+
+article:nth-child(0) {
+    grid-area: first-article; /* Primer artículo en la primera fila */
+}
+
+article:nth-child(1) {
+    grid-area: second-article; /* Segundo artículo en la primera fila */
+}
+
+article:nth-child(2) {
+    grid-area: third-article; /* Tercer artículo en la segunda fila */
+}
+
+article:nth-child(3) {
+    grid-area: fourth-article; /* Cuarto artículo en la segunda fila */
+}
+
+figure > picture > img{
+    height: auto; /* La imagen no será más grande que el ancho del contenedor */
+    max-width: 100%; /* Mantiene el aspect ratio de la imagen */
+    border-radius: 3vh; /* Añadimos esquinas redondeadas */
+    border: solid #fbad18; 4px;
+}
+
+figcaption > a {
+    color: #fbad18;
+    text-decoration: none;
+}
+
+a {
+    text-align: center;
+    display: block;
+}
+
+a.volver {
+    background-image: url('/images/arrow-left.png');
+    background-size: cover; /* Ajusta el tamaño de la imagen para cubrir el artículo */
+    background-position: center; /* Centra la imagen dentro del artículo */
+    max-width: fit-content;
+    padding: 2.6vh 0.1vh; 
+    margin-left: auto;
+    margin-right: auto;
+    color: transparent;
+    
+}
+
+a:not(:last-child) {
+    margin-right: 5vh; /* Ajusta el valor según sea necesario */
+}
