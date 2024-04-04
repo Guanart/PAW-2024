@@ -144,6 +144,10 @@ label {
     /* top: 20px; */
 }
 
+legend {
+    font-weight: bold;
+}
+
 input {
     background-color: #303245;
     border: 0;

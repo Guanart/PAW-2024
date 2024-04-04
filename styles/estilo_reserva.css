@@ -7,7 +7,8 @@ h2,h3 {
 }
 
 h2 {
-    margin-top: 30px;
+    margin-top: 4vh;
+    margin-bottom: 3vh;
 }
 
 main {
@@ -17,8 +18,12 @@ main {
     overflow-y: auto;
     justify-content: center; /* Centra horizontalmente */
     align-items: center; /* Centra verticalmente */
+    background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.5)), url('/images/Hamburguesa.jpg');
+    background-size: cover; /* Ajusta el tamaño de la imagen para cubrir el artículo */
+    background-position: center; /* Centra la imagen dentro del artículo */
     background-color: #231f20;
-    
+    min-height: fit-content;
+    min-height: 68.4vh;
     /*max-width: fit-content;*/
 }
 
@@ -27,6 +32,7 @@ form {
     margin-bottom:1rem;
     max-width: fit-content;
     align-items: first baseline;
+    outline: 2px solid darkgray;
 }
 
 fieldset input[type="radio"] {
@@ -51,9 +57,11 @@ section {
     max-height: 100;
     margin-left: 20px;
     margin-right: 20px;
+    /*
     background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.6)), url('/images/Hamburguesa.jpg');
-    background-size: cover; /* Ajusta el tamaño de la imagen para cubrir el artículo */
-    background-position: center; /* Centra la imagen dentro del artículo */
+    background-size: cover;
+    background-position: center;
+    */
     border-radius: 3vh;
 }
 
@@ -75,8 +83,6 @@ article {
     height: auto;
     text-align: center;
 }
-
-
 
 figure > picture > img{
     height: auto; /* La imagen no será más grande que el ancho del contenedor */
@@ -103,6 +109,18 @@ a.volver {
     padding: 2.6vh 0.1vh; 
     margin-left: auto;
     margin-right: auto;
+    margin-bottom: 5vh;
     color: transparent;
-    
+    transition: transform 0.3s ease; 
+}
+
+a.volver:hover{
+    transform: scale(1.2);
+}
+
+a.inicio {
+    margin-bottom: 5vh;
+    color: white;
+    text-decoration: none;
+    margin-bottom: 8vh;
 }
