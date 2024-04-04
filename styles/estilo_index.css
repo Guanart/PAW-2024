@@ -2,12 +2,22 @@ main {
     display: grid;
     align-items: center;
     justify-content: space-between;
-    grid-template-columns: 3fr 3fr 1fr
+    grid-template-columns: 3fr 3fr 1fr;
+    border-radius: 3vh;
+    text-align: center;
+    overflow-y: auto;
+    background-color: #d1d1d1;
+    padding: 3vh;
 }
 
 
 section {
-    display: block;
+    display: flexbox;
+    border-radius: 3vh;
+    text-align: center;
+    overflow-y: auto;
+    background-color: #d1d1d1;
+    padding: 3vh;
 }
 
 /*
@@ -42,5 +52,24 @@ article:hover {
 
 .menu{
     display: grid;
-    grid-template-columns: 1fr 1fr
+    grid-template-columns: 1fr 1fr 1fr
+}
+.menu a{
+    grid-column: 3;
+    grid-row: auto;
+    padding: 10px; /* Añadimos un poco de relleno alrededor de los enlaces */
+    text-decoration: none; /* Quitamos la decoración de subrayado predeterminada */
+    color: #231f20;
+    background-color: #fbad18; /* Color de fondo del botón */
+    border-radius: 3vh; /* Añadimos esquinas redondeadas */
+    margin: 100px; /* Añadimos un margen entre los botones */
+    transition: background-color 0.2s ease-in-out;
+    transition: box-shadow 0.2s ease;
+    font-family: "Archivo Black", sans-serif;
+    font-style: normal;
+}
+
+.menu a:hover{
+    background-color: #db9714; /* Cambiamos el color de fondo al pasar el ratón por encima */
+    box-shadow: inset 0px 0px 8px -2px rgba(45,36,69,0.69);
 }
