@@ -115,6 +115,97 @@ h3 {
     font-family: Century Gothic,CenturyGothic,AppleGothic,sans-serif; 
 }
 
+form {
+    background-color: #231f20;
+    border-radius: 3vh; /* Añadimos esquinas redondeadas */
+    padding: 50px;
+    width: auto;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-content: space-evenly;
+    align-items: center;
+    font-family: Century Gothic,CenturyGothic,AppleGothic,sans-serif; 
+    color: #65657b;
+    max-width: 500px;
+}
+
+label {
+    color: #65657b;
+    pointer-events: none;
+    /* position: relative; */
+    transform-origin: 0 50%;
+    transition: transform 200ms, color 200ms;
+    margin-bottom: 2%;
+    width: 100%;
+    display: flex;
+    font-family: Century Gothic,CenturyGothic,AppleGothic,sans-serif; 
+    /* top: 20px; */
+}
+
+input {
+    background-color: #303245;
+    border: 0;
+    box-sizing: border-box;
+    color: #eee;
+    outline-color: rgb(235, 166, 18);
+    height: 100%;
+    width: 100%;
+    margin-bottom: 2%;
+    line-height: 28px;
+    padding: 8px 16px;
+    min-height: 44px;
+    /* border: unset; */
+    display: flex;
+    flex-grow: 1;
+    border-radius: 4px;
+}
+
+/* input::after {
+    content: "asdfadsfasdfaasdf";
+    height: 100px;
+    width: 100%;
+    background: aqua;
+    display: inline-block;
+} */
+
+.submit {
+    background-color: rgb(235, 166, 18);
+    border-radius: 12px;
+    box-sizing: border-box;
+    color: #eee;
+    cursor: pointer;
+    font-size: 18px;
+    margin-top: 10px;
+    text-align: center;
+    width: 100%;
+    display: flex;
+    /* flex: 2; */
+    align-self: center;
+    /* margin: ; */
+}
+
+.submit:active {
+    background-color: rgb(243, 191, 79);
+}
+
+form a {
+    /* padding: 10px; */
+    display: flex;
+    margin-top: 10px;
+    justify-content: center;
+    font-size: 0.9rem;
+    color:#65657b;
+    text-align: center;
+}
+
+fieldset {
+    border: none;
+    /* margin: 0;
+    padding: 0; */
+}
+
 .facebook, .email, .instagram, .twitter {
     background-color: transparent;
     color: transparent;

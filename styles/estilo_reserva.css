@@ -25,7 +25,7 @@ main {
 form {
     max-height: 90%;
     margin-bottom:1rem;
-    width: fit-content;
+    max-width: fit-content;
     align-items: first baseline;
 }
 
