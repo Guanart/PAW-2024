@@ -24,7 +24,6 @@ main {
     background-color: #231f20;
     min-height: fit-content;
     min-height: 68.4vh;
-    /*max-width: fit-content;*/
 }
 
 form {
@@ -84,7 +83,7 @@ article {
     text-align: center;
 }
 
-figure > picture > img{
+figure picture img{
     height: auto; /* La imagen no será más grande que el ancho del contenedor */
     max-width: 100%; /* Mantiene el aspect ratio de la imagen */
     border-radius: 3vh; /* Añadimos esquinas redondeadas */
