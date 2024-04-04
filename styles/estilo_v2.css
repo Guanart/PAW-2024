@@ -1,0 +1,124 @@
+@import url('https://fonts.googleapis.com/css2?family=Archivo+Black&display=swap');
+
+html {
+    font-size: 16px;
+}
+
+body {
+    font-family: Century Gothic,CenturyGothic,AppleGothic,sans-serif;
+    
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Establece la altura mínima del cuerpo para ocupar toda la pantalla */
+}
+
+/*----------------------- HEADER -----------------------*/
+header {
+    display: flex;
+    align-items: center;
+
+    background-color: #231f20;
+    color: #ffffff;
+}
+
+h1 {
+    justify-self: left;
+    margin-left: 1vw;
+}
+
+h1 > a > picture > img {
+    width: 3.7vw;
+    height: auto;
+    display: inline-block;
+    transition: transform 0.3s ease;
+}
+
+h1 > a > picture > img:hover {
+    transform: scale(1.10);
+}
+
+h2 {
+    justify-self: left;
+    font-family: "Archivo Black", sans-serif;
+    font-style: normal;
+    margin-left: 1vw;
+}
+
+
+.nav_menu {
+    margin-left: auto;
+}
+
+.nav_interno{
+    list-style-type: none; /* Quitamos los puntos de la lista */
+    padding: 0; /* Quitamos el relleno predeterminado de la lista */
+    margin: 0; /* Quitamos el margen predeterminado de la lista */
+    display: flex;
+    align-items: center;
+}
+
+nav ul li a {
+    display: inline-block;
+    padding: 0.5vw; /* Añadimos un poco de relleno alrededor de los enlaces */
+    border-radius: 1vw; /* Añadimos esquinas redondeadas */
+
+    color: #231f20;
+    background-color: #fbad18; /* Color de fondo del botón */
+    margin: 0vw 0.35vw;
+    text-decoration: none; /* Quitamos la decoración de subrayado predeterminada */
+    font-family: "Archivo Black", sans-serif;
+    font-style: normal;
+    
+    transition: background-color 0.2s ease-in-out;
+    transition: box-shadow 0.2s ease;
+}
+
+nav ul li a:hover {
+    background-color: #db9714; /* Cambiamos el color de fondo al pasar el ratón por encima */
+    box-shadow: inset 0px 0px 8px -2px rgba(45,36,69,0.69);
+}
+
+main {
+    flex: 1;
+}
+
+h3 {
+    margin-bottom: 1em; /* Añade espacio debajo de los elementos h3 para simular un salto de línea */
+    display: block; /* Cambia el display a bloque */
+    font-family: Century Gothic,CenturyGothic,AppleGothic,sans-serif; 
+}
+
+footer {
+    display: flex; /* Usamos flexbox para colocar los elementos en una sola línea */
+    justify-content: center;
+    align-items: center;
+    padding: 3vh;
+    background-color: #231f20;
+}
+
+.facebook, .email, .instagram, .twitter {
+    background-color: transparent;
+    color: transparent;
+    background-size: cover; /* Ajusta el tamaño de la imagen para cubrir el artículo */
+    background-position: center; /* Centra la imagen dentro del artículo */
+    height: 1vw;
+    width: 1vw;
+}
+
+.facebook {
+    background-image: url('/images/facebook.png');
+}
+
+.instagram {
+    background-image: url('/images/instagram.png');
+}
+
+.twitter {
+    background-image: url('/images/twitter.png');
+}
+
+.email {
+    background-image: url('/images/email.png');
+}

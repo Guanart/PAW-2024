@@ -101,6 +101,7 @@ main, section, header, footer, nav{
     margin-bottom: 20px; /* Añadimos un margen inferior entre las secciones */
 }
 
+
 main, section {
     max-width: 1500px;
     display: block;
