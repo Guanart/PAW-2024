@@ -1,0 +1,91 @@
+.sobreNosotros {
+    border-radius: 3vh;
+    text-align: center;
+    display: flexbox;
+    overflow-y: auto;
+    justify-content: center; /*Centra horizontalmente */
+    align-items: center; /*Centra verticalmente */
+    align-content: center;
+    background-color: #231f20;
+    min-height: fit-content;
+    min-height: 20vh;
+    color: #ffffff;
+}
+.sobreNosotros > p {
+    margin-right: 100px;
+    margin-left: 100px;
+}
+
+.estrella{
+    background-size: 14px 14px;
+    background-image: url(/images/estrella.png);
+    vertical-align: top;
+    display: inline-block;
+    width: 14px;
+    height: 13px;
+}
+.estrellaMitad{
+    background-size: 14px 14px;
+    background-image: url(/images/estrellaMitad.png);
+    vertical-align: top;
+    display: inline-block;
+    width: 14px;
+    height: 13px;
+}
+
+article{
+    display: flexbox; /* Usamos flexbox para colocar los artículos en una línea */
+    margin-right: 15px; /* Añadimos un margen derecho entre los artículos */
+    margin-left: 15px;
+    margin-top:5px;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5),rgba(0, 0, 0, 0.5)), url('/images/Hamburguesa.jpg'); /* Ruta a tu imagen */
+    box-shadow: inset 0px 0px 30px -2px rgba(17,14,26,0.53);
+    background-size: cover; /* Ajusta el tamaño de la imagen para cubrir el artículo */
+    background-position: center; /* Centra la imagen dentro del artículo */
+    text-align: left; /* Alinea el texto en el centro */
+    color: white; /* Color del texto para que se vea en la imagen */
+    padding: 4em; /* Agrega un poco de espacio alrededor del texto */
+    border-radius: 3vh; /* Añadimos esquinas redondeadas */
+    transition: box-shadow 0.7s ease;
+    transition: transform 0.3s ease; 
+    font-family: Century Gothic,CenturyGothic,AppleGothic,sans-serif;
+}
+
+section {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+    border-radius: 3vh;
+    text-align: center;
+    overflow-y: auto;
+    background-color: #d1d1d1;
+    padding: 3vh;
+}
+
+main {
+    border-radius: 3vh;
+    text-align: center;
+    overflow-y: auto;
+    background-color: #d1d1d1;
+    padding: 3vh;
+}
+
+section h3{
+    grid-column: 1 / -1;
+}
+
+
+.ratings > article {
+    margin-right: 15px; /* Añadimos un margen derecho entre los artículos */
+    margin-left: 15px;
+    margin-top:5px;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5),rgba(0, 0, 0, 0.5)), url('/images/luisito.jpg'); /* Ruta a tu imagen */
+    background-size: cover; /* Ajusta el tamaño de la imagen para cubrir el artículo */
+    background-position: center; /* Centra la imagen dentro del artículo */
+    text-align: left; /* Alinea el texto en el centro */
+    color: white; /* Color del texto para que se vea en la imagen */
+    padding: 4em; /* Agrega un poco de espacio alrededor del texto */
+    border-radius: 3vh; /* Añadimos esquinas redondeadas */
+    transition: box-shadow 0.7s ease;
+    transition: transform 0.3s ease; 
+    font-family: Century Gothic,CenturyGothic,AppleGothic,sans-serif;
+}

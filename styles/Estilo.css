@@ -4,6 +4,7 @@ body, html {
     margin: 0;
     padding: 0;
     height: 100%;
+    font-family: Century Gothic,CenturyGothic,AppleGothic,sans-serif;
 }
 
 header, footer {
@@ -16,7 +17,7 @@ header, footer {
 
 
 header {
-    min-height: 80px;
+    min-height: 100px;
     padding: 0.5em;
     align-items: center;
     justify-content: space-between;
