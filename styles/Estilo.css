@@ -1,39 +1,37 @@
 @import url('https://fonts.googleapis.com/css2?family=Archivo+Black&display=swap');
 @import url('https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css');
 
-html {
-    font-size: 16px;
+:root {
+    font-size: 12pt;
 }
 
 body {
     font-family: Century Gothic,CenturyGothic,AppleGothic,sans-serif;
-    
     margin: 0;
     padding: 0;
     display: flex;
     flex-direction: column;
-    min-height: 100vh; /* Establece la altura mínima del cuerpo para ocupar toda la pantalla */
+    min-height: 100vh; /* La página ocupa toda la pantalla */
 }
 
 /*----------------------- HEADER -----------------------*/
 header {
     display: flex;
     align-items: center;
+    justify-content: flex-start;
 
     background-color: #231f20;
     color: #ffffff;
 }
 
 h1 {
-    justify-self: left;
-    margin-left: 1vw;
+    padding-left: 1vw;
 }
 
 h1 > a > picture > img {
-    width: 3.7vw;
+    width: 3.5vw;
     height: auto;
-    display: inline-block;
-    transition: transform 0.3s ease;
+    transition: transform 0.4s ease;
 }
 
 h1 > a > picture > img:hover {
@@ -41,39 +39,29 @@ h1 > a > picture > img:hover {
 }
 
 h2 {
-    justify-self: left;
     font-family: "Archivo Black", sans-serif;
-    font-style: normal;
-    margin-left: 1vw;
+    padding-left: 1vw;
+    flex-grow: 1;   /* Que ocupe todo lo que pueda */
 }
 
-
-.nav_menu {
-    margin-left: auto;
-}
-
-.nav_interno{
+.nav_interno {
     list-style-type: none; /* Quitamos los puntos de la lista */
-    padding: 0; /* Quitamos el relleno predeterminado de la lista */
-    margin: 0; /* Quitamos el margen predeterminado de la lista */
+    padding: 0;/* Quitamos el relleno predeterminado de la lista */
+    margin: 0;  /* Quitamos el margen predeterminado de la lista */
     display: flex;
     align-items: center;
+    justify-content: center;
 }
 
 nav ul li a {
-    display: inline-block;
-    padding: 0.5vw; /* Añadimos un poco de relleno alrededor de los enlaces */
-    border-radius: 1vw; /* Añadimos esquinas redondeadas */
-
-    color: #231f20;
-    background-color: #fbad18; /* Color de fondo del botón */
-    margin: 0vw 0.35vw;
+    text-align: center;
     text-decoration: none; /* Quitamos la decoración de subrayado predeterminada */
     font-family: "Archivo Black", sans-serif;
-    font-style: normal;
-    
-    transition: background-color 0.2s ease-in-out;
-    transition: box-shadow 0.2s ease;
+    background-color: #fbad18;
+    color: #231f20;
+    padding: 0.7vh 1vw;
+    border-radius: 1rem; /* Añadimos esquinas redondeadas */
+    margin: 0vh 0.5vw;
 }
 
 nav ul li a:hover {
@@ -92,9 +80,6 @@ h3 {
 }
 
 footer {
-    display: flex; /* Usamos flexbox para colocar los elementos en una sola línea */
-    justify-content: center;
-    align-items: center;
     padding: 3vh;
     background-color: #231f20;
 }
