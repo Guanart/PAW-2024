@@ -80,6 +80,23 @@ h3 {
 }
 
 footer {
+    display: flex;
     padding: 3vh;
     background-color: #231f20;
+}
+
+footer nav {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.footer-links > li > a {
+    background-color: transparent;
+    color: #fbad18;
+}
+
+.footer-links > li > a:hover {
+    background-color: transparent;
+    color: #fbad18;
 }
