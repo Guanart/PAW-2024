@@ -3,19 +3,18 @@
     align-items: center;
     justify-content: space-between;
     grid-template-columns: 3fr 3fr 1fr;
-    border-radius: 3vh;
     text-align: center;
     overflow-y: auto;
-    background-color: #d1d1d1;
     padding: 3vh;
+    
 }
 
-a[href="pedido/armar_pedido.html"]{
+.button {
     display: inline-block; /* Hacemos que los elementos a se muestren en línea */
     padding: 10px; /* Añadimos un poco de relleno alrededor de los enlaces */
     text-decoration: none; /* Quitamos la decoración de subrayado predeterminada */
-    color: #231f20;
-    background-color: #fbad18; /* Color de fondo del botón */
+    color: var(--gris-oscuro-marca);
+    background-color: var(--amarillo-marca); /* Color de fondo del botón */
     border-radius: 3vh; /* Añadimos esquinas redondeadas */
     margin-right: 10px; /* Añadimos un margen entre los botones */
     transition: background-color 0.2s ease-in-out;
@@ -24,19 +23,18 @@ a[href="pedido/armar_pedido.html"]{
     font-style: normal;
 }
 
-a[href="pedido/armar_pedido.html"]:hover {
-    background-color: #db9714; /* Cambiamos el color de fondo al pasar el ratón por encima */
+.button:hover {
+    background-color: var(--amarillo-marca-dark); /* Cambiamos el color de fondo al pasar el ratón por encima */
     box-shadow: inset 0px 0px 8px -2px rgba(45,36,69,0.69);
 }
 
 
 section {
+    max-width: 58vw;
     margin: 5vh auto;
-    max-width: 1400px;
-    display: flexbox;
-    border-radius: 3vh;
+    display: flex;
+    flex-direction: column;
     text-align: center;
-    background-color: #d1d1d1;
     padding: 3vh;
 }
 
@@ -48,18 +46,15 @@ article:last-child {
 
 
 article {
-
-    display: flexbox; /* Usamos flexbox para colocar los artículos en una línea */
-    margin-right: 1vw;
-    background-image: url('/images/Hamburguesa.jpg'); /* Ruta a tu imagen */
-    background-size: cover; /* Ajusta el tamaño de la imagen para cubrir el artículo */
-    background-position: center; /* Centra la imagen dentro del artículo */
+    display: flex; /* Usamos flexbox para colocar los artículos en una línea */
+    flex-direction: column;
+    margin: 1vw;
     text-align: center; /* Alinea el texto en el centro */
     color: white; /* Color del texto para que se vea en la imagen */
     padding: 4em; /* Agrega un poco de espacio alrededor del texto */
     border-radius: 3vh; /* Añadimos esquinas redondeadas */
     transition: box-shadow 0.7s ease;
-    transition: transform 0.3s ease; 
+    transition: transform 0.3s ease;
     font-family: Century Gothic,CenturyGothic,AppleGothic,sans-serif; 
 }
 

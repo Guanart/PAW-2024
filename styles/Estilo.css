@@ -1,8 +1,12 @@
+@import 'reset-css';
 @import url('https://fonts.googleapis.com/css2?family=Archivo+Black&display=swap');
 @import url('https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css');
 
 :root {
     font-size: 12pt;
+    --gris-oscuro-marca: #231f20;
+    --amarillo-marca: #fbad18;
+    --amarillo-marca-dark: #db9714;
 }
 
 body {
@@ -19,8 +23,8 @@ header {
     display: flex;
     align-items: center;
     justify-content: flex-start;
-
-    background-color: #231f20;
+    flex-wrap: wrap;
+    background-color: var(--gris-oscuro-marca);
     color: #ffffff;
 }
 
@@ -29,7 +33,8 @@ h1 {
 }
 
 h1 > a > picture > img {
-    width: 3.5vw;
+    width: 14vw;
+    min-width: 10rem;
     height: auto;
     transition: transform 0.4s ease;
 }
@@ -44,28 +49,30 @@ h2 {
     flex-grow: 1;   /* Que ocupe todo lo que pueda */
 }
 
-.nav_interno {
+.nav_ul {
     list-style-type: none; /* Quitamos los puntos de la lista */
     padding: 0;/* Quitamos el relleno predeterminado de la lista */
     margin: 0;  /* Quitamos el margen predeterminado de la lista */
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
     justify-content: center;
 }
 
 nav ul li a {
     text-align: center;
+    white-space: nowrap;
     text-decoration: none; /* Quitamos la decoración de subrayado predeterminada */
     font-family: "Archivo Black", sans-serif;
-    background-color: #fbad18;
-    color: #231f20;
+    background-color: var(--amarillo-marca);
+    color: var(--gris-oscuro-marca);
     padding: 0.7vh 1vw;
     border-radius: 1rem; /* Añadimos esquinas redondeadas */
     margin: 0vh 0.5vw;
 }
 
 nav ul li a:hover {
-    background-color: #db9714; /* Cambiamos el color de fondo al pasar el ratón por encima */
+    background-color: var(--amarillo-marca-dark); /* Cambiamos el color de fondo al pasar el ratón por encima */
     box-shadow: inset 0px 0px 8px -2px rgba(45,36,69,0.69);
 }
 
@@ -81,5 +88,5 @@ h3 {
 
 footer {
     padding: 3vh;
-    background-color: #231f20;
+    background-color: var(--gris-oscuro-marca);
 }
