@@ -1,45 +1,48 @@
 @import url('Estilo.css');
 
+picture {
+    max-height: 100%;
+    max-width: 100%;
+}
+
 .principal {
-    display: grid;
+    display: flex;
     align-items: center;
-    justify-content: space-between;
-    grid-template-columns: 3fr 3fr 1fr;
-    text-align: center;
-    overflow-y: auto;
+    justify-items: center;
+    grid-template-rows: 1fr 1fr;
     padding: 3vh;
-    /*border-bottom: 2px solid black;*/
 }
 
-.principal::after {
-    content: ""; /* Importante: asegúrate de tener un valor de contenido, incluso si está vacío */
-    display: block; /* Cambia la visualización del elemento a bloque */
-    width: 100%; /* Ancho del pseudo-elemento igual al 100% del contenedor */
-    height: 2px; /* Altura de la línea */
-    background-color: black; /* Color de la línea */
+.principal > article {
+    overflow: hidden;
 }
 
-.button {
-    display: inline-block; /* Hacemos que los elementos a se muestren en línea */
-    padding: 10px; /* Añadimos un poco de relleno alrededor de los enlaces */
-    text-decoration: none; /* Quitamos la decoración de subrayado predeterminada */
-    color: var(--gris-oscuro-marca);
-    background-color: var(--amarillo-marca); /* Color de fondo del botón */
-    border-radius: 13px; /* Añadimos esquinas redondeadas */
-    margin-right: 10px; /* Añadimos un margen entre los botones */
-    transition: background-color 0.2s ease-in-out;
-    transition: box-shadow 0.2s ease;
-    font-family: "Archivo Black", sans-serif;
-    font-style: normal;
+.principal > a {
+    width: 60%;
+    border-radius: 10px;
+    padding: 1rem 0;
+    background-color: var(--gris-oscuro-marca);
+
+    color: var(--amarillo-marca);
+    font-family: var(--fuente-secundaria);
+    font-size: 2rem;
+
+    transition: transform 0.2s;
 }
 
-.button:hover {
-    background-color: var(--amarillo-marca-dark); /* Cambiamos el color de fondo al pasar el ratón por encima */
-    box-shadow: inset 0px 0px 8px -2px rgba(45,36,69,0.69);
+.principal > a:hover {
+    transform: scale(1.02);
+    text-decoration: none;
+}
+
+.principal > h3 {
+    display: none;
 }
 
 
 section {
+    border-bottom: 2px solid var(--gris-oscuro-marca);
+    color: var(--gris-oscuro-marca);
     max-width: 58vw;
     margin: 5vh auto;
     display: flex;
@@ -49,69 +52,55 @@ section {
     justify-content: space-evenly;
 }
 
+section:last-of-type {
+    border-bottom:none;
+}
+
 section > a {
     width: 100%;
+    color: rgb(156, 139, 108);
+    text-decoration: none;
 }
 
-picture {
-    max-height: 100%;
-    max-width: 100%;
+section > a:hover {
+    text-decoration:underline;
 }
 
-
+section > h3 {
+    color: var(--gris-oscuro-marca);
+    font-size: 3.5rem;
+}
 
 article {
-    /* background-color: white; */
     max-width: 20vw;
     max-height: 30vh;
-
+    margin: 1vw;
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
-
-    margin: 1vw;
-    text-align: center; /* Alinea el texto en el centro */
-    color: black; /* Color del texto para que se vea en la imagen */
-    padding: 0; /* Agrega un poco de espacio alrededor del texto */
-    border-radius: 13px; /* Añadimos esquinas redondeadas */
-    transition: box-shadow 0.7s ease;
+    border-radius: 10px;
     transition: transform 0.3s ease;
-    font-family: Century Gothic,CenturyGothic,AppleGothic,sans-serif; 
+    cursor: pointer;
+    background-color: rgb(235, 229, 193);
+    box-shadow: 0px 0px 3px 0px rgba(0,0,0,0.3) inset;
 }
 
 article:hover {
-    /*box-shadow: inset 0px 0px 0px 2px rgba(17,14,26,0.53);*/
-    outline: 2px solid rgba(17,14,26,0.4);
     transform: scale(1.02);
+}
+
+article > h4 {
+    padding: 0.5rem;
+    font-family: var(--fuente-primaria);
+    background-color: var(--amarillo-marca);
+}
+
+article > p {
+    padding: 0.2rem;
 }
 
 article > picture > img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    display: block;
-}
-
-.menu{
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr
-}
-.menu a{
-    grid-column: 3;
-    grid-row: auto;
-    padding: 10px; /* Añadimos un poco de relleno alrededor de los enlaces */
-    text-decoration: none; /* Quitamos la decoración de subrayado predeterminada */
-    color: #231f20;
-    background-color: #fbad18; /* Color de fondo del botón */
-    border-radius: 3vh; /* Añadimos esquinas redondeadas */
-    margin: 100px; /* Añadimos un margen entre los botones */
-    transition: background-color 0.2s ease-in-out;
-    transition: box-shadow 0.2s ease;
-    font-family: "Archivo Black", sans-serif;
-    font-style: normal;
-}
-
-.menu a:hover{
-    background-color: #db9714; /* Cambiamos el color de fondo al pasar el ratón por encima */
-    box-shadow: inset 0px 0px 8px -2px rgba(45,36,69,0.69);
 }

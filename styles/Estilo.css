@@ -8,10 +8,12 @@
     --amarillo-marca: #fbad18;
     --amarillo-marca-dark: #db9714;
     --beige-marca: #fcdea6;
+    --fuente-primaria: "Archivo Black", sans-serif;
+    --fuente-secundaria: Century Gothic,CenturyGothic,AppleGothic,sans-serif;
 }
 
 body {
-    font-family: Century Gothic,CenturyGothic,AppleGothic,sans-serif;
+    font-family: var(--fuente-secundaria);
     margin: 0;
     padding: 0;
     display: flex;
@@ -46,16 +48,6 @@ main {
     width: 70vw;
 }
 
-/* Revisar, hace falta que esté en este CSS? */
-h3 {
-    margin-bottom: 1.5rem;
-    /* Añade espacio debajo de los elementos h3 para simular un salto de línea */
-    display: block;
-    width: 100%;
-    /* Cambia el display a bloque */
-    font-family: Century Gothic, CenturyGothic, AppleGothic, sans-serif;
-}
-
 h1 {
     padding: 1vw;
 }
@@ -72,10 +64,20 @@ h1 > a > picture > img:hover {
 }
 
 h2 {
-    font-family: "Archivo Black", sans-serif;
+    font-family: var(--fuente-primaria);
     padding-left: 1vw;
     flex-grow: 1;   /* Que ocupe todo lo que pueda */
 }
+
+h3 {
+    margin-bottom: 1.5rem;
+    /* Añade espacio debajo de los elementos h3 para simular un salto de línea */
+    display: block;
+    width: 100%;
+    /* Cambia el display a bloque */
+    font-family: var(--fuente-primaria);
+}
+
 
 .nav_ul {
     list-style-type: none; /* Quitamos los puntos de la lista */
@@ -92,7 +94,7 @@ nav ul li a {
     text-align: center;
     white-space: nowrap;
     text-decoration: none; /* Quitamos la decoración de subrayado predeterminada */
-    font-family: "Archivo Black", sans-serif;
+    font-family: var(--fuente-primaria);
     background-color: var(--amarillo-marca);
     color: var(--gris-oscuro-marca);
     padding: 0.7vh 1vw;
@@ -104,7 +106,7 @@ nav ul li a:not(.selected) {
     text-align: center;
     white-space: nowrap;
     text-decoration: none;
-    font-family: "Archivo Black", sans-serif;
+    font-family: var(--fuente-primaria);
     background-color: transparent;
     color: white;
     padding: 0.7vh 1vw;
