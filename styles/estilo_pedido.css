@@ -7,56 +7,52 @@ main {
     align-items: center;
 
     background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.5)), url('/images/Hamburguesa.jpg');
-    background-size: cover; /* Ajusta el tamaño de la imagen para cubrir todo*/ 
-    background-position: center; /* Centra la imagen dentro del artículo */
+    background-size: cover;  /* Ajusta el tamaño de la imagen para cubrir todo*/ 
+    background-position: center; /* Centra la imagen */
+}
 
-    min-height: 68.4vh;
+
+h3 {
+    grid-column: 1; 
+    font-family: "Archivo Black", sans-serif;
+    font-size: 5rem;
+    color: #fbad18;
+    padding: 2rem;
+}
+
+.opciones_pedido {
+    grid-column: 2;
+    background-color: rgba(128, 128, 128, 0.8);
+    width: 70%;
+    height: 50%;
+    border-radius: 2.5rem; /* Añadimos esquinas redondeadas */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+
+}
+
+.opciones_pedido p {
+    font-family: "Archivo Black", sans-serif;
+    font-size: 1.4rem;
+}
+
+.opciones_pedido a {
+    padding: 1vh 1.8vw; /* Añadimos un poco de relleno alrededor de los enlaces */
+    text-decoration: none; /* Quitamos la decoración de subrayado predeterminada */
+    color: #231f20;
+    background-color: #fbad18; /* Color de fondo del botón */
+    border-radius: 1.5rem; /* Añadimos esquinas redondeadas */
+    font-family: "Archivo Black", sans-serif;
+}
+
+.opciones_pedido a:hover {
+    background-color: #db9714; /* Cambiamos el color de fondo al pasar el ratón por encima */
+    box-shadow: inset 0px 0px 8px -2px rgba(45,36,69,0.69);
 }
 
  /* Para PC no muestro la opción de pedido en la mesa */
 a[href="seleccion_mesa_qr.html"] {
     display: none;     
-}
-
-h3 {
-    grid-column: 1; 
-    grid-row: 1 / -1;
-
-    color: #fbad18;
-    font-size: 4.5rem;
-    font-family: "Archivo Black", sans-serif;
-}
-
-main section {
-    grid-column: 2;
-    background-color: rgba(128, 128, 128, 0.8);
-    width: 70%;
-    border-radius: 3vh; /* Añadimos esquinas redondeadas */
-}
-
-main section p {
-    font-family: "Archivo Black", sans-serif;
-}
-
-main section a {
-    display: block;
-    padding: 10px; /* Añadimos un poco de relleno alrededor de los enlaces */
-    text-decoration: none; /* Quitamos la decoración de subrayado predeterminada */
-    color: #231f20;
-    background-color: #fbad18; /* Color de fondo del botón */
-    border-radius: 3vh; /* Añadimos esquinas redondeadas */
-    transition: background-color 0.2s ease-in-out;
-    transition: box-shadow 0.2s ease;
-    font-family: "Archivo Black", sans-serif;
-    font-style: normal;
-
-    margin-top: 2.5em;
-    margin-bottom: 2.5em;
-    margin-right: 8em;
-    margin-left: 8em;
-}
-
-main section a:hover {
-    background-color: #db9714; /* Cambiamos el color de fondo al pasar el ratón por encima */
-    box-shadow: inset 0px 0px 8px -2px rgba(45,36,69,0.69);
 }
