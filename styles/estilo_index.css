@@ -1,4 +1,6 @@
-    .principal {
+@import url('Estilo.css');
+
+.principal {
     display: grid;
     align-items: center;
     justify-content: space-between;
@@ -32,24 +34,34 @@ section {
     max-width: 58vw;
     margin: 5vh auto;
     display: flex;
-    flex-direction: column;
     text-align: center;
     padding: 3vh;
+    flex-wrap: wrap;
 }
 
-/*
-article:last-child {
-    margin-right: 0;
+section > a {
+    width: 100%;
 }
-*/
+
+picture {
+    max-height: 100%;
+    max-width: 100%;
+}
+
 
 
 article {
-    display: flex; /* Usamos flexbox para colocar los artículos en una línea */
+    /* background-color: white; */
+    max-width: 20vw;
+    max-height: 30vh;
+
+    display: flex;
     flex-direction: column;
+    justify-content: flex-end;
+
     margin: 1vw;
     text-align: center; /* Alinea el texto en el centro */
-    color: white; /* Color del texto para que se vea en la imagen */
+    color: black; /* Color del texto para que se vea en la imagen */
     padding: 4em; /* Agrega un poco de espacio alrededor del texto */
     border-radius: 13px; /* Añadimos esquinas redondeadas */
     transition: box-shadow 0.7s ease;
@@ -58,7 +70,7 @@ article {
 }
 
 article:hover {
-    box-shadow: inset 0px 0px 30px -2px rgba(17,14,26,0.53);
+    box-shadow: inset 0px 0px 0px 2px rgba(17,14,26,0.53);
     transform: scale(1.02);
 }
 

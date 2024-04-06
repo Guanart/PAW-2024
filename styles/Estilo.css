@@ -1,4 +1,4 @@
-@import 'reset-css';
+@import url('reset.css');
 @import url('https://fonts.googleapis.com/css2?family=Archivo+Black&display=swap');
 @import url('https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css');
 
@@ -7,6 +7,7 @@
     --gris-oscuro-marca: #231f20;
     --amarillo-marca: #fbad18;
     --amarillo-marca-dark: #db9714;
+    --beige-marca: #fcdea6;
 }
 
 body {
@@ -16,6 +17,11 @@ body {
     display: flex;
     flex-direction: column;
     min-height: 100vh; /* La página ocupa toda la pantalla */
+
+    background-color: var(--beige-marca);
+    background-image: linear-gradient(rgba(0, 0, 0, 0.0), rgba(0, 0, 0, 0.2)), url("/images/1.png");
+    background-size: 2vw;
+    background-repeat: repeat;
 }
 
 /*----------------------- HEADER -----------------------*/
@@ -26,6 +32,29 @@ header {
     flex-wrap: wrap;
     background-color: var(--gris-oscuro-marca);
     color: #ffffff;
+    box-shadow: 0px 10px 70px -7px rgba(0,0,0,0.75);
+}
+
+main {
+    flex: 1;
+    background-color: var(--beige-marca);
+    width: 70vw;
+    margin: 0 auto;
+}
+
+h3 {
+    margin-bottom: 1em;
+    /* Añade espacio debajo de los elementos h3 para simular un salto de línea */
+    display: block;
+    width: 100%;
+    /* Cambia el display a bloque */
+    font-family: Century Gothic, CenturyGothic, AppleGothic, sans-serif;
+}
+
+img {
+    max-width: 100%;
+
+    object-fit: contain;
 }
 
 h1 {
@@ -71,19 +100,21 @@ nav ul li a {
     margin: 0vh 0.5vw;
 }
 
+nav ul li a:not(.selected) {
+    text-align: center;
+    white-space: nowrap;
+    text-decoration: none;
+    font-family: "Archivo Black", sans-serif;
+    background-color: transparent;
+    color: white;
+    padding: 0.7vh 1vw;
+    border-radius: 1rem;
+    margin: 0vh 0.5vw;
+}
+
 nav ul li a:hover {
     background-color: var(--amarillo-marca-dark); /* Cambiamos el color de fondo al pasar el ratón por encima */
     box-shadow: inset 0px 0px 8px -2px rgba(45,36,69,0.69);
-}
-
-main {
-    flex: 1;
-}
-
-h3 {
-    margin-bottom: 1em; /* Añade espacio debajo de los elementos h3 para simular un salto de línea */
-    display: block; /* Cambia el display a bloque */
-    font-family: Century Gothic,CenturyGothic,AppleGothic,sans-serif; 
 }
 
 footer {
