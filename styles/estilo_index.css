@@ -1,4 +1,4 @@
-.principal {
+    .principal {
     display: grid;
     align-items: center;
     justify-content: space-between;
@@ -6,7 +6,6 @@
     text-align: center;
     overflow-y: auto;
     padding: 3vh;
-    
 }
 
 .button {
@@ -15,7 +14,7 @@
     text-decoration: none; /* Quitamos la decoración de subrayado predeterminada */
     color: var(--gris-oscuro-marca);
     background-color: var(--amarillo-marca); /* Color de fondo del botón */
-    border-radius: 3vh; /* Añadimos esquinas redondeadas */
+    border-radius: 13px; /* Añadimos esquinas redondeadas */
     margin-right: 10px; /* Añadimos un margen entre los botones */
     transition: background-color 0.2s ease-in-out;
     transition: box-shadow 0.2s ease;
@@ -52,7 +51,7 @@ article {
     text-align: center; /* Alinea el texto en el centro */
     color: white; /* Color del texto para que se vea en la imagen */
     padding: 4em; /* Agrega un poco de espacio alrededor del texto */
-    border-radius: 3vh; /* Añadimos esquinas redondeadas */
+    border-radius: 13px; /* Añadimos esquinas redondeadas */
     transition: box-shadow 0.7s ease;
     transition: transform 0.3s ease;
     font-family: Century Gothic,CenturyGothic,AppleGothic,sans-serif; 
