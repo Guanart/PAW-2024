@@ -1,23 +1,5 @@
+@import url("Estilo.css");
 
-h3 {
-    color: #fbad18;
-    margin-top: 4vh;
-    margin-bottom: 3vh;
-}
-
-main {
-    border-radius: 3vh;
-    text-align: center;
-    display: flexbox;
-    overflow-y: auto;
-    justify-content: center; /* Centra horizontalmente */
-    align-items: center; /* Centra verticalmente */
-    background-image: linear-gradient(rgba(245, 245, 245, 0.1), rgba(0, 0, 0, 0.0)), url('/images/background\(hq\).png');
-    background-size: cover; /* Ajusta el tamaño de la imagen para cubrir el artículo */
-    background-size: contain;
-    background-position: center; /* Centra la imagen dentro del artículo */
-    background-color: #231f20;
-}
 
 /*-----------------------------------------------------------------------------------------------------------------------------*/
 

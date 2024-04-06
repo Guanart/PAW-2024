@@ -19,7 +19,7 @@ body {
     min-height: 100vh; /* La página ocupa toda la pantalla */
 
     background-color: var(--beige-marca);
-    background-image: linear-gradient(rgba(0, 0, 0, 0.0), rgba(0, 0, 0, 0.2)), url("/images/1.png");
+    background-image: linear-gradient(rgba(255, 250, 206, 0.3), rgba(0, 0, 0, 0.0),  rgba(0, 0, 0, 0.4)), url("/images/1.png");
     background-size: 2vw;
     background-repeat: repeat;
 }
@@ -31,8 +31,11 @@ header {
     justify-content: flex-start;
     flex-wrap: wrap;
     background-color: var(--gris-oscuro-marca);
-    color: #ffffff;
-    box-shadow: 0px 10px 70px -7px rgba(0,0,0,0.75);
+    color: white;
+}
+
+header h2 {
+    visibility: hidden;
 }
 
 main {
@@ -131,10 +134,10 @@ footer nav {
 
 .footer-links > li > a {
     background-color: transparent;
-    color: #fbad18;
+    color: var(--amarillo-marca);
 }
 
 .footer-links > li > a:hover {
     background-color: transparent;
-    color: #fbad18;
+    color: var(--amarillo-marca);
 }
