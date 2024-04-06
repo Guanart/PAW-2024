@@ -37,6 +37,7 @@ section {
     text-align: center;
     padding: 3vh;
     flex-wrap: wrap;
+    justify-content: space-evenly;
 }
 
 section > a {
@@ -62,7 +63,7 @@ article {
     margin: 1vw;
     text-align: center; /* Alinea el texto en el centro */
     color: black; /* Color del texto para que se vea en la imagen */
-    padding: 4em; /* Agrega un poco de espacio alrededor del texto */
+    padding: 0; /* Agrega un poco de espacio alrededor del texto */
     border-radius: 13px; /* Añadimos esquinas redondeadas */
     transition: box-shadow 0.7s ease;
     transition: transform 0.3s ease;
@@ -72,6 +73,13 @@ article {
 article:hover {
     box-shadow: inset 0px 0px 0px 2px rgba(17,14,26,0.53);
     transform: scale(1.02);
+}
+
+article > picture > img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
 }
 
 .menu{
