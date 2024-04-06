@@ -8,6 +8,15 @@
     text-align: center;
     overflow-y: auto;
     padding: 3vh;
+    /*border-bottom: 2px solid black;*/
+}
+
+.principal::after {
+    content: ""; /* Importante: asegúrate de tener un valor de contenido, incluso si está vacío */
+    display: block; /* Cambia la visualización del elemento a bloque */
+    width: 100%; /* Ancho del pseudo-elemento igual al 100% del contenedor */
+    height: 2px; /* Altura de la línea */
+    background-color: black; /* Color de la línea */
 }
 
 .button {
@@ -71,7 +80,8 @@ article {
 }
 
 article:hover {
-    box-shadow: inset 0px 0px 0px 2px rgba(17,14,26,0.53);
+    /*box-shadow: inset 0px 0px 0px 2px rgba(17,14,26,0.53);*/
+    outline: 2px solid rgba(17,14,26,0.4);
     transform: scale(1.02);
 }
 
