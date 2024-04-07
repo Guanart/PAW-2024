@@ -4,11 +4,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="/images/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="../images/favicon.ico" type="image/x-icon">
     <title>Hacer pedido</title>
     <meta name="description" content="Aqui podes elegir como hacer tu pedido">
-    <link rel="stylesheet" href="/styles/style.css">
-    <link rel="stylesheet" href="/styles/estilo_pedido.css">
+    <link rel="stylesheet" href="../styles/style.css">
+    <link rel="stylesheet" href="../styles/estilo_pedido.css"> 
 </head>
 
 <body>
@@ -16,24 +16,25 @@
         <h1>
             <a href="/">
                 <picture>
-                    <source srcset="/images/Logo.svg" media="(min-width: 600px)">
-                    <img alt="pawpower" src="/images/Logo.svg">
+                    <source srcset="../images/Logo(Light).svg" media="(min-width: 600px)">
+                    <img alt="pawpower" src="../images/Logo(Light).svg">
                 </picture>
             </a>
         </h1>
-        <h2>Pedido</h2>
         <nav>
-            <ul class="nav_interno">
-                <li><a href="/reserva/reservas.html">Reservas</a></li>
-                <li><a href="/menu.html">Menu</a></li>
-                <li><a href="/pedido/armar_pedido.html">Hacer Pedido</a></li>
-                <li><a href="/reserva/local.html">Locales</a></li>
-                <li><a href="/usuario/login.html">Log in</a></li>
+            <ul class="nav_ul">
+                <li><a href="../" class="button">Inicio</a></li>
+                <li><a href="../reserva/reservas.html" class="button">Reservas</a></li>
+                <li><a href="../menu.html" class="button">Menu</a></li>
+                <li><a  class="selected" href="hacer_pedido.html" class="button">Hacer Pedido</a></li>
+                <li><a href="../reserva/reservas.html" class="button">Locales</a></li>
+                <li><a href="../usuario/login.html" class="button">Log in</a></li>
             </ul>
         </nav>
     </header>
-    <main>
-        <h3>HACE TU PEDIDO, YA!</h3>
+
+    <main class="main_hacer_pedido">
+        <h2 class="h2_hacer_pedido">HACE TU PEDIDO, YA!</h2>
         <section class="opciones_pedido">
             <p>¿Cómo lo querés hacer?</p>
             <a href="elegir_local.html">Para llevar</a>
@@ -41,32 +42,45 @@
             <a href="seleccion_mesa_qr.html">Pedido desde la mesa</a>
         </section>
     </main>
+
     <footer>
         <nav>
-            <ul class="nav_interno">
+            <ul class="nav_ul footer-social-links">
                 <li>
-                    <a href="#" rel="external" target="_blank"><i class="fa fa-instagram"></i>
+                    <a href="#" rel="external" target="_blank" >
+                        <i class="fa fa-instagram"></i>
                     </a>
                 </li>
                 <li>
-                    <a href="#" rel="external" target="_blank"><i class="fa fa-facebook"></i>
+                    <a href="#" rel="external" target="_blank">
+                        <i class="fa fa-facebook"></i>
                     </a>
                 </li>
                 <li>
-                    <a href="#" rel="external" target="_blank"><i class="fa fa-twitter"></i>
+                    <a href="#" rel="external" target="_blank">
+                        <i class="fa fa-twitter"></i>
                     </a>
                 </li>
                 <li>
                     <a href="mailto:pawpower@gmail.com"><i class="fa fa-envelope"></i></a>
-                    <a href="/informacion/politica_privacidad.html"><small>Políticas de privacidad</small></a>
+                </li>
+            </ul>
+            <ul class="nav_ul footer-links">
                 <li>
-                    <a href="/informacion/informacion.html"><small>Acerca de nosotros</small></a>
+                    <a href="../informacion/contactos.html"><small>Contactos</small></a>
                 </li>
                 <li>
-                    <a href="#" rel="external"><small>Derechos registrados</small></a>
+                    <a href="../informacion/politica_privacidad.html"><small>Políticas de privacidad</small></a>
+                </li>
+                <li>
+                    <a href="../informacion/informacion.html"><small>Acerca de nosotros</small></a>
+                </li>
+                <li>
+                    <a href="../informacion/defensa_consumidor.html"><small>Defensa del consumidor</small></a>
                 </li>
             </ul>
         </nav>
+        <small>PawPower 2024 ©</small>
     </footer>
 </body>
 
