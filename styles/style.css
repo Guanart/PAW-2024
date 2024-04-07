@@ -61,7 +61,7 @@ h1 > a > picture > img:hover {
     
 }
 
-h2 {
+.h2_index {
     margin-bottom: 1.5rem;
     /* Añade espacio debajo de los elementos h3 para simular un salto de línea */
     display: block;
@@ -121,7 +121,6 @@ footer {
     padding: 1rem;
     box-sizing: border-box;
 }
-
 
 footer nav {
     display: flex;
@@ -217,7 +216,7 @@ section > a:hover {
     text-decoration:underline;
 }
 
-h2 {
+.h2_index {
     margin: 1rem auto;
     text-align: center;
     text-justify: center;
@@ -418,3 +417,7 @@ fieldset {
     background-color: var(--gris-oscuro-marca);
     color: white
 }
+
+/*------------------------------------------------------------ PEDIDO -------------------------------------------------------------------------*/
+
+
