@@ -20,7 +20,7 @@ body {
     flex-direction: column;
     align-items: center;
     min-height: 100vh; /* La página ocupa toda la pantalla */
-
+    color: var(--gris-oscuro-marca);
     background-color: var(--beige-marca);
     background-image: linear-gradient(rgba(255, 250, 206, 0.3), rgba(0, 0, 0, 0.0),  rgba(0, 0, 0, 0.4)), url("/images/1.png");
     background-size: 2vw;
@@ -38,10 +38,6 @@ header {
     width: 100%;
 }
 
-header h2 {
-    visibility: hidden;
-}
-
 main {
     flex: 1;
     background-color: var(--beige-marca);
@@ -50,6 +46,7 @@ main {
 
 h1 {
     padding: 1vw;
+    flex-grow: 1;
 }
 
 h1 > a > picture > img {
@@ -61,15 +58,10 @@ h1 > a > picture > img {
 
 h1 > a > picture > img:hover {
     transform: scale(1.10);
+    
 }
 
 h2 {
-    font-family: var(--fuente-primaria);
-    padding-left: 1vw;
-    flex-grow: 1;   /* Que ocupe todo lo que pueda */
-}
-
-h3 {
     margin-bottom: 1.5rem;
     /* Añade espacio debajo de los elementos h3 para simular un salto de línea */
     display: block;
@@ -77,6 +69,7 @@ h3 {
     /* Cambia el display a bloque */
     font-family: var(--fuente-primaria);
 }
+
 
 
 .nav_ul {
@@ -166,7 +159,7 @@ picture {
 .principal {
     display: flex;
     align-items: center;
-    justify-items: center;
+    
     grid-template-rows: 1fr 1fr;
     padding: 3vh;
 }
@@ -193,8 +186,8 @@ picture {
     text-decoration: none;
 }
 
-.principal > h3 {
-    display: none;
+.principal > h2 {
+    /* display: none; */
 }
 
 
@@ -202,9 +195,8 @@ section {
     border-bottom: 2px solid var(--gris-oscuro-marca);
     color: var(--gris-oscuro-marca);
     max-width: 58vw;
-    margin: 5vh auto;
+    margin: 10vh auto;
     display: flex;
-    text-align: center;
     padding: 3vh;
     flex-wrap: wrap;
     justify-content: space-evenly;
@@ -218,15 +210,20 @@ section > a {
     width: 100%;
     color: rgb(156, 139, 108);
     text-decoration: none;
+    text-align: center;
 }
 
 section > a:hover {
     text-decoration:underline;
 }
 
-section > h3 {
+h2 {
+    margin: 1rem auto;
+    text-align: center;
+    text-justify: center;
     color: var(--gris-oscuro-marca);
     font-size: 3.5rem;
+    text-transform: uppercase;
 }
 
 article {
@@ -243,11 +240,11 @@ article {
     box-shadow: 0px 0px 3px 0px rgba(0,0,0,0.3) inset;
 }
 
-article:hover {
+article:not(.informacion):hover {
     transform: scale(1.02);
 }
 
-article > h4 {
+article > h3 {
     padding: 0.5rem;
     font-family: var(--fuente-primaria);
     background-color: var(--amarillo-marca);
@@ -262,6 +259,7 @@ article > picture > img {
     height: 100%;
     object-fit: cover;
 }
+
 
 
 
@@ -371,4 +369,52 @@ fieldset {
     border: none;
     /* margin: 0;
     padding: 0; */
+}
+
+
+
+
+
+
+/*------------------------------------------------------------ INFORMACIÓN -------------------------------------------------------------------------*/
+
+.informacion > p{
+    padding: 2rem;
+    font-size: 1.2rem;
+    color: var(--gris-oscuro-marca);
+    font-family: var(--fuente-secundaria);
+}
+
+.estrella{
+    background-size: 14px 14px;
+    background-image: url(/images/estrella.png);
+    vertical-align: top;
+    display: inline-block;
+    width: 14px;
+    height: 13px;
+}
+.estrellaMitad{
+    background-size: 14px 14px;
+    background-image: url(/images/estrellaMitad.png);
+    vertical-align: top;
+    display: inline-block;
+    width: 14px;
+    height: 13px;
+}
+
+.ratings, section[class="informacion"] {
+    display:flex;
+    flex-direction: column;
+
+}
+
+.ratings > article, section[class="informacion"] > article {
+    max-width: 100%;
+    margin-top:5px;
+    font-family: Century Gothic,CenturyGothic,AppleGothic,sans-serif;
+}
+
+.ratings > article > h3 {
+    background-color: var(--gris-oscuro-marca);
+    color: white
 }
