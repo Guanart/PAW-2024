@@ -483,6 +483,10 @@ fieldset{
     font-size: 2rem;
 }
 
+article.overflow_hidden.informacion {/* POSIBLEMENTE ESTO TENGA QUE REEMPLAZARSE POR UNA CLASE ESPECIFICA, es para los articulos de reservas.html*/
+    justify-content: flex-start;
+}
+
 a.link {                                /*<-------------- ESTA CLASE PUEDE SER USADA PARA OTRAS PAGINAS TAMBIEN*/
     width: 100%;
     color: var(--beige-marga-dark);
