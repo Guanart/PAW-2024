@@ -5,11 +5,14 @@
 :root {
     font-size: 12pt;
     --gris-oscuro-marca: #231f20;
+    --gris-claro-marca: #65657b;
+    --azul-claro: #303245;
     --amarillo-marca: #fbad18;
     --amarillo-marca-dark: #db9714;
     --beige-marca: #fcdea6;
     --fuente-primaria: "Archivo Black", sans-serif;
     --fuente-secundaria: Century Gothic,CenturyGothic,AppleGothic,sans-serif;
+
 }
 
 body {
@@ -119,7 +122,6 @@ footer {
     width: 100%;
     padding: 1rem;
     box-sizing: border-box;
-    flex-grow: 1;
 }
 
 footer nav {
@@ -159,7 +161,6 @@ picture {
     display: flex;
     align-items: center;
     
-    grid-template-rows: 1fr 1fr;
     padding: 3vh;
 }
 
@@ -188,7 +189,6 @@ picture {
 .principal > h2 {
     /* display: none; */
 }
-
 
 section {
     border-bottom: 2px solid var(--gris-oscuro-marca);
@@ -267,33 +267,23 @@ article > picture > img {
 /*------------------------------------------------------------LOGIN-------------------------------------------------------------------------*/
 
 form {
-    background-color: #231f20;
+    background-color: var(--gris-oscuro-marca);
     border-radius: 3vh;
-    /* Añadimos esquinas redondeadas */
-    padding: 50px;
-    width: auto;
-    margin: auto;
+    /* width: 40vw; */
+    min-height: 40vh;
     display: flex;
     flex-direction: column;
-    flex-wrap: wrap;
-    align-content: space-evenly;
     align-items: center;
-    font-family: Century Gothic, CenturyGothic, AppleGothic, sans-serif;
-    color: #65657b;
-    max-width: 500px;
+    justify-content: space-evenly;
+    font-family: var(--fuente-secundaria);
+    color: var(--gris-claro-marca);
+    padding: 2rem;
 }
 
 label {
-    color: #65657b;
-    pointer-events: none;
-    /* position: relative; */
-    transform-origin: 0 50%;
-    transition: transform 200ms, color 200ms;
     margin-bottom: 2%;
-    width: 100%;
-    display: flex;
-    font-family: Century Gothic, CenturyGothic, AppleGothic, sans-serif;
-    /* top: 20px; */
+    align-self: flex-start;
+    font-family: var(--gris-claro-marca);
 }
 
 legend {
@@ -301,53 +291,22 @@ legend {
 }
 
 input {
-    background-color: #303245;
-    border: 0;
-    box-sizing: border-box;
-    color: #eee;
-    outline-color: rgb(235, 166, 18);
-    height: 100%;
+    background-color: var(--azul-claro);
+    border: 0; /* Le saca el borde al input */
+    color: white;
+    outline-color: var(--amarillo-marca);
     width: 100%;
-    margin-bottom: 2%;
-    line-height: 28px;
-    padding: 8px 16px;
-    min-height: 44px;
-    /* border: unset; */
-    display: flex;
-    flex-grow: 1;
+    min-height: 3em;
     border-radius: 4px;
 }
 
-/* input::after {
-    content: "asdfadsfasdfaasdf";
-    height: 100px;
-    width: 100%;
-    background: aqua;
-    display: inline-block;
-} */
-
 .submit {
-    background-color: rgb(235, 166, 18);
-    border-radius: 12px;
-    box-sizing: border-box;
-    color: black;
+    background-color: var(--amarillo-marca-dark);
+    border-radius: 4px;
     cursor: pointer;
-    font-size: 18px;
-    margin-top: 10px;
-    width: 100%;
-    display: flex;
-    /* flex: 2; */
+    font-size: 1.2rem;
     align-self: center;
-    font-family: Century Gothic, CenturyGothic, AppleGothic, sans-serif;
-    /* margin: ; */
-    padding: 10px 20px;
-    /* Ajusta el relleno para dar espacio alrededor del texto */
-    text-align: center;
-    /* Centra el texto horizontalmente */
-    display: block;
-    /* Hace que el botón se muestre como bloque */
-    margin: 2 auto;
-    /* Centra el botón horizontalmente */
+    font-family: var(--fuente-s);
 }
 
 .submit:active {
@@ -355,13 +314,8 @@ input {
 }
 
 form a {
-    /* padding: 10px; */
-    display: flex;
-    margin-top: 10px;
-    justify-content: center;
     font-size: 0.9rem;
-    color: #65657b;
-    text-align: center;
+    color: var(--gris-claro-marca);
 }
 
 fieldset {
@@ -377,7 +331,7 @@ fieldset {
 
 /*------------------------------------------------------------ INFORMACIÓN -------------------------------------------------------------------------*/
 
-.informacion > p{
+.informacion > p {
     padding: 2rem;
     font-size: 1.2rem;
     color: var(--gris-oscuro-marca);

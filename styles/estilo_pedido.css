@@ -29,6 +29,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: space-evenly;
+    
     flex-wrap: nowrap;  /* Cambio heredado */
     max-width: none;    /* Cambio heredado */
     margin: 0;    /* Cambio heredado */
@@ -41,6 +42,7 @@
     background-color: #fbad18; /* Color de fondo del botón */
     border-radius: 1.5rem; /* Añadimos esquinas redondeadas */
     font-family: "Archivo Black", sans-serif;
+
     width: initial; /* Cambio heredado */
     color: #231f20; /* Cambio heredado */
 }
@@ -61,4 +63,24 @@
  /* Para PC no muestro la opción de pedido en la mesa */
 a[href="seleccion_mesa_qr.html"] {
     display: none;     
+}
+
+
+
+/* ----------------------- Elegir local ---------------------------- */
+
+
+
+input[type="radio"] {
+    
+    width: 100%;
+}
+
+input[type="radio"]:checked + label {
+    background-color: yellow;
+}
+
+label {
+    transform: translateY(-2rem);
+    text-align: center;
 }
