@@ -10,6 +10,7 @@
     --amarillo-marca: #fbad18;
     --amarillo-marca-dark: #db9714;
     --beige-marca: #fcdea6;
+    --beige-marga-dark: rgb(156, 139, 108);
     --fuente-primaria: "Archivo Black", sans-serif;
     --fuente-secundaria: Century Gothic,CenturyGothic,AppleGothic,sans-serif;
 
@@ -207,7 +208,7 @@ section:last-of-type {
 
 section > a {
     width: 100%;
-    color: rgb(156, 139, 108);
+    color: var(--beige-marga-dark);
     text-decoration: none;
     text-align: center;
 }
