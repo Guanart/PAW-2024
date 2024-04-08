@@ -69,18 +69,27 @@ a[href="seleccion_mesa_qr.html"] {
 
 /* ----------------------- Elegir local ---------------------------- */
 
-
+input {
+    background-color: transparent;
+}
 
 input[type="radio"] {
-    
+    appearance:unset;
     width: 100%;
+    margin: 0;
 }
 
 input[type="radio"]:checked + label {
-    background-color: yellow;
+    background-color: var(--amarillo-marca);
 }
 
 label {
-    transform: translateY(-2rem);
+    transition: background-color 0.2s;
+    transform: translateY(-1.7rem);
     text-align: center;
+    align-self: center;
+    border-radius: 4px;
+    width: 100%;
+    cursor: pointer;
+    padding: 1rem;
 }
