@@ -5,19 +5,13 @@
     background-position: center; /* Centra la imagen */
 
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(auto-fit,
+        minmax(200px, 1fr));
     justify-items: center;
     align-items: center;
     text-align: center;
 }
 
-.h2_hacer_pedido {
-    grid-column: 1; 
-    font-family: "Archivo Black", sans-serif;
-    font-size: 4.2rem;
-    color: #fbad18;
-    padding: 2rem;
-}
 
 .opciones_pedido {
     grid-column: 2;
@@ -53,6 +47,7 @@
 
     text-decoration: none;  /* Cambio heredado */
 }
+
 
 .opciones_pedido p {
     font-family: "Archivo Black", sans-serif;

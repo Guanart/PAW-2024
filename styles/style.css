@@ -23,6 +23,7 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
     min-height: 100vh; /* La página ocupa toda la pantalla */
     color: var(--gris-oscuro-marca);
     background-color: var(--beige-marca);
@@ -69,18 +70,28 @@ h1 > a > picture > img:hover {
     transform: scale(1.10) rotate(3deg);
 }
 
-.h2_index {
-    margin-bottom: 1.5rem;
-    /* Añade espacio debajo de los elementos h3 para simular un salto de línea */
-    display: block;
-    width: 100%;
-    /* Cambia el display a bloque */
+h2 {
     font-family: var(--fuente-primaria);
+    text-transform: uppercase;
+    margin: 1rem auto;
+    text-align: center;
+    color: var(--gris-oscuro-marca);
+    font-size: 3.5rem;
+    width:100%;
 }
 
+.h2_hacer_pedido {
+    grid-column: 1; 
+    color: var(--amarillo-marca);
+    font-size: 4rem;
+    padding: 2rem;
+}
 
+h4 {
+    font-weight: bold;
+}
 
-.nav_ul {
+nav ul {
     list-style-type: none; /* Quitamos los puntos de la lista */
     /* Quitamos el relleno predeterminado de la lista */
     margin: 0;  /* Quitamos el margen predeterminado de la lista */
@@ -157,47 +168,18 @@ footer > small {
 
 /*-------------------------------------------------------INDEX-----------------------------------------------------------------------*/
 
-
 picture {
     max-height: 100%;
     max-width: 100%;
 }
 
-.principal {
-    display: flex;
-    align-items: center;
-}
-
-
-.principal > a {
-    width: 60%;
-    border-radius: 10px;
-    padding: 1rem 0;
-    background-color: var(--gris-oscuro-marca);
-
-    color: var(--amarillo-marca);
-    font-family: var(--fuente-secundaria);
-    font-size: 2rem;
-
-    transition: transform 0.2s;
-}
-
-.principal > a:hover {
-    transform: scale(1.02);
-    text-decoration: none;
-}
-
-.principal > h2 {
-    /* display: none; */
-}
-
 section {
+    display: flex;
     border-bottom: 2px solid var(--gris-oscuro-marca);
     color: var(--gris-oscuro-marca);
-    max-width: 58vw;
+    max-width: 100%;
     margin: 2vh auto;
-    display: flex;
-    padding: 3vh;
+    padding: 3vh 3vw;
     flex-wrap: wrap;
     justify-content: space-evenly;
 }
@@ -217,13 +199,65 @@ section > a:hover {
     text-decoration:underline;
 }
 
-.h2_index {
-    margin: 1rem auto;
-    text-align: center;
-    color: var(--gris-oscuro-marca);
-    font-size: 3.5rem;
-    text-transform: uppercase;
+.opciones_pedido {
+    grid-column: 2;
+    background-color: rgba(128, 128, 128, 0.8);
+    min-height: 50%;
+    border-radius: 2.5rem;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    
+    flex-wrap: nowrap;  /* Cambio heredado */
+    max-width: none;    /* Cambio heredado */
+    margin: 0;    /* Cambio heredado */
+    padding: 0; /* Cambio heredado */
 }
+
+.opciones_pedido a {
+    padding: 1vh 1.8vw; /* Añadimos un poco de relleno alrededor de los enlaces */
+    text-decoration: none;
+    background-color: #fbad18; /* Color de fondo del botón */
+    border-radius: 1.5rem; /* Añadimos esquinas redondeadas */
+    font-family: "Archivo Black", sans-serif;
+
+    width: initial; /* Cambio heredado */
+    color: #231f20; /* Cambio heredado */
+}
+
+.opciones_pedido a:hover {
+    background-color: #db9714; /* Cambiamos el color de fondo al pasar el ratón por encima */
+    box-shadow: inset 0px 0px 8px -2px rgba(45,36,69,0.69);
+
+    text-decoration: none;  /* Cambio heredado */
+}
+
+
+.principal {
+    align-items: center;
+}
+
+.principal > a {
+    width: 60%;
+    border-radius: 10px;
+    padding: 1rem 0;
+    background-color: var(--gris-oscuro-marca);
+
+    color: var(--amarillo-marca);
+    font-family: var(--fuente-secundaria);
+    font-size: 2rem;
+
+    transition: transform 0.2s;
+}
+
+.principal > a:hover {
+    transform: scale(1.02);
+    text-decoration: none;
+}
+
+
 
 article {
     /*max-width: 20vw;
