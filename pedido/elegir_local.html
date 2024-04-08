@@ -8,13 +8,12 @@
     <link rel="icon" href="../images/favicon.ico" type="image/x-icon">
     <meta name="description" content="Aqui puedes elegir el local en el que vas a retirar el pedido">
     <link rel="stylesheet" href="../styles/style.css">
-    <link rel="stylesheet" href="../styles/estilo_pedido.css">
 </head>
 
 <body>
     <header>
         <h1>
-            <a href="/">
+            <a href="../">
                 <picture>
                     <source srcset="../images/Logo(Light).svg" media="(min-width: 600px)">
                     <img alt="pawpower" src="../images/Logo(Light).svg">
@@ -23,29 +22,29 @@
         </h1>
         <nav>
             <ul class="nav_ul">
-                <li><a href="../" class="button">Inicio</a></li>
-                <li><a href="../reserva/reservas.html" class="button">Reservas</a></li>
-                <li><a href="../menu.html" class="button">Menu</a></li>
-                <li><a href="hacer_pedido.html" class="button selected">Hacer Pedido</a></li>
-                <li><a href="../reserva/reservas.html" class="button">Locales</a></li>
-                <li><a href="../usuario/login.html" class="button">Log in</a></li>
+                <li><a href="../">Inicio</a></li>
+                <li><a href="../reserva/reservas.html">Reservas</a></li>
+                <li><a href="../menu.html">Menu</a></li>
+                <li><a href="./hacer_pedido.html" class="selected">Hacer Pedido</a></li>
+                <li><a href="../reserva/reservas.html">Locales</a></li>
+                <li><a href="../usuario/login.html">Log in</a></li>
             </ul>
         </nav>
     </header>
 
     <main class="main_elegir_local">
-            <form name="form_elegir_local" action="elegir_local.php" method="post">
-                <legend>Elegí el local</legend>
-                <input id="input_moreno" name="localidad" type="radio" value="Moreno">
-                <label for="input_moreno">Moreno</label>
-                <input id="input_rodriguez" name="localidad" type="radio" value="Rodríguez">
-                <label for="input_rodriguez">Rodríguez</label>
-                <input id="input_lujan" name="localidad" type="radio" value="Luján">
-                <label for="input_lujan">Luján</label>
-                <input id="input_chivilcoy" name="localidad" type="radio" value="Chivilcoy">
-                <label for="input_chivilcoy">Chivilcoy</label>
-                <input class="submit" type="submit" value="Siguiente">
-            </form>
+        <form name="form_elegir_local" action="elegir_local.php" method="post">
+            <legend>Elegí el local</legend>
+            <input id="input_moreno" name="localidad" type="radio" value="Moreno">
+            <label for="input_moreno">Moreno</label>
+            <input id="input_rodriguez" name="localidad" type="radio" value="Rodríguez">
+            <label for="input_rodriguez">Rodríguez</label>
+            <input id="input_lujan" name="localidad" type="radio" value="Luján">
+            <label for="input_lujan">Luján</label>
+            <input id="input_chivilcoy" name="localidad" type="radio" value="Chivilcoy">
+            <label for="input_chivilcoy">Chivilcoy</label>
+            <input class="submit" type="submit" value="Siguiente">
+        </form>
     </main>
 
     <footer>

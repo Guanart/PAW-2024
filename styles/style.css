@@ -10,7 +10,8 @@
     --amarillo-marca: #fbad18;
     --amarillo-marca-dark: #db9714;
     --beige-marca: #fcdea6;
-    --beige-marga-dark: rgb(156, 139, 108);
+    --beige-marca-light: #ebe5c1;
+    --beige-marga-dark: #9c8b6c;
     --fuente-primaria: "Archivo Black", sans-serif;
     --fuente-secundaria: Century Gothic,CenturyGothic,AppleGothic,sans-serif;
 
@@ -80,13 +81,6 @@ h2 {
     width:100%;
 }
 
-.h2_hacer_pedido {
-    grid-column: 1; 
-    color: var(--amarillo-marca);
-    font-size: 4rem;
-    padding: 2rem;
-}
-
 h4 {
     font-weight: bold;
 }
@@ -135,7 +129,7 @@ nav ul li a:hover {
 
 footer {
     display: grid;
-    grid-template-rows: 1fr 1fr;
+    grid-template-rows: auto 1fr;
     justify-items: center;
     background-color: var(--gris-oscuro-marca);
     width: 100%;
@@ -168,7 +162,7 @@ footer > small {
 }
 
 
-/*-------------------------------------------------------INDEX-----------------------------------------------------------------------*/
+/*------------------------------------------------------- INDEX -----------------------------------------------------------------------*/
 
 picture {
     max-height: 100%;
@@ -184,6 +178,7 @@ section {
     padding: 3vh 3vw;
     flex-wrap: wrap;
     justify-content: space-evenly;
+    align-items: center;
 }
 
 section:last-of-type {
@@ -201,56 +196,15 @@ section > a:hover {
     text-decoration:underline;
 }
 
-.opciones_pedido {
-    grid-column: 2;
-    background-color: rgba(128, 128, 128, 0.8);
-    min-height: 50%;
-    border-radius: 2.5rem;
-
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-evenly;
-    
-    flex-wrap: nowrap;  /* Cambio heredado */
-    max-width: none;    /* Cambio heredado */
-    margin: 0;    /* Cambio heredado */
-    padding: 0; /* Cambio heredado */
-}
-
-.opciones_pedido a {
-    padding: 1vh 1.8vw; /* Añadimos un poco de relleno alrededor de los enlaces */
-    text-decoration: none;
-    background-color: #fbad18; /* Color de fondo del botón */
-    border-radius: 1.5rem; /* Añadimos esquinas redondeadas */
-    font-family: "Archivo Black", sans-serif;
-
-    width: initial; /* Cambio heredado */
-    color: #231f20; /* Cambio heredado */
-}
-
-.opciones_pedido a:hover {
-    background-color: #db9714; /* Cambiamos el color de fondo al pasar el ratón por encima */
-    box-shadow: inset 0px 0px 8px -2px rgba(45,36,69,0.69);
-
-    text-decoration: none;  /* Cambio heredado */
-}
-
-
-.principal {
-    align-items: center;
-}
-
 .principal > a {
     width: 60%;
+    color: var(--amarillo-marca);
+
     border-radius: 10px;
     padding: 1rem 0;
     background-color: var(--gris-oscuro-marca);
-
-    color: var(--amarillo-marca);
     font-family: var(--fuente-secundaria);
     font-size: 2rem;
-
     transition: transform 0.2s;
 }
 
@@ -259,19 +213,15 @@ section > a:hover {
     text-decoration: none;
 }
 
-
-
 article {
-    /*max-width: 20vw;
-    max-height: 30vh;*/
-    margin: 1vw;
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
     align-items: center;
+    margin: 1vw;
     border-radius: 10px;
     transition: transform 0.3s ease;
-    background-color: rgb(235, 229, 193);
+    background-color: var(--beige-marca-light);
     box-shadow: 0px 0px 3px 0px rgba(0,0,0,0.3) inset;
 }
 
@@ -295,9 +245,6 @@ form > section > article > label > input {
     color: var(--gris-oscuro-marca);
     margin-left : 0.2rem;
 }
-
-
-
 
 article > h3 {
     padding: 0.5rem 0;
@@ -333,29 +280,31 @@ article > picture > img {
     overflow: hidden;
 }
 
-/*------------------------------------------------------------LOGIN-------------------------------------------------------------------------*/
+/*------------------------------------------------------- LOGIN -----------------------------------------------------------------------*/
 
 form {
-    background-color: var(--gris-oscuro-marca);
-    border-radius: 3vh;
-    width: 20vw;
     display: flex;
     flex-direction: column;
-    align-items: center;
     justify-content: space-evenly;
-    font-family: var(--fuente-secundaria);
+    align-items: center;
+    background-color: var(--gris-oscuro-marca);
     color: var(--gris-claro-marca);
+    font-family: var(--fuente-secundaria);
+    border-radius: 3vh;
+    width: 20vw;
     padding: 2rem;
 }
 
 label {
     margin-bottom: 2%;
     align-self: flex-start;
-    font-family: var(--fuente-secundaria);
 }
 
 legend {
     font-weight: bold;
+    font-size: 1.5rem;
+    text-align: center;
+    padding-bottom: 1rem;
 }
 
 input {
@@ -385,6 +334,7 @@ input {
 form a {
     font-size: 0.9rem;
     color: var(--gris-claro-marca);
+    text-align: center;
 }
 
 fieldset {
@@ -393,12 +343,7 @@ fieldset {
     padding: 0; */
 }
 
-
-
-
-
-
-/*------------------------------------------------------------ INFORMACIÓN -------------------------------------------------------------------------*/
+/*------------------------------------------------------- INFORMACIÓN -----------------------------------------------------------------------*/
 
 .informacion > p {
     padding: 2rem;
@@ -443,6 +388,80 @@ fieldset {
 
 /*------------------------------------------------------------ PEDIDO -------------------------------------------------------------------------*/
 
+main.hacer_pedido {
+    /* Imagen de fondo */
+    background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.5)), url('/images/Hamburguesa.jpg');
+    background-size: cover;  /* Ajusta el tamaño de la imagen para cubrir todo*/ 
+    background-position: center; /* Centra la imagen */
+
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    padding: 0;
+}
+
+h2.hacer_pedido {
+    color: var(--amarillo-marca);
+    font-size: 4rem;
+    max-width: 60%;
+    margin: 0;
+}
+
+section.hacer_pedido {
+    flex-direction: column;
+    align-items: center;
+    
+    gap: 2rem;
+
+    background-color: rgba(128, 128, 128, 0.8);
+    min-height: 50%;
+    border-radius: 2.5rem;
+}
+
+ /* Para PC no muestro la opción de pedido en la mesa */
+a[href="./seleccion_mesa_qr.html"] {
+    display: none;     
+}
+
+section.hacer_pedido a {
+    width: initial;
+    color: var(--gris-oscuro-marca);
+    background-color: #fbad18;
+    border-radius: 1.5rem; 
+    font-family: "Archivo Black", sans-serif;
+    padding: 1vh 1.8vw;
+}
+
+section.hacer_pedido a:hover {
+    text-decoration: none;
+    background-color: var(--amarillo-marca-dark);
+    box-shadow: inset 0px 0px 8px -2px rgba(45,36,69,0.69);
+}
+
+section.hacer_pedido p {
+    font-family: var(--fuente-primaria);
+    font-size: 1.4rem;
+}
+
+/* Formulario de armar pedido */
+form[name="form_armar_pedido"] > section{
+    display: flex;
+    flex-direction: row;
+    margin: 0;
+}
+
+form[name="form_armar_pedido"] {
+    width: fit-content;
+    display: flex;
+    flex-direction: column;
+}
+
+form[name="form_armar_pedido"] h3 {
+    width:100%;
+    color: wheat;
+}
+
+/* Estilo para los input radio */
 input[type="radio"] {
     appearance:unset;
     width: 100%;
@@ -468,7 +487,8 @@ input[type="radio"] + label {
 }
 
 /*-----------------------------------------------------RESERVAS---------------------------------------------------------------------*/
-fieldset{
+
+fieldset {
     display: flex;
     flex-direction: column;
     align-items: center;
