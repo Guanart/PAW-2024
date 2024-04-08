@@ -6,60 +6,77 @@
     <link rel="icon" href="/images/favicon.ico" type="image/x-icon">
     <title>Ingresar dirección</title>
     <meta name="description" content="Aquí debes ingresar la dirección a la que sera enviado tu pedido">
+    <link rel="stylesheet" href="/styles/style.css">
+    <link rel="stylesheet" href="/styles/estilo_pedido.css">
 </head>
 <body>
     <header>
         <h1>
             <a href="/">
                 <picture>
-                    <source srcset="/images/Logo.svg" media="(min-width: 600px)">
-                    <img alt="pawpower" src="/images/Logo.svg">
+                    <source srcset="/images/Logo(Light).svg" media="(min-width: 600px)">
+                    <img alt="pawpower" src="/images/Logo(Light).svg">
                 </picture>
             </a>
         </h1>
-        <h2>Pedido</h2>
         <nav>
-            <ul>
-                <li><a href="/reserva/reservas.html">Reservas</a></li>
-                <li><a href="/menu.html">Menu</a></li>
-                <li><a href="/pedido/armar_pedido.html">Hacer Pedido</a></li>
-                <li><a href="/reserva/local.html">Locales</a></li>
-                <li><a href="/usuario/login.html">Log in</a></li>
+            <ul class="nav_ul">
+                <li><a href="/" class="button">Inicio</a></li>
+                <li><a href="/reserva/reservas.html" class="button">Reservas</a></li>
+                <li><a href="/menu.html" class="button">Menu</a></li>
+                <li><a class="selected" href="/pedido/hacer_pedido.html" class="button">Hacer Pedido</a></li>
+                <li><a href="/reserva/reservas.html" class="button">Locales</a></li>
+                <li><a href="/usuario/login.html" class="button">Log in</a></li>
             </ul>
         </nav>
     </header>
+    
     <main>
-        <form name="form_ingresar_direccion" action="ingresar_direccion.php" method="post">
-            <fieldset>
+        <section class="principal">
+            <form name="form_ingresar_direccion" action="ingresar_direccion.php" method="post">
                 <label for="localidad">Localidad</label>
-                <input id="localidad" name="localidad" type="text" required><!-- Poner un combo con filtro, cargar localidades en la BD-->
+                <!-- <input id="localidad" name="localidad" type="com" required> -->
+                <select name="localidad" id="localidad">
+                    <option value="">--Elija una localidad--</option>
+                    <option value="lujan">Luján</option>
+                    <option value="moreno">Moreno</option>
+                </select>
                 <label for="altura">Altura</label>
                 <input id="altura" name="altura" type="text" required>
                 <label for="departamento">Departamento</label>
                 <input id="departamento" name="departamento" type="text">
                 <label for="descripcion">Descripcion de la ubicación</label>
                 <textarea id="descripcion" name="descripcion" rows="4" cols="50"></textarea>
-            </fieldset>
-            <input type="submit">
-        </form>
+                <input type="submit">
+            </form>
+        </section>
     </main>
+
     <footer>
         <nav>
-            <ul>
+            <ul class="nav_ul footer-social-links">
                 <li>
-                    <a href="#" rel="external" target="_blank"><i class="fa fa-instagram"></i>
+                    <a href="#" rel="external" target="_blank" >
+                        <i class="fa fa-instagram"></i>
                     </a>
                 </li>
                 <li>
-                    <a href="#" rel="external" target="_blank"><i class="fa fa-facebook"></i>
+                    <a href="#" rel="external" target="_blank">
+                        <i class="fa fa-facebook"></i>
                     </a>
                 </li>
                 <li>
-                    <a href="#" rel="external" target="_blank"><i class="fa fa-twitter"></i>
+                    <a href="#" rel="external" target="_blank">
+                        <i class="fa fa-twitter"></i>
                     </a>
                 </li>
                 <li>
                     <a href="mailto:pawpower@gmail.com"><i class="fa fa-envelope"></i></a>
+                </li>
+            </ul>
+            <ul class="nav_ul footer-links">
+                <li>
+                    <a href="/informacion/contactos.html"><small>Contactos</small></a>
                 </li>
                 <li>
                     <a href="/informacion/politica_privacidad.html"><small>Políticas de privacidad</small></a>
@@ -68,10 +85,11 @@
                     <a href="/informacion/informacion.html"><small>Acerca de nosotros</small></a>
                 </li>
                 <li>
-                    <a href="#" rel="external"><small>Derechos registrados</small></a>
+                    <a href="/informacion/defensa_consumidor.html"><small>Defensa del consumidor</small></a>
                 </li>
             </ul>
         </nav>
+        <small>PawPower 2024 ©</small>
     </footer>
 </body>
 </html>

@@ -69,27 +69,23 @@ a[href="seleccion_mesa_qr.html"] {
 
 /* ----------------------- Elegir local ---------------------------- */
 
-input {
-    background-color: transparent;
+textarea {
+    resize: none;
 }
 
-input[type="radio"] {
-    appearance:unset;
-    width: 100%;
+form[name="form_armar_pedido"] > section{
+    display: flex;
+    flex-direction: row;
     margin: 0;
 }
 
-input[type="radio"]:checked + label {
-    background-color: var(--amarillo-marca);
+form[name="form_armar_pedido"] {
+    width: fit-content;
+    display: flex;
+    flex-direction: column;
 }
 
-label {
-    transition: background-color 0.2s;
-    transform: translateY(-1.7rem);
-    text-align: center;
-    align-self: center;
-    border-radius: 4px;
-    width: 100%;
-    cursor: pointer;
-    padding: 1rem;
+form[name="form_armar_pedido"] h3 {
+    width:100%;
+    color: wheat;
 }

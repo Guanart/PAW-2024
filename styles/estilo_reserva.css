@@ -1,36 +1,11 @@
 @import url("style.css");
 
 article {
-    display: flex;
-    flex-direction: column;
     justify-content: flex-start;
-    align-content: center;
     overflow: hidden;
 }
 
-figure {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-content: center;
-    overflow: hidden;
-}
 
-figure picture {
-    height: 80%;
-    overflow: hidden;
-}
-
-img {
-    height: fit-content;
-    max-width: 100%;
-}
-
-figcaption {
-    display: flex;
-    flex-direction: column;
-    align-content:center;
-}
 
 h3 {
     justify-self: self-start;
