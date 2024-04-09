@@ -35,15 +35,17 @@
     <main class="main_elegir_local">
         <form name="form_elegir_local" action="elegir_local.php" method="post">
             <legend>Elegí el local</legend>
-            <input id="input_moreno" name="localidad" type="radio" value="Moreno">
-            <label for="input_moreno">Moreno</label>
-            <input id="input_rodriguez" name="localidad" type="radio" value="Rodríguez">
-            <label for="input_rodriguez">Rodríguez</label>
-            <input id="input_lujan" name="localidad" type="radio" value="Luján">
-            <label for="input_lujan">Luján</label>
-            <input id="input_chivilcoy" name="localidad" type="radio" value="Chivilcoy">
-            <label for="input_chivilcoy">Chivilcoy</label>
-            <input class="submit" type="submit" value="Siguiente">
+            <fieldset>
+                <input id="input_moreno" name="localidad" type="radio" value="Moreno">
+                <label for="input_moreno">Moreno</label>
+                <input id="input_rodriguez" name="localidad" type="radio" value="Rodríguez">
+                <label for="input_rodriguez">Rodríguez</label>
+                <input id="input_lujan" name="localidad" type="radio" value="Luján">
+                <label for="input_lujan">Luján</label>
+                <input id="input_chivilcoy" name="localidad" type="radio" value="Chivilcoy">
+                <label for="input_chivilcoy">Chivilcoy</label>
+                <input class="submit" type="submit" value="Siguiente">
+            </fieldset>
         </form>
     </main>
 

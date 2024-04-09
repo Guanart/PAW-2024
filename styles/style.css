@@ -196,19 +196,21 @@ section > a:hover {
     text-decoration:underline;
 }
 
-.principal > a {
+.button {
     width: 60%;
     color: var(--amarillo-marca);
-
+    text-transform: uppercase;
     border-radius: 10px;
     padding: 1rem 0;
     background-color: var(--gris-oscuro-marca);
     font-family: var(--fuente-secundaria);
     font-size: 2rem;
     transition: transform 0.2s;
+    text-decoration: none;
+    text-align: center;
 }
 
-.principal > a:hover {
+.button:hover {
     transform: scale(1.02);
     text-decoration: none;
 }
@@ -225,18 +227,18 @@ article {
     box-shadow: 0px 0px 3px 0px rgba(0,0,0,0.3) inset;
 }
 
-article:not(.informacion, form > section > article):hover {
+article:not(.informacion, .armar_pedido, .confirmar_pedido):hover {
     transform: scale(1.02);
     cursor: pointer;
 }
 
-form > section > article > label {
+.armar_pedido > label {
     display: inline-block;
     width: 100%;
     text-align: center;
 }
 
-form > section > article > label > input {
+.armar_pedido > label > input {
     width: 2.7rem;
     background-color: transparent;
     text-align: center;
@@ -244,6 +246,18 @@ form > section > article > label > input {
     border-radius: 10px;
     color: var(--gris-oscuro-marca);
     margin-left : 0.2rem;
+}
+
+.confirmar_pedido {
+    width: 15vw;
+    overflow: hidden;
+    gap: 0.5rem;
+    justify-content: center;
+    padding-bottom: 0.5rem;
+}
+
+.confirmar_pedido > h3 {
+    width: 100%;
 }
 
 article > h3 {
@@ -295,6 +309,17 @@ form {
     padding: 2rem;
 }
 
+select{
+    background-color: var(--azul-claro);
+    color: white;
+    width: 100%;
+    border: 0;
+    margin: 1rem 0;
+    font-family: var(--fuente-secundaria);
+    height: 3rem;
+    border-radius: 4px;
+}
+
 label {
     margin-bottom: 2%;
     align-self: flex-start;
@@ -307,7 +332,7 @@ legend {
     padding-bottom: 1rem;
 }
 
-input {
+input, textarea {
     background-color: var(--azul-claro);
     border: 0; /* Le saca el borde al input */
     color: white;
@@ -316,6 +341,11 @@ input {
     min-height: 3em;
     border-radius: 4px;
     margin: 1rem 0;
+    
+}
+
+textarea {
+    resize: none;
 }
 
 .submit {
@@ -324,7 +354,7 @@ input {
     cursor: pointer;
     font-size: 1.2rem;
     align-self: center;
-    font-family: var(--fuente-s);
+    font-family: var(--fuente-secundaria);
 }
 
 .submit:active {
@@ -407,6 +437,7 @@ h2.hacer_pedido {
     margin: 0;
 }
 
+
 section.hacer_pedido {
     flex-direction: column;
     align-items: center;
@@ -459,6 +490,8 @@ form[name="form_armar_pedido"] {
 form[name="form_armar_pedido"] h3 {
     width:100%;
     color: wheat;
+    font-size: 2rem;
+    margin: 1rem;
 }
 
 /* Estilo para los input radio */
@@ -475,7 +508,7 @@ input[type="radio"]:checked + label {
 
 input[type="radio"] + label {
     transition: background-color 0.2s;
-    transform: translateY(-1.7rem);
+    transform: translateY(-2.8rem);
     text-align: center;
     align-self: center;
     border-radius: 4px;
@@ -483,7 +516,6 @@ input[type="radio"] + label {
     cursor: pointer;
     padding: 1rem;
     border: 2px solid #65657b;
-    margin: 0;
 }
 
 /*-----------------------------------------------------RESERVAS---------------------------------------------------------------------*/
@@ -492,6 +524,7 @@ fieldset {
     display: flex;
     flex-direction: column;
     align-items: center;
+    width: 100%;
 }
 
 .titulo1 {                                /*<-------------- ESTA CLASE PUEDE SER USADA PARA OTRAS PAGINAS TAMBIEN*/
@@ -527,4 +560,20 @@ a.link:hover {
     transition: transform 0.2s; }
 .left_arrow:hover {
     transform: scale(1.1);
+}
+
+
+/* --------------------------------------- ARTICULOS ARMAR PEDIDO ---------------------------------------*/
+article.armar_pedido {
+    justify-content: space-evenly;
+    height: 38vh;
+    min-width: fit-content;
+    width: 18vw;
+    margin: 0.4rem;
+    white-space: nowrap;
+    padding: 0 0.2rem;
+}
+
+article.armar_pedido > picture {
+    height: 50%;
 }
