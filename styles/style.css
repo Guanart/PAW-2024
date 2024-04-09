@@ -420,7 +420,7 @@ fieldset {
 
 main.hacer_pedido {
     /* Imagen de fondo */
-    background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.5)), url('/images/Hamburguesa.jpg');
+    background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.5)), url('/images/Hamburguesa-L.jpg');
     background-size: cover;  /* Ajusta el tamaño de la imagen para cubrir todo*/ 
     background-position: center; /* Centra la imagen */
 
@@ -576,4 +576,73 @@ article.armar_pedido {
 
 article.armar_pedido > picture {
     height: 50%;
+}
+
+@media (max-width: 480px) {
+    :root {
+        font-size: 12pt; 
+    }
+    h2, h2.hacer_pedido {
+        font-size: 1.5rem;
+    }
+    main {
+        width: 90vw;
+        max-width: 90vw;
+        padding: 1rem 0;
+    }
+    article.armar_pedido {
+        /*width: 25vw;
+        max-height: 20vh;*/
+        min-width: fit-content;
+        min-height: fit-content;
+    }
+    article > picture {
+        max-width: 100%;
+    }
+    form {
+        width: auto;
+    }
+    form[name="form_armar_pedido"]{
+        padding: 0;
+    }
+    .submit{
+        margin: 1rem;
+        width: 90%;
+    }
+    p {
+        padding: 0;
+    }
+    small {
+        font-size: 0.7rem;
+    }
+    main.hacer_pedido {
+        /* Imagen de fondo */
+        background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.5)), url('/images/Hamburguesa-S.jpg');
+    }
+}
+
+@media (480px < width < 1080px) {
+    :root {
+        font-size: 16pt; 
+    }
+    h2, h2.hacer_pedido {
+        font-size: 2rem;
+    }
+    main {
+        width: 90vw;
+        padding: 1rem 0;
+    }
+    article.armar_pedido {
+        /*width: 25vw;
+        max-height: 20vh;*/
+        height: 70vmin;
+        width: 40vmin;
+    }
+    article > picture {
+        max-width: 100%;
+    }
+    main.hacer_pedido {
+        /* Imagen de fondo */
+        background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.5)), url('/images/Hamburguesa-M.jpg');
+    }
 }
