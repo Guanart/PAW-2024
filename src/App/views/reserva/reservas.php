@@ -1,13 +1,4 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <title>Reservas</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="../images/favicon.ico" type="image/x-icon">
-    <meta name="description" content="Esta página muestra los locales en los que puedes registrar reservas">
-    <link rel="stylesheet" href="../styles/style.css">
-</head>
+<?php require __DIR__ . "/../layout/head.view.php"; ?>
 <body>
     <header>
         <h1>
@@ -18,16 +9,7 @@
                 </picture>
             </a>
         </h1>
-        <nav>
-            <ul class="nav_ul">
-                <li><a href="../">Inicio</a></li>
-                <li><a class="selected" href="./reservas.html">Reservas</a></li>
-                <li><a href="../menu.html">Menu</a></li>
-                <li><a href="../pedido/hacer_pedido.html">Hacer Pedido</a></li>
-                <li><a href="./reservas.html">Locales</a></li>
-                <li><a href="../usuario/login.html">Log in</a></li>
-            </ul>
-        </nav>
+        <?php require __DIR__ . "/../layout/nav.view.php"; ?>
     </header>
     <main>
         <h2>Reserva en alguno de nuestros locales!</h2>
@@ -79,45 +61,6 @@
             <!-- Agrega más elementos según sea necesario -->
         </section>
     </main>
-
-    <footer>
-        <nav>
-            <ul class="nav_ul footer-social-links">
-                <li>
-                    <a href="#" rel="external" target="_blank" >
-                        <i class="fa fa-instagram"></i>
-                    </a>
-                </li>
-                <li>
-                    <a href="#" rel="external" target="_blank">
-                        <i class="fa fa-facebook"></i>
-                    </a>
-                </li>
-                <li>
-                    <a href="#" rel="external" target="_blank">
-                        <i class="fa fa-twitter"></i>
-                    </a>
-                </li>
-                <li>
-                    <a href="mailto:pawpower@gmail.com"><i class="fa fa-envelope"></i></a>
-                </li>
-            </ul>
-            <ul class="nav_ul footer-links">
-                <li>
-                    <a href="../informacion/contactos.html"><small>Contactos</small></a>
-                </li>
-                <li>
-                    <a href="../informacion/politica_privacidad.html"><small>Políticas de privacidad</small></a>
-                </li>
-                <li>
-                    <a href="../informacion/informacion.html"><small>Acerca de nosotros</small></a>
-                </li>
-                <li>
-                    <a href="../informacion/defensa_consumidor.html"><small>Defensa del consumidor</small></a>
-                </li>
-            </ul>
-        </nav>
-        <small>PawPower 2024 ©</small>
-    </footer>
+    <?php require __DIR__ . "/../layout/footer.view.php" ?>
 </body>
 </html>

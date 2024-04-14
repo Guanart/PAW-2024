@@ -1,0 +1,23 @@
+{
+    "name" : "paw/paw-pawer",
+    "description": "Proyecto del grupo 1 para los TPs de PAW",
+    "keywords": ["php","mvc"],
+    "license": "MIT",
+    "authors" : [
+        {
+            "name" : "Kevin Monti",
+            "email": "neielmonti@gmail.com",
+            "role": "Creator / Main Developer"
+        }
+    ],
+    "require": {
+        "php" : ">=7.4.0",
+        "filp/whoops": "~2",
+        "monolog/monolog": "^3.5"
+    },
+    "autoload": {
+        "psr-4": {
+            "Paw\\" : "src/"
+        }
+    }
+}

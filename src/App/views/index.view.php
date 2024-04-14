@@ -1,15 +1,4 @@
-<!DOCTYPE html>
-<html lang="es">
-
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="./images/favicon.ico" type="image/x-icon">
-    <link rel="stylesheet" href="./styles/style.css">
-    <title>Home</title>
-    <meta name="description" content="Página principal de The Boss">
-</head>
-
+<?php require "layout/head.view.php"; ?>
 <body>
     <header>
         <h1>
@@ -20,16 +9,7 @@
                 </picture>
             </a>
         </h1>
-        <nav>
-            <ul>
-                <li><a class="selected" href="./">Inicio</a></li>
-                <li><a href="./reserva/reservas.html">Reservas</a></li>
-                <li><a href="./menu.html">Menu</a></li>
-                <li><a href="./pedido/hacer_pedido.html">Hacer Pedido</a></li>
-                <li><a href="./reserva/reservas.html">Locales</a></li>
-                <li><a href="./usuario/login.html">Log in</a></li>
-            </ul>
-        </nav>
+        <?php require 'layout/nav.view.php'; ?>
     </header>
     <main>
         <section class="principal">
@@ -111,45 +91,7 @@
         </section>
     </main>
     
-    <footer>
-        <nav>
-            <ul class="footer-social-links">
-                <li>
-                    <a href="#" rel="external" target="_blank" >
-                        <i class="fa fa-instagram"></i>
-                    </a>
-                </li>
-                <li>
-                    <a href="#" rel="external" target="_blank">
-                        <i class="fa fa-facebook"></i>
-                    </a>
-                </li>
-                <li>
-                    <a href="#" rel="external" target="_blank">
-                        <i class="fa fa-twitter"></i>
-                    </a>
-                </li>
-                <li>
-                    <a href="mailto:pawpower@gmail.com"><i class="fa fa-envelope"></i></a>
-                </li>
-            </ul>
-            <ul class="footer-links">
-                <li>
-                    <a href="./informacion/contactos.html"><small>Contactos</small></a>
-                </li>
-                <li>
-                    <a href="./informacion/politica_privacidad.html"><small>Políticas de privacidad</small></a>
-                </li>
-                <li>
-                    <a href="./informacion/informacion.html"><small>Acerca de nosotros</small></a>
-                </li>
-                <li>
-                    <a href="./informacion/defensa_consumidor.html"><small>Defensa del consumidor</small></a>
-                </li>
-            </ul>
-        </nav>
-        <small>PawPower 2024 ©</small>
-    </footer>
+    <?php require 'layout/footer.view.php' ?>
 </body>
 
 </html>
