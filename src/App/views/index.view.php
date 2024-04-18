@@ -68,7 +68,7 @@
                 <h3>Combo/plato</h3>
                 <p>Lorem Ipsum</p>
             </article>
-            <a href="./menu.html">Ver más</a>
+            <a href="/menu">Ver más</a>
         </section>
         <section>
             <h2>Novedades</h2>

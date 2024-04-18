@@ -20,16 +20,9 @@
                 </picture>
             </a>
         </h1>
-        <nav>
-            <ul class="nav_ul">
-                <li><a href="../">Inicio</a></li>
-                <li><a href="../reserva/reservas.html">Reservas</a></li>
-                <li><a href="../menu.html">Menu</a></li>
-                <li><a href="./hacer_pedido.html" class="selected">Hacer Pedido</a></li>
-                <li><a href="../reserva/reservas.html">Locales</a></li>
-                <li><a href="../usuario/login.html">Log in</a></li>
-            </ul>
-        </nav>
+        <?php
+            require __DIR__ . '/../layout/footer.view.php';
+        ?>
     </header>
 
     <main>
@@ -130,45 +123,9 @@
             <input class="submit" type="submit" id="boton_enviar" name="boton_enviar">
         </form>
     </main>
-    <footer>
-        <nav>
-            <ul class="nav_ul footer-social-links">
-                <li>
-                    <a href="#" rel="external" target="_blank" >
-                        <i class="fa fa-instagram"></i>
-                    </a>
-                </li>
-                <li>
-                    <a href="#" rel="external" target="_blank">
-                        <i class="fa fa-facebook"></i>
-                    </a>
-                </li>
-                <li>
-                    <a href="#" rel="external" target="_blank">
-                        <i class="fa fa-twitter"></i>
-                    </a>
-                </li>
-                <li>
-                    <a href="mailto:pawpower@gmail.com"><i class="fa fa-envelope"></i></a>
-                </li>
-            </ul>
-            <ul class="nav_ul footer-links">
-                <li>
-                    <a href="../informacion/contactos.html"><small>Contactos</small></a>
-                </li>
-                <li>
-                    <a href="../informacion/politica_privacidad.html"><small>Políticas de privacidad</small></a>
-                </li>
-                <li>
-                    <a href="../informacion/informacion.html"><small>Acerca de nosotros</small></a>
-                </li>
-                <li>
-                    <a href="../informacion/defensa_consumidor.html"><small>Defensa del consumidor</small></a>
-                </li>
-            </ul>
-        </nav>
-        <small>PawPower 2024 ©</small>
-    </footer>
+    <?php
+        require __DIR__ . '/../layout/footer.view.php';
+    ?>
 </body>
 
 </html>

@@ -8,6 +8,11 @@
             "name" : "Kevin Monti",
             "email": "neielmonti@gmail.com",
             "role": "Creator / Main Developer"
+        },
+        {
+            "name": "Francisco Guerra",
+            "email": "fran03guerra@gmail.com",
+            "role": "Creator / Main Developer"
         }
     ],
     "require": {

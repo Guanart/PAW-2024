@@ -43,11 +43,15 @@ class Controller
                 "name" => "Contactos",
             ],
             [
-                "href" => "/politicas-de-privacidad",
+                "href" => "/politicas_privacidad",
                 "name" => "Politicas de privacidad",
             ],
             [
-                "href" => "/defensa-del-consumidor",
+                "href" => "/acerca_de_nosotros",
+                "name" => "Acerca de Nosotros",
+            ],   
+            [
+                "href" => "/defensa_del_consumidor",
                 "name" => "Defensa del consumidor",
             ],     
         ];
