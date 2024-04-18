@@ -18,7 +18,7 @@
             Ups! Parece haber un error.
         </h2>
         <p>
-            (404) - Pagina no encontrada.
+            (500) - Error interno.
         </p>
     </main>
     

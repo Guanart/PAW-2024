@@ -1,3 +1,5 @@
+<!DOCTYPE html>
+<html lang="ar">
 <?php require "layout/head.view.php"; ?>
 <body>
     <header>
@@ -9,7 +11,7 @@
                 </picture>
             </a>
         </h1>
-        <?php require 'layout/nav.view.php'; ?>
+        <?php require "layout/nav.view.php"; ?>
     </header>
     <main>
         <section class="principal">
@@ -91,7 +93,7 @@
         </section>
     </main>
     
-    <?php require 'layout/footer.view.php' ?>
+    <?php require "layout/footer.view.php" ?>
 </body>
 
 </html>

@@ -1,12 +1,11 @@
 <!DOCTYPE html>
-<html lang="ar">
+<html lang="es">
 
 <head>
     <meta charset="utf-8">
-    <title>Título</title>
+    <title><?= $title ?></title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="/images/favicon.ico" type="image/x-icon">
+    <meta name="description" content="<?= $head_content ?>">
     <link rel="stylesheet" href="/css/style.css">
-    <meta name="description" content="texto">
-    <meta name="keywords" content="key1, key2">
 </head>

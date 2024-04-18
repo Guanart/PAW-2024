@@ -2,10 +2,21 @@
 
 namespace Paw\App\Controllers;
 
-class ErrorControler extends Controller
+class ErrorController extends Controller
 {
     public function notFound() {
         http_response_code(404);
-        require $this->viewsDir . 'not-found.view.php';
+        view('not-found', [
+            'nav' => $this->nav,
+            'footer' => $this->footer,
+        ]);
+    }
+
+    public function internalError() {
+        http_response_code(500);
+        view('internal_error', [
+            'nav' => $this->nav,
+            'footer' => $this->footer,
+        ]);
     }
 }

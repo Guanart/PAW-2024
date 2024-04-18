@@ -1,15 +1,4 @@
-<!DOCTYPE html>
-<html lang="es">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="../images/favicon.ico" type="image/x-icon">
-    <title>Local</title>
-    <meta name="description" content="Esta página muestra el formulario de reserva del local elegido">
-    <link rel="stylesheet" href="../styles/style.css">
-</head>
-
+<?php require __DIR__ . "/../layout/head.view.php"; ?>
 <body>
     <header>
         <h1>
@@ -26,7 +15,8 @@
     </header>
     <main>
         <h3 class="titulo1">Llene los datos de su reserva</h3>
-        <form name="form_local" action="local.php" method="post">
+        <h3> (Sede <?= $local ?>) <h3>
+        <form name="form_local" action="seleccion_mesa" method="post">
             <fieldset>
                 <legend>Horarios Disponibles</legend>
                 <input type="radio" id="hora1" name="horario" value="9:00">

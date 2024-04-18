@@ -21,9 +21,9 @@
             </li>
         </ul>
         <ul class="footer-links">
-            <?php foreach ($this->footer as $item) : ?>
+            <?php foreach ($footer as $item) : ?>
             <li>
-                <a href="<?= $item["href"] ?>" class="<?= ($GLOBALS['request']->REQUEST_URI==$item['href']) ? "selected" : "" ?>">
+                <a href="<?= $item["href"] ?>" class="<?= (request()->url()==$item['href']) ? "selected" : "" ?>">
                     <?= $item["name"] ?>
                 </a>
             </li>
