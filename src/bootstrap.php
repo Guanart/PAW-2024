@@ -7,6 +7,7 @@ use Monolog\Handler\StreamHandler;
 use Dotenv\Dotenv;
 
 use Paw\Core\Config;
+use Paw\Core\Request;
 
 require "routes.php";
 
@@ -19,6 +20,8 @@ $log = new Logger('mvc-app');
 $handler = new StreamHandler($config->get("LOG_PATH"));
 $handler->setLevel($config->get("LOG_LEVEL"));
 $log->pushHandler($handler);
+
+$request = new Request;
 
 //$whoops = new \Whoops\Run;
 //$whoops->pushHandler(new \Whoops\Handler\PrettyHandler);

@@ -31,6 +31,3 @@ $router->get('/login','UsuarioController@login');
 $router->get('/register','UsuarioController@register');
 $router->get('/forgotPassword','UsuarioController@forgotPassword');
 $router->get('/verificationCode','UsuarioController@verificationCode');
-
-$router->get('/not_found','ErrorController@notFound');
-$router->get('/internal_error','ErrorController@internalError');
