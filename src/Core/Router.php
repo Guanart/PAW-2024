@@ -4,9 +4,11 @@ namespace Paw\Core;
 
 use Paw\Core\Exceptions\RouteNotFoundException;
 use Paw\Core\Request;
+use Paw\Core\Traits\Loggeable;
 
 class Router
 {
+    use Loggeable;
     public string $notFound = "/not_found";
     public string $internalError = "/internal_error";
     public function __construct() {
@@ -51,16 +53,15 @@ class Router
         try {
             list($path,$http_method) = $request->route();
             list($controller, $method) = $this->getController($path,$http_method);
-            $this->call($controller,$method);
         }
         catch (RouteNotFoundException $e) {
             list($controller,$method) = $this->getController($this->notFound, "GET");
-            $this->call($controller,$method);
-            //$log->info("Status Code: 404 - Route not Found", ["Path" => $path]);
+            $this->logger->info("Status Code: 404 - Route not Found", ["Path" => $path, "Method" => $http_method]);
         } catch (Exception $e) {
             list($controller,$method) = $this->getController($this->internalError, "GET");
+            $this->logger->error("Status Code:500 - Internal Server Error", ["Error" => $e]);
+        } finally {
             $this->call($controller,$method);
-            //$log->error("Status Code:500 - Internal Server Error", ["Error" => $e]);
         }
     }
 }

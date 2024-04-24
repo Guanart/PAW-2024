@@ -23,6 +23,7 @@ $log->pushHandler($handler);
 
 $request = new Request;
 
+$router->setLogger($log);
 //$whoops = new \Whoops\Run;
 //$whoops->pushHandler(new \Whoops\Handler\PrettyHandler);
 //$whoops->register();

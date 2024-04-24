@@ -10,6 +10,7 @@ class InformacionController extends Controller
             'nav' => $this->nav,
             'footer' => $this->footer,
             'title' => $title,
+            'procesado' => $procesado,
         ]);
     }
 
