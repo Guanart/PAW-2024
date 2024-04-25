@@ -13,8 +13,7 @@ Enlaces adicionales:
 
 ## Instalación y Ejecución (local)
 
-
-* git clone <url-repo>
-* cd project-name
-* composer install cp .env.example .env # Editar el .env con los valores deseados
-* Ejecutar: php -S localhost:8888 -t public/
+* ```git clone <url-repo>```
+* ```cd project-name```
+* ```composer install cp .env.example .env``` # Editar el ```.env``` con los valores deseados
+* Ejecutar: ```php -S localhost:8888 -t public/```
