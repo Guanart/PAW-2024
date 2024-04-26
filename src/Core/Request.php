@@ -9,10 +9,6 @@ class Request {
         $this->data = $_SERVER;
     }
 
-    public function get($key) {
-        return isset($this->data[$key]) ? $this->data[$key] : null;
-    }
-
     public function isPost() {
         return $_SERVER['REQUEST_METHOD'] === 'POST';
     }
@@ -32,11 +28,24 @@ class Request {
         ];
     }
 
-    public function input($key): String {
+    public function input($key = null): String {
         if ($this->httpMethod()=='GET') {
             return htmlentities($_GET[$key]);
         } else {
             return htmlentities($_POST[$key]);
         }
+    }
+
+    // public function all(): Array {
+    //     if ($this->httpMethod() == 'GET') {
+    //         return htmlentities($_GET[$key]);
+    //     } else {
+    //         return htmlentities($_POST[$key]);
+    //     }
+    // }
+
+    public function get($key)
+    {
+        return isset($this->data[$key]) ? $this->data[$key] : null;
     }
 }

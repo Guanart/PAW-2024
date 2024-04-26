@@ -2,14 +2,21 @@
 
 namespace Paw\App\Controllers;
 
+use Paw\Core\Model;
+use Paw\Core\Database\QueryBuilder;
+
 class Controller
 {
+    public ?string $modelName = null;
+
     public array $nav = [];
     public array $footer = [];
     public string $viewsDir;
 
     public function __construct()
-    {
+    {   
+        global $connection, $log;
+
         $this->viewsDir = __DIR__ . "/../views/";
         $this->nav = [
             [
@@ -55,5 +62,17 @@ class Controller
                 "name" => "Defensa del consumidor",
             ],     
         ];
+
+        if (!is_null($this->modelName)) {
+            $qb = new QueryBuilder($connection);
+            $qb->setLogger($log);
+            $model = new $this->modelName;
+            $model->setQueryBuilder($qb);
+            $this->setModel($model);
+        }
+    }
+
+    public function setModel(Model $model) {
+        $this->model = $model;
     }
 }
