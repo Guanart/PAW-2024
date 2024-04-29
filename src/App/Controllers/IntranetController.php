@@ -20,11 +20,9 @@ class IntranetController extends Controller {       // PlatoController?
     }
 
     public function altaPlatoProcesado(Request $request){
-        $formulario = $request->input();   // NOOOOOO
-
-        
+        $data = $request->post();
+        $plato = new Producto();
+        $plato->set($data);
         $this->altaPlato(true);
     }
-
-
 }
