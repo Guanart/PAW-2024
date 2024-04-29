@@ -1,3 +1,5 @@
 vendor/
 logs/
 .env
+.history/
+.vscode/settings.json
