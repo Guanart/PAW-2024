@@ -32,6 +32,8 @@
             <input type="text" id="descripcion" name="descripcion" tabindex="2" required autocomplete="on">
             <label for="precio">Precio</label>
             <input type="number" id="precio" name="precio" tabindex="3" required autocomplete="on">
+            <label for="imagen">Imagen</label>
+            <input type="file" name="imagen">
             <input type="submit" value="Subir" class="submit">
         </form>
         <?php if ($procesado) : ?>

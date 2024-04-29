@@ -5,7 +5,8 @@ namespace Paw\App\Models;
 use Paw\Core\Model;
 use Paw\Core\Exceptions\InvalidValueFormatException;
 
-class Producto extends Model {
+class Producto extends Model
+{
     /**
      * The name of the database table associated with the model.
      *
@@ -20,8 +21,20 @@ class Producto extends Model {
      */
     public $fields = [
         "nombre" => null,
-        "precio" => null
+        "precio" => null,
+        "path_img" => null,
     ];
+
+    /**
+     * Set the path_img field of the model.
+     *
+     * @param string $path_img The path_img value to set.
+     * @return void
+     */
+    public function setPathImg(string $path_img)
+    {
+        $this->fields["path_img"] = $path_img;
+    }
 
     /**
      * Set the nombre field of the model.
@@ -30,7 +43,8 @@ class Producto extends Model {
      * @throws InvalidValueFormatException If the nombre value exceeds 60 characters.
      * @return void
      */
-    public function setNombre(string $nombre) {
+    public function setNombre(string $nombre)
+    {
         if (strlen($nombre) > 60) {
             throw new InvalidValueFormatException("El nombre del producto no debe ser mayor a 60 caracteres");
         }
@@ -44,7 +58,8 @@ class Producto extends Model {
      * @throws InvalidValueFormatException If the descripcion value exceeds 60 characters.
      * @return void
      */
-    public function setDescripcion(string $descripcion) {
+    public function setDescripcion(string $descripcion)
+    {
         if (strlen($descripcion) > 60) {
             throw new InvalidValueFormatException("La descripción del producto no debe ser mayor a 60 caracteres");
         }
@@ -58,7 +73,8 @@ class Producto extends Model {
      * @throws InvalidValueFormatException If the precio value is negative.
      * @return void
      */
-    public function setPrecio(float $precio) {
+    public function setPrecio(float $precio)
+    {
         if ($precio < 0.0) {
             throw new InvalidValueFormatException("El precio debe ser un número positivo");
         }
@@ -70,8 +86,9 @@ class Producto extends Model {
      * @param array $values An associative array of field names and their values.
      * @return void
      */
-    public function set(array $values) {
-        foreach(array_keys($this->fields) as $field) {
+    public function set(array $values)
+    {
+        foreach (array_keys($this->fields) as $field) {
             if (!isset($values[$field])) {
                 continue;
             }
