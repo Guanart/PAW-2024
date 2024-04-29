@@ -31,3 +31,6 @@ $router->get('/login','UsuarioController@login');
 $router->get('/register','UsuarioController@register');
 $router->get('/forgotPassword','UsuarioController@forgotPassword');
 $router->get('/verificationCode','UsuarioController@verificationCode');
+
+$router->get('/alta_plato', 'IntranetController@altaPlato');
+$router->post('/alta_plato', 'IntranetController@altaPlatoProcesado');

@@ -8,6 +8,7 @@ use Dotenv\Dotenv;
 
 use Paw\Core\Config;
 use Paw\Core\Request;
+use Paw\Core\Database\ConnectionBuilder;
 
 require "routes.php";
 
@@ -20,6 +21,10 @@ $log = new Logger('mvc-app');
 $handler = new StreamHandler($config->get("LOG_PATH"));
 $handler->setLevel($config->get("LOG_LEVEL"));
 $log->pushHandler($handler);
+
+$connectionBuilder = new ConnectionBuilder;
+$connectionBuilder->setLogger($log);
+$connection = $connectionBuilder->make($config);
 
 $request = new Request;
 
