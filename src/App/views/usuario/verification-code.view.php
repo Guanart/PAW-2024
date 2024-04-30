@@ -7,7 +7,7 @@
     <link rel="icon" href="../images/favicon.ico" type="image/x-icon">
     <title>Verificar cuenta</title>
     <meta name="description" content="Aquí debes ingresar el codigo de verificación, para recuperar tu cuenta">
-    <link rel="stylesheet" href="../styles/style.css">
+    <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>

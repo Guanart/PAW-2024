@@ -7,7 +7,7 @@
     <link rel="icon" href="../images/favicon.ico" type="image/x-icon">
     <title>Recuperar contraseña</title>
     <meta name="description" content="Aquí puedes recuperar tu cuenta en caso de que hayas olvidado tu contraseña">
-    <link rel="stylesheet" href="../styles/style.css">
+    <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
@@ -25,7 +25,7 @@
         ?>
     </header>
     <main>
-        <form name="form_forgot-password" action="forgot-password.php" method="POST">
+        <form name="form_forgot-password" action="/forgot-password" method="POST">
             <label for="mail">Correo electrónico</label>
             <input type="email" id="mail" name="email" required autofocus>
             <input type="submit" value="Enviar código" class="submit">

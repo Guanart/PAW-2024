@@ -1,6 +1,6 @@
 <?php
 
-namespace Paw\Core;
+namespace Paw\App\Repositories;
 
 use Paw\Core\Database\QueryBuilder;
 use Paw\Core\Model;
@@ -10,18 +10,21 @@ use Paw\Core\Model;
  */
 abstract class Repository
 {
-    protected Model $model;
+    protected $model;
     protected QueryBuilder $queryBuilder;
 
+    
     /**
      * Create a new Repository instance.
      *
      * @param QueryBuilder $queryBuilder The query builder instance.
      */
+    /*
     public function __construct(QueryBuilder $queryBuilder)
     {
         $this->queryBuilder = $queryBuilder;
     }
+    */
 
     /**
      * Get the model associated with the repository.

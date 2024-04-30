@@ -34,8 +34,8 @@
             <input type="number" id="precio" name="precio" tabindex="3" required autocomplete="on">
             <input type="submit" value="Subir" class="submit">
         </form>
-        <?php if ($procesado) : ?>
-            <h3> Su plato fue procesada con exito</h3>
+        <?php if ($post) : ?>
+            <h3><?= $mensaje ?></h3>
         <?php endif ?>
     </main>
     <?php

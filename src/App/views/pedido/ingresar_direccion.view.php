@@ -36,6 +36,8 @@
                     <option value="Gral. Rodriguez">Gral. Rodriguez</option>
                     <option value="Otro">Otro</option>
                 </select>
+                <label for="calle">Altura</label>
+                <input id="calle" name="calle" type="text" required>
                 <label for="altura">Altura</label>
                 <input id="altura" name="altura" type="text" required>
                 <label for="departamento">Departamento</label>

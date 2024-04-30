@@ -6,7 +6,6 @@ class PedidoController extends Controller
 {
     public function hacerPedido() {
         $title = "Hacer Pedido";
-        require $this->viewsDir . 'pedido/hacer_pedido.view.php';
         view('pedido/hacer_pedido', [
             'nav' => $this->nav,
             'footer' => $this->footer,

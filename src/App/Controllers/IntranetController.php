@@ -5,33 +5,40 @@ namespace Paw\App\Controllers;
 use Paw\App\Controllers\Controller;
 use Paw\Core\Request;
 use Paw\App\Repositories\ProductoRepository;
-
-use Exception;
+use Paw\Core\Exceptions\InvalidValueFormatException;
 
 class IntranetController extends Controller {
+    
     public ?string $repositoryName = ProductoRepository::class;
-    public ProductoRepository $repository;
+    public $repository;
+    
 
-    public function altaPlato($procesado = false) {
+    //public ?string $modelName = Producto::class;
+
+    public function altaPlato($post = false, string $mensaje = "") {
         $title = "Contactos";
         view('intranet/alta_plato', [
             'nav' => $this->nav,
             'footer' => $this->footer,
             'title' => $title,
-            'procesado' => $procesado,
+            'post' => $post,
+            'mensaje' => $mensaje
         ]);
     }
 
     public function altaPlatoProcesado(Request $request) {
+        $mensaje = "";
         if ($request->hasBodyParams(["nombre", "descripcion", "precio"])) {
             try {
                 $plato = $this->repository->create($request->post());
-                $this->altaPlato(true);
-            } catch (Exception $e) {
-                // Mensaje a la vista
+                $mensaje = "Su plato fue procesado y subido con éxito";
+                //$plato = new Producto($request->post());
+            } catch (InvalidValueFormatException $e) {
+                $mensaje = $e->getMessage();  // Hay que manejar una exception específica nuestra
             }
         } else {
-            // Mensaje a la vista
+            $mensaje = "No se encontraron los parámetros necesarios";
         }
+        $this->altaPlato(true, $mensaje);
     }
 }

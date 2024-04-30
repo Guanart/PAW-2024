@@ -2,13 +2,21 @@
 
 namespace Paw\App\Controllers;
 
-use Paw\Core\Repository;
+
+use Paw\App\Repositories\Repository;
 use Paw\Core\Database\QueryBuilder;
 
+
+use Paw\Core\Model; 
+
 class Controller
-{
+{  
+    
     public ?string $repositoryName = null;
-    public Repository $repository;
+    public $repository;
+    
+
+    //public ?string $modelName = null;
 
     public string $viewsDir = __DIR__ . "/../views/";
 
@@ -68,14 +76,15 @@ class Controller
             $qb->setLogger($log);
 
             $repository = new $this->repositoryName;
-            $repository->setQueryBuilder($qb);
+            //$repository->setQueryBuilder($qb);
             $repository->setModel();
             
             $this->setRepository($repository);
         }
     }
-
+    
     public function setRepository(Repository $repository) {
         $this->repository = $repository;
     }
+    
 }

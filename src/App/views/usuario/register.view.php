@@ -7,7 +7,7 @@
     <link rel="icon" href="../images/favicon.ico" type="image/x-icon">
     <title>Registro</title>
     <meta name="description" content="Página de registro de usuarios">
-    <link rel="stylesheet" href="../styles/style.css">
+    <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
@@ -35,7 +35,7 @@
             <label for="repeat-password">Confirmar contraseña</label>
             <input type="password" id="repeat-password" name="repeat-password" tabindex="4" required>
             <input type="submit" value="Crear cuenta" class="submit">
-            <a href="./login.html">¿Ya tenés cuenta? Ingresá aca</a>
+            <a href="/login">¿Ya tenés cuenta? Ingresá aca</a>
         </form>
     </main>
     <?php
