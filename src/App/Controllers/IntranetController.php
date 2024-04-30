@@ -10,7 +10,7 @@ use Exception;
 
 class IntranetController extends Controller {
     public ?string $repositoryName = ProductoRepository::class;
-    public ProductoRepository $repository;
+    public $repository;
 
     public function altaPlato($procesado = false) {
         $title = "Contactos";
