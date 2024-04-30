@@ -11,7 +11,7 @@ class Producto extends Model {
      *
      * @var string
      */
-    public $table = "producto";
+    static public $table = "producto";
 
     /**
      * The fields of the model and their initial values.
