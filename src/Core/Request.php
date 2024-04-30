@@ -59,4 +59,14 @@ class Request
         // return isset($this->data[$key]) ? $this->data[$key] : null;
         return isset($_GET[$key]) ? $_GET[$key] : null;
     }
+
+    // Devuelve true si todos los parámetros que se le pasan, se encuentran en una petición POST.
+    public function hasBodyParams(array $params): bool {
+        foreach ($params as $param) {
+            if (!isset($_POST[$param])) {
+                return false;
+            }
+        }
+        return true;
+    }
 }

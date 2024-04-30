@@ -5,6 +5,7 @@ namespace Paw\App\Controllers;
 use Paw\App\Controllers\Controller;
 use Paw\App\Models\Producto;
 use Paw\Core\Request;
+use Exception;
 
 class IntranetController extends Controller {       // PlatoController?
     public ?string $modelName = Producto::class;
@@ -19,10 +20,16 @@ class IntranetController extends Controller {       // PlatoController?
         ]);
     }
 
-    public function altaPlatoProcesado(Request $request){
-        $data = $request->post();
-        $plato = new Producto();
-        $plato->set($data);
-        $this->altaPlato(true);
+    public function altaPlatoProcesado(Request $request) {
+        if ($request->hasBodyParams(["nombre", "descripcion", "precio"])) {
+            try {
+                $plato = new Producto($request->post());
+                $this->altaPlato(true);
+            } catch (Exception $e) {
+                // Mensaje a la vista
+            }
+        } else {
+            // Mensaje a la vista
+        }
     }
 }

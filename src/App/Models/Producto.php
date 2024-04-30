@@ -20,8 +20,13 @@ class Producto extends Model {
      */
     public $fields = [
         "nombre" => null,
+        "descripcion" => null,
         "precio" => null
     ];
+
+    public function __construct(array $values) {
+        $this->set($values);
+    }
 
     /**
      * Set the nombre field of the model.
