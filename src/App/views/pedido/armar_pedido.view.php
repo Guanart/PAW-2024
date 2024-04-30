@@ -39,8 +39,8 @@
                     </picture>
                     <h4>Hamburguesa 1</h4>
                     <p>Descripción 1</p>
-                    <label for="cant_hamburguesa1">
-                        Cantidad:<input id="cant_hamburguesa1" name="cant_hamburguesa1" type="number" value="0" min="0" max="20" step="1.0">
+                    <label for="hamburguesa1">
+                        Cantidad:<input id="hamburguesa1" name="hamburguesa1" type="number" value="0" min="0" max="20" step="1.0">
                     </label>
                     
                 </article>
@@ -54,8 +54,8 @@
                     </picture>
                     <h4>Hamburguesa 2</h4>
                     <p>Descripción 2</p>
-                    <label for="cant_hamburguesa2">
-                        Cantidad:<input id="cant_hamburguesa2" name="cant_hamburguesa2" type="number" value="0" min="0" max="20" step="1.0">
+                    <label for="hamburguesa2">
+                        Cantidad:<input id="hamburguesa2" name="hamburguesa2" type="number" value="0" min="0" max="20" step="1.0">
                     </label>
                     
                 </article>
@@ -69,8 +69,8 @@
                     </picture>
                     <h4>Hamburguesa 3</h4>
                     <p>Descripción 3</p>
-                    <label for="cant_hamburguesa3">
-                        Cantidad:<input id="cant_hamburguesa3" name="cant_hamburguesa3" type="number" value="0" min="0" max="20" step="1.0">
+                    <label for="hamburguesa3">
+                        Cantidad:<input id="hamburguesa3" name="hamburguesa3" type="number" value="0" min="0" max="20" step="1.0">
                     </label>
                     
                 </article>
@@ -86,8 +86,8 @@
                     </picture>
                     <h4>Otro producto 1</h4>
                     <p>Descripción 1</p>
-                    <label for="cant_otroproducto1">
-                        Cantidad: <input id="cant_otroproducto1" name="cant_otroproducto1" type="number" value="0" min="0" max="20" step="1.0">
+                    <label for="otroproducto1">
+                        Cantidad: <input id="otroproducto1" name="otroproducto1" type="number" value="0" min="0" max="20" step="1.0">
                     </label>
                 </article>
 
@@ -100,8 +100,8 @@
                     </picture>
                     <h4>Otro producto 2</h4>
                     <p>Descripción 2</p>
-                    <label for="cant_otroproducto2">
-                        Cantidad: <input id="cant_otroproducto2" name="cant_otroproducto2" type="number" value="0" min="0" max="20" step="1.0">
+                    <label for="otroproducto2">
+                        Cantidad: <input id="otroproducto2" name="otroproducto2" type="number" value="0" min="0" max="20" step="1.0">
                     </label>
                 </article>
 
@@ -114,8 +114,8 @@
                     </picture>
                     <h4>Otro producto 3</h4>
                     <p>Descripción 3</p>
-                    <label for="cant_otroproducto3">
-                        Cantidad: <input id="cant_otroproducto3" name="cant_otroproducto3" type="number" value="0" min="0" max="20" step="1.0">
+                    <label for="otroproducto3">
+                        Cantidad: <input id="otroproducto3" name="otroproducto3" type="number" value="0" min="0" max="20" step="1.0">
                     </label>
                 </article>
             </section>

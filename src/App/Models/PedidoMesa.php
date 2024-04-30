@@ -5,7 +5,7 @@ namespace Paw\App\Models;
 use Paw\Core\Model;
 use Paw\Core\Exceptions\InvalidValueFormatException;
 
-class Pedido extends Model {
+class PedidoMesa extends Model {
     /**
      * The name of the database table associated with the model.
      *

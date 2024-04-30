@@ -13,6 +13,10 @@ class PedidoController extends Controller
         ]);
     }
 
+    public function hacerPedidoFormulario(){
+        
+    }
+
     public function armarPedido(){
         $title = "Armar Pedido";
         view('pedido/armar_pedido', [
