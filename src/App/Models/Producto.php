@@ -68,20 +68,4 @@ class Producto extends Model {
             throw new InvalidValueFormatException("El precio debe ser un número positivo");
         }
     }
-
-    /**
-     * Set multiple fields of the model using an associative array.
-     *
-     * @param array $values An associative array of field names and their values.
-     * @return void
-     */
-    public function set(array $values) {
-        foreach(array_keys($this->fields) as $field) {
-            if (!isset($values[$field])) {
-                continue;
-            }
-            $method = "set" . ucfirst($field);
-            $this->$method($values[$field]);
-        }
-    }
 }

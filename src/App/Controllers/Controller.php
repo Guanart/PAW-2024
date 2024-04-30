@@ -69,6 +69,7 @@ class Controller
 
             $repository = new $this->repositoryName;
             $repository->setQueryBuilder($qb);
+            $repository->setModel();
             
             $this->setRepository($repository);
         }

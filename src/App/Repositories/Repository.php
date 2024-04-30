@@ -81,7 +81,9 @@ abstract class Repository
      */
     public function create(array $data)
     {
-        return $this->queryBuilder->table($this->table())->insert($data);
+        $model = new $this->model($data);
+        return $model;
+        // TODO: $this->queryBuilder->table($this->table())->insert($data);
     }
 
     /**
