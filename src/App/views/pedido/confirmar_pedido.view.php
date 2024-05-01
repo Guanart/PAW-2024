@@ -1,14 +1,5 @@
-<!DOCTYPE html>
-<html lang="es">
+<?php require __DIR__ . "/../layout/head.view.php"; ?>
 
-<head>
-    <meta charset="UTF-8">
-    <title>Confirmar pedido</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="../images/favicon.ico" type="image/x-icon">
-    <meta name="description" content="Pagina de confirmacion del pedido">
-    <link rel="stylesheet" href="css/style.css">
-</head>
 
 <body>
     <header>
@@ -21,7 +12,7 @@
             </a>
         </h1>
         <?php
-            require __DIR__ . '/../layout/nav.view.php';
+        require __DIR__ . '/../layout/nav.view.php';
         ?>
     </header>
     <main>
@@ -54,7 +45,7 @@
         </form>
     </main>
     <?php
-        require __DIR__ . '/../layout/footer.view.php';
+    require __DIR__ . '/../layout/footer.view.php';
     ?>
 </body>
 

@@ -71,10 +71,8 @@ class Request
     // Devuelve true si todos los parámetros que se le pasan, se encuentran en una petición POST.
     public function hasBodyParams(array $params): bool
     {
-        var_dump($params);
         foreach ($params as $param) {
             if (!isset($_POST[$param])) {
-                var_dump($param);die;
                 return false;
             }
         }
@@ -86,8 +84,10 @@ class Request
         [1]=> string(11) "descripcion" 
         [2]=> string(6) "precio" 
         [3]=> string(6) "imagen" } 
-        
+
     string(6) "imagen"
+
+    $_POST no tiene la imagen, parece ser eso...
 
     */
 }

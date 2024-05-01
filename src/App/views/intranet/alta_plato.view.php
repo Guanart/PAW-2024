@@ -1,14 +1,4 @@
-<!DOCTYPE html>
-<html lang="ar">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="../images/favicon.ico" type="image/x-icon">
-    <title>Login</title>
-    <meta name="description" content="Página para dar de alta un plato">
-    <link rel="stylesheet" href="/css/style.css">
-</head>
+<?php require __DIR__ . "/../layout/head.view.php"; ?>
 
 <body>
     <header>
@@ -21,7 +11,7 @@
             </a>
         </h1>
         <?php
-            require __DIR__ . '/../layout/nav.view.php';
+        require __DIR__ . '/../layout/nav.view.php';
         ?>
     </header>
     <main>
@@ -31,9 +21,9 @@
             <label for="descripcion">Descripción</label>
             <input type="text" id="descripcion" name="descripcion" tabindex="2" required autocomplete="on">
             <label for="precio">Precio</label>
-            <input type="number" id="precio" name="precio" tabindex="3" required autocomplete="on">
-            <label for="imagen">Imagen</label>
-            <input type="file" id="imagen" name="imagen" accept="image/jpeg, image/png" required>:
+            <input type="number" id="precio" name="precio" min="0" max="999999" tabindex="3" required autocomplete="on">
+            <input class="inputfile" type="file" id="imagen" name="imagen" accept="image/jpeg, image/png" required data-multiple-caption="{count} files selected" multiple>
+            <label class="submit" for="imagen">Subir Imagen</label>
             <input type="submit" value="Subir" class="submit">
         </form>
         <?php if ($post) : ?>
@@ -41,8 +31,27 @@
         <?php endif ?>
     </main>
     <?php
-        require __DIR__ . '/../layout/footer.view.php';
+    require __DIR__ . '/../layout/footer.view.php';
     ?>
+    <script>
+        var inputs = document.querySelectorAll('.inputfile');
+        Array.prototype.forEach.call(inputs, function(input) {
+            var label = input.nextElementSibling,
+                labelVal = label.innerHTML;
+
+            input.addEventListener('change', function(e) {
+                var fileName = '';
+                if (this.files && this.files.length > 1)
+                    fileName = (this.getAttribute('data-multiple-caption') || '').replace('{count}', this.files.length);
+                else
+                    fileName = e.target.value.split('\\').pop();
+                if (fileName)
+                    label.querySelector('span').innerHTML = fileName;
+                else
+                    label.innerHTML = labelVal;
+            });
+        });
+    </script>
 </body>
 
 </html>

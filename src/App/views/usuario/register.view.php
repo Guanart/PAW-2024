@@ -1,14 +1,4 @@
-<!DOCTYPE html>
-<html lang="ar">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="../images/favicon.ico" type="image/x-icon">
-    <title>Registro</title>
-    <meta name="description" content="Página de registro de usuarios">
-    <link rel="stylesheet" href="css/style.css">
-</head>
+<?php require __DIR__ . "/../layout/head.view.php"; ?>
 
 <body>
     <header>
@@ -21,7 +11,7 @@
             </a>
         </h1>
         <?php
-            require __DIR__ . '/../layout/nav.view.php';
+        require __DIR__ . '/../layout/nav.view.php';
         ?>
     </header>
     <main>
@@ -46,7 +36,7 @@
         <?php endif ?>
     </main>
     <?php
-        require __DIR__ . '/../layout/footer.view.php';
+    require __DIR__ . '/../layout/footer.view.php';
     ?>
 </body>
 

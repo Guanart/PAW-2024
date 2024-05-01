@@ -1,13 +1,5 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="../images/favicon.ico" type="image/x-icon">
-    <title>Pedido registrado</title>
-    <meta name="description" content="Confirmación de que el pedido fue registrado">
-    <link rel="stylesheet" href="../styles/style.css">
-</head>
+<?php require __DIR__ . "/../layout/head.view.php"; ?>
+
 <body>
     <header>
         <h1>
@@ -19,15 +11,18 @@
             </a>
         </h1>
         <?php
-            require __DIR__ . '/../layout/nav.view.php';
+        require __DIR__ . '/../layout/nav.view.php';
         ?>
     </header>
     <main>
         <h2>Pedido registrado!</h2>
-        <a href="../" class="link"><p>Volver al inicio</p></a>
+        <a href="../" class="link">
+            <p>Volver al inicio</p>
+        </a>
     </main>
     <?php
-        require __DIR__ . '/../layout/footer.view.php';
+    require __DIR__ . '/../layout/footer.view.php';
     ?>
 </body>
+
 </html>

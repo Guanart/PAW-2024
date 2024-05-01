@@ -19,7 +19,7 @@ class IntranetController extends Controller {
     //public ?string $modelName = Producto::class;
 
     public function altaPlato($post = false, string $mensaje = "") {
-        $title = "Contactos";
+        $title = "Alta plato";
         view('intranet/alta_plato', [
             'nav' => $this->nav,
             'footer' => $this->footer,
@@ -41,32 +41,29 @@ class IntranetController extends Controller {
     
     public function altaPlatoProcesado(Request $request) {
         $data = $request->post();
-        $img = $_FILES["imagen"];   // Esto se puede hacer mas lindo despues
-        /*
-        var_dump($request->hasBodyParams(["nombre", "descripcion", "precio", "imagen"]) ? "true" : "false");
-        var_dump(isset($img) ? "true" : "false");
-        var_dump(is_uploaded_file($img['tmp_name']) ? "true" : "false");
-        die;
-        */
-
-        //ME DA ESTO:   string(5) "false" string(4) "true" string(4) "true"
-        if ($request->hasBodyParams(["nombre", "descripcion", "precio", "imagen"])
-        && isset($img) && is_uploaded_file($img['tmp_name'])) {    
-            try {
-                // DUDA: cómo hago que sea una operación atómica? O sea, que si falla algo, no se haga nada
-                $data['path_img'] = $this->saveImage($img);
-                $plato = $this->repository->create($data);
-                $mensaje = "Su plato fue procesado y subido con éxito";
-            } catch (InvalidImageException $e) {  // Esta seria la exception de la imagen
-                $mensaje = "La imágen no es válida" .  $e->getMessage();
-            } catch (InvalidValueFormatException $e) { // Esta la exception de cada campo
-                $mensaje = $e->getMessage();
+        $img = $_FILES["imagen"];   // Esto se puede hacer mas lindo después
+        
+        if ($img["error"] === 0) {
+            if ($request->hasBodyParams(["nombre", "descripcion", "precio"])
+            && isset($img) && is_uploaded_file($img['tmp_name'])) {
+                try {
+                    // DUDA: cómo hago que sea una operación atómica? O sea, que si falla algo, no se haga nada
+                    $data['path_img'] = $this->saveImage($img);
+                    $plato = $this->repository->create($data);
+                    $mensaje = "Su plato fue procesado y subido con éxito";
+                } catch (InvalidImageException $e) {  // Esta seria la exception de la imagen
+                    $mensaje = "La imágen no es válida. " .  $e->getMessage();
+                } catch (InvalidValueFormatException $e) { // Esta la exception de cada campo
+                    $mensaje = $e->getMessage();
+                }
+            } else {
+                $mensaje = "Complete todos los campos";
             }
         } else {
-            $mensaje = "Complete todos los campos";
+            $mensaje = "Error al subir la imagen";
         }
         $this->altaPlato(true, $mensaje);
-    }
+    }  
 
 
     private function saveImage(array $img): string

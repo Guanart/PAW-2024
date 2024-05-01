@@ -1,13 +1,5 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="../images/favicon.ico" type="image/x-icon">
-    <title>Ingresar dirección</title>
-    <meta name="description" content="Aquí debes ingresar la dirección a la que sera enviado tu pedido">
-    <link rel="stylesheet" href="../styles/style.css">
-</head>
+<?php require __DIR__ . "/../layout/head.view.php"; ?>
+
 <body>
     <header>
         <h1>
@@ -19,13 +11,13 @@
             </a>
         </h1>
         <?php
-            require __DIR__ . '/../layout/nav.view.php';
+        require __DIR__ . '/../layout/nav.view.php';
         ?>
     </header>
-    
+
     <main>
         <section>
-            <form name="form_ingresar_direccion" action="ingresar_direccion.php" method="post">
+            <form name="form_ingresar_direccion" action="/ingresar_direccion" method="post">
                 <label for="localidad">Localidad</label>
                 <!-- <input id="localidad" name="localidad" type="com" required> -->
                 <select name="localidad" id="localidad">
@@ -50,7 +42,8 @@
     </main>
 
     <?php
-        require __DIR__ . '/../layout/footer.view.php';
+    require __DIR__ . '/../layout/footer.view.php';
     ?>
 </body>
+
 </html>

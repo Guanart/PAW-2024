@@ -1,14 +1,4 @@
-<!DOCTYPE html>
-<html lang="es">
-
-<head>
-    <meta charset="utf-8">
-    <title>Información</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="../images/favicon.ico" type="image/x-icon">
-    <meta name="description" content="Informacion sobre nosotros">
-    <link rel="stylesheet" href="../css/style.css">
-</head>
+<?php require __DIR__ . "/../layout/head.view.php"; ?>
 
 <body>
     <header>
@@ -21,8 +11,8 @@
             </a>
         </h1>
         <?php
-    require __DIR__ . '/../layout/nav.view.php';
-    ?>
+        require __DIR__ . '/../layout/nav.view.php';
+        ?>
     </header>
     <main>
         <section class="informacion">

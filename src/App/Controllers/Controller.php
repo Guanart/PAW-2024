@@ -45,6 +45,10 @@ class Controller
             "href" => "/login",
             "name" => "Login",
         ],
+        [
+            "href" => "/alta_plato",
+            "name" => "Alta plato (admin)",
+        ]
     ];
 
     public array $footer = [

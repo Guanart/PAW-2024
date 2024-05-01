@@ -8,17 +8,17 @@ class ImageValidator
     static public function validateImage($file)
     {
         // Validar el tamaño de la imagen
-        $maxSize = 5 * 1024 * 1024; // 5MB
+        $maxSize = 1 * 1024 * 1024; // 1MB
         if ($file['size'] > $maxSize) {
             throw new InvalidImageException('El tamaño de la imagen excede el límite permitido. Solo se permite hasta 1 MB'); 
         }
 
         // Validar que la extension del archivo sea una imagen
-        $allowedFormats = ['png', 'jpeg', 'jpg', 'gif'];        
+        $allowedFormats = ['image/png', 'image/jpeg', 'image/jpg'];        
         $fileInfo = finfo_open(FILEINFO_MIME_TYPE);
         $mimeType = finfo_file($fileInfo, $file['tmp_name']);
         finfo_close($fileInfo);
-
+        
         if (!in_array($mimeType, $allowedFormats)) {
             throw new InvalidImageException('El archivo subido no tiene un formato de imagen aceptado. Solo se permite PNG Y JPEG.');
         }
