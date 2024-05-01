@@ -11,18 +11,18 @@ class PedidoLlevar extends Model {
      *
      * @var string
      */
-    static public $table = "pedido";
+    static public string $table = "pedido";
 
     /**
      * The fields of the model and their initial values.
      *
      * @var array
      */
-    public $fields = [];
+    public array $fields = [];
 
-    public $extras = [];
+    public array $extras = [];
 
-    public $productos = [];
+    public array $productos = [];
 
     public function __construct(array $values) {
         $this->fields = [
@@ -33,9 +33,7 @@ class PedidoLlevar extends Model {
             "input_info_adicional" => null,
         ];
         $this->setPedidos($values);
-        $this->productos = $values;
-        printf($this->productos);
-        printf($this->fields);
+        $this->productos = $values; 
     }
 
     public function setLocal(string $local) {
