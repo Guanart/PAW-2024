@@ -18,13 +18,11 @@ class PedidoDelivery extends Model {
      *
      * @var array
      */
-    public $fields = [];
-
     public $direccion = [];
 
     public $productos = [];
 
-    public function __construct(array $values, array $directions, array $products) {
+    public function __construct(array $values) {
         $this->direccion = [
             "Localidad" => null,
             "altura" => null,
@@ -32,13 +30,9 @@ class PedidoDelivery extends Model {
             "calle" => null,
             "descripcion" => null
         ];
-        $this->fields = [
-            "local" => null,
-            "mesa" => null,
-        ];
-        $this->productos = $products;
-        $this->set($directions);
-        $this->set($values);
+        
+        $this->setPedidos($values);
+        $this->productos = $values;
     }
 
     /**
@@ -84,16 +78,10 @@ class PedidoDelivery extends Model {
         }
         $this->direccion["calle"] = $calle;
     }
-    public function setLocal(string $local) {
-        // if (strlen($local) > 60) {
-        //     throw new InvalidValueFormatException("El nombre del producto no debe ser mayor a 60 caracteres");
-        // }
-        $this->fields["local"] = $local;
-    }
-    public function setMesa(string $mesa) {
-        if (strlen($mesa) > 60) {
-            throw new InvalidValueFormatException("El nombre del producto no debe ser mayor a 60 caracteres");
+    public function setProductos(Array $productos) {
+        if (count($productos) < 1) {
+            throw new InvalidValueFormatException("No hay productos");
         }
-        $this->fields["mesa"] = $mesa;
+        $this->productos = $productos;
     }
 }

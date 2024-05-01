@@ -15,9 +15,13 @@ $router->post('/contactos','InformacionController@contactosFormulario');
 
 $router->get('/hacer_pedido','PedidoController@hacerPedido');
 $router->get('/armar_pedido','PedidoController@armarPedido');
+$router->post('/armar_pedido','PedidoController@armarPedidoFormulario');
 $router->get('/confirmar_pedido','PedidoController@confirmarPedido');
+$router->post('/confirmar_pedido','PedidoController@confirmarPedidoFormulario');
 $router->get('/elegir_local','PedidoController@elegirLocal');
+$router->post('/elegir_local','PedidoController@elegirLocalFormulario');
 $router->get('/ingresar_direccion','PedidoController@ingresarDireccion');
+$router->post("/ingresar_direccion", "PedidoController@ingresarDireccionFormulario");
 $router->get('/fin_pedido','PedidoController@finPedido');
 $router->get('/seleccion_mesa_qr','PedidoController@seleccionarMesa');
 

@@ -28,6 +28,9 @@
         <h2>
             Escanea el codigo QR de tu mesa!
         </h2>
+        <?php if ($mostrarPost) : ?>
+                <h3><?= $mensaje ?></h3>
+        <?php endif ?>
         <form id="formulario">
             <label for="codigo">Código</label>
             <input type="text" id="codigo" placeholder="Escribe el código acá">

@@ -6,7 +6,7 @@
     <link rel="icon" href="../images/favicon.ico" type="image/x-icon">
     <title>Pedido registrado</title>
     <meta name="description" content="Confirmación de que el pedido fue registrado">
-    <link rel="stylesheet" href="../styles/style.css">
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
     <header>

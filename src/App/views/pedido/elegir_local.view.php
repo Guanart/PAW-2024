@@ -26,7 +26,10 @@
     </header>
 
     <main class="main_elegir_local">
-        <form name="form_elegir_local" action="armar_pedido" method="post">
+        <?php if ($mostrarPost) : ?>
+            <h3><?= $mensaje ?></h3>
+        <?php endif ?>
+        <form name="form_elegir_local" action="elegir_local" method="post">
             <legend>Elegí el local</legend>
             <fieldset>
                 <input id="input_moreno" name="localidad" type="radio" value="Moreno">

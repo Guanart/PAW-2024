@@ -25,6 +25,9 @@
         ?>
     </header>
     <main>
+        <?php if ($mostrarPost) : ?>
+            <h3><?= $mensaje ?></h3>
+        <?php endif ?>
         <section>
             <h2>Confirme su pedido</h2>
             <article class="confirmar_pedido">
@@ -43,7 +46,10 @@
                 <p>Cantidad: 3</p>
             </article>
         </section>
-        <form name="form_confirmar_pedido" action="confirmar_pedido.php" method="post">
+        <form name="form_confirmar_pedido" action="/confirmar_pedido" method="post">
+                <?php foreach ($formularioDatos as $nombre => $valor): ?>
+                    <input type="hidden" name="<?php echo $nombre; ?>" value="<?php echo $valor; ?>">
+                <?php endforeach; ?>
             <fieldset>
                 <label for="input_nombre">A nombre de:</label>
                 <input id="input_nombre" name="input_nombre" type="text" placeholder="Ej: Francisco Guerra">

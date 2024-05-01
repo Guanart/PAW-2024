@@ -21,13 +21,20 @@
             </a>
         </h1>
         <?php
-            require __DIR__ . '/../layout/footer.view.php';
+            require __DIR__ . '/../layout/nav.view.php';
         ?>
     </header>
 
     <main>
         <h2 class="h2_index">Arme su pedido</h2>
-        <form name="form_armar_pedido" action="armar_pedido.php" method="post">
+        <form name="form_armar_pedido" action="/armar_pedido" method="post">
+            <section>
+                <!-- Campos ocultos para enviar los datos adicionales -->
+                <?php foreach ($formularioDatos as $nombre => $valor): ?>
+                    <input type="hidden" name="<?php echo $nombre; ?>" id="<?php echo $nombre; ?>" value="<?php echo $valor; ?>">
+                <?php endforeach; ?>
+                <input type="hidden" name="tipo" id="tipo" value="<?php echo $tipo; ?>">
+            </section>
             <section>
                 <h3>Hamburguesas</h3>
                 <article class="armar_pedido">
