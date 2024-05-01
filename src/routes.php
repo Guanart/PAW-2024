@@ -29,6 +29,7 @@ $router->get('/local','ReservaController@local');
 
 $router->get('/login','UsuarioController@login');
 $router->get('/register','UsuarioController@register');
+$router->post('/register','UsuarioController@registerFormulario');
 $router->get('/forgotPassword','UsuarioController@forgotPassword');
 $router->get('/verificationCode','UsuarioController@verificationCode');
 
