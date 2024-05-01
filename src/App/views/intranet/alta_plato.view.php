@@ -25,13 +25,15 @@
         ?>
     </header>
     <main>
-        <form name="alta_plato" action="/alta_plato" method="POST">
+        <form name="alta_plato" action="/alta_plato" method="POST" enctype="multipart/form-data">
             <label for="nombre">Nombre del plato</label>
             <input type="text" id="nombre" name="nombre" tabindex="1" required autocomplete="on" autofocus>
             <label for="descripcion">Descripción</label>
             <input type="text" id="descripcion" name="descripcion" tabindex="2" required autocomplete="on">
             <label for="precio">Precio</label>
             <input type="number" id="precio" name="precio" tabindex="3" required autocomplete="on">
+            <label for="imagen">Imagen</label>
+            <input type="file" id="imagen" name="imagen" accept="image/jpeg, image/png" required>:
             <input type="submit" value="Subir" class="submit">
         </form>
         <?php if ($post) : ?>
