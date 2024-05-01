@@ -33,8 +33,9 @@ $router->get('/local','ReservaController@local');
 
 $router->get('/login','UsuarioController@login');
 $router->get('/register','UsuarioController@register');
-$router->get('/forgotPassword','UsuarioController@forgotPassword');
-$router->get('/verificationCode','UsuarioController@verificationCode');
+$router->post('/register','UsuarioController@registerFormulario');
+$router->get('/forgot_password','UsuarioController@forgotPassword');
+$router->get('/verification_code','UsuarioController@verificationCode');
 
 $router->get('/alta_plato', 'IntranetController@altaPlato');
 $router->post('/alta_plato', 'IntranetController@altaPlatoProcesado');

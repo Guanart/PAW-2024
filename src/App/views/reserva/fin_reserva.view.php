@@ -1,5 +1,4 @@
 <?php require __DIR__ . "/../layout/head.view.php"; ?>
-
 <body>
     <header>
         <h1>
@@ -14,17 +13,11 @@
         require __DIR__ . '/../layout/nav.view.php';
         ?>
     </header>
-
     <main>
-        <section class="informacion">
-            <h2>
-                Política de privacidad
-            </h2>
-            <p>
-                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Obcaecati exercitationem quas, reprehenderit dicta velit ratione esse consequatur deleniti voluptatem, itaque harum reiciendis culpa iure illo aspernatur architecto rerum eveniet recusandae.
-            </p>
-        </section>
+        <h3 class="titulo1">Reserva registrada!</h3>
+        <a href="../" class="link">Volver al inicio</a>
     </main>
+
     <?php
     require __DIR__ . '/../layout/footer.view.php';
     ?>

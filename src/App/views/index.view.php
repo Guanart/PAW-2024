@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="ar">
 <?php require "layout/head.view.php"; ?>
+
 <body>
     <header>
         <h1>
@@ -34,7 +35,7 @@
                 <h3>nuevo combo 2</h3>
                 <p>Lorem Ipsum</p>
             </article>
-            <a href="./pedido/hacer_pedido.html" class="button">HACE TU PEDIDO YA</a>
+            <a href="/hacer_pedido" class="button">HACE TU PEDIDO YA</a>
         </section>
         <section>
             <h2>
@@ -43,9 +44,9 @@
             <article>
                 <picture>
                     <source srcset="../images/foto-hamburguesa-5-L.png" media="(min-width: 1024px)">
-                    <source srcset="../images/foto-hamburguesa-5-M.png" media="(min-width: 481px) and (max-width: 1023px)"> 
+                    <source srcset="../images/foto-hamburguesa-5-M.png" media="(min-width: 481px) and (max-width: 1023px)">
                     <source srcset="../images/foto-hamburguesa-5-S.png" media="(max-width: 480px)">
-                    <img src="../images/foto-hamburguesa-5-L.png" >
+                    <img src="../images/foto-hamburguesa-5-L.png">
                 </picture>
                 <h3>Combo/plato</h3>
                 <p>Lorem Ipsum</p>
@@ -53,9 +54,9 @@
             <article>
                 <picture>
                     <source srcset="./images/foto-hamburguesa-2-L.png" media="(min-width: 1024px)">
-                    <source srcset="./images/foto-hamburguesa-2-M.png" media="(min-width: 481px) and (max-width: 1023px)"> 
+                    <source srcset="./images/foto-hamburguesa-2-M.png" media="(min-width: 481px) and (max-width: 1023px)">
                     <source srcset="./images/foto-hamburguesa-2-S.png" media="(max-width: 480px)">
-                    <img src="./images/foto-hamburguesa-2-L.png" >
+                    <img src="./images/foto-hamburguesa-2-L.png">
                 </picture>
                 <h3>Combo/plato</h3>
                 <p>Lorem Ipsum</p>
@@ -63,9 +64,9 @@
             <article>
                 <picture>
                     <source srcset="./images/foto-hamburguesa-3-L.png" media="(min-width: 1024px)">
-                    <source srcset="./images/foto-hamburguesa-3-M.png" media="(min-width: 481px) and (max-width: 1023px)"> 
+                    <source srcset="./images/foto-hamburguesa-3-M.png" media="(min-width: 481px) and (max-width: 1023px)">
                     <source srcset="./images/foto-hamburguesa-3-S.png" media="(max-width: 480px)">
-                    <img src="./images/foto-hamburguesa-3-L.png" >
+                    <img src="./images/foto-hamburguesa-3-L.png">
                 </picture>
                 <h3>Combo/plato</h3>
                 <p>Lorem Ipsum</p>
@@ -89,10 +90,10 @@
                 <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Obcaecati exercitationem quas, reprehenderit dicta velit ratione esse consequatur deleniti voluptatem, itaque harum reiciendis culpa iure illo aspernatur architecto rerum eveniet recusandae.</p>
                 <img src="" alt="noticia">
             </article>
-            <a href="./informacion/novedades.html">Ver más</a>
+            <a href="/novedades">Ver más</a>
         </section>
     </main>
-    
+
     <?php require "layout/footer.view.php" ?>
 </body>
 

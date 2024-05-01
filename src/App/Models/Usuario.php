@@ -11,19 +11,20 @@ class Usuario extends Model {
      *
      * @var string
      */
-    static public $table = "usuario";
+    static public string $table = "usuario";
 
     /**
      * The fields of the model and their initial values.
      *
      * @var array
      */
-    public $fields = [
+    public array $fields = [
         "nombre" => null,
         "apellido" => null,
         "username" => null,
         "email" => null,
         "password" => null,
+        "repeatPassword" => null,
     ];
 
     public function __construct(array $values) {
@@ -71,11 +72,26 @@ class Usuario extends Model {
         }
     }
 
+    public function setEmail(string $email) {
+        if (strlen($email) > 60) {
+            throw new InvalidValueFormatException("El email no debe ser mayor a 60 caracteres");
+        }
+    }
+
     public function setPassword(string $password) {
         if (strlen($password) < 8) {
             throw new InvalidValueFormatException("La contraseña debe tener al menos 8 caracteres");
         }
         else if (strlen($password) > 60) {
+            throw new InvalidValueFormatException("La contraseña no debe ser mayor a 60 caracteres");
+        }
+    }
+
+    public function setRepeatPassword(string $repeatPassword) {
+        if (strlen($repeatPassword) < 8) {
+            throw new InvalidValueFormatException("La contraseña debe tener al menos 8 caracteres");
+        }
+        else if (strlen($repeatPassword) > 60) {
             throw new InvalidValueFormatException("La contraseña no debe ser mayor a 60 caracteres");
         }
     }
