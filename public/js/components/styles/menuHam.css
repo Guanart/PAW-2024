@@ -49,14 +49,22 @@ header {
 }
 
 /* Independiente del estado del boton, se muestra con un tamanio minimo, y con el icono de menu*/
-.menuHam-Abrir, .menuHam-Cerrar, .menuHam-Inicial {
-    min-height: 50px;
-    min-width: 50px;
-    background-image: url("https://static.thenounproject.com/png/356889-200.png");
+button.menuHam-Abrir, button.menuHam-Cerrar, button.menuHam-Inicial {
+    min-height: 3rem;
+    min-width: 3rem;
+    margin: 1rem;
+    background-image: url("/images/Icon-menu-ham.png");
+    background-color: transparent;
     background-size: contain;
     background-repeat:no-repeat;
     background-position: center;
+    border: none; /* Elimina el borde */
     cursor: pointer;
+    transition: transform 0.2s;
+}
+
+button.menuHam-Abrir:hover, button.menuHam-Cerrar:hover, button.menuHam-Inicial:hover {
+    transform: scale(1.1);
 }
 
 .menuHam-Abrir ul {
