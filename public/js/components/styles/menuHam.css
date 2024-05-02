@@ -1,0 +1,76 @@
+@keyframes expandir {
+    from {
+        height: 0;
+        opacity:0.0;
+        line-height: 0rem;
+        overflow: hidden; /* Asegura que el contenido esté oculto cuando la altura es 0 */
+    }
+    to {
+        height: 20rem;
+        opacity: 1.0;
+        line-height: 2rem;
+        overflow: visible; /* Permite que el contenido sea visible a medida que se expande */
+    }
+}
+
+@keyframes contraer {
+    from {
+        height: 20rem;
+        opacity: 100;
+        line-height: 2rem;
+        overflow: visible; /* Permite que el contenido sea visible a medida que se expande */
+    }
+    to {
+        display: none;
+        height: 0;
+        opacity: 0;
+        line-height: 0rem;
+        overflow: hidden; /* Asegura que el contenido esté oculto cuando la altura es 0 */
+    }
+}
+
+/* Establece el header como contenedor relativo */
+header {
+    position: relative;
+}
+
+.menuHam {
+    display: flex;
+    flex-direction: column;
+}
+
+.menuHam ul {
+    display: flex;
+    flex-direction: column;
+    background-color: var(--gris-oscuro-marca);
+    border-radius: 1rem;
+    top: 100%; /* Esto posiciona ul justo debajo del header */
+    right: 0; /* Puedes ajustar esto para que esté alineado con la izquierda del header */
+}
+
+/* Independiente del estado del boton, se muestra con un tamanio minimo, y con el icono de menu*/
+.menuHam-Abrir, .menuHam-Cerrar, .menuHam-Inicial {
+    min-height: 50px;
+    min-width: 50px;
+    background-image: url("https://static.thenounproject.com/png/356889-200.png");
+    background-size: contain;
+    background-repeat:no-repeat;
+    background-position: center;
+    cursor: pointer;
+}
+
+.menuHam-Abrir ul {
+    display: none;
+}
+
+/* Al principio (estando el menu cerrado), no se muestra la lista de elementos */
+.menuHam-Abrir ul {
+    animation: contraer 0.5s ease forwards;
+    position: absolute;
+}
+
+/* Al abrirse, se muestran los elementos (lo que se controla con la animacion)*/
+.menuHam-Cerrar ul {
+    animation: expandir 0.5s ease forwards;
+    position: absolute;
+}

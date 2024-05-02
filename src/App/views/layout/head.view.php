@@ -8,4 +8,6 @@
     <link rel="icon" href="/images/favicon.ico" type="image/x-icon">
     <meta name="description" content="<?= $head_content ?>">
     <link rel="stylesheet" href="/css/style.css">
+    <script src="./js/components/tools.js"></script>
+    <script src="./js/app.js"></script>
 </head>
