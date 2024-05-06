@@ -13,6 +13,13 @@ class appPAW {
                 let carousell = new Carousell();
             });
         }
+
+        //Inicializar la funcionalidad Menu
+        document.addEventListener("DOMContentLoaded", () => {
+            tools.cargarScript("dragAndDrop", "js/components/dragAndDrop.js", () => {
+                let dropArea = new dragAndDrop("div.drop-area");
+            });
+        });
     }
 }
 

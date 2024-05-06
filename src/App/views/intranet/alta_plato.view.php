@@ -22,8 +22,18 @@
             <input type="text" id="descripcion" name="descripcion" tabindex="2" required autocomplete="on">
             <label for="precio">Precio</label>
             <input type="number" id="precio" name="precio" min="0" max="999999" tabindex="3" required autocomplete="on">
-            <input class="inputfile" type="file" id="imagen" name="imagen" accept="image/jpeg, image/png" required data-multiple-caption="{count} files selected" multiple>
-            <label class="submit" for="imagen">Subir Imagen</label>
+            <label for="imagen">Foto del plato</label>
+
+
+            <div class="drop-area">
+                <h3>Arrastra y suelta imagenes</h3>
+                <p>o</p>
+                <label class="submit" for="imagen">Sube una Imagen</label>
+                <input class="inputfile" type="file" id="imagen" name="imagen" accept="image/jpeg, image/png" required data-multiple-caption="{count} files selected" multiple>
+            </div>
+            <div class="preview"></div>
+            
+
             <input type="submit" value="Subir" class="submit">
         </form>
         <?php if ($post) : ?>

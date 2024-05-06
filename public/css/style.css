@@ -305,7 +305,7 @@ form {
     color: var(--gris-claro-marca);
     font-family: var(--fuente-secundaria);
     border-radius: 3vh;
-    width: 20vw;
+    min-width: 20vw;
     padding: 2rem;
 }
 
@@ -355,6 +355,7 @@ textarea {
     font-size: 1.2rem;
     align-self: center;
     font-family: var(--fuente-secundaria);
+    margin: 0.3rem 0;
 }
 
 .submit:active {
