@@ -15,27 +15,36 @@
         <?php require "layout/nav.view.php"; ?>
     </header>
     <main>
+        <h2>
+            Bienvenido a PawPower!
+        </h2>
         <section class="principal">
-            <h2>
-                Bienvenido a PawPower!
-            </h2>
-            <article class="overflow_hidden">
-                <picture>
-                    <source srcset="./images/combo1.jpeg" media="(min-width: 600px)">
-                    <img alt="pawpower" src="./images/combo1.jpeg">
-                </picture>
-                <h3>nuevo combo 1</h3>
-                <p>Lorem Ipsum</p>
-            </article>
-            <article class="overflow_hidden">
-                <picture>
-                    <source srcset="./images/combo2.jpeg" media="(min-width: 600px)">
-                    <img alt="pawpower" src="./images/combo2.jpeg">
-                </picture>
-                <h3>nuevo combo 2</h3>
-                <p>Lorem Ipsum</p>
-            </article>
-            <a href="/hacer_pedido" class="button">HACE TU PEDIDO YA</a>
+            <div class="principal_carousell">
+                <article class="overflow_hidden">
+                    <picture>
+                        <source srcset="./images/combo1.jpeg" media="(min-width: 600px)">
+                        <img alt="pawpower" src="./images/combo1.jpeg">
+                    </picture>
+                    <h3>nuevo combo 1</h3>
+                    <p>Lorem Ipsum</p>
+                </article>
+                <article class="overflow_hidden">
+                    <picture>
+                        <source srcset="./images/combo2.jpeg" media="(min-width: 600px)">
+                        <img alt="pawpower" src="./images/combo2.jpeg">
+                    </picture>
+                    <h3>nuevo combo 2</h3>
+                    <p>Lorem Ipsum</p>
+                </article>
+                <article class="overflow_hidden">
+                    <picture>
+                        <source srcset="./images/combo1.jpeg" media="(min-width: 600px)">
+                        <img alt="pawpower" src="./images/combo1.jpeg">
+                    </picture>
+                    <h3>nuevo combo 3</h3>
+                    <p>Lorem Ipsum</p>
+                </article>
+            </div>
         </section>
         <section>
             <h2>
