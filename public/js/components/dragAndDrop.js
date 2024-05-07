@@ -1,5 +1,5 @@
 class dragAndDrop {
-    constructor(pContenedor) {
+    constructor(pContenedor,maxImages) {
         //Conseguir nodo NAV
         let contenedor = pContenedor.tagName
             ? pContenedor
@@ -10,17 +10,8 @@ class dragAndDrop {
             return;
         }
 
-        //contenedor.classList.add("dragAndDrop");
-        //contenedor.classList.add("menuHam-Abrir");
-
-        //https://www.youtube.com/watch?v=qWFwYLUGWrc
-
         let css = tools.nuevoElemento("link","",{rel: "stylesheet",href:"/js/components/styles/dragAndDrop.css"})
         document.head.appendChild(css);
-        // Armar Boton
-        //let boton = tools.nuevoElemento("button", "", {
-        //    class:"menuHam-Inicial"
-        //});
 
         const dropArea = document.querySelector(".drop-area");
         const dragText = document.querySelector("h3");
@@ -55,26 +46,48 @@ class dragAndDrop {
         })
         dropArea.addEventListener("drop", (event) => {
             event.preventDefault();
+            dropArea.classList.remove("active");
+            dragText.textContent = "Arrastra y suelta imágenes";
+        
+            // Crear un objeto DataTransfer
+            const dataTransfer = new DataTransfer();
+            
+            // Obtener los archivos arrastrados
             files = event.dataTransfer.files;
+            
             if (files.length > 0) {
                 // Procesar cada archivo en `files`
                 Array.from(files).forEach(file => {
                     processFile(file);
+                    // Agregar cada archivo al objeto DataTransfer
+                    dataTransfer.items.add(file);
                 });
             }
-            dropArea.classList.remove("active");
-            dragText.textContent = "Arrastra y suelta imágenes";
+        
+            // Asignar los archivos del objeto DataTransfer a input.files
+            input.files = dataTransfer.files;
         });
 
         function showFiles(files) {
-            if(files.length == undefined) {
-                processFile(files);
+            if ((files.length > 0) && (files.length < maxImages)) {
+                // Procesar cada archivo en `files`
+                Array.from(files).forEach(file => {
+                    processFile(file);
+                });
+            } else if (files.length > maxImages) {
+                alert("Solo puedes subir " + maxImages + " archivo/s como máximo");
             }
         }
 
         function processFile(file) {
             const docType = file.type;
             const validExtensions = ['image/jpeg','image/jpg','image/png','image/gif'];
+
+            const fileContainers = document.querySelectorAll(".file-container");
+            if (fileContainers.length >= maxImages) {
+                alert("Solo puedes subir " + maxImages + " archivo/s como máximo");
+                return; // Salir de la función para no procesar más archivos
+            }
 
             if(validExtensions.includes(docType)) {
                 const fileReader = new FileReader();
@@ -99,7 +112,7 @@ class dragAndDrop {
                 fileReader.readAsDataURL(file);
                 //uploadFile(file, id);
             } else {
-                alert("No es un archivo valido");
+                alert("No es un archivo válido");
             }
 
         }
@@ -125,7 +138,5 @@ class dragAndDrop {
         }
     }
     */
-        //Insertar boton en el NAX
-        //contenedor.prepend(boton);
     }
 }

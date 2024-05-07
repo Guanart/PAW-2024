@@ -17,7 +17,7 @@ class appPAW {
         //Inicializar la funcionalidad Menu
         document.addEventListener("DOMContentLoaded", () => {
             tools.cargarScript("dragAndDrop", "js/components/dragAndDrop.js", () => {
-                let dropArea = new dragAndDrop("div.drop-area");
+                let dropArea = new dragAndDrop("div.drop-area",1);
             });
         });
     }

@@ -52,3 +52,7 @@
 .failure {
     color: #ff0000;
 }
+
+.submit {
+    padding:0.3rem;
+}
