@@ -15,7 +15,6 @@ class dragAndDrop {
 
         const dropArea = document.querySelector(".drop-area");
         const dragText = document.querySelector("h3");
-        const button = document.querySelector("button");
         const input = document.querySelector(".inputfile");
         let files;
 

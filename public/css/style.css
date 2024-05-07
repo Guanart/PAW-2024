@@ -665,4 +665,7 @@ article.armar_pedido > picture {
     cursor: pointer;
 }
 
-
+.plano {
+    height: auto;
+    width: 100%;
+}

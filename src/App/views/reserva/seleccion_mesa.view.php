@@ -26,6 +26,11 @@
                 <label for="mesa3">Mesa para 6</label>
                 <!-- Agregar más opciones de mesa según sea necesario -->
             </fieldset>
+
+            <div class="table-select">
+            </div>
+
+
             <input type="submit" value="Hacer reserva" class="submit">
         </form>
         <a href="./local.html" class="left_arrow">Volver</a>
