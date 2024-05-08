@@ -13,6 +13,7 @@
 
 .principal_carousell article{   
     flex-grow: 1;
+    transition: opacity 0.5s ease;
 }
 
 .principal_carousell article picture{
