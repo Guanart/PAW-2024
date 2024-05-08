@@ -14,18 +14,11 @@
         ?>
     </header>
     <main>
-        <h3 class="titulo1">Llene los datos de su reserva</h3>
+        <h3 class="titulo1">Elija las mesas a reservar</h3>
         <form name="form_seleccion_mesa" action="fin_reserva" method="post">
-            <fieldset>
-                <legend>Seleccione una mesa:</legend>
-                <input type="radio" id="mesa1" name="mesa" value="1">
-                <label for="mesa1">Mesa para 2</label>
-                <input type="radio" id="mesa2" name="mesa" value="2">
-                <label for="mesa2">Mesa para 4</label>
-                <input type="radio" id="mesa3" name="mesa" value="3">
-                <label for="mesa3">Mesa para 6</label>
-                <!-- Agregar más opciones de mesa según sea necesario -->
-            </fieldset>
+
+            <label for="texto">Mesas a reservar</label>
+            <input type="text" id="texto" name="texto">
 
             <div class="table-select">
             </div>

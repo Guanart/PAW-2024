@@ -55,11 +55,19 @@ class reservationPlan {
         cargarSVG();
 
         function agregarListeners(elementosMesa) {
-        // Itera sobre cada elemento de la clase 'mesa' y agrega un eventListener de 'click'
+            const inputTexto = document.getElementById('texto');
+            const mesasSeleccionadas = new Set();
+            // Itera sobre cada elemento de la clase 'mesa' y agrega un eventListener de 'click'
             elementosMesa.forEach(elemento => {
-                elemento.addEventListener('click', function(evento) {
+                elemento.addEventListener('click', function(event) {
                     // Usamos evento.target para obtener el elemento que se ha hecho clic
-                    const elementoClicado = evento.target;
+                    const elementoClicado = event.target;
+
+                    if (elementoClicado.classList.contains("mesaSeleccionada")) {
+                        event.target.classList.remove("mesaSeleccionada");
+                    } else {
+                        event.target.classList.add("mesaSeleccionada");
+                    }
             
                     // Usamos closest() para subir en el árbol DOM hasta el <g> más cercano
                     const grupoG = elementoClicado.closest('g');
@@ -67,10 +75,16 @@ class reservationPlan {
                     // Verifica que el grupo <g> tiene un ID y extrae el ID
                     if (grupoG && grupoG.id) {
                         const idMesa = grupoG.id;
-                        console.log(`ID de la mesa clicada: ${idMesa}`);
             
-                        // Realiza la acción deseada con el ID de la mesa
-                        // Por ejemplo, podrías hacer algo con el ID aquí
+                        // Si el ID ya está en el conjunto, lo elimina; de lo contrario, lo agrega
+                        if (mesasSeleccionadas.has(idMesa)) {
+                            mesasSeleccionadas.delete(idMesa);
+                        } else {
+                            mesasSeleccionadas.add(idMesa);
+                        }
+            
+                        // Actualiza el campo de texto con los IDs de las mesas seleccionadas
+                        inputTexto.value = Array.from(mesasSeleccionadas).join(', ');
                     } else {
                         console.log('El elemento clicado no está dentro de un <g> con ID.');
                     }
