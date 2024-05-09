@@ -1,9 +1,9 @@
 class ReservationPlan {
     // URL del archivo SVG
-    urlSVG = '/../../images/svg/PlanoSucursalA.svg'; // Reemplaza con la URL de tu archivo SVG
+    urlSVG = '/../../images/svg/PlanoSucursalA.svg';
     
     constructor(pContenedor) {
-        // Conseguir nodo NAV
+        // Conseguir nodo del plano
         let contenedor = pContenedor.tagName
             ? pContenedor
             : document.querySelector(pContenedor);
@@ -62,10 +62,10 @@ class ReservationPlan {
         // Itera sobre cada elemento de la clase 'mesa' y agrega un eventListener de 'click'
         elementosMesa.forEach(elemento => {
             elemento.addEventListener('click', function (event) {
-                // Usamos evento.target para obtener el elemento que se ha hecho clic
-                const elementoClickado = event.target;
+                // Usamos evento.target para obtener el elemento que se ha hecho click
+                const elementoClickeado = event.target;
 
-                if (elementoClickado.classList.contains("mesaSeleccionada")) {
+                if (elementoClickeado.classList.contains("mesaSeleccionada")) {
                     event.target.classList.remove("mesaSeleccionada");
                 } else {
                     event.target.classList.add("mesaSeleccionada");
@@ -77,7 +77,7 @@ class ReservationPlan {
                 }
 
                 // Usamos closest() para subir en el árbol DOM hasta el <g> más cercano
-                const grupoG = elementoClickado.closest('g');
+                const grupoG = elementoClickeado.closest('g');
 
                 // Verifica que el grupo <g> tiene un ID y extrae el ID
                 if (grupoG && grupoG.id) {
@@ -96,7 +96,7 @@ class ReservationPlan {
                     // inputTexto.value = Array.from(mesasSeleccionadas).join(', ');
                     inputTexto.value = mesaSeleccionada;
                 } else {
-                    console.log('El elemento clicado no está dentro de un <g> con ID.');
+                    console.log('El elemento clickeado no está dentro de un <g> con ID.');
                 }
             });
         });

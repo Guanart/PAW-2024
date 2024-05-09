@@ -1,6 +1,6 @@
 class dragAndDrop {
     constructor(pContenedor,maxImages) {
-        //Conseguir nodo NAV
+        //Conseguir nodo de Drag and Drop
         let contenedor = pContenedor.tagName
             ? pContenedor
             : document.querySelector(pContenedor);
@@ -10,6 +10,7 @@ class dragAndDrop {
             return;
         }
 
+        // Cargar el archivo de estilos (CSS)
         let css = tools.nuevoElemento("link","",{rel: "stylesheet",href:"/js/components/styles/dragAndDrop.css"})
         document.head.appendChild(css);
 
@@ -33,16 +34,21 @@ class dragAndDrop {
             dropArea.classList.remove("active");
         });
 
+        // Al ocurrer la accion de dragover, se cambia la clase a "Active" (prevent default evita que se a bra la imagen en otra ventana)
         dropArea.addEventListener("dragover", (event) =>{
             event.preventDefault();
             dropArea.classList.add("active");
             dragText.textContent = "Suelta para subir los archivos"
         })
+
+        // Al dejar de arrastrar un file sobre la zona, deberia volver a su estado inicial.
         dropArea.addEventListener("dragleave", (event) =>{
             event.preventDefault();
             dropArea.classList.remove("active");
             dragText.textContent = "Arrastra y suelta imagenes"
         })
+
+        // Al droppear la imagen, se debe cargar la imagen en el sistema
         dropArea.addEventListener("drop", (event) => {
             event.preventDefault();
             dropArea.classList.remove("active");
@@ -67,6 +73,7 @@ class dragAndDrop {
             input.files = dataTransfer.files;
         });
 
+        // Muestra los archivos ya cargados
         function showFiles(files) {
             if ((files.length > 0) && (files.length < maxImages)) {
                 // Procesar cada archivo en `files`
@@ -78,6 +85,7 @@ class dragAndDrop {
             }
         }
 
+        // Procesar archivo/s
         function processFile(file) {
             const docType = file.type;
             const validExtensions = ['image/jpeg','image/jpg','image/png','image/gif'];
