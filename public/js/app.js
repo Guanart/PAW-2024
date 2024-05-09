@@ -10,7 +10,7 @@ class appPAW {
         if (currentUrl === "/") {
             //Cargar el script solo en la página de inicio
             tools.cargarScript("Carousell", "js/components/carousell.js", () => {
-                let carousell = new Carousell("transitionOpacity");
+                let carousell = new Carousell("transitionX");
             });
         }
 

@@ -8,10 +8,10 @@ class Carousell {
         var css = tools.nuevoElemento("link","",{rel: "stylesheet",href:"/js/components/styles/carousell.css"})
             document.head.appendChild(css);
         this.index = 1;
-        this.prevButton = tools.nuevoElemento("button", "anterior", []);
+        this.prevButton = tools.nuevoElemento("button", "<", {class: "botonCarousell"});
         this.principal.appendChild(this.prevButton);
 
-        this.nextButton = tools.nuevoElemento("button", "posterior", []);
+        this.nextButton = tools.nuevoElemento("button", ">", {class: "botonCarousell"});
         this.principal.appendChild(this.nextButton);
         this.tipos = { //Creo un diccionario para elegir entre distintos tipos de transiciones
             "transitionX" : this.transitionXCarousell,
@@ -22,10 +22,32 @@ class Carousell {
             this.tipos[tipo](this.principal, this.principalCarousell, this.images, this.index, this.prevButton, this.nextButton);
         } else {
             console.error(`El tipo ${tipo} no es válido.`);
+            this.tipos["transitionX"](this.principal, this.principalCarousell, this.images, this.index, this.prevButton, this.nextButton);
         }
     }
 
-    transitionScaleCarousell () {}
+    transitionScaleCarousell (principal, principalCarousell, images, index, prevButton, nextButton) {
+        prevButton.style.display = "none";
+        nextButton.style.display = "none";
+        
+        images.forEach(image => {
+            image.style.width = "10vw";
+            image.style.transform = "scale(0.5)";
+            image.style.heigth = "auto"
+        })
+        images.
+        images.forEach(image0 => {
+            image0.addEventListener("click", () => {
+                images.forEach(image1 => {
+                    image1.style.transform = "scale(0.2)";
+                    image1.style.width = "10vw";
+                    image1.style.heigth = "auto"
+                })
+                image0.style.width = "30vw";
+                image0.style.transform ="scale(1.2)";
+            })
+        })
+    }
 
     transitionOpacityCarousell (principal, principalCarousell, images, index, prevButton, nextButton) {
         console.log(images);
@@ -90,49 +112,51 @@ class Carousell {
         }, 6000);
     }
 
-    transitionXCarousell (){
-        this.prevButton.addEventListener("click", () => {
-            let vwDeTrancision = this.medidaPantalla();
-            this.index--;
-            if (this.index < 0){
-                this.index = this.images.length - 1; // Establecer el índice al último elemento
-                this.principalCarousell.style.transform = "translateX(" + (this.index * -vwDeTrancision) + "vw)";
+    transitionXCarousell (principal, principalCarousell, images, index, prevButton, nextButton){
+        function medidaPantalla() {
+            let anchoPantalla = window.innerWidth;
+            if (anchoPantalla >= 1080) {
+                return 62
+            } else if (anchoPantalla < 1080){
+                return 82
+            }
+        }
+        prevButton.addEventListener("click", () => {
+            let vwDeTrancision = medidaPantalla();
+            index--;
+            if (index < 0){
+                index = images.length - 1; // Establecer el índice al último elemento
+                principalCarousell.style.transform = "translateX(" + (index * -vwDeTrancision) + "vw)";
             } else {
-                this.principalCarousell.style.transform = "translateX(" + (this.index * -vwDeTrancision) + "vw)";
+                principalCarousell.style.transform = "translateX(" + (index * -vwDeTrancision) + "vw)";
             }
             clearTimeout(intervalo);
         });
         
-        this.nextButton.addEventListener("click", () => {
-            let vwDeTrancision = this.medidaPantalla();
-            let percentage = this.index * -vwDeTrancision;
-            this.index++;
-            if (this.index > this.images.length){
-                this.index = 1;
-                this.principalCarousell.style.transform = "translateX(" + 0 + "vw)";
+        nextButton.addEventListener("click", () => {
+            let vwDeTrancision = medidaPantalla();
+            let percentage = index * -vwDeTrancision;
+            index++;
+            if (index > images.length){
+                index = 1;
+                principalCarousell.style.transform = "translateX(" + 0 + "vw)";
             } else
-                this.principalCarousell.style.transform = "translateX(" + percentage + "vw)";
+                principalCarousell.style.transform = "translateX(" + percentage + "vw)";
             clearTimeout(intervalo);
         });
+        let intervalo = null;
         
         intervalo = setInterval (() => {
-            let vwDeTrancision = this.medidaPantalla();
-            let percentage = this.index * -vwDeTrancision;
-            this.index++;
-            if (this.index > this.images.length){
-                this.index = 0;
+            let vwDeTrancision = medidaPantalla();
+            let percentage = index * -vwDeTrancision;
+            index++;
+            if (index > images.length){
+                index = 0;
             } else
-            this.principalCarousell.style.transform = "translateX(" + percentage + "vw)";
+            principalCarousell.style.transform = "translateX(" + percentage + "vw)";
             
         }, 6000);
     }
 
-    medidaPantalla(){
-        let anchoPantalla = window.innerWidth;
-        if (anchoPantalla >= 1080) {
-            return 62
-        } else if (anchoPantalla < 1080){
-            return 82
-        }
-    }
+    
 }

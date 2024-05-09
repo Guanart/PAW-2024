@@ -30,3 +30,8 @@
         width: 80vw;
     } 
 }
+
+.botonCarousell {
+    background-color: var(--beige-marca-light);
+    border-radius: 300px;
+}
