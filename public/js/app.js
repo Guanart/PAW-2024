@@ -24,8 +24,8 @@ class appPAW {
         //<img alt="plano" class="plano" src="../images/svg/PlanoSucursalA.svg">
         //
         document.addEventListener("DOMContentLoaded", () => {
-            tools.cargarScript("reservationPlan", "js/components/reservationPlan.js", () => {
-                let plan = new reservationPlan("div.table-select");
+            tools.cargarScript("ReservationPlan", "js/components/reservationPlan.js", () => {
+                let plan = new ReservationPlan("div.table-select");
             });
         });
     }
