@@ -1,14 +1,4 @@
-<!DOCTYPE html>
-<html lang="es">
-
-<head>
-    <meta charset="UTF-8">
-    <title>Elegir local</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="../images/favicon.ico" type="image/x-icon">
-    <meta name="description" content="Aqui puedes elegir el local en el que vas a retirar el pedido">
-    <link rel="stylesheet" href="../styles/style.css">
-</head>
+<?php require __DIR__ . "/../layout/head.view.php"; ?>
 
 <body>
     <header>
@@ -21,12 +11,15 @@
             </a>
         </h1>
         <?php
-            require __DIR__ . '/../layout/nav.view.php';
+        require __DIR__ . '/../layout/nav.view.php';
         ?>
     </header>
 
     <main class="main_elegir_local">
-        <form name="form_elegir_local" action="elegir_local.php" method="post">
+        <?php if ($mostrarPost) : ?>
+            <h3><?= $mensaje ?></h3>
+        <?php endif ?>
+        <form name="form_elegir_local" action="elegir_local" method="post">
             <legend>Elegí el local</legend>
             <fieldset>
                 <input id="input_moreno" name="localidad" type="radio" value="Moreno">
@@ -43,7 +36,7 @@
     </main>
 
     <?php
-        require __DIR__ . '/../layout/footer.view.php';
+    require __DIR__ . '/../layout/footer.view.php';
     ?>
 </body>
 

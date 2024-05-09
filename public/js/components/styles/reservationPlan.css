@@ -1,0 +1,22 @@
+.plan {
+    height: auto;
+    width: 50vw;
+    margin: 1rem;
+}
+
+.mesa {
+    transition: fill 0.2s;
+}
+
+label, input:not(.submit) {
+    display: none;
+}
+
+.mesaSeleccionada {
+    fill: var(--amarillo-marca) !important;
+}
+
+g[id^="mesa-"]:hover .mesa:not(.mesaSeleccionada){
+    fill: rgba(255, 175, 16, 0.4) !important;
+    cursor: pointer;
+}

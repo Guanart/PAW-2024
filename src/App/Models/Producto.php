@@ -12,18 +12,23 @@ class Producto extends Model
      *
      * @var string
      */
-    public $table = "producto";
+    static public string $table = "producto";
 
     /**
      * The fields of the model and their initial values.
      *
      * @var array
      */
-    public $fields = [
+    public array $fields = [
         "nombre" => null,
         "precio" => null,
+        "descripcion" => null,
         "path_img" => null,
     ];
+
+    public function __construct(array $values) {
+        $this->set($values);
+    }
 
     /**
      * Set the path_img field of the model.
@@ -77,23 +82,6 @@ class Producto extends Model
     {
         if ($precio < 0.0) {
             throw new InvalidValueFormatException("El precio debe ser un número positivo");
-        }
-    }
-
-    /**
-     * Set multiple fields of the model using an associative array.
-     *
-     * @param array $values An associative array of field names and their values.
-     * @return void
-     */
-    public function set(array $values)
-    {
-        foreach (array_keys($this->fields) as $field) {
-            if (!isset($values[$field])) {
-                continue;
-            }
-            $method = "set" . ucfirst($field);
-            $this->$method($values[$field]);
         }
     }
 }

@@ -1,24 +1,26 @@
 <?php
 namespace Paw\App\Validators;
 
+use Paw\Core\Exceptions\InvalidImageException;
+
 class ImageValidator
 {
     static public function validateImage($file)
     {
         // Validar el tamaño de la imagen
-        $maxSize = 5 * 1024 * 1024; // 5MB
+        $maxSize = 1 * 1024 * 1024; // 1MB
         if ($file['size'] > $maxSize) {
-            return 'El tamaño de la imagen excede el límite permitido.';
+            throw new InvalidImageException('El tamaño de la imagen excede el límite permitido. Solo se permite hasta 1 MB'); 
         }
 
-        // Validar que el archivo sea una imagen
-        $allowedFormats = ['png', 'jpeg', 'jpg', 'gif'];
+        // Validar que la extension del archivo sea una imagen
+        $allowedFormats = ['image/png', 'image/jpeg', 'image/jpg'];        
         $fileInfo = finfo_open(FILEINFO_MIME_TYPE);
         $mimeType = finfo_file($fileInfo, $file['tmp_name']);
         finfo_close($fileInfo);
-
+        
         if (!in_array($mimeType, $allowedFormats)) {
-            return 'El archivo subido no es una imagen válida.';
+            throw new InvalidImageException('El archivo subido no tiene un formato de imagen aceptado. Solo se permite PNG Y JPEG.');
         }
 
         // Validar el número mágico de la imagen
@@ -26,7 +28,6 @@ class ImageValidator
             'png' => "\x89\x50\x4E\x47\x0D\x0A\x1A\x0A",
             'jpeg' => "\xFF\xD8\xFF",
             'jpg' => "\xFF\xD8\xFF",
-            'gif' => "GIF"
         ];
 
         $fileHandle = fopen($file['tmp_name'], 'rb');
@@ -35,7 +36,7 @@ class ImageValidator
 
         $fileExtension = pathinfo($file['name'], PATHINFO_EXTENSION);
         if ($magicNumbers[$fileExtension] !== $magicNumber) {
-            return 'El archivo subido no es una imagen válida.';
+            throw new InvalidImageException('El archivo subido no tiene un formato de imagen aceptado. Solo se permite PNG Y JPEG.');
         }
 
         // Si todas las validaciones pasan, la imagen es válida

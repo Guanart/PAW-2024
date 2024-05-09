@@ -1,0 +1,32 @@
+.principal {
+    overflow: hidden;
+    max-width: 90%;
+}
+
+.principal_carousell {
+    display:flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-content: space-evenly;
+    transition: transform 0.35s ease;
+}
+
+.principal_carousell article{   
+    flex-grow: 1;
+    transition: opacity 0.5s ease;
+}
+
+.principal_carousell article picture{
+    width: 60vw;
+    max-width: 100%;
+} 
+.principal_carousell article picture img {
+    width: 100%;
+    max-width: 100%;
+}
+
+@media (480px < width < 1080px){
+    .principal_carousell article picture{
+        width: 80vw;
+    } 
+}

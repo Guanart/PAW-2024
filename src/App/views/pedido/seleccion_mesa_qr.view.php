@@ -1,14 +1,4 @@
-<!DOCTYPE html>
-<html lang="es">
-
-<head>
-    <meta charset="utf-8">
-    <title>Ingresa tu mesa</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="../images/favicon.ico" type="image/x-icon">
-    <meta name="description" content="Página para ingresar el código de mesa">
-    <link rel="stylesheet" href="../css/style.css">
-</head>
+<?php require __DIR__ . "/../layout/head.view.php"; ?>
 
 <body>
     <header>
@@ -21,13 +11,16 @@
             </a>
         </h1>
         <?php
-            require __DIR__ . '/../layout/nav.view.php';
+        require __DIR__ . '/../layout/nav.view.php';
         ?>
     </header>
     <main>
         <h2>
             Escanea el codigo QR de tu mesa!
         </h2>
+        <?php if ($mostrarPost) : ?>
+                <h3><?= $mensaje ?></h3>
+        <?php endif ?>
         <form id="formulario">
             <label for="codigo">Código</label>
             <input type="text" id="codigo" placeholder="Escribe el código acá">
@@ -35,7 +28,7 @@
         </form>
     </main>
     <?php
-        require __DIR__ . '/../layout/footer.view.php';
+    require __DIR__ . '/../layout/footer.view.php';
     ?>
 </body>
 

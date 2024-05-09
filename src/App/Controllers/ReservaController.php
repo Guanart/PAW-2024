@@ -2,6 +2,8 @@
 
 namespace Paw\App\Controllers;
 
+use Paw\Core\Request;
+
 class ReservaController extends Controller
 {
     public function reservas() {
@@ -40,8 +42,8 @@ class ReservaController extends Controller
         ]);
     }
 
-    public function local(){
-        $input = request()->input('local');
+    public function local(Request $request) {
+        $input = $request->get('local');
         $local = ucwords($input);
         $title = $local;
         // Mostrar horarios disponibles en funcion del local

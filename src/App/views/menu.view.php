@@ -88,7 +88,7 @@
                 <p>$9,99</p>
             </article>
         </section>
-        <a href="./pedido/hacer_pedido.html" class="button">Hacer pedido</a>
+        <a href="/hacer_pedido" class="button">Hacer pedido</a>
     </main>
     <?php require 'layout/footer.view.php' ?>
 </body>

@@ -15,9 +15,13 @@ $router->post('/contactos','InformacionController@contactosFormulario');
 
 $router->get('/hacer_pedido','PedidoController@hacerPedido');
 $router->get('/armar_pedido','PedidoController@armarPedido');
+$router->post('/armar_pedido','PedidoController@armarPedidoFormulario');
 $router->get('/confirmar_pedido','PedidoController@confirmarPedido');
+$router->post('/confirmar_pedido','PedidoController@confirmarPedidoFormulario');
 $router->get('/elegir_local','PedidoController@elegirLocal');
+$router->post('/elegir_local','PedidoController@elegirLocalFormulario');
 $router->get('/ingresar_direccion','PedidoController@ingresarDireccion');
+$router->post("/ingresar_direccion", "PedidoController@ingresarDireccionFormulario");
 $router->get('/fin_pedido','PedidoController@finPedido');
 $router->get('/seleccion_mesa_qr','PedidoController@seleccionarMesa');
 
@@ -29,8 +33,9 @@ $router->get('/local','ReservaController@local');
 
 $router->get('/login','UsuarioController@login');
 $router->get('/register','UsuarioController@register');
-$router->get('/forgotPassword','UsuarioController@forgotPassword');
-$router->get('/verificationCode','UsuarioController@verificationCode');
+$router->post('/register','UsuarioController@registerFormulario');
+$router->get('/forgot_password','UsuarioController@forgotPassword');
+$router->get('/verification_code','UsuarioController@verificationCode');
 
 $router->get('/alta_plato', 'IntranetController@altaPlato');
 $router->post('/alta_plato', 'IntranetController@altaPlatoProcesado');

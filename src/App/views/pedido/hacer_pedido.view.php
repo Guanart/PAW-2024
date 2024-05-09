@@ -16,9 +16,9 @@
         <h2 class="hacer_pedido">HACE TU PEDIDO, YA!</h2>
         <section class="hacer_pedido">
             <p>¿Cómo lo querés hacer?</p>
-            <a class="selected" href="./elegir_local.html">Para llevar</a>
-            <a href="./ingresar_direccion.html">Delivery</a>
-            <a href="./seleccion_mesa_qr.html">Pedido desde la mesa</a>
+            <a class="selected" href="/elegir_local">Para llevar</a>
+            <a href="/ingresar_direccion">Delivery</a>
+            <a href="/seleccion_mesa_qr">Pedido desde la mesa</a>
         </section>
     </main>
 

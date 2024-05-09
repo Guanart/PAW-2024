@@ -59,4 +59,35 @@ class Request
         // return isset($this->data[$key]) ? $this->data[$key] : null;
         return isset($_GET[$key]) ? $_GET[$key] : null;
     }
+
+    public function file($key = null)
+    {
+        if (is_null($key)) {
+            return $_FILES;
+        }
+        return isset($_FILES[$key]) ? $_FILES[$key] : null;
+    }
+
+    // Devuelve true si todos los parámetros que se le pasan, se encuentran en una petición POST.
+    public function hasBodyParams(array $params): bool
+    {
+        foreach ($params as $param) {
+            if (!isset($_POST[$param])) {
+                return false;
+            }
+        }
+        return true;
+    }
+    /*
+    array(4) {
+        [0]=> string(6) "nombre" 
+        [1]=> string(11) "descripcion" 
+        [2]=> string(6) "precio" 
+        [3]=> string(6) "imagen" } 
+
+    string(6) "imagen"
+
+    $_POST no tiene la imagen, parece ser eso...
+
+    */
 }
