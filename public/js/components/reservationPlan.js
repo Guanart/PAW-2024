@@ -58,7 +58,7 @@ class ReservationPlan {
     agregarListeners(elementosMesa) {
         const inputTexto = document.getElementById('texto');
         // const mesasSeleccionadas = new Set();
-        const mesaSeleccionada = null;
+        let mesaSeleccionada;
         // Itera sobre cada elemento de la clase 'mesa' y agrega un eventListener de 'click'
         elementosMesa.forEach(elemento => {
             elemento.addEventListener('click', function (event) {
