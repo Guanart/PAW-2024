@@ -13,7 +13,6 @@
 
 .principal_carousell article{   
     flex-grow: 1;
-    transition: opacity 0.5s ease;
 }
 
 .principal_carousell article picture{
@@ -34,4 +33,36 @@
 .botonCarousell {
     background-color: var(--beige-marca-light);
     border-radius: 300px;
+}
+
+@keyframes desaparecerOpacidad {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+        display: none;
+    }
+}
+
+@keyframes aparecerOpacidad {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+        display: flex;
+    }
+}
+
+.aparecerOpacidad {
+    animation-name: aparecerOpacidad;
+    animation-duration: 0.7s; 
+    animation-fill-mode: forwards;
+}
+
+.desaparecerOpacidad {
+    animation-name: desaparecerOpacidad;
+    animation-duration: 0.2s; 
+    animation-fill-mode: forwards;
 }
