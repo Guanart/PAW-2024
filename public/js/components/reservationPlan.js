@@ -1,3 +1,58 @@
+//import datosReservas from './local.json';
+
+/*
+const datosReservas = {
+    "nombre": "Mi Local",
+    "pisos": [
+        {
+            "nombre": "Piso-1",
+            "mesas": [
+                {
+                    "numero": "mesa-262",
+                    "reservas": [
+                        {
+                            "horaInicio": "2024-05-13T13:30:00.000Z",
+                            "horaFin": "2024-05-13T15:00:00.000Z"
+                        }
+                    ]
+                },
+                {
+                    "numero": "mesa-342",
+                    "reservas": [
+                        {
+                            "horaInicio": "2024-05-13T13:30:00.000Z",
+                            "horaFin": "2024-05-13T15:00:00.000Z"
+                        }
+                    ]
+                },
+                {
+                    "numero": 3,
+                    "reservas": []
+                }
+            ]
+        },
+        {
+            "nombre": "Piso-2",
+            "mesas": [
+                {
+                    "numero": 4,
+                    "reservas": []
+                },
+                {
+                    "numero": 5,
+                    "reservas": []
+                },
+                {
+                    "numero": 6,
+                    "reservas": []
+                }
+            ]
+        }
+    ]
+}
+*/
+
+
 class ReservationPlan {
     // URL del archivo SVG
     urlSVG = '/../../images/svg/PlanoSucursalA.svg';
@@ -9,62 +64,68 @@ class ReservationPlan {
             : document.querySelector(pContenedor);
 
         if (!contenedor) {
-            console.error("Elemento HTML para generar el menu no encontrado");
+            console.error("Elemento HTML para generar el plan no encontrado");
             return;
         }
-        // Cargar el archivo de estilos (CSS)
+
+        const elementosMesa = document.querySelectorAll('.mesa');
+        this.agregarListeners(elementosMesa)
+
         let css = tools.nuevoElemento('link', '', {
             rel: 'stylesheet',
             href: '/js/components/styles/reservationPlan.css'
         });
         document.head.appendChild(css);
 
-        // Llamar a la función para cargar el contenido del archivo SVG
-        this.cargarSVG(contenedor);
+        this.buscarReservas()
+        .then(datosReservas => {
+            this.fechaYHora(datosReservas);
+        });
     }
 
-    // Función para cargar el contenido del archivo SVG desde una URL
-    async cargarSVG(contenedor) {
-        try {
-            // Realiza la solicitud para cargar el archivo SVG
-            const response = await fetch(this.urlSVG);
+    async buscarReservas() {
+        return fetch('js/components/Local.json')
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Ocurrió un error al obtener los datos');
+                }
+                return response.json();
+            })
+            .catch(error => {
+                console.error('Error al obtener el JSON:', error);
+            });
+    }
 
-            // Verifica si la solicitud fue exitosa
-            if (!response.ok) {
-                throw new Error('No se pudo cargar el archivo SVG');
+    fechaYHora(datosReservas) {
+        let horarioSeleccionado = null;
+        const selectHorario = document.querySelector('.select-hora');
+        selectHorario.addEventListener('change', () => {
+            horarioSeleccionado = selectHorario.value;
+            if (this.fechaSeleccionada) {
+                const time = new Date(this.fechaSeleccionada + 'T' + horarioSeleccionado);
+                this.actualizarEstadoMesas(datosReservas, time);
             }
+        });
 
-            // Convierte la respuesta en texto
-            const svgText = await response.text();
-
-            // Usar DOMParser para analizar la cadena SVG y crear un nodo DOM
-            const parser = new DOMParser();
-            const doc = parser.parseFromString(svgText, 'image/svg+xml');
-
-            // Obtener el elemento SVG
-            const svgNode = doc.documentElement;
-
-            contenedor.appendChild(svgNode);
-
-            const elementosMesa = document.querySelectorAll('.mesa');
-            console.log(elementosMesa);
-            this.agregarListeners(elementosMesa)
-
-        } catch (error) {
-            console.error('Error al cargar el archivo SVG:', error);
-        }
+        let fechaSeleccionada = null;
+        const inputFecha = document.querySelector('.input-fecha');
+        inputFecha.addEventListener('change', () => {
+            this.fechaSeleccionada = inputFecha.value;
+            if (horarioSeleccionado) {
+                const time = new Date(this.fechaSeleccionada + 'T' + horarioSeleccionado);
+                this.actualizarEstadoMesas(datosReservas, time);
+            }
+        });
     }
+    
 
     agregarListeners(elementosMesa) {
-        const inputTexto = document.getElementById('texto');
-        // const mesasSeleccionadas = new Set();
-        const mesaSeleccionada = null;
-        // Itera sobre cada elemento de la clase 'mesa' y agrega un eventListener de 'click'
+        let inputTexto = document.getElementById('texto');
+        let mesaSeleccionada = null;
+
         elementosMesa.forEach(elemento => {
             elemento.addEventListener('click', function (event) {
-                // Usamos evento.target para obtener el elemento que se ha hecho click
                 const elementoClickeado = event.target;
-
                 if (elementoClickeado.classList.contains("mesaSeleccionada")) {
                     event.target.classList.remove("mesaSeleccionada");
                 } else {
@@ -76,30 +137,59 @@ class ReservationPlan {
                     });
                 }
 
-                // Usamos closest() para subir en el árbol DOM hasta el <g> más cercano
-                const grupoG = elementoClickeado.closest('g');
+                if (elementoClickeado.classList.contains("reservada")) {
+                    return
+                }
 
+                const grupoG = elementoClickeado.closest('g');
                 // Verifica que el grupo <g> tiene un ID y extrae el ID
                 if (grupoG && grupoG.id) {
-                    const idMesa = grupoG.id;
-
-                    // Si el ID ya está en el conjunto, lo elimina; de lo contrario, lo agrega
-                    // if (mesasSeleccionadas.has(idMesa)) {
-                    //     mesasSeleccionadas.delete(idMesa);
-                    // } else {
-                    //     mesasSeleccionadas.add(idMesa);
-                    // }
-
-                    mesaSeleccionada = idMesa;
-
-                    // Actualiza el campo de texto con los IDs de las mesas seleccionadas
-                    // inputTexto.value = Array.from(mesasSeleccionadas).join(', ');
+                    //const idMesa = grupoG.id;
+                    mesaSeleccionada = grupoG.id;
                     inputTexto.value = mesaSeleccionada;
+                    console.log("mesa " + grupoG.id + " clickeada")
                 } else {
                     console.log('El elemento clickeado no está dentro de un <g> con ID.');
                 }
             });
         });
+    }
+
+    actualizarEstadoMesas(datosReservas, TimeIn) {
+        let inputTexto = document.getElementById('texto');
+        let mesasReservadasId = this.encontrarReservaPorNumero(datosReservas, TimeIn);
+        const elementosMesa = document.querySelectorAll('.mesa');
+    
+        elementosMesa.forEach(elemento => {
+            const mesaId = elemento.closest('g').id;
+            if (mesasReservadasId.includes(mesaId)) {
+                elemento.classList.add('reservada');
+                elemento.closest('g').classList.add('reservada'); // Agregar clase al elemento g
+                if (elemento.classList.contains("mesaSeleccionada")) {
+                    elemento.classList.remove("mesaSeleccionada"); 
+                    inputTexto.value = "";
+                }
+            } else {
+                elemento.classList.remove('reservada');
+                elemento.closest('g').classList.remove('reservada'); // Remover clase del elemento g
+            }
+        });
+    }
+
+    encontrarReservaPorNumero(datosReservas, TimeIn) {
+        let mesasReservadasId = [];
+        // Itera sobre los datos de reserva para encontrar la reserva de la mesa específica
+        for (const piso of datosReservas.pisos) {
+            for (const mesa of piso.mesas) {
+                for (const reserva of mesa.reservas) {
+                    if (reserva.horaInicio == TimeIn.toISOString()) {
+                        mesasReservadasId.push(mesa.numero)
+                    }
+                }
+            }
+        }
+        // Devuelve null si no se encontró ninguna reserva
+        return mesasReservadasId;
     }
 
 }

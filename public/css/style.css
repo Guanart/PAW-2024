@@ -11,7 +11,7 @@
     --amarillo-marca-dark: #db9714;
     --beige-marca: #fcdea6;
     --beige-marca-light: #ebe5c1;
-    --beige-marga-dark: #9c8b6c;
+    --beige-marca-dark: #9c8b6c;
     --fuente-primaria: "Archivo Black", sans-serif;
     --fuente-secundaria: Century Gothic,CenturyGothic,AppleGothic,sans-serif;
 
@@ -187,7 +187,7 @@ section:last-of-type {
 
 section > a {
     width: 100%;
-    color: var(--beige-marga-dark);
+    color: var(--beige-marca-dark);
     text-decoration: none;
     text-align: center;
 }
@@ -543,7 +543,7 @@ article.overflow_hidden.informacion {/* POSIBLEMENTE ESTO TENGA QUE REEMPLAZARSE
 
 a.link {                                /*<-------------- ESTA CLASE PUEDE SER USADA PARA OTRAS PAGINAS TAMBIEN*/
     width: 100%;
-    color: var(--beige-marga-dark);
+    color: var(--beige-marca-dark);
     text-decoration: none;
     text-align: center; }
 a.link:hover {
@@ -663,9 +663,4 @@ article.armar_pedido > picture {
 .inputfile+label {
     all: unset;
     cursor: pointer;
-}
-
-.plano {
-    height: auto;
-    width: 100%;
 }

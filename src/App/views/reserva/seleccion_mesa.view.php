@@ -16,12 +16,28 @@
     <main>
         <h3 class="titulo1">Elija las mesas a reservar</h3>
         <form name="form_seleccion_mesa" action="fin_reserva" method="post">
-
-            <label for="texto">Mesas a reservar</label>
+            <select class="select-hora" name="horario">
+                <option value="09:00">09:00</option>
+                <option value="10:30">10:30</option>
+                <option value="12:00">12:00</option>
+                <option value="13:30">13:30</option>
+                <option value="15:00">15:00</option>
+                <option value="16:30">16:30</option>
+                <option value="18:00">18:00</option>
+                <option value="19:30">19:30</option>
+                <option value="21:00">21:00</option>
+                <option value="22:30">22:30</option>
+            </select>
+            <label for="fecha">Seleccione un día:</label>
+            <input type="date" class="input-fecha" name="fecha">
+            <label for="texto">Nombre de los reservantes:</label>
             <input type="text" id="texto" name="texto">
 
-            <div class="table-select">
-            </div>
+
+            <label for="texto" class="labelMesaReserva">Mesa a reservar</label>
+            <input type="text" id="texto" name="texto" class="inputMesaReserva">
+            <?php require __DIR__ . '/PlanoSucursalA.svg'?>
+        
 
 
             <input type="submit" value="Hacer reserva" class="submit">
