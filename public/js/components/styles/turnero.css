@@ -1,0 +1,19 @@
+.turnero {
+    font-size: 2rem;
+}
+
+.turnero-aceptado {
+    color: blue;
+}
+
+.turnero-preparacion {
+    color:orange;
+}
+
+.turnero-finalizado {
+    color: green;
+}
+
+.turnero-despachado {
+    color: blueviolet;
+}

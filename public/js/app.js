@@ -28,6 +28,13 @@ class appPAW {
                 let plan = new ReservationPlan("div.table-select");
             });
         });
+        
+        //Inicializar la funcionalidad Turnero
+        document.addEventListener("DOMContentLoaded", () => {
+            tools.cargarScript("turnero", "js/components/turnero.js", () => {
+                let turnero_cliente = new turnero("div.turnero");
+            });
+        });
     }
 }
 

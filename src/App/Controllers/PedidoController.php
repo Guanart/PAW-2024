@@ -10,6 +10,15 @@ use Paw\App\Models\PedidoMesa;
 
 class PedidoController extends Controller
 {
+    public function pedidos() {
+        $title = "Pedidos";
+        view('pedido/pedidos', [
+            'nav' => $this->nav,
+            'footer' => $this->footer,
+            'title' => $title,
+        ]);
+    }
+    
     public function hacerPedido() {
         $title = "Hacer Pedido";
         view('pedido/hacer_pedido', [
@@ -18,8 +27,6 @@ class PedidoController extends Controller
             'title' => $title,
         ]);
     }
-
-    
 
     public function armarPedido(String $tipo = "", Array $formularioDatos = []){
         $title = "Armar Pedido";
@@ -62,6 +69,8 @@ class PedidoController extends Controller
             } elseif ($formularioDatos["tipo"]==="llevar") {
                 $pedidoMesa = new PedidoLlevar($formularioDatos);
             }
+            // Agregar al JSON un nuevo Pedido
+
             $this->finPedido($formularioDatos);
         } catch (InvalidValueFormatException $e){
             $mensaje = $e->getMessage();

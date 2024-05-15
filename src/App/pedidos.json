@@ -1,0 +1,27 @@
+[
+    {
+        "id_pedido": 123,
+        "id_usuario": "123",
+        "tipo": "delivery",
+        "productos": [
+            {
+                "id": 123, 
+                "nombre": "hamburguesa1"
+            },
+            {
+                "id": 1234,
+                "nombre": "hamburguesa2"
+            }
+        ],
+        "estado": "despachado"
+    },
+    {   
+        "id_pedido": 124,
+        "id_usuario": "223",
+        "tipo": "local",
+        "productos": {
+            "id": 111
+        },
+        "estado": "aceptado"
+    }
+]
