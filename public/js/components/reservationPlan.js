@@ -1,67 +1,6 @@
-//import datosReservas from './local.json';
-
-/*
-const datosReservas = {
-    "nombre": "Mi Local",
-    "pisos": [
-        {
-            "nombre": "Piso-1",
-            "mesas": [
-                {
-                    "numero": "mesa-262",
-                    "reservas": [
-                        {
-                            "horaInicio": "2024-05-13T13:30:00.000Z",
-                            "horaFin": "2024-05-13T15:00:00.000Z"
-                        }
-                    ]
-                },
-                {
-                    "numero": "mesa-342",
-                    "reservas": [
-                        {
-                            "horaInicio": "2024-05-13T13:30:00.000Z",
-                            "horaFin": "2024-05-13T15:00:00.000Z"
-                        }
-                    ]
-                },
-                {
-                    "numero": 3,
-                    "reservas": []
-                }
-            ]
-        },
-        {
-            "nombre": "Piso-2",
-            "mesas": [
-                {
-                    "numero": 4,
-                    "reservas": []
-                },
-                {
-                    "numero": 5,
-                    "reservas": []
-                },
-                {
-                    "numero": 6,
-                    "reservas": []
-                }
-            ]
-        }
-    ]
-}
-*/
-
-
 class ReservationPlan {
-    // URL del archivo SVG
-    urlSVG = '/../../images/svg/PlanoSucursalA.svg';
-    
     constructor(pContenedor) {
-        // Conseguir nodo del plano
-        let contenedor = pContenedor.tagName
-            ? pContenedor
-            : document.querySelector(pContenedor);
+        let contenedor = pContenedor.tagName ? pContenedor : document.querySelector(pContenedor);
 
         if (!contenedor) {
             console.error("Elemento HTML para generar el plan no encontrado");
@@ -69,59 +8,64 @@ class ReservationPlan {
         }
 
         const elementosMesa = document.querySelectorAll('.mesa');
-        this.agregarListeners(elementosMesa)
+        this.agregarListeners(elementosMesa);
 
-        let css = tools.nuevoElemento('link', '', {
-            rel: 'stylesheet',
-            href: '/js/components/styles/reservationPlan.css'
-        });
+        let css = document.createElement('link');
+        css.rel = 'stylesheet';
+        css.href = '/js/components/styles/reservationPlan.css';
         document.head.appendChild(css);
 
-        this.buscarReservas()
-        .then(datosReservas => {
-            this.fechaYHora(datosReservas);
-        });
+        this.fechaSeleccionada = null;
+        this.horarioSeleccionado = null;
+
+        this.fechaYHora();
+
+        // Actualizar cada 10 segundos
+        setInterval(() => {
+            if (this.fechaSeleccionada && this.horarioSeleccionado) {
+                this.buscarReservas();
+            }
+        }, 10000);
     }
 
     async buscarReservas() {
-        return fetch('js/components/Local.json')
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error('Ocurrió un error al obtener los datos');
-                }
-                return response.json();
-            })
-            .catch(error => {
-                console.error('Error al obtener el JSON:', error);
-            });
+        const inputLocal = document.querySelector('input.inputLocalReserva');
+        const idLocal = inputLocal.value.toLowerCase();
+        const url = `http://localhost:8888/reservas_mesa?idLocal=${idLocal}&fecha=${this.fechaSeleccionada}&hora=${this.horarioSeleccionado}`;
+        try {
+            const response = await fetch(url);
+            if (!response.ok) {
+                throw new Error('Ocurrió un error al obtener los datos');
+            }
+            const datosReservas = await response.json();
+            const time = new Date(`${this.fechaSeleccionada}T${this.horarioSeleccionado}`);
+            this.actualizarEstadoMesas(datosReservas, time);
+        } catch (error) {
+            console.error('Error al obtener los datos del endpoint:', error);
+        }
     }
 
-    fechaYHora(datosReservas) {
-        let horarioSeleccionado = null;
+    fechaYHora() {
         const selectHorario = document.querySelector('.select-hora');
+        const inputFecha = document.querySelector('.input-fecha');
+
         selectHorario.addEventListener('change', () => {
-            horarioSeleccionado = selectHorario.value;
+            this.horarioSeleccionado = selectHorario.value;
             if (this.fechaSeleccionada) {
-                const time = new Date(this.fechaSeleccionada + 'T' + horarioSeleccionado);
-                this.actualizarEstadoMesas(datosReservas, time);
+                this.buscarReservas();
             }
         });
 
-        let fechaSeleccionada = null;
-        const inputFecha = document.querySelector('.input-fecha');
         inputFecha.addEventListener('change', () => {
             this.fechaSeleccionada = inputFecha.value;
-            if (horarioSeleccionado) {
-                const time = new Date(this.fechaSeleccionada + 'T' + horarioSeleccionado);
-                this.actualizarEstadoMesas(datosReservas, time);
+            if (this.horarioSeleccionado) {
+                this.buscarReservas();
             }
         });
     }
-    
 
     agregarListeners(elementosMesa) {
         let inputTexto = document.getElementById('texto');
-        let mesaSeleccionada = null;
 
         elementosMesa.forEach(elemento => {
             elemento.addEventListener('click', function (event) {
@@ -138,16 +82,13 @@ class ReservationPlan {
                 }
 
                 if (elementoClickeado.classList.contains("reservada")) {
-                    return
+                    return;
                 }
 
                 const grupoG = elementoClickeado.closest('g');
-                // Verifica que el grupo <g> tiene un ID y extrae el ID
                 if (grupoG && grupoG.id) {
-                    //const idMesa = grupoG.id;
-                    mesaSeleccionada = grupoG.id;
-                    inputTexto.value = mesaSeleccionada;
-                    console.log("mesa " + grupoG.id + " clickeada")
+                    inputTexto.value = grupoG.id;
+                    console.log("mesa " + grupoG.id + " clickeada");
                 } else {
                     console.log('El elemento clickeado no está dentro de un <g> con ID.');
                 }
@@ -155,41 +96,34 @@ class ReservationPlan {
         });
     }
 
-    actualizarEstadoMesas(datosReservas, TimeIn) {
+    actualizarEstadoMesas(datosReservas, timeIn) {
         let inputTexto = document.getElementById('texto');
-        let mesasReservadasId = this.encontrarReservaPorNumero(datosReservas, TimeIn);
+        let mesasReservadasId = this.encontrarReservaPorNumero(datosReservas, timeIn);
         const elementosMesa = document.querySelectorAll('.mesa');
-    
+
         elementosMesa.forEach(elemento => {
             const mesaId = elemento.closest('g').id;
             if (mesasReservadasId.includes(mesaId)) {
                 elemento.classList.add('reservada');
-                elemento.closest('g').classList.add('reservada'); // Agregar clase al elemento g
+                elemento.closest('g').classList.add('reservada');
                 if (elemento.classList.contains("mesaSeleccionada")) {
-                    elemento.classList.remove("mesaSeleccionada"); 
+                    elemento.classList.remove("mesaSeleccionada");
                     inputTexto.value = "";
                 }
             } else {
                 elemento.classList.remove('reservada');
-                elemento.closest('g').classList.remove('reservada'); // Remover clase del elemento g
+                elemento.closest('g').classList.remove('reservada');
             }
         });
     }
 
-    encontrarReservaPorNumero(datosReservas, TimeIn) {
+    encontrarReservaPorNumero(datosReservas, timeIn) {
         let mesasReservadasId = [];
-        // Itera sobre los datos de reserva para encontrar la reserva de la mesa específica
-        for (const piso of datosReservas.pisos) {
-            for (const mesa of piso.mesas) {
-                for (const reserva of mesa.reservas) {
-                    if (reserva.horaInicio == TimeIn.toISOString()) {
-                        mesasReservadasId.push(mesa.numero)
-                    }
-                }
+        if (datosReservas && datosReservas.mesasReservadas) {
+            for (const reserva of datosReservas.mesasReservadas) {
+                mesasReservadasId.push(reserva.mesa);
             }
         }
-        // Devuelve null si no se encontró ninguna reserva
         return mesasReservadasId;
     }
-
 }

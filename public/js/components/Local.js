@@ -1,3 +1,11 @@
+/*
+ESTE CODIGO SIMPLEMENTE ERA UNA PRUEBA DE GENERACION DE JSONS PARA LAS RESERVAS 
+.
+.
+.
+.
+.
+*/
 class Local {
     constructor(nombre) {
         this.nombre = nombre;

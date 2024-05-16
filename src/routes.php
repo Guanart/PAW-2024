@@ -30,8 +30,12 @@ $router->get('/estado_pedido', 'PedidoController@estadoPedido');
 $router->get('/reservas','ReservaController@reservas');
 $router->get('/locales','ReservaController@locales');
 $router->post('/fin_reserva','ReservaController@finReserva');
+
 $router->post('/seleccion_mesa','ReservaController@seleccionMesa');
+$router->get('/seleccion_mesa','ReservaController@seleccionMesa');
+
 $router->get('/local','ReservaController@local');
+$router->get('/reservas_mesa','ReservaController@reservasMesa'); //<---
 
 $router->get('/login','UsuarioController@login');
 $router->get('/register','UsuarioController@register');
