@@ -1,9 +1,10 @@
 class SeguimientoPedido {
-    constructor(pContenedor) {
+    constructor(articulo) {
+        this.articulo = articulo;
         this.estado = null;
         this.info_pedido = null;
-        this.idPedido = pContenedor.id;
-        let contenedor = pContenedor.querySelector("div.seguimientoPedido");
+        this.idPedido = this.articulo.id;
+        let contenedor = this.articulo.querySelector("div.seguimientoPedido");
         if (!contenedor) {
             console.error("Elemento HTML para generar el seguimientoPedido no encontrado");
             return;
@@ -17,7 +18,7 @@ class SeguimientoPedido {
         this.info_pedido = tools.nuevoElemento("h4", "Estado: " + this.estado.toUpperCase(), {class:clase});
         contenedor.appendChild(this.info_pedido);
 
-        setInterval(async () => {
+        this.consulta_automatica = setInterval(async () => {
             await this.actualizar();
         }, 10000);
     }
@@ -46,10 +47,16 @@ class SeguimientoPedido {
         console.log("El último estado del pedido " + this.idPedido + " es: " + this.estado);
         console.log("El estado consultado del pedido " + this.idPedido + " es: " + estadoActual);
         if (estadoActual !== this.estado) {
-            console.log("Cambiando estado del pedido " + this.idPedido + "...");
-            this.info_pedido.className = "seguimientoPedido-" + estadoActual;
-            this.info_pedido.textContent = "Estado: " + estadoActual.toUpperCase();
-            this.estado = estadoActual;
+            if (estadoActual === "entregado") {
+                // ESTO HACE QUE NO SE MUESTRE CUANDO UN PEDIDO TIENE ESTADO ENTREGADO
+                document.querySelector('main').removeChild(this.articulo);
+                clearInterval(this.consulta_automatica);
+            } else {
+                console.log("Cambiando estado del pedido " + this.idPedido + "...");
+                this.info_pedido.className = "seguimientoPedido-" + estadoActual;
+                this.info_pedido.textContent = "Estado: " + estadoActual.toUpperCase();
+                this.estado = estadoActual;
+            }
         }
     }
 }

@@ -25,7 +25,7 @@
                 "nombre": "hamburguesa1"
             }
         ],
-        "estado": "aceptado"
+        "estado": "entregado"
     },
     {
         "id_pedido": 125,
@@ -45,7 +45,7 @@
                 "nombre": "hamburguesa1"
             }
         ],
-        "estado": "despachado"
+        "estado": "finalizado"
     },
     {
         "id_pedido": 126,
@@ -61,7 +61,7 @@
                 "nombre": "hamburguesa4"
             }
         ],
-        "estado": "preparacion"
+        "estado": "entregado"
     },
     {
         "id_pedido": 127,
@@ -77,7 +77,7 @@
                 "nombre": "hamburguesa4"
             }
         ],
-        "estado": "despachado"
+        "estado": "entregado"
     },
     {
         "id_pedido": 128,
@@ -93,6 +93,38 @@
                 "nombre": "hamburguesa4"
             }
         ],
-        "estado": "preparacion"
+        "estado": "entregado"
+    },
+    {
+        "id_pedido": 129,
+        "id_usuario": "123",
+        "tipo": "llevar",
+        "productos": [
+            {
+                "id": 123, 
+                "nombre": "hamburguesa2"
+            },
+            {
+                "id": 1234,
+                "nombre": "hamburguesa4"
+            }
+        ],
+        "estado": "entregado"
+    },
+    {
+        "id_pedido": 130,
+        "id_usuario": "123",
+        "tipo": "llevar",
+        "productos": [
+            {
+                "id": 123, 
+                "nombre": "hamburguesa2"
+            },
+            {
+                "id": 1234,
+                "nombre": "hamburguesa4"
+            }
+        ],
+        "estado": "aceptado"
     }
 ]

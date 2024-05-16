@@ -5,11 +5,9 @@ class BuscadorPedidos {
 
         if (consultar_nuevos) {
             // Si consultar_nuevos es true, entonces se consultaran todo el tiempo por nuevos pedidos
-            console.log("Entro en actualizar siempre");
             this.inicializar();
         } else {
             // Si consultar_nuevos es false, entonces solo mostrarán los pedidos (articles) que estén en el document (los que trajo el php)
-            console.log("Entro en queryselectorall article");
             this.articles = document.querySelectorAll("article");
             this.seguirPedidos();
         }
@@ -24,7 +22,8 @@ class BuscadorPedidos {
     async inicializar() {
         this.maxId = null;
         this.pedidos = await this.getPedidos();
-
+        // No muestro los entregados
+        this.pedidos = this.pedidos.filter(pedido => pedido.estado !== "entregado");
         if (this.pedidos.length !== 0) {
             this.buscarMaxId();
             this.crearArticulos();

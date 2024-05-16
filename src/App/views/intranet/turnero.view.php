@@ -16,7 +16,6 @@
     </header>
     <main>
         <h2>Pedidos</h2>
-        <a href="/hacer_pedido">Hace un pedido!</a>
     </main>
     <?php
     require __DIR__ . '/../layout/footer.view.php';
