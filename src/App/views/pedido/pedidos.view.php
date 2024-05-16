@@ -30,9 +30,8 @@
                 </article>
             <?php endforeach; ?>
         <?php else : ?>
-            <p>No tienes pedidos nuevos.</p>
+            <p>No tenés pedidos nuevos.</p>
         <?php endif; ?>
-
     </main>
     <?php
     require __DIR__ . '/../layout/footer.view.php';

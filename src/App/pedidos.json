@@ -13,7 +13,7 @@
                 "nombre": "hamburguesa2"
             }
         ],
-        "estado": "despachado"
+        "estado": "aceptado"
     },
     {
         "id_pedido": 125,

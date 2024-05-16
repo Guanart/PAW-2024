@@ -4,7 +4,6 @@ class BuscadorPedidos {
         document.head.appendChild(css);
 
         this.articles = document.querySelectorAll("article");
-        console.log(this.articles);
     }
 
     seguirPedidos() {
