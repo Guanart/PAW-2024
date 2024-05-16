@@ -34,13 +34,24 @@ class appPAW {
             });
         }
         
-        if (currentUrl === "/pedidos") {
+        if (currentUrl === "/tus_pedidos") {
+            //Inicializar la funcionalidad seguimientoPedidos
+            document.addEventListener("DOMContentLoaded", () => {
+                tools.cargarScript("SeguimientoPedido", "js/components/SeguimientoPedido.js", () => {
+                    tools.cargarScript("buscadorPedidos", "js/components/buscadorPedidos.js", () => {
+                        let buscador = new BuscadorPedidos(false);
+                    });
+                });
+            });
+        }
+
+        if (currentUrl === "/turnero") {
             //Inicializar la funcionalidad Turnero
             document.addEventListener("DOMContentLoaded", () => {
-                tools.cargarScript("SeguimientoPedido", "js/components/SeguimientoPedido.js");
-                tools.cargarScript("buscadorPedidos", "js/components/buscadorPedidos.js", () => {
-                    let buscador = new BuscadorPedidos();
-                    buscador.seguirPedidos();
+                tools.cargarScript("SeguimientoPedido", "js/components/SeguimientoPedido.js", () => {
+                    tools.cargarScript("buscadorPedidos", "js/components/buscadorPedidos.js", () => {
+                        let buscador = new BuscadorPedidos(true);
+                    });
                 });
             });
         }

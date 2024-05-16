@@ -73,4 +73,15 @@ class IntranetController extends Controller {
         return $path;
     }
 
+    public function turnero() {
+        $title = "Turnero";
+        $pedidos = json_decode(file_get_contents(__DIR__ . '/../pedidos.json'), true);
+        view('intranet/turnero', [
+            'nav' => $this->nav,
+            'footer' => $this->footer,
+            'title' => $title,
+            'pedidos' => $pedidos
+        ]);
+    }
+
 }

@@ -11,14 +11,14 @@ use Paw\App\Models\PedidoMesa;
 class PedidoController extends Controller
 {
     public function pedidos() {
-        $title = "Pedidos";
+        $title = "Tus pedidos";
         $id_usuario = "123";    // Recuperarlo de la sesión
         $pedidos = json_decode(file_get_contents(__DIR__ . '/../pedidos.json'), true);   // Recuperar de la base de datos
         $pedidos_usuario = array_filter($pedidos, function ($pedido) use ($id_usuario) {
             return $pedido["id_usuario"] === $id_usuario && $pedido["estado"] !== "entregado";
         });
 
-        view('pedido/pedidos', [
+        view('pedido/tus_pedidos', [
             'nav' => $this->nav,
             'footer' => $this->footer,
             'title' => $title,
@@ -31,6 +31,11 @@ class PedidoController extends Controller
         require $endpoint;
     }
     
+    public function getPedidosId() {
+        $endpoint = __DIR__ . "/../views/pedido/get_pedidos.php";
+        require $endpoint;
+    }
+
     public function hacerPedido() {
         $title = "Hacer Pedido";
         view('pedido/hacer_pedido', [
