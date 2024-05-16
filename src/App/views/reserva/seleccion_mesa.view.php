@@ -34,6 +34,9 @@
             <input type="text" id="texto" name="texto">
 
 
+            <label for="texto" class="labelLocalReserva">Mesa a reservar</label>
+            <input type="text" id="texto" name="texto" class="inputLocalReserva" value="<?php echo htmlspecialchars($local); ?>">
+
             <label for="texto" class="labelMesaReserva">Mesa a reservar</label>
             <input type="text" id="texto" name="texto" class="inputMesaReserva">
             <?php require __DIR__ . '/PlanoSucursalA.svg'?>

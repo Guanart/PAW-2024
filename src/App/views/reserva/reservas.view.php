@@ -22,7 +22,7 @@
                     <source srcset="../images/local1-S.png" media="(max-width: 480px)">
                     <img src="../images/local1-L.png" id="imagen-local-moreno" alt="local de Moreno">
                 </picture>
-                <a href="local?local=moreno" class="link">Hacer Reserva</a>
+                <a href="seleccion_mesa?local=moreno" class="link">Hacer Reserva</a>
                 <a href="#" rel="external" target="_blank" class="link">Direcciones</a>    
             </article>
             <article class="overflow_hidden informacion">
@@ -33,7 +33,7 @@
                     <source srcset="../images/local2-S.png" media="(max-width: 480px)">
                     <img src="../images/local1-L.png" id="imagen-local-moreno" alt="local de Moreno">
                 </picture>
-                <a href="local?local=rodriguez" class="link">Hacer Reserva</a>
+                <a href="seleccion_mesa?local=rodriguez" class="link">Hacer Reserva</a>
                 <a href="#" rel="external" target="_blank" class="link">Direcciones</a>  
             </article>
             <article class="overflow_hidden informacion">
@@ -44,7 +44,7 @@
                     <source srcset="../images/local3-S.png" media="(max-width: 480px)">
                     <img src="../images/local1-L.png" id="imagen-local-moreno" alt="local de Moreno">
                 </picture>
-                    <a href="local?local=lujan" class="link">Hacer Reserva</a>
+                    <a href="seleccion_mesa?local=lujan" class="link">Hacer Reserva</a>
                     <a href="#" rel="external" target="_blank" class="link">Direcciones</a>  
             </article>
             <article class="overflow_hidden informacion">
@@ -55,7 +55,7 @@
                     <source srcset="../images/local4-S.png" media="(max-width: 480px)">
                     <img src="../images/local1-L.png" id="imagen-local-moreno" alt="local de Moreno">
                 </picture>
-                <a href="local?local=otro" class="link">Hacer Reserva</a>
+                <a href="seleccion_mesa?local=otro" class="link">Hacer Reserva</a>
                 <a href="#" rel="external" target="_blank" class="link">Direcciones</a>  
             </article>
             <!-- Agrega más elementos según sea necesario -->
