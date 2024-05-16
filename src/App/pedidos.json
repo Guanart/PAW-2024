@@ -15,6 +15,43 @@
         ],
         "estado": "despachado"
     },
+    {
+        "id_pedido": 125,
+        "id_usuario": "123",
+        "tipo": "delivery",
+        "productos": [
+            {
+                "id": 124, 
+                "nombre": "hamburguesa3"
+            },
+            {
+                "id": 1234,
+                "nombre": "hamburguesa2"
+            },
+            {
+                "id": 123,
+                "nombre": "hamburguesa1"
+            }
+        ],
+        "estado": "aceptado"
+    },
+    {
+        "id_pedido": 126,
+        "id_usuario": "123",
+        "tipo": "delivery",
+        "productos": [
+            {
+                "id": 123, 
+                "nombre": "hamburguesa2"
+            },
+            {
+                "id": 1234,
+                "nombre": "hamburguesa4"
+            }
+        ],
+        "estado": "preparacion"
+    },
+
     {   
         "id_pedido": 124,
         "id_usuario": "223",

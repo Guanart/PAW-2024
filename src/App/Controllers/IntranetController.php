@@ -65,11 +65,6 @@ class IntranetController extends Controller {
         $this->altaPlato(true, $mensaje);
     }  
 
-    public function estadoPedido() {
-        $endpoint = __DIR__ . "/../views/intranet/estado_pedido.php";
-        require $endpoint;
-    }
-
     private function saveImage(array $img): string
     {
         ImageValidator::validateImage($img);

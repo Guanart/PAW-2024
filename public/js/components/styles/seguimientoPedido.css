@@ -1,0 +1,19 @@
+.seguimientoPedido {
+    font-size: 2rem;
+}
+
+.seguimientoPedido-aceptado {
+    color: blue;
+}
+
+.seguimientoPedido-preparacion {
+    color:orange;
+}
+
+.seguimientoPedido-finalizado {
+    color: green;
+}
+
+.seguimientoPedido-despachado {
+    color: blueviolet;
+}

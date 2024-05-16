@@ -25,6 +25,7 @@ $router->post("/ingresar_direccion", "PedidoController@ingresarDireccionFormular
 $router->get('/fin_pedido','PedidoController@finPedido');
 $router->get('/seleccion_mesa_qr','PedidoController@seleccionarMesa');
 $router->get('/pedidos','PedidoController@pedidos');
+$router->get('/estado_pedido', 'PedidoController@estadoPedido');
 
 $router->get('/reservas','ReservaController@reservas');
 $router->get('/locales','ReservaController@locales');
@@ -40,4 +41,3 @@ $router->get('/verification_code','UsuarioController@verificationCode');
 
 $router->get('/alta_plato', 'IntranetController@altaPlato');
 $router->post('/alta_plato', 'IntranetController@altaPlatoProcesado');
-$router->get('/estado_pedido', 'IntranetController@estadoPedido');

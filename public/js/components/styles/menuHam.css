@@ -46,6 +46,7 @@ header {
     border-radius: 1rem;
     top: 100%; /* Esto posiciona ul justo debajo del header */
     right: 0; /* Puedes ajustar esto para que esté alineado con la izquierda del header */
+    z-index: 2;
 }
 
 /* Independiente del estado del boton, se muestra con un tamanio minimo, y con el icono de menu*/

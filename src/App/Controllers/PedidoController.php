@@ -12,11 +12,23 @@ class PedidoController extends Controller
 {
     public function pedidos() {
         $title = "Pedidos";
+        $id_usuario = "123";    // Recuperarlo de la sesión
+        $pedidos = json_decode(file_get_contents(__DIR__ . '/../pedidos.json'), true);   // Recuperar de la base de datos
+        $pedidos_usuario = array_filter($pedidos, function ($pedido) use ($id_usuario) {
+            return $pedido["id_usuario"] === $id_usuario && $pedido["estado"] !== "entregado";
+        });
+
         view('pedido/pedidos', [
             'nav' => $this->nav,
             'footer' => $this->footer,
             'title' => $title,
+            'pedidos_usuario' => $pedidos_usuario,
         ]);
+    }
+
+    public function estadoPedido() {
+        $endpoint = __DIR__ . "/../views/pedido/estado_pedido.php";
+        require $endpoint;
     }
     
     public function hacerPedido() {
