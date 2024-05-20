@@ -49,3 +49,4 @@ $router->get('/alta_plato', 'IntranetController@altaPlato');
 $router->post('/alta_plato', 'IntranetController@altaPlatoProcesado');
 $router->get('/turnero', 'IntranetController@turnero');
 //$router->get('/pedidos', 'IntranetController@pedidos');
+

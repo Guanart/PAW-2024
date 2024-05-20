@@ -4,3 +4,4 @@ logs/
 .history/
 .vscode/settings.json
 postgres/
+ngrok.exe
