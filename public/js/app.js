@@ -15,7 +15,7 @@ class appPAW {
             });
         }
 
-        if (currentUrl === "/alta-plato") {
+        else if (currentUrl === "/alta-plato") {
             //Inicializar la funcionalidad Drag and Drop
             document.addEventListener("DOMContentLoaded", () => {
                 tools.cargarScript("dragAndDrop", "js/components/dragAndDrop.js", () => {
@@ -24,9 +24,7 @@ class appPAW {
             });
         }
 
-        if (currentUrl === "/seleccion_mesa") {
-            //<img alt="plano" class="plano" src="../images/svg/PlanoSucursalA.svg">
-            //
+        else if (currentUrl === "/seleccion_mesa") {
             document.addEventListener("DOMContentLoaded", () => {
                 tools.cargarScript("ReservationPlan", "js/components/reservationPlan.js", () => {
                     let plan = new ReservationPlan("svg.plan");
@@ -34,11 +32,11 @@ class appPAW {
             });
         }
         
-        if (currentUrl === "/tus_pedidos") {
+        else if (currentUrl === "/tus_pedidos") {
             //Inicializar la funcionalidad seguimientoPedidos
             document.addEventListener("DOMContentLoaded", () => {
-                tools.cargarScript("SeguimientoPedido", "js/components/SeguimientoPedido.js", () => {
-                    tools.cargarScript("buscadorPedidos", "js/components/buscadorPedidos.js", () => {
+                tools.cargarScript("SeguimientoPedido", "js/components/seguimientoPedido.js", () => {
+                    tools.cargarScript("BuscadorPedidos", "js/components/buscadorPedidos.js", () => {
                         let buscador = new BuscadorPedidos(false);
                     });
                 });
@@ -48,7 +46,7 @@ class appPAW {
         if (currentUrl === "/turnero") {
             //Inicializar la funcionalidad Turnero
             document.addEventListener("DOMContentLoaded", () => {
-                tools.cargarScript("SeguimientoPedido", "js/components/SeguimientoPedido.js", () => {
+                tools.cargarScript("SeguimientoPedido", "js/components/seguimientoPedido.js", () => {
                     tools.cargarScript("buscadorPedidos", "js/components/buscadorPedidos.js", () => {
                         let buscador = new BuscadorPedidos(true);
                     });
@@ -58,4 +56,4 @@ class appPAW {
     }
 }
 
-    let app = new appPAW();
+let app = new appPAW();

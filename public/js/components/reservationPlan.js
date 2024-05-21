@@ -31,7 +31,7 @@ class ReservationPlan {
     async buscarReservas() {
         const inputLocal = document.querySelector('input.inputLocalReserva');
         const idLocal = inputLocal.value.toLowerCase();
-        const url = `http://localhost:8888/reservas_mesa?idLocal=${idLocal}&fecha=${this.fechaSeleccionada}&hora=${this.horarioSeleccionado}`;
+        const url = `${window.location.origin}/reservas_mesa?idLocal=${idLocal}&fecha=${this.fechaSeleccionada}&hora=${this.horarioSeleccionado}`;
         try {
             const response = await fetch(url);
             if (!response.ok) {

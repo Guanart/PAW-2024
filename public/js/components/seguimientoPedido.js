@@ -25,7 +25,7 @@ class SeguimientoPedido {
     }
 
     async getEstado() {
-        const url = 'http://localhost:8888/estado_pedido?id=' + encodeURIComponent(this.idPedido);
+        const url = `${window.location.origin}/estado_pedido?id=${encodeURIComponent(this.idPedido)}`;
         try {
             const response = await fetch(url, {
                 mode: 'no-cors'

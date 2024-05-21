@@ -1,6 +1,6 @@
 class BuscadorPedidos {
     constructor(consultar_nuevos) {
-        let css = tools.nuevoElemento("link", "", {rel: "stylesheet", href: "/js/components/styles/seguimientoPedido.css"});
+        let css = tools.nuevoElemento("link", "", { rel: "stylesheet", href: "/js/components/styles/seguimientoPedido.css" });
         document.head.appendChild(css);
 
         if (consultar_nuevos) {
@@ -77,7 +77,7 @@ class BuscadorPedidos {
     }
 
     async getPedidos() {
-        let url = 'http://localhost:8888/get_pedidos';
+        let url = `${window.location.origin}/get_pedidos`;
         if (this.maxId) {
             url = url + '?id=' + encodeURIComponent(this.maxId);
         }
