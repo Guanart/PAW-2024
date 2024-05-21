@@ -30,15 +30,15 @@
             </select>
             <label for="fecha">Seleccione un día:</label>
             <input type="date" class="input-fecha" name="fecha">
-            <label for="texto">Nombre de los reservantes:</label>
-            <input type="text" id="texto" name="texto">
+            <label for="nombres">Nombre de los reservantes:</label>
+            <input type="text" id="nombres" name="nombres">
 
 
-            <label for="texto" class="labelLocalReserva">Mesa a reservar</label>
-            <input type="text" id="texto" name="texto" class="inputLocalReserva" value="<?php echo htmlspecialchars($local); ?>">
+            <label for="localInput" class="labelLocalReserva">Mesa a reservar</label>
+            <input type="text" id="localInput" name="localInput" class="inputLocalReserva" value="<?php echo htmlspecialchars($local); ?>">
 
-            <label for="texto" class="labelMesaReserva">Mesa a reservar</label>
-            <input type="text" id="texto" name="texto" class="inputMesaReserva">
+            <label for="mesaInput" class="labelMesaReserva">Mesa a reservar</label>
+            <input type="text" id="mesaInput" name="mesaInput" class="inputMesaReserva">
             <?php require __DIR__ . '/PlanoSucursalA.svg'?>
         
 
