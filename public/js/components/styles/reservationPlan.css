@@ -14,7 +14,8 @@
 }
 
 .labelMesaReserva, .inputMesaReserva, .labelLocalReserva, .inputLocalReserva{
-    display: none;
+    position: absolute;
+    left: -9999px;
 }
 
 

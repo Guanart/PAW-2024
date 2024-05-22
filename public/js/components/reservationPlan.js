@@ -19,6 +19,7 @@ class ReservationPlan {
         this.horarioSeleccionado = null;
 
         this.listenersFechaYHora();
+        this.listenerSubmit();
 
         // Actualizar cada 10 segundos
         setInterval(() => {
@@ -61,7 +62,7 @@ class ReservationPlan {
 
     actualizarEstadoMesas(mesasReservadasId) {
         // Si la mesa ya esta reservada, no se hace nada, por mas clicks que se hagan
-        let inputTexto = document.getElementById('texto');
+        let inputTexto = document.querySelector('input.inputMesaReserva');
 
         // Obtengo el id de todas las mesas reservadas en este intervalo
         const elementosMesa = document.querySelectorAll('.mesa');
@@ -115,11 +116,12 @@ class ReservationPlan {
 
     agregarListeners(elementosMesa) {
         // Recuperar el input oculto del form, en el que va el id de mesa a reservar
-        const inputTexto = document.getElementsByClassName("inputMesaReserva");
+        let inputTexto = document.querySelector('input.inputMesaReserva');
 
         elementosMesa.forEach(elemento => {
             elemento.addEventListener('click', function (event) {
                 const elementoClickeado = event.target;
+                const grupoG = elementoClickeado.closest('g');
 
                 // Si la mesa ya esta reservada, no se hace nada, por mas clicks que se hagan
                 if (elementoClickeado.classList.contains("reservada")) {
@@ -134,6 +136,7 @@ class ReservationPlan {
                 } else {
                     event.target.classList.add("mesaSeleccionada");
                     // Se le quita la seleccion a cualquier mesa seleccionada anteriormente
+                    inputTexto.value = grupoG.id;
                     elementosMesa.forEach(elemento => {
                         if (elemento !== event.target) {
                             elemento.classList.remove("mesaSeleccionada");
@@ -141,14 +144,30 @@ class ReservationPlan {
                     });
                 }
 
+                /*
                 // Se inyecta el id de mesa en el form (el id esta en el g mas cercano)
-                const grupoG = elementoClickeado.closest('g');
                 if (grupoG && grupoG.id) {
                     inputTexto.value = grupoG.id;
                 } else {
                     console.error('El elemento clickeado no está dentro de un <g> con ID.');
                 }
+                */
             });
+        });
+    }
+
+    listenerSubmit() {
+        const botonReserva = document.querySelector(".submit");
+        botonReserva.addEventListener("click", function(event) {
+            var mesaInput = document.forms["form_seleccion_mesa"]["mesaInput"].value;
+
+            if (mesaInput === "") {
+                alert("Debes seleccionar una mesa para continuar.");
+                event.preventDefault();
+                return false;
+            }
+
+            console.log("El botón de reserva fue presionado.");
         });
     }
 }
