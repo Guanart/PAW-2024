@@ -59,18 +59,12 @@ class SeguimientoPedido {
                 this.info_pedido.className = "seguimientoPedido-" + estadoActual;
                 this.info_pedido.textContent = "Estado: " + estadoActual.toUpperCase();
                 this.estado = estadoActual;
-                if (estadoActual === "finalizado") {
+                if (estadoActual === "despachado") {
                     this.notifyUser();
                 }
             }
         }
     }
-
-    /*
-    isMobileDevice() {
-        return /Mobi|Android/i.test(navigator.userAgent);
-    }
-    */
 
     notifyUser() {
         // Vibrar

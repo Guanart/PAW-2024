@@ -45,7 +45,7 @@
                 "nombre": "hamburguesa1"
             }
         ],
-        "estado": "finalizado"
+        "estado": "aceptado"
     },
     {
         "id_pedido": 126,
