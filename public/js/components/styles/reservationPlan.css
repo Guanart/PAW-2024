@@ -2,21 +2,48 @@
     height: auto;
     width: 50vw;
     margin: 1rem;
+    color:aliceblue
 }
 
 .mesa {
     transition: fill 0.2s;
 }
 
-label, input:not(.submit) {
-    display: none;
+.silla {
+    transition: fill 0.2s;
 }
+
+.labelMesaReserva, .inputMesaReserva, .labelLocalReserva, .inputLocalReserva{
+    position: absolute;
+    left: -9999px;
+}
+
 
 .mesaSeleccionada {
     fill: var(--amarillo-marca) !important;
 }
 
-g[id^="mesa-"]:hover .mesa:not(.mesaSeleccionada){
-    fill: rgba(255, 175, 16, 0.4) !important;
+.reservada .mesa{
+    fill: #ebebe6 !important;
+    stroke:#616060 !important;
+}
+.reservada .silla {
+    fill: #858585 !important;
+    stroke:#616060 !important;
+}
+
+g[id^="mesa-"]:not(.reservada):hover .mesa, g[id^="barra"]:not(.reservada):hover .mesa{
+    fill:#ffaf10;
+    cursor: pointer;
+}
+
+g[id^="mesa-"]:not(.reservada):hover .silla, g[id^="barra"]:not(.reservada):hover .silla{
+    stroke: #ffaf10;
+    stroke-width: 5px;
+    cursor: pointer;
+}
+
+g[id^="mesa-"]:not(.reservada):hover .mesa:not(.mesaSeleccionada):not(.reservada), g[id^="barra"]:hover .mesa:not(.mesaSeleccionada):not(.reservada){
+    fill: rgba(255, 175, 16, 0.5) !important;
     cursor: pointer;
 }

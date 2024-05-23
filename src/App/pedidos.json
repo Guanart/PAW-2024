@@ -1,0 +1,162 @@
+[
+    {
+        "id_pedido": 123,
+        "id_usuario": "123",
+        "tipo": "delivery",
+        "productos": [
+            {
+                "id": 123,
+                "nombre": "hamburguesa1"
+            },
+            {
+                "id": 1234,
+                "nombre": "hamburguesa2"
+            }
+        ],
+        "estado": "entregado"
+    },
+    {
+        "id_pedido": 124,
+        "id_usuario": "223",
+        "tipo": "local",
+        "productos": [
+            {
+                "id": 123,
+                "nombre": "hamburguesa1"
+            }
+        ],
+        "estado": "finalizado"
+    },
+    {
+        "id_pedido": 125,
+        "id_usuario": "123",
+        "tipo": "local",
+        "productos": [
+            {
+                "id": 124,
+                "nombre": "hamburguesa3"
+            },
+            {
+                "id": 1234,
+                "nombre": "hamburguesa2"
+            },
+            {
+                "id": 123,
+                "nombre": "hamburguesa1"
+            }
+        ],
+        "estado": "aceptado"
+    },
+    {
+        "id_pedido": 126,
+        "id_usuario": "123",
+        "tipo": "llevar",
+        "productos": [
+            {
+                "id": 123,
+                "nombre": "hamburguesa2"
+            },
+            {
+                "id": 1234,
+                "nombre": "hamburguesa4"
+            }
+        ],
+        "estado": "preparacion"
+    },
+    {
+        "id_pedido": 127,
+        "id_usuario": "515",
+        "tipo": "delivery",
+        "productos": [
+            {
+                "id": 123,
+                "nombre": "hamburguesa2"
+            },
+            {
+                "id": 1234,
+                "nombre": "hamburguesa4"
+            }
+        ],
+        "estado": "despachado"
+    },
+    {
+        "id_pedido": 128,
+        "id_usuario": "484",
+        "tipo": "local",
+        "productos": [
+            {
+                "id": 123,
+                "nombre": "hamburguesa2"
+            },
+            {
+                "id": 1234,
+                "nombre": "hamburguesa4"
+            }
+        ],
+        "estado": "aceptado"
+    },
+    {
+        "id_pedido": 129,
+        "id_usuario": "123",
+        "tipo": "llevar",
+        "productos": [
+            {
+                "id": 123,
+                "nombre": "hamburguesa2"
+            },
+            {
+                "id": 1234,
+                "nombre": "hamburguesa4"
+            }
+        ],
+        "estado": "entregado"
+    },
+    {
+        "id_pedido": 130,
+        "id_usuario": "123",
+        "tipo": "llevar",
+        "productos": [
+            {
+                "id": 123,
+                "nombre": "hamburguesa2"
+            },
+            {
+                "id": 1234,
+                "nombre": "hamburguesa4"
+            }
+        ],
+        "estado": "entregado"
+    },
+    {
+        "id_pedido": 131,
+        "id_usuario": "123",
+        "tipo": "llevar",
+        "productos": [
+            {
+                "id": 123,
+                "nombre": "hamburguesa2"
+            },
+            {
+                "id": 1234,
+                "nombre": "hamburguesa4"
+            }
+        ],
+        "estado": "aceptado"
+    },
+    {
+        "id_pedido": 132,
+        "id_usuario": "123",
+        "tipo": "llevar",
+        "productos": [
+            {
+                "id": 123,
+                "nombre": "hamburguesa2"
+            },
+            {
+                "id": 1234,
+                "nombre": "hamburguesa4"
+            }
+        ],
+        "estado": "finalizado"
+    }
+]

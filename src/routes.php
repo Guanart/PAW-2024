@@ -1,5 +1,6 @@
 <?php
 
+use Paw\App\Controllers\IntranetController;
 use Paw\Core\Router;
 
 $router = new Router;
@@ -24,12 +25,19 @@ $router->get('/ingresar_direccion','PedidoController@ingresarDireccion');
 $router->post("/ingresar_direccion", "PedidoController@ingresarDireccionFormulario");
 $router->get('/fin_pedido','PedidoController@finPedido');
 $router->get('/seleccion_mesa_qr','PedidoController@seleccionarMesa');
+$router->get('/tus_pedidos','PedidoController@pedidos');
+$router->get('/estado_pedido', 'PedidoController@estadoPedido');
+$router->post('/estado_pedido', 'PedidoController@actualizarEstadoPedido');
+$router->get('/get_pedidos', 'PedidoController@getPedidosId');
 
 $router->get('/reservas','ReservaController@reservas');
 $router->get('/locales','ReservaController@locales');
 $router->post('/fin_reserva','ReservaController@finReserva');
 $router->post('/seleccion_mesa','ReservaController@seleccionMesa');
+$router->post('/agregar_reserva','ReservaController@agregarReserva');
+$router->get('/seleccion_mesa','ReservaController@seleccionMesa');
 $router->get('/local','ReservaController@local');
+$router->get('/reservas_mesa','ReservaController@reservasMesa'); //<---
 
 $router->get('/login','UsuarioController@login');
 $router->get('/register','UsuarioController@register');
@@ -39,3 +47,6 @@ $router->get('/verification_code','UsuarioController@verificationCode');
 
 $router->get('/alta_plato', 'IntranetController@altaPlato');
 $router->post('/alta_plato', 'IntranetController@altaPlatoProcesado');
+$router->get('/turnero', 'IntranetController@turnero');
+$router->get('/gestion_pedidos', 'IntranetController@gestionPedidos');
+$router->get('/estados', 'IntranetController@estadosPedidos');

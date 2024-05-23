@@ -10,6 +10,37 @@ use Paw\App\Models\PedidoMesa;
 
 class PedidoController extends Controller
 {
+    public function pedidos() {
+        $title = "Tus pedidos";
+        $id_usuario = "123";    // Recuperarlo de la sesión
+        $pedidos = json_decode(file_get_contents(__DIR__ . '/../pedidos.json'), true);   // Recuperar de la base de datos
+        $pedidos_usuario = array_filter($pedidos, function ($pedido) use ($id_usuario) {
+            return $pedido["id_usuario"] === $id_usuario && $pedido["estado"] !== "entregado";
+        });
+
+        view('pedido/tus_pedidos', [
+            'nav' => $this->nav,
+            'footer' => $this->footer,
+            'title' => $title,
+            'pedidos_usuario' => $pedidos_usuario,
+        ]);
+    }
+
+    public function estadoPedido() {
+        $endpoint = __DIR__ . "/../views/pedido/estado_pedido.php";
+        require $endpoint;
+    }
+
+    public function actualizarEstadoPedido() {
+        $endpoint = __DIR__ . "/../views/pedido/actualizar_estado_pedido.php";
+        require $endpoint;
+    }
+    
+    public function getPedidosId() {
+        $endpoint = __DIR__ . "/../views/pedido/get_pedidos.php";
+        require $endpoint;
+    }
+
     public function hacerPedido() {
         $title = "Hacer Pedido";
         view('pedido/hacer_pedido', [
@@ -18,8 +49,6 @@ class PedidoController extends Controller
             'title' => $title,
         ]);
     }
-
-    
 
     public function armarPedido(String $tipo = "", Array $formularioDatos = []){
         $title = "Armar Pedido";
@@ -62,6 +91,8 @@ class PedidoController extends Controller
             } elseif ($formularioDatos["tipo"]==="llevar") {
                 $pedidoMesa = new PedidoLlevar($formularioDatos);
             }
+            // Agregar al JSON un nuevo Pedido
+
             $this->finPedido($formularioDatos);
         } catch (InvalidValueFormatException $e){
             $mensaje = $e->getMessage();

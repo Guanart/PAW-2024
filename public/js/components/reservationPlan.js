@@ -1,74 +1,142 @@
 class ReservationPlan {
-    // URL del archivo SVG
-    urlSVG = '/../../images/svg/PlanoSucursalA.svg';
-    
     constructor(pContenedor) {
-        // Conseguir nodo del plano
-        let contenedor = pContenedor.tagName
-            ? pContenedor
-            : document.querySelector(pContenedor);
+        let contenedor = pContenedor.tagName ? pContenedor : document.querySelector(pContenedor);
 
         if (!contenedor) {
-            console.error("Elemento HTML para generar el menu no encontrado");
+            console.error("Elemento HTML para generar el plan no encontrado");
             return;
         }
-        // Cargar el archivo de estilos (CSS)
-        let css = tools.nuevoElemento('link', '', {
-            rel: 'stylesheet',
-            href: '/js/components/styles/reservationPlan.css'
-        });
+
+        let css = document.createElement('link');
+        css.rel = 'stylesheet';
+        css.href = '/js/components/styles/reservationPlan.css';
         document.head.appendChild(css);
 
-        // Llamar a la función para cargar el contenido del archivo SVG
-        this.cargarSVG(contenedor);
+        const elementosMesa = document.querySelectorAll('.mesa');
+        this.agregarListeners(elementosMesa);
+
+        this.fechaSeleccionada = null;
+        this.horarioSeleccionado = null;
+
+        this.listenersFechaYHora();
+        this.listenerSubmit();
+
+        // Actualizar cada 10 segundos
+        setInterval(() => {
+            if (this.fechaSeleccionada && this.horarioSeleccionado) {
+                this.flujoActualizacion();
+            }
+        }, 10000);
     }
 
-    // Función para cargar el contenido del archivo SVG desde una URL
-    async cargarSVG(contenedor) {
+    async buscarReservas() {
+        // Consigo el local al cual consultar
+        const inputLocal = document.querySelector('input.inputLocalReserva');
+        const idLocal = inputLocal.value.toLowerCase();
+
+        // Hago la consulta al backend
+        const url = `${window.location.origin}/reservas_mesa?idLocal=${idLocal}&fecha=${this.fechaSeleccionada}&hora=${this.horarioSeleccionado}`;
         try {
-            // Realiza la solicitud para cargar el archivo SVG
-            const response = await fetch(this.urlSVG);
-
-            // Verifica si la solicitud fue exitosa
+            const response = await fetch(url);
             if (!response.ok) {
-                throw new Error('No se pudo cargar el archivo SVG');
+                throw new Error('Ocurrió un error al obtener los datos');
             }
-
-            // Convierte la respuesta en texto
-            const svgText = await response.text();
-
-            // Usar DOMParser para analizar la cadena SVG y crear un nodo DOM
-            const parser = new DOMParser();
-            const doc = parser.parseFromString(svgText, 'image/svg+xml');
-
-            // Obtener el elemento SVG
-            const svgNode = doc.documentElement;
-
-            contenedor.appendChild(svgNode);
-
-            const elementosMesa = document.querySelectorAll('.mesa');
-            console.log(elementosMesa);
-            this.agregarListeners(elementosMesa)
-
+            const datosReservas = await response.json();
+            // Retorno una lista de ID's de mesas reservadas en esa fecha, a esa hora
+            return this.encontrarReservaPorNumero(datosReservas);
         } catch (error) {
-            console.error('Error al cargar el archivo SVG:', error);
+            console.error('Error al obtener los datos del endpoint:', error);
         }
+    }
+
+    encontrarReservaPorNumero(datosReservas) {
+        //Obtengo los id de las mesas reservadas a partir de la entrada
+        let mesasReservadasId = [];
+        if (datosReservas && datosReservas.mesasReservadas) {
+            for (const reserva of datosReservas.mesasReservadas) {
+                mesasReservadasId.push(reserva.mesa);
+            }
+        }
+        return mesasReservadasId;
+    }
+
+    actualizarEstadoMesas(mesasReservadasId) {
+        // Si la mesa ya esta reservada, no se hace nada, por mas clicks que se hagan
+        let inputTexto = document.querySelector('input.inputMesaReserva');
+
+        // Obtengo el id de todas las mesas reservadas en este intervalo
+        const elementosMesa = document.querySelectorAll('.mesa');
+
+        elementosMesa.forEach(elemento => {
+            const mesaId = elemento.closest('g').id;
+
+            // Si la mesa tiene un id que esta dentro de la lista de mesas reservadas...
+            if (mesasReservadasId.includes(mesaId)) {
+
+                // Le agrego la clase reservada a la mesa y al grupo (para aplicar estilos)
+                elemento.classList.add('reservada');
+                elemento.closest('g').classList.add('reservada');
+
+                // En caso de ya estar seleccionada, le quito la clase y borro el id del input
+                if (elemento.classList.contains("mesaSeleccionada")) {
+                    elemento.classList.remove("mesaSeleccionada");
+                    inputTexto.value = "";
+                }
+            } else {
+                // Si no esta en la lista, se le quita la clase reservada
+                elemento.classList.remove('reservada');
+                elemento.closest('g').classList.remove('reservada');
+            }
+        });
+    }
+
+    async flujoActualizacion() {
+        const mesasReservadasId = await this.buscarReservas();
+        this.actualizarEstadoMesas(mesasReservadasId);
+    }
+
+    listenersFechaYHora() {
+        const selectHorario = document.querySelector('.select-hora');
+        const inputFecha = document.querySelector('.input-fecha');
+
+        selectHorario.addEventListener('change', () => {
+            this.horarioSeleccionado = selectHorario.value;
+            if (this.fechaSeleccionada) {
+                this.flujoActualizacion();
+            }
+        });
+
+        inputFecha.addEventListener('change', () => {
+            this.fechaSeleccionada = inputFecha.value;
+            if (this.horarioSeleccionado) {
+                this.flujoActualizacion();
+            }
+        });
     }
 
     agregarListeners(elementosMesa) {
-        const inputTexto = document.getElementById('texto');
-        // const mesasSeleccionadas = new Set();
-        let mesaSeleccionada;
-        // Itera sobre cada elemento de la clase 'mesa' y agrega un eventListener de 'click'
+        // Recuperar el input oculto del form, en el que va el id de mesa a reservar
+        let inputTexto = document.querySelector('input.inputMesaReserva');
+
         elementosMesa.forEach(elemento => {
             elemento.addEventListener('click', function (event) {
-                // Usamos evento.target para obtener el elemento que se ha hecho click
                 const elementoClickeado = event.target;
+                const grupoG = elementoClickeado.closest('g');
 
+                // Si la mesa ya esta reservada, no se hace nada, por mas clicks que se hagan
+                if (elementoClickeado.classList.contains("reservada")) {
+                    return;
+                }
+
+                // Si es una mesa ya seleccionada, se le quita la seleccion al presionar click
                 if (elementoClickeado.classList.contains("mesaSeleccionada")) {
                     event.target.classList.remove("mesaSeleccionada");
+
+                // Si no estaba seleccionada, se la selecciona al presionar click
                 } else {
                     event.target.classList.add("mesaSeleccionada");
+                    // Se le quita la seleccion a cualquier mesa seleccionada anteriormente
+                    inputTexto.value = grupoG.id;
                     elementosMesa.forEach(elemento => {
                         if (elemento !== event.target) {
                             elemento.classList.remove("mesaSeleccionada");
@@ -76,30 +144,65 @@ class ReservationPlan {
                     });
                 }
 
-                // Usamos closest() para subir en el árbol DOM hasta el <g> más cercano
-                const grupoG = elementoClickeado.closest('g');
-
-                // Verifica que el grupo <g> tiene un ID y extrae el ID
+                /*
+                // Se inyecta el id de mesa en el form (el id esta en el g mas cercano)
                 if (grupoG && grupoG.id) {
-                    const idMesa = grupoG.id;
-
-                    // Si el ID ya está en el conjunto, lo elimina; de lo contrario, lo agrega
-                    // if (mesasSeleccionadas.has(idMesa)) {
-                    //     mesasSeleccionadas.delete(idMesa);
-                    // } else {
-                    //     mesasSeleccionadas.add(idMesa);
-                    // }
-
-                    mesaSeleccionada = idMesa;
-
-                    // Actualiza el campo de texto con los IDs de las mesas seleccionadas
-                    // inputTexto.value = Array.from(mesasSeleccionadas).join(', ');
-                    inputTexto.value = mesaSeleccionada;
+                    inputTexto.value = grupoG.id;
                 } else {
-                    console.log('El elemento clickeado no está dentro de un <g> con ID.');
+                    console.error('El elemento clickeado no está dentro de un <g> con ID.');
                 }
+                */
             });
         });
     }
 
+    listenerSubmit() {
+        const botonReserva = document.querySelector(".submit");
+        botonReserva.addEventListener("click", (event) => {
+            const idMesa = document.forms["form_seleccion_mesa"]["mesaInput"].value;
+            const idLocal = document.forms["form_seleccion_mesa"]["localInput"].value;
+    
+            if (idMesa === "" || idLocal === "") {
+                alert("Debes seleccionar una mesa para continuar.");
+                event.preventDefault();
+                return false;
+            }
+            //console.log(idMesa + " " + idLocal + " " + fechaHora.toISOString());
+            
+            this.enviarReserva(idMesa, idLocal, this.fechaSeleccionada, this.horarioSeleccionado);
+            console.log("El botón de reserva fue presionado.");
+        });
+    }
+
+    async enviarReserva(idMesa, idLocal, fecha, hora) {
+        let url = 'http://localhost:8888/agregar_reserva';
+        let datos = {
+            idMesa: idMesa,
+            idLocal: idLocal,
+            fecha: fecha,
+            hora: hora,
+        };
+        try {
+            const response = await fetch(url, {
+                method: 'POST',
+                headers: {'Content-type': 'application/json'},
+                body: JSON.stringify(datos)
+            });
+    
+            if (!response.ok) {
+                const errorData = await response.json();
+                throw new Error('Error al registrar la reserva. ' + errorData.error);
+            }
+    
+            const data = await response.json();
+            if (data.hasOwnProperty('error')) {
+                throw new Error("Error llega de data: " + data.error);
+            }
+    
+            return data;
+        } catch (error) {
+            console.error("Hubo un error al registrar la reserva:", error);
+            return null;
+        }
+    }
 }

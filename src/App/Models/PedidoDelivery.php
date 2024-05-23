@@ -21,6 +21,7 @@ class PedidoDelivery extends Model {
     public array $direccion = [];
 
     public array $productos = [];
+    private static array $estados = ["aceptado", "preparacion", "finalizado", "despachado", "entregado"];
 
     public function __construct(array $values) {
         $this->direccion = [
@@ -101,5 +102,9 @@ class PedidoDelivery extends Model {
             throw new InvalidValueFormatException("No hay productos");
         }
         $this->productos = $productos;
+    }
+
+    public static function getEstados() {
+        return self::$estados;
     }
 }

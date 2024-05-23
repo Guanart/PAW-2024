@@ -65,13 +65,35 @@ class IntranetController extends Controller {
         $this->altaPlato(true, $mensaje);
     }  
 
-
     private function saveImage(array $img): string
     {
         ImageValidator::validateImage($img);
         $path = $this->imagesDir . 'images/productos/' . uniqid() . '.' . pathinfo($img['name'], PATHINFO_EXTENSION);
         move_uploaded_file($img['tmp_name'], $path);
         return $path;
+    }
+
+    public function turnero() {
+        $title = "Turnero";
+        view('intranet/turnero', [
+            'nav' => $this->nav,
+            'footer' => $this->footer,
+            'title' => $title
+        ]);
+    }
+
+    public function gestionPedidos() {
+        $title = "Administrador de pedidos";
+        view('intranet/gestion_pedidos', [
+            'nav' => $this->nav,
+            'footer' => $this->footer,
+            'title' => $title
+        ]);
+    }
+
+    public function estadosPedidos() {
+        $endpoint = __DIR__ . "/../views/intranet/get_estados.php";
+        require $endpoint;
     }
 
 }

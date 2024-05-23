@@ -52,63 +52,58 @@ class Carousell {
     transitionOpacityCarousell (principal, principalCarousell, images, index, prevButton, nextButton) {
         console.log(images);
         images.forEach(image => {
-            image.style.opacity = 0;
-            image.style.display = "none";
+            image.classList.add("desaparecerOpacidad");
         });
-        images[0].style.opacity = 1;
-        images[0].style.display = "flex";
+        images[0].classList.remove("desaparecerOpacidad");
+        images[0].classList.add("aparecerOpacidad");
         index = 0;
         prevButton.addEventListener("click", () => {
-            images[index].style.opacity = 0;
-            setTimeout(()=>{},500);
-            images[index].style.display = "none";
+            images[index].classList.remove("aparecerOpacidad");
+            images[index].classList.add("desaparecerOpacidad");
+            
             index--;
             if (index < 0){
                 index = images.length - 1; // Establecer el índice al último elemento
-                images[index].style.opacity = 1;
-                setTimeout(()=>{},500);
-                images[index].style.display = "flex";
+                images[index].classList.remove("desaparecerOpacidad");
+                images[index].classList.add("aparecerOpacidad");
             } else {
-                images[index].style.opacity = 1;
-                setTimeout(()=>{},500);
-                images[index].style.display = "flex";
+                images[index].classList.remove("desaparecerOpacidad");
+                images[index].classList.add("aparecerOpacidad");
+
             }
             clearTimeout(intervalo);
         });
         
         nextButton.addEventListener("click", () => {
-            images[index].style.opacity = 0;
-            setTimeout(()=>{},500);
-            images[index].style.display = "none";
+            images[index].classList.remove("aparecerOpacidad");
+            images[index].classList.add("desaparecerOpacidad");
             index++;
             if (index > images.length-1){
                 index = 0;
-                images[index].style.opacity = 1;
-                setTimeout(()=>{},500);
-                images[index].style.display = "flex";
+                images[index].classList.remove("desaparecerOpacidad");
+                images[index].classList.add("aparecerOpacidad");
+                
             } else
-                images[index].style.opacity = 1;
-                setTimeout(()=>{},500);
-                images[index].style.display = "flex";
+                images[index].classList.remove("desaparecerOpacidad");
+                images[index].classList.add("aparecerOpacidad");
+                
             clearTimeout(intervalo);
         });
         
         let intervalo = null;
 
         intervalo = setInterval (() => {
-            images[index].style.opacity = 0;
-            setTimeout(()=>{},500);
-            images[index].style.display = "none"; 
+            images[index].classList.remove("aparecerOpacidad");
+            images[index].classList.add("desaparecerOpacidad");
             index++;
             if (index > images.length-1){
                 index = 0
-                images[index].style.opacity = 1;
-                setTimeout(()=>{},500);
-                images[index].style.display = "flex"; 
+                images[index].classList.remove("desaparecerOpacidad");
+                images[index].classList.add("aparecerOpacidad");
+
             } else
-                images[index].style.opacity = 1;
-                setTimeout(()=>{},500);
-                images[index].style.display = "flex"; 
+                images[index].classList.remove("desaparecerOpacidad");
+                images[index].classList.add("aparecerOpacidad");
         }, 6000);
     }
 

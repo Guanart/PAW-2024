@@ -23,6 +23,7 @@ class PedidoLlevar extends Model {
     public array $extras = [];
 
     public array $productos = [];
+    private static array $estados = ["aceptado", "preparacion", "finalizado", "retirar", "entregado"];
 
     public function __construct(array $values) {
         $this->fields = [
@@ -59,5 +60,9 @@ class PedidoLlevar extends Model {
             throw new InvalidValueFormatException("No hay productos");
         }
         $this->productos = $productos;
+    }
+
+    public static function getEstados() {
+        return self::$estados;
     }
 }
