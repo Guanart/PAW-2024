@@ -15,7 +15,7 @@
     </header>
     <main>
         <h3 class="titulo1">Elija las mesas a reservar</h3>
-        <form name="form_seleccion_mesa" action="fin_reserva" method="post">
+        <form class="form_seleccion_mesa" name="form_seleccion_mesa" action="fin_reserva" method="post" required>
             <select class="select-hora" name="horario">
                 <option value="09:00">09:00</option>
                 <option value="10:30">10:30</option>
@@ -29,16 +29,16 @@
                 <option value="22:30">22:30</option>
             </select>
             <label for="fecha">Seleccione un día:</label>
-            <input type="date" class="input-fecha" name="fecha">
-            <label for="texto">Nombre de los reservantes:</label>
-            <input type="text" id="texto" name="texto">
+            <input type="date" class="input-fecha" name="fecha" required>
+            <label for="nombres">Nombre de los reservantes:</label>
+            <input type="text" id="nombres" name="nombres" required>
 
 
-            <label for="texto" class="labelLocalReserva">Mesa a reservar</label>
-            <input type="text" id="texto" name="texto" class="inputLocalReserva" value="<?php echo htmlspecialchars($local); ?>">
+            <label for="localInput" class="labelLocalReserva">Mesa a reservar</label>
+            <input type="text" id="localInput" name="localInput" class="inputLocalReserva" required value="<?php echo htmlspecialchars($local); ?>">
 
-            <label for="texto" class="labelMesaReserva">Mesa a reservar</label>
-            <input type="text" id="texto" name="texto" class="inputMesaReserva">
+            <label for="mesaInput" class="labelMesaReserva">Mesa a reservar</label>
+            <input type="text" id="mesaInput" name="mesaInput" class="inputMesaReserva" required>
             <?php require __DIR__ . '/PlanoSucursalA.svg'?>
         
 

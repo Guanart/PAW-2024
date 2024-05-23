@@ -20,13 +20,16 @@ class SeguimientoPedido {
 
         this.consulta_automatica = setInterval(async () => {
             await this.actualizar();
+            //this.notifyUser();
         }, 10000);
     }
 
     async getEstado() {
-        const url = 'http://localhost:8888/estado_pedido?id=' + encodeURIComponent(this.idPedido);
+        const url = `${window.location.origin}/estado_pedido?id=${encodeURIComponent(this.idPedido)}`;
         try {
-            const response = await fetch(url);
+            const response = await fetch(url, {
+                mode: 'no-cors'
+            });
             if (!response.ok) {
                 throw new Error('Error al obtener el estado del pedido. ' + response.json);
             }
@@ -56,7 +59,29 @@ class SeguimientoPedido {
                 this.info_pedido.className = "seguimientoPedido-" + estadoActual;
                 this.info_pedido.textContent = "Estado: " + estadoActual.toUpperCase();
                 this.estado = estadoActual;
+                if (estadoActual === "finalizado") {
+                    this.notifyUser();
+                }
             }
         }
+    }
+
+    /*
+    isMobileDevice() {
+        return /Mobi|Android/i.test(navigator.userAgent);
+    }
+    */
+
+    notifyUser() {
+        // Vibrar
+        if (window.navigator.vibrate) {
+            window.navigator.vibrate([200, 100, 200]);
+        }
+        
+        // Reproducir sonido
+        const audio = new Audio('/assets/sounds/notification.wav');
+        audio.play().catch(error => {
+            console.error("Error al reproducir el sonido de notificación:", error);
+        })
     }
 }

@@ -15,7 +15,7 @@ class appPAW {
             });
         }
 
-        if (currentUrl === "/alta-plato") {
+        else if (currentUrl === "/alta-plato") {
             //Inicializar la funcionalidad Drag and Drop
             document.addEventListener("DOMContentLoaded", () => {
                 tools.cargarScript("dragAndDrop", "js/components/dragAndDrop.js", () => {
@@ -24,9 +24,7 @@ class appPAW {
             });
         }
 
-        if (currentUrl === "/seleccion_mesa") {
-            //<img alt="plano" class="plano" src="../images/svg/PlanoSucursalA.svg">
-            //
+        else if (currentUrl === "/seleccion_mesa") {
             document.addEventListener("DOMContentLoaded", () => {
                 tools.cargarScript("ReservationPlan", "js/components/reservationPlan.js", () => {
                     let plan = new ReservationPlan("svg.plan");
@@ -34,7 +32,7 @@ class appPAW {
             });
         }
         
-        if (currentUrl === "/tus_pedidos") {
+        else if (currentUrl === "/tus_pedidos") {
             //Inicializar la funcionalidad seguimientoPedidos
             document.addEventListener("DOMContentLoaded", () => {
                 tools.cargarScript("seguimientoPedido", "js/components/seguimientoPedido.js", () => {
@@ -77,4 +75,4 @@ class appPAW {
     }
 }
 
-    let app = new appPAW();
+let app = new appPAW();
