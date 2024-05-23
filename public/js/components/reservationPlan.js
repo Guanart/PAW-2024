@@ -158,16 +158,51 @@ class ReservationPlan {
 
     listenerSubmit() {
         const botonReserva = document.querySelector(".submit");
-        botonReserva.addEventListener("click", function(event) {
-            var mesaInput = document.forms["form_seleccion_mesa"]["mesaInput"].value;
-
-            if (mesaInput === "") {
+        botonReserva.addEventListener("click", (event) => {
+            const idMesa = document.forms["form_seleccion_mesa"]["mesaInput"].value;
+            const idLocal = document.forms["form_seleccion_mesa"]["localInput"].value;
+    
+            if (idMesa === "" || idLocal === "") {
                 alert("Debes seleccionar una mesa para continuar.");
                 event.preventDefault();
                 return false;
             }
-
+            //console.log(idMesa + " " + idLocal + " " + fechaHora.toISOString());
+            
+            this.enviarReserva(idMesa, idLocal, this.fechaSeleccionada, this.horarioSeleccionado);
             console.log("El botón de reserva fue presionado.");
         });
+    }
+
+    async enviarReserva(idMesa, idLocal, fecha, hora) {
+        let url = 'http://localhost:8888/agregar_reserva';
+        let datos = {
+            idMesa: idMesa,
+            idLocal: idLocal,
+            fecha: fecha,
+            hora: hora,
+        };
+        try {
+            const response = await fetch(url, {
+                method: 'POST',
+                headers: {'Content-type': 'application/json'},
+                body: JSON.stringify(datos)
+            });
+    
+            if (!response.ok) {
+                const errorData = await response.json();
+                throw new Error('Error al registrar la reserva. ' + errorData.error);
+            }
+    
+            const data = await response.json();
+            if (data.hasOwnProperty('error')) {
+                throw new Error("Error llega de data: " + data.error);
+            }
+    
+            return data;
+        } catch (error) {
+            console.error("Hubo un error al registrar la reserva:", error);
+            return null;
+        }
     }
 }

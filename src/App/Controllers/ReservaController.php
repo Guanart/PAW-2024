@@ -25,6 +25,11 @@ class ReservaController extends Controller
         require $endpoint;
     }
 
+    public function agregarReserva() {
+        $endpoint = __DIR__ . "/../views/reserva/agregar_reserva.php";
+        require $endpoint;
+    }
+
     public function pedidos() {
         view('pedido/pedidos', [
             'nav' => $this->nav,
