@@ -37,9 +37,13 @@ class appPAW {
         if (currentUrl === "/tus_pedidos") {
             //Inicializar la funcionalidad seguimientoPedidos
             document.addEventListener("DOMContentLoaded", () => {
-                tools.cargarScript("SeguimientoPedido", "js/components/SeguimientoPedido.js", () => {
-                    tools.cargarScript("buscadorPedidos", "js/components/buscadorPedidos.js", () => {
-                        let buscador = new BuscadorPedidos(false);
+                tools.cargarScript("seguimientoPedido", "js/components/seguimientoPedido.js", () => {
+                    tools.cargarScript("buscadorPedidosDOM", "js/components/buscadorPedidosDOM.js", () => {
+                        let buscador = new BuscadorPedidosDOM();
+                        let pedidos = buscador.buscarPedidos();
+                        pedidos.forEach((pedido) => {
+                            new SeguimientoPedido(pedido);
+                        });
                     });
                 });
             });
@@ -48,9 +52,24 @@ class appPAW {
         if (currentUrl === "/turnero") {
             //Inicializar la funcionalidad Turnero
             document.addEventListener("DOMContentLoaded", () => {
-                tools.cargarScript("SeguimientoPedido", "js/components/SeguimientoPedido.js", () => {
-                    tools.cargarScript("buscadorPedidos", "js/components/buscadorPedidos.js", () => {
-                        let buscador = new BuscadorPedidos(true);
+                tools.cargarScript("seguimientoPedido", "js/components/seguimientoPedido.js", () => {
+                    tools.cargarScript("buscadorNuevosPedidos", "js/components/buscadorNuevosPedidos.js", () => {
+                        tools.cargarScript("turnero", "js/components/turnero.js", () => {
+                            let turnero = new Turnero();
+                        })
+                    });
+                });
+            });
+        }
+
+        if (currentUrl === "/gestion_pedidos") {
+            //Inicializar la funcionalidad Turnero
+            document.addEventListener("DOMContentLoaded", () => {
+                tools.cargarScript("seguimientoPedido", "js/components/seguimientoPedido.js", () => {
+                    tools.cargarScript("buscadorNuevosPedidos", "js/components/buscadorNuevosPedidos.js", () => {
+                        tools.cargarScript("adminPedidos", "js/components/adminPedidos.js", () => {
+                            let adminPedidos = new AdminPedidos();
+                        })
                     });
                 });
             });

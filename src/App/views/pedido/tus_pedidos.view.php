@@ -19,7 +19,7 @@
         <a href="/hacer_pedido">Hace un pedido!</a>
         <?php if ($pedidos_usuario) : ?>
             <?php foreach ($pedidos_usuario as $pedido) : ?>
-                <article id=<?= $pedido["id_pedido"]; ?>>
+                <article class='pedido' id=<?= $pedido["id_pedido"]; ?>>
                     <h4>Pedido #<?= $pedido["id_pedido"]; ?></h4>
                     <ul>
                         <?php foreach ($pedido["productos"] as $producto) : ?>

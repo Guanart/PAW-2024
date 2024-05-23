@@ -30,6 +30,11 @@ class PedidoController extends Controller
         $endpoint = __DIR__ . "/../views/pedido/estado_pedido.php";
         require $endpoint;
     }
+
+    public function actualizarEstadoPedido() {
+        $endpoint = __DIR__ . "/../views/pedido/actualizar_estado_pedido.php";
+        require $endpoint;
+    }
     
     public function getPedidosId() {
         $endpoint = __DIR__ . "/../views/pedido/get_pedidos.php";

@@ -27,6 +27,7 @@ $router->get('/fin_pedido','PedidoController@finPedido');
 $router->get('/seleccion_mesa_qr','PedidoController@seleccionarMesa');
 $router->get('/tus_pedidos','PedidoController@pedidos');
 $router->get('/estado_pedido', 'PedidoController@estadoPedido');
+$router->post('/estado_pedido', 'PedidoController@actualizarEstadoPedido');
 $router->get('/get_pedidos', 'PedidoController@getPedidosId');
 
 $router->get('/reservas','ReservaController@reservas');
@@ -48,4 +49,5 @@ $router->get('/verification_code','UsuarioController@verificationCode');
 $router->get('/alta_plato', 'IntranetController@altaPlato');
 $router->post('/alta_plato', 'IntranetController@altaPlatoProcesado');
 $router->get('/turnero', 'IntranetController@turnero');
-//$router->get('/pedidos', 'IntranetController@pedidos');
+$router->get('/gestion_pedidos', 'IntranetController@gestionPedidos');
+$router->get('/estados', 'IntranetController@estadosPedidos');

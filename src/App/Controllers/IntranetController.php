@@ -75,13 +75,25 @@ class IntranetController extends Controller {
 
     public function turnero() {
         $title = "Turnero";
-        $pedidos = json_decode(file_get_contents(__DIR__ . '/../pedidos.json'), true);
         view('intranet/turnero', [
             'nav' => $this->nav,
             'footer' => $this->footer,
-            'title' => $title,
-            'pedidos' => $pedidos
+            'title' => $title
         ]);
+    }
+
+    public function gestionPedidos() {
+        $title = "Administrador de pedidos";
+        view('intranet/gestion_pedidos', [
+            'nav' => $this->nav,
+            'footer' => $this->footer,
+            'title' => $title
+        ]);
+    }
+
+    public function estadosPedidos() {
+        $endpoint = __DIR__ . "/../views/intranet/get_estados.php";
+        require $endpoint;
     }
 
 }
