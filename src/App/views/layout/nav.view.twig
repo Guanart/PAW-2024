@@ -1,0 +1,12 @@
+<nav>
+    <ul>
+        {% for item in nav %}
+        <li>
+            <a href="{{ item.href }}" 
+               class="{{ app.request.getPathInfo() == item.href ? 'selected' : '' }}">
+                {{ item.name }}
+            </a>
+        </li>
+        {% endfor %}
+    </ul>
+</nav>

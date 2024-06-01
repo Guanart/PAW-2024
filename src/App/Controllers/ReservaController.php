@@ -3,16 +3,21 @@
 namespace Paw\App\Controllers;
 
 use Paw\Core\Request;
+use Twig\Environment;
 
 class ReservaController extends Controller
 {
+    private $twig;
 
-    
+    public function __construct(Environment $twig) {
+        $this->twig = $twig;
+    }
+
     public function seleccionMesa(Request $request){
         $input = $request->get('local');
         $local = ucwords($input);
         $title = "Seleccion de Mesa";
-        view('reserva/seleccion_mesa', [
+        echo $this->twig->render('reserva/seleccion_mesa.view.twig', [
             'nav' => $this->nav,
             'footer' => $this->footer,
             'title' => $title,
@@ -21,32 +26,22 @@ class ReservaController extends Controller
     }
 
     public function reservasMesa() {
-        $endpoint = __DIR__ . "/../views/reserva/reservasMesa.php";
-        require $endpoint;
-    }
-
-    public function agregarReserva() {
-        $endpoint = __DIR__ . "/../views/reserva/agregar_reserva.php";
-        require $endpoint;
-    }
-
-    public function pedidos() {
-        view('pedido/pedidos', [
+        echo $this->twig->render('reserva/reservasMesa.view.twig', [
             'nav' => $this->nav,
             'footer' => $this->footer,
-            'title' => $title,
-            'pedidos_usuario' => $pedidos_usuario,
         ]);
     }
 
-    public function estadoPedido() {
-        $endpoint = __DIR__ . "/../views/pedido/estado_pedido.php";
-        require $endpoint;
+    public function agregarReserva() {
+        echo $this->twig->render('reserva/agregar_reserva.view.twig', [
+            'nav' => $this->nav,
+            'footer' => $this->footer,
+        ]);
     }
 
     public function reservas() {
         $title = "Reservas";
-        view('reserva/reservas', [
+        echo $this->twig->render('reserva/reservas.view.twig', [
             'nav' => $this->nav,
             'footer' => $this->footer,
             'title' => $title,
@@ -55,7 +50,7 @@ class ReservaController extends Controller
 
     public function locales() {
         $title = "Locales";
-        view('reserva/reservas', [
+        echo $this->twig->render('reserva/reservas.view.twig', [
             'nav' => $this->nav,
             'footer' => $this->footer,
             'title' => $title,
@@ -64,7 +59,7 @@ class ReservaController extends Controller
 
     public function finReserva(){
         $title = "Fin de la Reserva";
-        view('reserva/fin_reserva', [
+        echo $this->twig->render('reserva/fin_reserva.view.twig', [
             'nav' => $this->nav,
             'footer' => $this->footer,
             'title' => $title,
@@ -75,9 +70,19 @@ class ReservaController extends Controller
         $input = $request->get('local');
         $local = ucwords($input);
         $title = $local;
-        // Mostrar horarios disponibles en funcion del local
-        // require $this->viewsDir . 'reserva/local.view.php';
-        view('reserva/local', [
+        echo $this->twig->render('reserva/local.view.twig', [
+            'nav' => $this->nav,
+            'footer' => $this->footer,
+            'local' => $local,
+            'title' => $local,
+        ]);
+    }
+
+    public function local2(Request $request) {
+        $input = $request->get('local');
+        $local = ucwords($input);
+        $title = $local;
+        echo $this->twig->render('reserva/local2.view.twig', [
             'nav' => $this->nav,
             'footer' => $this->footer,
             'local' => $local,
