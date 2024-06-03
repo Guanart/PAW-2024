@@ -2,11 +2,19 @@
 
 namespace Paw\App\Controllers;
 
+use Twig\Environment;
+
 class PageController extends Controller
 {
+    private $twig;
+
+    public function __construct(Environment $twig) {
+        $this->twig = $twig;
+    }
+
     public function index() {
         $title = "Paw Power";
-        view('index', [
+        echo $this->twig->render('index.view.twig', [
             'nav' => $this->nav,
             'footer' => $this->footer,
             'title' => $title,
@@ -14,7 +22,7 @@ class PageController extends Controller
     }
     public function menu() {
         $title = "Menu";
-        view('menu', [
+        echo $this->twig->render('menu.view.twig', [
             'nav' => $this->nav,
             'footer' => $this->footer,
             'title' => $title,

@@ -1,18 +1,6 @@
-{% include 'layout/head.view.twig' %}
+{% extends 'view.twig' %}
 
-<body>
-    <header>
-        <h1>
-            <a href="../">
-                <picture>
-                    <source srcset="../images/Logo(Light).svg" media="(min-width: 600px)">
-                    <img alt="pawpower" src="../images/Logo(Light).svg">
-                </picture>
-            </a>
-        </h1>
-        {% include 'layout/nav.view.twig' %}
-    </header>
-    <main>
+{% block content %}
         <h2>Reserva en alguno de nuestros locales!</h2>
         <section>
             <article class="overflow_hidden informacion">
@@ -61,7 +49,4 @@
             </article>
             <!-- Agrega más elementos según sea necesario -->
         </section>
-    </main>
-    {% include 'layout/footer.view.twig' %}
-</body>
-</html>
+{% endblock %}

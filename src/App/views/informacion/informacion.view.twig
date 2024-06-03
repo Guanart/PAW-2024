@@ -1,20 +1,6 @@
-<?php require __DIR__ . "/../layout/head.view.php"; ?>
+{% extends 'view.twig' %}
 
-<body>
-    <header>
-        <h1>
-            <a href="../">
-                <picture>
-                    <source srcset="../images/Logo(Light).svg" media="(min-width: 600px)">
-                    <img alt="pawpower" src="../images/Logo(Light).svg">
-                </picture>
-            </a>
-        </h1>
-        <?php
-        require __DIR__ . '/../layout/nav.view.php';
-        ?>
-    </header>
-    <main>
+{% block content %}
         <section class="informacion">
             <h2>
                 Acerca de nosotros
@@ -35,10 +21,4 @@
                 Interdum et malesuada fames ac ante ipsum primis in faucibus. Cras convallis in erat id viverra. Nullam et nunc at libero laoreet porttitor vel molestie nulla. Aliquam lacinia magna dolor, in egestas risus tincidunt consectetur. Sed auctor congue turpis, sit amet condimentum dui varius a. Proin sit amet arcu at dolor interdum tempor vel laoreet enim. Vivamus non molestie est. Aliquam vel scelerisque nunc. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Cras sodales interdum quam in posuere. Ut mollis ex ipsum, vel vehicula mauris sollicitudin sed. Nullam lacinia, ligula malesuada tempus tempor, urna turpis malesuada mauris, in mollis orci justo id leo. Curabitur tempor lectus mauris, vulputate dignissim eros interdum at. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Aliquam erat volutpat. In tristique tempus condimentum.
             </p>
         </section>
-    </main>
-    <?php
-    require __DIR__ . '/../layout/footer.view.php';
-    ?>
-</body>
-
-</html>
+{% endblock %}

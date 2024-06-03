@@ -1,20 +1,6 @@
-<!DOCTYPE html>
-<html lang="ar">
-<?php require "layout/head.view.php"; ?>
+{% extends 'view.twig' %}
 
-<body>
-    <header>
-        <h1>
-            <a href="./">
-                <picture>
-                    <source srcset="./images/Logo(Light).svg" media="(min-width: 600px)">
-                    <img alt="pawpower" src="./images/Logo(Light).svg">
-                </picture>
-            </a>
-        </h1>
-        <?php require "layout/nav.view.php"; ?>
-    </header>
-    <main>
+{% block content %}
         <h2>
             Bienvenido a PawPower!
         </h2>
@@ -101,9 +87,4 @@
             </article>
             <a href="/novedades">Ver más</a>
         </section>
-    </main>
-
-    <?php require "layout/footer.view.php" ?>
-</body>
-
-</html>
+{% endblock %}

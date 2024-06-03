@@ -2,11 +2,19 @@
 
 namespace Paw\App\Controllers;
 
+use Twig\Environment;
+
 class ErrorController extends Controller
 {
+    private $twig;
+
+    public function __construct(Environment $twig) {
+        $this->twig = $twig;
+    }
+
     public function notFound() {
         http_response_code(404);
-        view('not-found', [
+        echo $this->twig->render('not-found.view.twig', [
             'nav' => $this->nav,
             'footer' => $this->footer,
         ]);
@@ -14,7 +22,7 @@ class ErrorController extends Controller
 
     public function internalError() {
         http_response_code(500);
-        view('internal_error', [
+        echo $this->twig->render('internal_error.view.twig', [
             'nav' => $this->nav,
             'footer' => $this->footer,
         ]);

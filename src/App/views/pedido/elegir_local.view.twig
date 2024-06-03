@@ -1,21 +1,8 @@
-<?php require __DIR__ . "/../layout/head.view.php"; ?>
+{% extends 'view.twig' %}
 
-<body>
-    <header>
-        <h1>
-            <a href="../">
-                <picture>
-                    <source srcset="../images/Logo(Light).svg" media="(min-width: 600px)">
-                    <img alt="pawpower" src="../images/Logo(Light).svg">
-                </picture>
-            </a>
-        </h1>
-        <?php
-        require __DIR__ . '/../layout/nav.view.php';
-        ?>
-    </header>
+{% block main_class %}main_elegir_local{% endblock %}
 
-    <main class="main_elegir_local">
+{% block content %}
         <?php if ($mostrarPost) : ?>
             <h3><?= $mensaje ?></h3>
         <?php endif ?>
@@ -33,11 +20,4 @@
                 <input class="submit" type="submit" value="Siguiente">
             </fieldset>
         </form>
-    </main>
-
-    <?php
-    require __DIR__ . '/../layout/footer.view.php';
-    ?>
-</body>
-
-</html>
+{% endblock %}

@@ -15,7 +15,7 @@ class appPAW {
             });
         }
 
-        else if (currentUrl === "/alta-plato") {
+        else if (currentUrl === "/alta_plato") {
             //Inicializar la funcionalidad Drag and Drop
             document.addEventListener("DOMContentLoaded", () => {
                 tools.cargarScript("dragAndDrop", "js/components/dragAndDrop.js", () => {

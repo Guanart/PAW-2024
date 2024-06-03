@@ -2,11 +2,19 @@
 
 namespace Paw\App\Controllers;
 
+use Twig\Environment;
+
 class InformacionController extends Controller
 {
+    private $twig;
+
+    public function __construct(Environment $twig) {
+        $this->twig = $twig;
+    }
+
     public function contactos($procesado = false) {
         $title = "Contactos";
-        view('informacion/contactos', [
+        echo $this->twig->render('informacion/contactos.view.twig', [
             'nav' => $this->nav,
             'footer' => $this->footer,
             'title' => $title,
@@ -21,7 +29,7 @@ class InformacionController extends Controller
 
     public function politicasPrivacidad() {
         $title = "Politicas de Privacidad";
-        view('informacion/politicas_privacidad', [
+        echo $this->twig->render('informacion/politicas_privacidad.view.twig', [
             'nav' => $this->nav,
             'footer' => $this->footer,
             'title' => $title,
@@ -30,7 +38,7 @@ class InformacionController extends Controller
 
     public function acercaDeNosotros() {
         $title = "Acerca de Nosotros";
-        view('informacion/informacion', [
+        echo $this->twig->render('informacion/informacion.view.twig', [
             'nav' => $this->nav,
             'footer' => $this->footer,
             'title' => $title,
@@ -39,7 +47,7 @@ class InformacionController extends Controller
 
     public function defensaDelConsumidor() {
         $title = "Defensa del Consumidor";
-        view('informacion/defensa_consumidor', [
+        echo $this->twig->render('informacion/defensa_consumidor.view.twig', [
             'nav' => $this->nav,
             'footer' => $this->footer,
             'title' => $title,
@@ -48,7 +56,7 @@ class InformacionController extends Controller
 
     public function novedades(){
         $title = "Defensa del Consumidor";
-        view('informacion/novedades', [
+        echo $this->twig->render('informacion/novedades.view.twig', [
             'nav' => $this->nav,
             'footer' => $this->footer,
             'title' => $title,

@@ -9,18 +9,22 @@ use Paw\App\Repositories\ProductoRepository;
 use Paw\Core\Exceptions\InvalidValueFormatException;
 use Paw\Core\Exceptions\InvalidImageException;
 use Paw\App\Validators\ImageValidator;
+use Twig\Environment;
 
 class IntranetController extends Controller {
     
     public ?string $repositoryName = ProductoRepository::class;
     public $repository;
-    
+    private $twig;
 
+    public function __construct(Environment $twig) {
+        $this->twig = $twig;
+    }
     //public ?string $modelName = Producto::class;
 
     public function altaPlato($post = false, string $mensaje = "") {
         $title = "Alta plato";
-        view('intranet/alta_plato', [
+        echo $this->twig->render('intranet/alta_plato.view.twig', [
             'nav' => $this->nav,
             'footer' => $this->footer,
             'title' => $title,
@@ -75,7 +79,7 @@ class IntranetController extends Controller {
 
     public function turnero() {
         $title = "Turnero";
-        view('intranet/turnero', [
+        echo $this->twig->render('intranet/turnero.view.twig', [
             'nav' => $this->nav,
             'footer' => $this->footer,
             'title' => $title
@@ -84,7 +88,7 @@ class IntranetController extends Controller {
 
     public function gestionPedidos() {
         $title = "Administrador de pedidos";
-        view('intranet/gestion_pedidos', [
+        echo $this->twig->render('intranet/gestion_pedidos.view.twig', [
             'nav' => $this->nav,
             'footer' => $this->footer,
             'title' => $title
