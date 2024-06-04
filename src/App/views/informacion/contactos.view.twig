@@ -4,9 +4,9 @@
         <h2>
             Contactanos!
         </h2>
-        <?php if ($procesado) : ?>
-            <h3> Su peticion fue procesada con exito</h3>
-        <?php endif ?>
+        {% if procesado %}
+            <h3>Su petición fue procesada con éxito</h3>
+        {% endif %}
         <form id="formulario" method="POST">
             <label for="nombres">Nombres: </label>
             <input type="text" id="nombres" placeholder="Nombres" required>

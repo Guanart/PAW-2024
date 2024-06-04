@@ -5,7 +5,6 @@ require 'helpers.php';
 use Monolog\Logger;
 use Monolog\Handler\StreamHandler;
 use Dotenv\Dotenv;
-
 use Paw\Core\Config;
 use Paw\Core\Request;
 use Paw\Core\Database\ConnectionBuilder;
@@ -29,6 +28,4 @@ $connection = $connectionBuilder->make($config);
 $request = new Request;
 
 $router->setLogger($log);
-//$whoops = new \Whoops\Run;
-//$whoops->pushHandler(new \Whoops\Handler\PrettyHandler);
-//$whoops->register();
+

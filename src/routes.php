@@ -1,8 +1,6 @@
 <?php
 
-use Paw\App\Controllers\IntranetController;
 use Paw\Core\Router;
-
 use Twig\Environment;
 use Twig\Loader\FilesystemLoader;
 

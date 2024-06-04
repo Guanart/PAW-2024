@@ -2,14 +2,23 @@
 
 namespace Paw\App\Controllers;
 
-use Paw\App\Controllers\Controller;
 use Paw\Core\Request;
+use Twig\Environment;
 use Paw\App\Models\PedidoLlevar;
 use Paw\App\Models\PedidoDelivery;
 use Paw\App\Models\PedidoMesa;
+use Paw\Core\Exceptions\InvalidValueFormatException;
+use Exception;
+
 
 class PedidoController extends Controller
 {
+    private $twig;
+
+    public function __construct(Environment $twig) {
+        $this->twig = $twig;
+    }
+
     public function pedidos() {
         $title = "Tus pedidos";
         $id_usuario = "123";    // Recuperarlo de la sesión
@@ -18,11 +27,11 @@ class PedidoController extends Controller
             return $pedido["id_usuario"] === $id_usuario && $pedido["estado"] !== "entregado";
         });
 
-        view('pedido/tus_pedidos', [
+        echo $this->twig->render('pedido/tus_pedidos.view.twig', [
             'nav' => $this->nav,
             'footer' => $this->footer,
             'title' => $title,
-            'pedidos_usuario' => $pedidos_usuario,
+            'pedidos_usuario' => $pedidos_usuario
         ]);
     }
 
@@ -43,19 +52,19 @@ class PedidoController extends Controller
 
     public function hacerPedido() {
         $title = "Hacer Pedido";
-        view('pedido/hacer_pedido', [
+        echo $this->twig->render('pedido/hacer_pedido.view.twig', [
             'nav' => $this->nav,
             'footer' => $this->footer,
-            'title' => $title,
+            'title' => $title
         ]);
     }
 
     public function armarPedido(){
         $title = "Armar Pedido";
-        view('pedido/armar_pedido', [
+        echo $this->twig->render('pedido/armar_pedido.view.twig', [
             'nav' => $this->nav,
             'footer' => $this->footer,
-            'title' => $title,
+            'title' => $title
         ]);
     }
 
@@ -71,12 +80,12 @@ class PedidoController extends Controller
             }
         }
         $_SESSION["pedido"] = $pedido;
-        $this-> confirmarPedido();
+        $this->confirmarPedido();
     }
 
     public function confirmarPedido($mostrarPost = false, string $mensaje =""){
         $title = "Confirmar Pedido";
-        view('pedido/confirmar_pedido', [
+        echo $this->twig->render('pedido/confirmar_pedido.view.twig', [
             'nav' => $this->nav,
             'footer' => $this->footer,
             'title' => $title,
@@ -102,13 +111,13 @@ class PedidoController extends Controller
             $this->finPedido($formularioDatos);
         } catch (InvalidValueFormatException $e){
             $mensaje = $e->getMessage();
-            this->confirmarPedido(true, $mensaje, $formularioDatos);
+            $this->confirmarPedido(true, $mensaje, $formularioDatos);
         }
     }
 
     public function elegirLocal($mostrarPost = false, string $mensaje =""){
         $title = "Elegir Local";
-        view('pedido/elegir_local', [
+        echo $this->twig->render('pedido/elegir_local.view.twig', [
             'nav' => $this->nav,
             'footer' => $this->footer,
             'title' => $title,
@@ -138,7 +147,7 @@ class PedidoController extends Controller
 
     public function ingresarDireccion($mostrarPost = false, string $mensaje =""){
         $title = "Ingresar Direccion";
-        view('pedido/ingresar_direccion', [
+        echo $this->twig->render('pedido/ingresar_direccion.view.twig', [
             'nav' => $this->nav,
             'footer' => $this->footer,
             'title' => $title,
@@ -179,16 +188,16 @@ class PedidoController extends Controller
         // }
 
         $title = "Fin de Pedido";
-        view('pedido/mensaje_fin_pedido', [
+        echo $this->twig->render('pedido/mensaje_fin_pedido.view.twig', [
             'nav' => $this->nav,
             'footer' => $this->footer,
-            'title' => $title,
+            'title' => $title
         ]);
     }
     
     public function seleccionarMesa($mostrarPost = false, string $mensaje =""){
         $title = "Seleccionar Mesa";
-        view('pedido/seleccion_mesa_qr', [
+        echo $this->twig->render('pedido/seleccion_mesa_qr.view.twig', [
             'nav' => $this->nav,
             'footer' => $this->footer,
             'title' => $title,

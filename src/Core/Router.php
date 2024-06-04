@@ -4,7 +4,6 @@ namespace Paw\Core;
 
 use Paw\Core\Exceptions\RouteNotFoundException;
 use Exception;
-
 use Paw\Core\Request;
 use Paw\Core\Traits\Loggeable;
 use Twig\Environment;
@@ -27,11 +26,11 @@ class Router
     public array $routes = [
         "GET"  => [],
         "POST" => [],
-    ]; // Inicializa la propiedad $routes como un array
+    ];
 
     public function loadRoutes($path, $action, $method = "GET")
     {
-        $this->routes[$method][$path] = $action; // Accede correctamente a la propiedad $routes sin el símbolo $
+        $this->routes[$method][$path] = $action;
     }
 
     public function get($path, $action)
@@ -52,7 +51,7 @@ class Router
     public function getController($path, $http_method)
     {
         if (!$this->exists($path, $http_method)) {
-            throw new RouteNotFoundException("No existe ruta para ese Path"); // Corrige el nombre de la excepción
+            throw new RouteNotFoundException("No existe ruta para ese Path");
         }
         return explode('@', $this->routes[$http_method][$path]);
     }

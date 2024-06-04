@@ -2,7 +2,6 @@
 
 namespace Paw\App\Controllers;
 
-use Exception;
 use Paw\App\Controllers\Controller;
 use Paw\Core\Request;
 use Paw\App\Repositories\ProductoRepository;
@@ -34,16 +33,6 @@ class IntranetController extends Controller {
             'mensaje' => $mensaje
         ]);
     }
-    /* ESTO ME DIO: le damos formato antes?, asi se lee bien
-    array(6) {
-        ["name"]=> string(12) "estrella.png"
-        ["full_path"]=> string(12) "estrella.png"
-        ["type"]=> string(9) "image/png"
-        ["tmp_name"]=> string(49) "C:\Users\FRANCISCO\AppData\Local\Temp\phpE875.tmp"
-        ["error"]=> int(0)
-        ["size"]=> int(449)
-    }
-    */
     
     public function altaPlatoProcesado(Request $request) {
         $data = $request->post();
