@@ -41,6 +41,7 @@ class QueryBuilder {
      */
     public function select(string $filter = null, array $params = [])
     {
+        // $params es necesario para hacer el bind de los valores en el $filter
         $filterQuery = $filter ? "WHERE $filter" : "";
 
         $query = "SELECT * FROM {$this->table} {$filterQuery}";
@@ -79,14 +80,38 @@ class QueryBuilder {
     /**
      * Perform an update query on the specified table.
      */
-    public function update() {
-        // TODO: Implement update method.
+    public function update(array $data, string $filter, array $params)
+    {
+        $setStr = implode(", ", array_map(fn ($key) => "$key = :$key", array_keys($data)));
+        $query = "UPDATE {$this->table} SET {$setStr} WHERE $filter";
+        $sentencia = $this->pdo->prepare($query);
+
+        // Bind parameters to the prepared statement
+        foreach ($data as $key => $value) { 
+            $sentencia->bindValue(":$key", $value);     // bindea los valores para la parte SET
+        }
+
+        foreach ($params as $key => $value) {
+            $sentencia->bindValue($key, $value);        // bindea los valores para la parte WHERE
+        }
+
+        return $sentencia->execute();
     }
 
     /**
      * Perform a delete query on the specified table.
      */
-    public function delete() {
-        // TODO: Implement delete method.
+    public function delete(string $filter, array $params)
+    {
+        $query = "DELETE FROM {$this->table} WHERE $filter";
+        $sentencia = $this->pdo->prepare($query);
+
+        // Bind parameters to the prepared statement
+        foreach ($params as $key => $value) {
+            $sentencia->bindValue($key, $value);
+        }
+
+        return $sentencia->execute();
     }
+
 }

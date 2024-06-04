@@ -62,17 +62,26 @@ abstract class Repository
     public function getById($id)
     {
         $filter = "id = :id";
-        return $this->queryBuilder->table($this->table())->select($filter, params: [':id' => $id])[0];
+        $result = $this->queryBuilder->table($this->table())->select($filter, [':id' => $id])[0];
+        if ($result) {
+            return new $this->model($result);
+        }
+        return null;
     }
 
     /**
      * Get all records.
      *
-     * @return mixed The query result.
+     * @return array The query results as instances of the model.
      */
     public function getAll()
     {
-        return $this->queryBuilder->table($this->table())->select();
+        $results = $this->queryBuilder->table($this->table())->select();
+        $models = [];
+        foreach ($results as $result) {
+            $models[] = new $this->model($result);
+        }
+        return $models;
     }
 
     /**
@@ -96,23 +105,39 @@ abstract class Repository
     }
 
     /**
-     * Delete records.
+     * Update a record by ID.
      *
-     * @return mixed The query result.
+     * @param int $id The ID of the record to be updated.
+     * @param array $data The data to be updated.
+     * @return mixed The updated model.
      */
-    public function delete()
+    public function update(int $id, array $data)
     {
-        return $this->queryBuilder->table($this->table())->delete();
+        // Validar parámetros utilizando el modelo
+        $model = new $this->model($data);
+        if ($model) {
+            $filter = "id = :id";
+            $params = [':id' => $id];
+            $success = $this->queryBuilder->table($this->table())->update($model->toArray(), $filter, $params);
+        }
+        if ($success) {
+            $data = $this->getById($id);
+            $model = new $this->model($data);
+            return $model;
+        }
+        return null;
     }
 
     /**
-     * Update records.
+     * Delete a record by ID.
      *
-     * @param array $data The data to be updated.
-     * @return mixed The query result.
+     * @param int $id The ID of the record to be deleted.
+     * @return bool True on success, false on failure.
      */
-    public function update(array $data)
+    public function delete(int $id)
     {
-        return $this->queryBuilder->table($this->table())->update($data);
+        $filter = "id = :id";
+        $params = [':id' => $id];
+        return $this->queryBuilder->table($this->table())->delete($filter, $params);
     }
 }
