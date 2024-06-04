@@ -13,16 +13,18 @@ use Twig\Environment;
 
 class IntranetController extends Controller {
     
-    public ?string $repositoryName = ProductoRepository::class;
     public $repository;
     private $twig;
 
     public function __construct(Environment $twig) {
+        parent::__construct(ProductoRepository::class);
         $this->twig = $twig;
     }
     //public ?string $modelName = Producto::class;
 
     public function altaPlato($post = false, string $mensaje = "") {
+        $productos = $this->repository->getAll();
+
         $title = "Alta plato";
         echo $this->twig->render('intranet/alta_plato.view.twig', [
             'nav' => $this->nav,

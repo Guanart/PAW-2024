@@ -19,9 +19,9 @@ final class PrimeraMigration extends AbstractMigration
      */
     public function change(): void
     {
-        $tableProducto = $this->table("Producto");
-        $tableProducto->addColumn("nombre", "string", ["limit" => 60])
-            ->addColumn("descripcion", "string", ["limit" => 60])
+        $tableProducto = $this->table("producto");
+        $tableProducto->addColumn("nombre", "string", ["limit" => 64])
+            ->addColumn("descripcion", "string", ["limit" => 512])
             ->addColumn("precio", "integer")
             ->create();
     }

@@ -19,12 +19,10 @@ abstract class Repository
      *
      * @param QueryBuilder $queryBuilder The query builder instance.
      */
-    /*
     public function __construct(QueryBuilder $queryBuilder)
     {
         $this->queryBuilder = $queryBuilder;
     }
-    */
 
     /**
      * Get the model associated with the repository.
@@ -84,9 +82,9 @@ abstract class Repository
      */
     public function create(array $data)
     {
-        $model = new $this->model($data);
-        return $model;
-        // TODO: $this->queryBuilder->table($this->table())->insert($data);
+        // $model = new $this->model($data);
+        $this->queryBuilder->table($this->table())->insert($data);
+        // return $model;
     }
 
     /**
