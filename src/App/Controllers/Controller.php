@@ -71,16 +71,15 @@ class Controller
     ];
 
     
-    public function __construct()
+    public function __construct(string $repositoryName = null)
     {   
         global $connection, $log;
 
-        if (!is_null($this->repositoryName)) {
+        if (!is_null($repositoryName)) {
             $qb = new QueryBuilder($connection);
             $qb->setLogger($log);
 
-            $repository = new $this->repositoryName;
-            //$repository->setQueryBuilder($qb);
+            $repository = new $repositoryName($qb);
             $repository->setModel();
             
             $this->setRepository($repository);

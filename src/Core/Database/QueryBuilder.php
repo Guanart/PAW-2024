@@ -40,7 +40,7 @@ class QueryBuilder {
      * @return array The result of the select query.
      */
     public function select() {
-        $query = "select * from {$this->table}";
+        $query = "SELECT * FROM {$this->table}";
         $sentencia = $this->pdo->prepare($query);
         $sentencia->setFetchMode(PDO::FETCH_ASSOC);
         $sentencia->execute();
