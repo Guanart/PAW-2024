@@ -23,16 +23,12 @@ class PedidoMesa extends Model {
     public array $productos = [];
     private static array $estados = ["aceptado", "preparacion", "finalizado", "retirar", "entregado"];
 
-    public function __construct(array $values) {
+    public function __construct() {
         $this->fields = [
             "mesa" => null,
         ];
-        $this->extras = [
-            "input_nombre" => null,
-            "input_info_adicional" => null,
-        ];
-        $this->setPedidos($values);
-        $this->productos = $values;
+        $this->setPedidos($_SESSION);
+        $this->productos = $_SESSION["pedido"];
     }
 
     public function setInput_nombre(string $input_nombre){

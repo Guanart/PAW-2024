@@ -7,15 +7,9 @@ use Paw\Core\Request;
 use Paw\App\Models\PedidoLlevar;
 use Paw\App\Models\PedidoDelivery;
 use Paw\App\Models\PedidoMesa;
-use Twig\Environment;
 
 class PedidoController extends Controller
 {
-    private $twig;
-
-    public function __construct(Environment $twig) {
-        $this->twig = $twig;
-    }
     public function pedidos() {
         $title = "Tus pedidos";
         $id_usuario = "123";    // Recuperarlo de la sesión
@@ -24,7 +18,7 @@ class PedidoController extends Controller
             return $pedido["id_usuario"] === $id_usuario && $pedido["estado"] !== "entregado";
         });
 
-        echo $this->twig->render('pedido/tus_pedidos.view.twig', [
+        view('pedido/tus_pedidos', [
             'nav' => $this->nav,
             'footer' => $this->footer,
             'title' => $title,
@@ -49,37 +43,43 @@ class PedidoController extends Controller
 
     public function hacerPedido() {
         $title = "Hacer Pedido";
-        echo $this->twig->render('pedido/hacer_pedido.view.twig', [
+        view('pedido/hacer_pedido', [
             'nav' => $this->nav,
             'footer' => $this->footer,
             'title' => $title,
         ]);
     }
 
-    public function armarPedido(String $tipo = "", Array $formularioDatos = []){
+    public function armarPedido(){
         $title = "Armar Pedido";
-        echo $this->twig->render('pedido/armar_pedido.view.twig', [
+        view('pedido/armar_pedido', [
             'nav' => $this->nav,
             'footer' => $this->footer,
             'title' => $title,
-            "tipo" => $tipo,
-            "formularioDatos" => $formularioDatos
         ]);
     }
 
     public function armarPedidoFormulario(Request $request){
         $formularioDatos = $request->post();
-        $tipo = "pedido";
-        $this-> confirmarPedido(false, "",$formularioDatos);
+        $pedido = [];
+        foreach($formularioDatos as $plato => $cantidad) {
+            if (is_numeric($cantidad) && $cantidad > 0){
+                $pedido[] = [
+                    "plato" => $plato,
+                    "cantidad" => $cantidad
+                ];
+            }
+        }
+        $_SESSION["pedido"] = $pedido;
+        $this-> confirmarPedido();
     }
 
-    public function confirmarPedido($mostrarPost = false, string $mensaje ="",Array $formularioDatos = []){
+    public function confirmarPedido($mostrarPost = false, string $mensaje =""){
         $title = "Confirmar Pedido";
-        echo $this->twig->render('pedido/confirmar_pedido.view.twig', [
+        view('pedido/confirmar_pedido', [
             'nav' => $this->nav,
             'footer' => $this->footer,
             'title' => $title,
-            "formularioDatos" => $formularioDatos,
             "mostrarPost" => $mostrarPost,
             "mensaje" => $mensaje
         ]);
@@ -90,12 +90,12 @@ class PedidoController extends Controller
         $mensaje = "";
         $formularioDatos = $request->post();
         try {
-            if ($formularioDatos["tipo"]==="mesa") {
-                $pedidoMesa = new PedidoMesa($formularioDatos);
-            } elseif ($formularioDatos["tipo"]==="pedido") {
-                $pedidoMesa = new PedidoDelivery($formularioDatos);
-            } elseif ($formularioDatos["tipo"]==="llevar") {
-                $pedidoMesa = new PedidoLlevar($formularioDatos);
+            if ($_SESSION["tipo"]==="mesa") {
+                $pedidoMesa = new PedidoMesa();
+            } elseif ($_SESSION["tipo"]==="delivery") {
+                $pedidoMesa = new PedidoDelivery();
+            } elseif ($_SESSION["tipo"]==="llevar") {
+                $pedidoMesa = new PedidoLlevar();
             }
             // Agregar al JSON un nuevo Pedido
 
@@ -108,7 +108,7 @@ class PedidoController extends Controller
 
     public function elegirLocal($mostrarPost = false, string $mensaje =""){
         $title = "Elegir Local";
-        echo $this->twig->render('pedido/elegir_local.view.twig', [
+        view('pedido/elegir_local', [
             'nav' => $this->nav,
             'footer' => $this->footer,
             'title' => $title,
@@ -120,15 +120,16 @@ class PedidoController extends Controller
     public function elegirLocalFormulario(Request $request){
         $mensaje = "";
         $formularioDatos = null;
-        $tipo = "llevar";
         if ($request->hasBodyParams(["localidad"])) {
             try {
                 $mensaje = "";
                 $formularioDatos = $request->post();
+                $_SESSION["tipo"] = "llevar";
+                $_SESSION["localidad"] = $formularioDatos["localidad"];
             } catch (Exception $e) {
                 $mensaje = $e->getMessage();
             }
-            $this->armarPedido($tipo, $formularioDatos);
+            $this->armarPedido();
         } else {
             $mensaje = "No se encontraron los parámetros necesarios";
             $this-> ingresarDireccion(true, $mensaje);
@@ -137,7 +138,7 @@ class PedidoController extends Controller
 
     public function ingresarDireccion($mostrarPost = false, string $mensaje =""){
         $title = "Ingresar Direccion";
-        echo $this->twig->render('pedido/ingresar_direccion.view.twig', [
+        view('pedido/ingresar_direccion', [
             'nav' => $this->nav,
             'footer' => $this->footer,
             'title' => $title,
@@ -157,7 +158,11 @@ class PedidoController extends Controller
             } catch (Exception $e) {
                 $mensaje = $e->getMessage();
             }
-            $this->armarPedido($tipo, $formularioDatos);
+            $_SESSION["tipo"] = "delivery";
+            $_SESSION["localidad"] = $formularioDatos["localidad"];
+            $_SESSION["calle"] = $formularioDatos["calle"];
+            $_SESSION["altura"] = $formularioDatos["altura"];
+            $this->armarPedido();
         } else {
             $mensaje = "No se encontraron los parámetros necesarios";
             $this-> ingresarDireccion(true, $mensaje);
@@ -174,7 +179,7 @@ class PedidoController extends Controller
         // }
 
         $title = "Fin de Pedido";
-        echo $this->twig->render('pedido/mensaje_fin_pedido.view.twig', [
+        view('pedido/mensaje_fin_pedido', [
             'nav' => $this->nav,
             'footer' => $this->footer,
             'title' => $title,
@@ -183,7 +188,7 @@ class PedidoController extends Controller
     
     public function seleccionarMesa($mostrarPost = false, string $mensaje =""){
         $title = "Seleccionar Mesa";
-        echo $this->twig->render('pedido/seleccion_mesa_qr.view.twig', [
+        view('pedido/seleccion_mesa_qr', [
             'nav' => $this->nav,
             'footer' => $this->footer,
             'title' => $title,
@@ -199,10 +204,12 @@ class PedidoController extends Controller
             try {
                 $mensaje = "";
                 $formularioDatos = $request->post();
+                $_SESSION["tipo"] = "mesa";
+                $_SESSION["mesa"] = $formularioDatos["mesa"];
             } catch (Exception $e) {
                 $mensaje = $e->getMessage();
             }
-            $this->armarPedido("mesa", $formularioDatos);
+            $this->armarPedido();
         } else {
             $mensaje = "No se encontraron los parámetros necesarios";
             $this-> seleccionarMesa(true, $mensaje);
