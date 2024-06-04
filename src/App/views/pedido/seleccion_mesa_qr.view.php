@@ -21,7 +21,7 @@
         <?php if ($mostrarPost) : ?>
                 <h3><?= $mensaje ?></h3>
         <?php endif ?>
-        <form id="formulario">
+        <form id="formulario" method="post" action="/seleccion_mesa_qr">
             <label for="codigo">Código</label>
             <input type="text" id="codigo" placeholder="Escribe el código acá">
             <input type="submit" value="Confirmar" class="submit">

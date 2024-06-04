@@ -186,7 +186,7 @@ class PedidoController extends Controller
         ]);
     }
 
-    public function seleccionarMesaFormulario(){
+    public function seleccionarMesaFormulario(Request $request){
         $mensaje = "";
         $formularioDatos = null;
         if ($request->hasBodyParams(["mesa"])) {

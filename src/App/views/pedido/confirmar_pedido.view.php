@@ -38,9 +38,6 @@
             </article>
         </section>
         <form name="form_confirmar_pedido" action="/confirmar_pedido" method="post">
-                <?php foreach ($formularioDatos as $nombre => $valor): ?>
-                    <input type="hidden" name="<?php echo $nombre; ?>" value="<?php echo $valor; ?>">
-                <?php endforeach; ?>
             <fieldset>
                 <label for="input_nombre">A nombre de:</label>
                 <input id="input_nombre" name="input_nombre" type="text" placeholder="Ej: Francisco Guerra">
