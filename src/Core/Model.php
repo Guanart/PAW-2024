@@ -41,4 +41,15 @@ abstract class Model {
             unset($values[$field]);
         }
     }
+
+    public function toArray(): array
+    {
+        $data = [];
+        foreach (array_keys($this->fields) as $field) {
+            $method = "get" . ucfirst($field);
+            $data[$field] = $this->$method();
+        }
+        return $data;
+    }
+
 }

@@ -11,13 +11,8 @@ use Paw\Core\Model;
 
 class Controller
 {  
-    
     public ?string $repositoryName = null;
     public $repository;
-    
-
-    //public ?string $modelName = null;
-
     public string $viewsDir = __DIR__ . "/../views/";
     public string $imagesDir = __DIR__ . "/../../../public/images/";
     public array $nav = [

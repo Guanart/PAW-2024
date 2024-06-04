@@ -39,9 +39,18 @@ class QueryBuilder {
      *
      * @return array The result of the select query.
      */
-    public function select() {
-        $query = "SELECT * FROM {$this->table}";
+    public function select(string $filter = null, array $params = [])
+    {
+        $filterQuery = $filter ? "WHERE $filter" : "";
+
+        $query = "SELECT * FROM {$this->table} {$filterQuery}";
         $sentencia = $this->pdo->prepare($query);
+
+        // Bind parameters to the prepared statement
+        foreach ($params as $key => $value) {
+            $sentencia->bindValue($key, $value);
+        }
+
         $sentencia->setFetchMode(PDO::FETCH_ASSOC);
         $sentencia->execute();
         return $sentencia->fetchAll();
@@ -50,8 +59,21 @@ class QueryBuilder {
     /**
      * Perform an insert query on the specified table.
      */
-    public function insert() {
-        // TODO: Implement insert method.
+    public function insert(array $data)
+    {
+        $columnas = implode(", ", array_keys($data));
+        $placeholders = implode(", ", array_map(fn ($key) => ":$key", array_keys($data)));
+
+        $query = "INSERT INTO {$this->table} ({$columnas}) VALUES ({$placeholders})";
+        $sentencia = $this->pdo->prepare($query);
+
+        // Bind parameters to the prepared statement
+        foreach ($data as $key => $value) {
+            $sentencia->bindValue(":$key", $value);
+        }
+
+        $sentencia->execute();
+        return $this->pdo->lastInsertId();
     }
 
     /**

@@ -20,10 +20,10 @@ class IntranetController extends Controller {
         parent::__construct(ProductoRepository::class);
         $this->twig = $twig;
     }
-    //public ?string $modelName = Producto::class;
 
     public function altaPlato($post = false, string $mensaje = "") {
         $productos = $this->repository->getAll();
+        $producto_1 = $this->repository->getById(1);
 
         $title = "Alta plato";
         echo $this->twig->render('intranet/alta_plato.view.twig', [
@@ -55,7 +55,9 @@ class IntranetController extends Controller {
                 try {
                     // DUDA: cómo hago que sea una operación atómica? O sea, que si falla algo, no se haga nada
                     $data['path_img'] = $this->saveImage($img);
+                    unset($data['path_img']);    // TODO: DECIDIR COMO VAMOS A PERSISTIR LAS IMAGENES
                     $plato = $this->repository->create($data);
+                    // var_dump($plato);die;
                     $mensaje = "Su plato fue procesado y subido con éxito";
                 } catch (InvalidImageException $e) {  // Esta seria la exception de la imagen
                     $mensaje = "La imágen no es válida. " .  $e->getMessage();

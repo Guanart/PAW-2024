@@ -23,10 +23,11 @@ class Producto extends Model
         "nombre" => null,
         "precio" => null,
         "descripcion" => null,
-        "path_img" => null,
+        // "path_img" => null,
     ];
 
-    public function __construct(array $values) {
+    public function __construct(array $values)
+    {
         $this->set($values);
     }
 
@@ -39,6 +40,16 @@ class Producto extends Model
     public function setPathImg(string $path_img)
     {
         $this->fields["path_img"] = $path_img;
+    }
+
+    /**
+     * Get the path_img field of the model.
+     *
+     * @return string|null
+     */
+    public function getPathImg(): ?string
+    {
+        return $this->fields["path_img"];
     }
 
     /**
@@ -57,6 +68,16 @@ class Producto extends Model
     }
 
     /**
+     * Get the nombre field of the model.
+     *
+     * @return string|null
+     */
+    public function getNombre(): ?string
+    {
+        return $this->fields["nombre"];
+    }
+
+    /**
      * Set the descripcion field of the model.
      *
      * @param string $descripcion The descripcion value to set.
@@ -72,6 +93,16 @@ class Producto extends Model
     }
 
     /**
+     * Get the descripcion field of the model.
+     *
+     * @return string|null
+     */
+    public function getDescripcion(): ?string
+    {
+        return $this->fields["descripcion"];
+    }
+
+    /**
      * Set the precio field of the model.
      *
      * @param float $precio The precio value to set.
@@ -83,5 +114,16 @@ class Producto extends Model
         if ($precio < 0.0) {
             throw new InvalidValueFormatException("El precio debe ser un número positivo");
         }
+        $this->fields["precio"] = $precio;
+    }
+
+    /**
+     * Get the precio field of the model.
+     *
+     * @return float|null
+     */
+    public function getPrecio(): ?float
+    {
+        return $this->fields["precio"];
     }
 }

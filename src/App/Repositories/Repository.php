@@ -61,7 +61,8 @@ abstract class Repository
      */
     public function getById($id)
     {
-        return $this->queryBuilder->table($this->table())->select($id);
+        $filter = "id = :id";
+        return $this->queryBuilder->table($this->table())->select($filter, params: [':id' => $id])[0];
     }
 
     /**
@@ -82,9 +83,16 @@ abstract class Repository
      */
     public function create(array $data)
     {
-        // $model = new $this->model($data);
-        $this->queryBuilder->table($this->table())->insert($data);
-        // return $model;
+        // TODO: validar parametros, por ejemplo, usando el Model
+        $model = new $this->model($data);
+        if ($model) {
+            $id = $this->queryBuilder->table($this->table())->insert($model->toArray());
+        }
+        if ($id){
+            $data = $this->getById($id);
+            $model = new $this->model($data);
+            return $model;
+        }
     }
 
     /**

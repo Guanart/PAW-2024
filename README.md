@@ -24,3 +24,6 @@ Enlaces adicionales:
 ## Posibles problemas al levantar el proyecto
 ### Phinx migrate
 Para ejecutar los migrations en Linux, es necesario tener instalada esta librería: ```sudo apt install php-pgsql```
+
+## TODO
+- Decidir cómo vamos a persistir las imagenes (en BD, o en FileSystem)
