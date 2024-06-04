@@ -3,7 +3,15 @@
 use Paw\App\Controllers\IntranetController;
 use Paw\Core\Router;
 
-$router = new Router;
+use Twig\Environment;
+use Twig\Loader\FilesystemLoader;
+
+$loader = new FilesystemLoader(__DIR__ . '/App/views');
+$twig = new Environment($loader);
+
+// Instanciar el Router con Twig
+$router = new Router($twig);
+
 $router->get('/','PageController@index');
 $router->get('/menu','PageController@menu');
 
@@ -37,6 +45,7 @@ $router->post('/seleccion_mesa','ReservaController@seleccionMesa');
 $router->post('/agregar_reserva','ReservaController@agregarReserva');
 $router->get('/seleccion_mesa','ReservaController@seleccionMesa');
 $router->get('/local','ReservaController@local');
+$router->get('/local2','ReservaController@local2');
 $router->get('/reservas_mesa','ReservaController@reservasMesa'); //<---
 
 $router->get('/login','UsuarioController@login');

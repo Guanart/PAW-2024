@@ -6,15 +6,21 @@ use Paw\App\Controllers\Controller;
 use Paw\Core\Request;
 use Paw\App\Repositories\UsuarioRepository;
 use Paw\Core\Exceptions\InvalidValueFormatException;
+use Twig\Environment;
 
 class UsuarioController extends Controller
 {
     public ?string $repositoryName = UsuarioRepository::class;
     public $repository;
+    private $twig;
+
+    public function __construct(Environment $twig) {
+        $this->twig = $twig;
+    }
 
     public function login() {
         $title = "Login";
-        view('usuario/login', [
+        echo $this->twig->render('usuario/login.view.twig', [
             'nav' => $this->nav,
             'footer' => $this->footer,
             'title' => $title,
@@ -23,7 +29,7 @@ class UsuarioController extends Controller
 
     public function register($post = false, $mensaje = '') {
         $title = "Register";
-        view('usuario/register', [
+        echo $this->twig->render('usuario/register.view.twig', [
             'nav' => $this->nav,
             'footer' => $this->footer,
             'title' => $title,
@@ -50,7 +56,7 @@ class UsuarioController extends Controller
 
     public function forgotPassword() {
         $title = "forgotPassword";
-        view('usuario/forgot-password', [
+        echo $this->twig->render('usuario/forgot-password.view.twig', [
             'nav' => $this->nav,
             'footer' => $this->footer,
             'title' => $title,
@@ -59,7 +65,7 @@ class UsuarioController extends Controller
 
     public function verificationCode(){
         $title = "verificationCode";
-        view('usuario/verification-code', [
+        echo $this->twig->render('usuario/verification-code.view.twig', [
             'nav' => $this->nav,
             'footer' => $this->footer,
             'title' => $title,

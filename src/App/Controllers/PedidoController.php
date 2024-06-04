@@ -7,9 +7,15 @@ use Paw\Core\Request;
 use Paw\App\Models\PedidoLlevar;
 use Paw\App\Models\PedidoDelivery;
 use Paw\App\Models\PedidoMesa;
+use Twig\Environment;
 
 class PedidoController extends Controller
 {
+    private $twig;
+
+    public function __construct(Environment $twig) {
+        $this->twig = $twig;
+    }
     public function pedidos() {
         $title = "Tus pedidos";
         $id_usuario = "123";    // Recuperarlo de la sesión
@@ -18,7 +24,7 @@ class PedidoController extends Controller
             return $pedido["id_usuario"] === $id_usuario && $pedido["estado"] !== "entregado";
         });
 
-        view('pedido/tus_pedidos', [
+        echo $this->twig->render('pedido/tus_pedidos.view.twig', [
             'nav' => $this->nav,
             'footer' => $this->footer,
             'title' => $title,
@@ -43,7 +49,7 @@ class PedidoController extends Controller
 
     public function hacerPedido() {
         $title = "Hacer Pedido";
-        view('pedido/hacer_pedido', [
+        echo $this->twig->render('pedido/hacer_pedido.view.twig', [
             'nav' => $this->nav,
             'footer' => $this->footer,
             'title' => $title,
@@ -52,7 +58,7 @@ class PedidoController extends Controller
 
     public function armarPedido(String $tipo = "", Array $formularioDatos = []){
         $title = "Armar Pedido";
-        view('pedido/armar_pedido', [
+        echo $this->twig->render('pedido/armar_pedido.view.twig', [
             'nav' => $this->nav,
             'footer' => $this->footer,
             'title' => $title,
@@ -69,7 +75,7 @@ class PedidoController extends Controller
 
     public function confirmarPedido($mostrarPost = false, string $mensaje ="",Array $formularioDatos = []){
         $title = "Confirmar Pedido";
-        view('pedido/confirmar_pedido', [
+        echo $this->twig->render('pedido/confirmar_pedido.view.twig', [
             'nav' => $this->nav,
             'footer' => $this->footer,
             'title' => $title,
@@ -102,7 +108,7 @@ class PedidoController extends Controller
 
     public function elegirLocal($mostrarPost = false, string $mensaje =""){
         $title = "Elegir Local";
-        view('pedido/elegir_local', [
+        echo $this->twig->render('pedido/elegir_local.view.twig', [
             'nav' => $this->nav,
             'footer' => $this->footer,
             'title' => $title,
@@ -131,7 +137,7 @@ class PedidoController extends Controller
 
     public function ingresarDireccion($mostrarPost = false, string $mensaje =""){
         $title = "Ingresar Direccion";
-        view('pedido/ingresar_direccion', [
+        echo $this->twig->render('pedido/ingresar_direccion.view.twig', [
             'nav' => $this->nav,
             'footer' => $this->footer,
             'title' => $title,
@@ -168,7 +174,7 @@ class PedidoController extends Controller
         // }
 
         $title = "Fin de Pedido";
-        view('pedido/mensaje_fin_pedido', [
+        echo $this->twig->render('pedido/mensaje_fin_pedido.view.twig', [
             'nav' => $this->nav,
             'footer' => $this->footer,
             'title' => $title,
@@ -177,7 +183,7 @@ class PedidoController extends Controller
     
     public function seleccionarMesa($mostrarPost = false, string $mensaje =""){
         $title = "Seleccionar Mesa";
-        view('pedido/seleccion_mesa_qr', [
+        echo $this->twig->render('pedido/seleccion_mesa_qr.view.twig', [
             'nav' => $this->nav,
             'footer' => $this->footer,
             'title' => $title,

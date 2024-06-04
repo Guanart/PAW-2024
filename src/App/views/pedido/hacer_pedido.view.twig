@@ -1,0 +1,13 @@
+{% extends 'view.twig' %}
+
+{% block main_class %}hacer_pedido{% endblock %}
+
+{% block content %}
+        <h2 class="hacer_pedido">HACE TU PEDIDO, YA!</h2>
+        <section class="hacer_pedido">
+            <p>¿Cómo lo querés hacer?</p>
+            <a class="selected" href="/elegir_local">Para llevar</a>
+            <a href="/ingresar_direccion">Delivery</a>
+            <a href="/seleccion_mesa_qr">Pedido desde la mesa</a>
+        </section>
+{% endblock %}

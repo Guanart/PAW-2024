@@ -7,17 +7,23 @@ use Exception;
 
 use Paw\Core\Request;
 use Paw\Core\Traits\Loggeable;
+use Twig\Environment;
 
 class Router
 {
     use Loggeable;
+
     public string $notFound = "/not_found";
     public string $internalError = "/internal_error";
-    public function __construct()
+    private Environment $twig;
+
+    public function __construct(Environment $twig)
     {
+        $this->twig = $twig;
         $this->get($this->notFound, 'ErrorController@notFound');
         $this->get($this->internalError, 'ErrorController@internalError');
     }
+
     public array $routes = [
         "GET"  => [],
         "POST" => [],
@@ -54,7 +60,7 @@ class Router
     public function call(string $controller, string $method, Request $request)
     {
         $controller_name = "Paw\\App\\Controllers\\" . $controller;
-        $objController = new $controller_name;
+        $objController = new $controller_name($this->twig);
         $objController->$method($request);
     }
 
@@ -65,7 +71,6 @@ class Router
             list($controller, $method) = $this->getController($path, $http_method);
         } catch (RouteNotFoundException $e) {
             list($controller, $method) = $this->getController($this->notFound, "GET");
-            } catch (Exception $e) {
         } catch (Exception $e) {
             list($controller, $method) = $this->getController($this->internalError, "GET");
             $this->logger->error("Status Code:500 - Internal Server Error", ["Error" => $e]);
