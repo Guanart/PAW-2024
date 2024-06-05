@@ -1,14 +1,26 @@
 <?php
 
 namespace Paw\Core;
+use Paw\App\Models\Usuario;
 
 class Request
 {
     private $data;
+    private $user;
 
     public function __construct()
     {
         $this->data = $_SERVER;
+    }
+
+    public function user(): Usuario
+    {
+        global $querybuilder;
+        if (!isset($this->user)) {
+            $filter = "username = :username";
+            $this->user = new Usuario($querybuilder->table('usuario')->select($filter, [':username' => $_SESSION['username']])[0]);
+        }
+        return $this->user;
     }
 
     public function isPost()
@@ -78,16 +90,4 @@ class Request
         }
         return true;
     }
-    /*
-    array(4) {
-        [0]=> string(6) "nombre" 
-        [1]=> string(11) "descripcion" 
-        [2]=> string(6) "precio" 
-        [3]=> string(6) "imagen" } 
-
-    string(6) "imagen"
-
-    $_POST no tiene la imagen, parece ser eso...
-
-    */
 }

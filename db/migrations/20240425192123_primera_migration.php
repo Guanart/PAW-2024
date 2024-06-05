@@ -23,6 +23,7 @@ final class PrimeraMigration extends AbstractMigration
         $tableProducto->addColumn("nombre", "string", ["limit" => 64])
             ->addColumn("descripcion", "string", ["limit" => 512])
             ->addColumn("precio", "integer")
+            ->addColumn("path_img", "string", ["limit" => 255, "null" => true])
             ->create();
     }
 }

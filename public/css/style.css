@@ -127,6 +127,11 @@ nav ul li a:hover {
     box-shadow: inset 0px 0px 8px -2px rgba(45,36,69,0.69);
 }
 
+nav.account ul li a {
+    background-color: white;
+    color: black;
+}
+
 footer {
     display: grid;
     grid-template-rows: auto 1fr;

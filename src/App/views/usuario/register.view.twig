@@ -17,7 +17,7 @@
             <input type="submit" value="Crear cuenta" class="submit">
             <a href="/login">¿Ya tenés cuenta? Ingresá aca</a>
         </form>
-        <?php if ($post) : ?>
-            <h3><?= $mensaje ?></h3>
-        <?php endif ?>
+        {% if post %}
+            <h3>{{mensaje}}</h3>
+        {% endif %}
 {% endblock %}

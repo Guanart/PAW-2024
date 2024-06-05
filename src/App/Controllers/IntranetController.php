@@ -21,9 +21,6 @@ class IntranetController extends Controller {
     }
 
     public function altaPlato($post = false, string $mensaje = "") {
-        $productos = $this->repository->getAll();
-        $producto_1 = $this->repository->getById(1);
-
         $title = "Alta plato";
         echo $this->twig->render('intranet/alta_plato.view.twig', [
             'nav' => $this->nav,
@@ -42,16 +39,20 @@ class IntranetController extends Controller {
             if ($request->hasBodyParams(["nombre", "descripcion", "precio"])
             && isset($img) && is_uploaded_file($img['tmp_name'])) {
                 try {
-                    // DUDA: cómo hago que sea una operación atómica? O sea, que si falla algo, no se haga nada
                     $data['path_img'] = $this->saveImage($img);
-                    unset($data['path_img']);    // TODO: DECIDIR COMO VAMOS A PERSISTIR LAS IMAGENES
                     $plato = $this->repository->create($data);
-                    // var_dump($plato);die;
+                    var_dump($plato);
                     $mensaje = "Su plato fue procesado y subido con éxito";
                 } catch (InvalidImageException $e) {  // Esta seria la exception de la imagen
                     $mensaje = "La imágen no es válida. " .  $e->getMessage();
                 } catch (InvalidValueFormatException $e) { // Esta la exception de cada campo
                     $mensaje = $e->getMessage();
+                } catch (Exception $e) { // En caso de cualquier otra excepción
+                    // Eliminar la imagen si se había subido
+                    if (isset($data['path_img']) && file_exists($data['path_img'])) {
+                        unlink($data['path_img']);
+                    }
+                    $mensaje = "Ocurrió un error al procesar su solicitud. " . $e->getMessage();
                 }
             } else {
                 $mensaje = "Complete todos los campos";

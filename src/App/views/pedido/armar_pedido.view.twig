@@ -1,6 +1,9 @@
 {% extends 'view.twig' %}
 
 {% block content %}
+        {% if mostrarMensaje %}
+            <h3>{{ mensaje }}</h3>
+        {% endif %}
         <h2 class="h2_index">Arme su pedido</h2>
         <form name="form_armar_pedido" action="/armar_pedido" method="post">
             <section>

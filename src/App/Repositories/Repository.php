@@ -46,7 +46,7 @@ abstract class Repository
      *
      * @return string The table name.
      */
-    private function table()
+    protected function table()
     {
         return $this->model::$table;
     }
@@ -62,9 +62,9 @@ abstract class Repository
     public function getById($id)
     {
         $filter = "id = :id";
-        $result = $this->queryBuilder->table($this->table())->select($filter, [':id' => $id])[0];
+        $result = $this->queryBuilder->table($this->table())->select($filter, [':id' => $id]);
         if ($result) {
-            return new $this->model($result);
+            return new $this->model($result[0]);
         }
         return null;
     }
@@ -97,9 +97,8 @@ abstract class Repository
         if ($model) {
             $id = $this->queryBuilder->table($this->table())->insert($model->toArray());
         }
-        if ($id){
-            $data = $this->getById($id);
-            $model = new $this->model($data);
+        if ($id) {
+            $model = $this->getById($id);
             return $model;
         }
     }

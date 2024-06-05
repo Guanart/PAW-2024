@@ -23,7 +23,7 @@ class Producto extends Model
         "nombre" => null,
         "precio" => null,
         "descripcion" => null,
-        // "path_img" => null,
+        "path_img" => null,
     ];
 
     public function __construct(array $values)

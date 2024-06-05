@@ -1,12 +1,38 @@
 <nav>
     <ul>
         {% for item in nav %}
-        <li>
-            <a href="{{ item.href }}" 
-               class="{{ app.request.getPathInfo() == item.href ? 'selected' : '' }}">
-                {{ item.name }}
-            </a>
-        </li>
+
+            {% if isLoggedIn() %}
+                {% set user = request().user() %}
+                {% if item.role == 'all' or user.getRole() == item.role %} 
+                    <li>
+                        <a href="{{ item.href }}" 
+                            class="{{ app.request.getPathInfo() == item.href ? 'selected' : '' }}">
+                            {{ item.name }}
+                        </a>
+                    </li>
+                {% endif %}
+            {% else %}
+                <li>
+                    <a href="/home">Home</a>
+                </li>
+            {% endif %}
         {% endfor %}
+    </ul>
+</nav>
+<nav class="account">
+    <ul>
+        {% if isLoggedIn() %}
+        <li>
+            <a href="/logout">Logout</a>
+        </li>
+        {% else %}
+        <li>
+            <a href="/login">Login</a>
+        </li>
+        <li>
+            <a href="/register">Register</a>
+        </li>
+        {% endif %}
     </ul>
 </nav>

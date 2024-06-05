@@ -10,4 +10,16 @@ class ProductoRepository extends Repository
     public function model(){
         return Producto::class;
     }
+
+    public function getAll() {
+        $results = $this->queryBuilder->table($this->table())->select();
+        if ($results) {
+            $result_models = [];
+            foreach ($results as $result){
+                $result_models[] = new $this->model($result);
+            }
+            return $result_models;
+        }
+        return null;
+    }
 }

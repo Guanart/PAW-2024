@@ -10,4 +10,7 @@
             <input type="submit" value="Ingresar" class="submit">
             <a href="/register">¿No estas registrado? Crea tu cuenta</a>
         </form>
+        {% if post %}
+            <h3>{{mensaje}}</h3>
+        {% endif %}
 {% endblock %}

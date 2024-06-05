@@ -6,6 +6,7 @@ use Paw\Core\Request;
 use Twig\Environment;
 use Paw\App\Models\PedidoLlevar;
 use Paw\App\Models\PedidoDelivery;
+use Paw\App\Repositories\PedidoRepository;
 use Paw\App\Models\PedidoMesa;
 use Paw\Core\Exceptions\InvalidValueFormatException;
 use Exception;
@@ -14,14 +15,20 @@ use Exception;
 class PedidoController extends Controller
 {
     private $twig;
+    public $userRepository;
 
     public function __construct(Environment $twig) {
+        parent::__construct(PedidoRepository::class);
         $this->twig = $twig;
     }
 
     public function pedidos() {
         $title = "Tus pedidos";
-        $id_usuario = "123";    // Recuperarlo de la sesión
+        $id_usuario = "123"; 
+        
+        $username = $_SESSION["username"];
+        //$usuario = $this->userRepository->getByUsername($username);
+        
         $pedidos = json_decode(file_get_contents(__DIR__ . '/../pedidos.json'), true);   // Recuperar de la base de datos
         $pedidos_usuario = array_filter($pedidos, function ($pedido) use ($id_usuario) {
             return $pedido["id_usuario"] === $id_usuario && $pedido["estado"] !== "entregado";
@@ -59,28 +66,39 @@ class PedidoController extends Controller
         ]);
     }
 
-    public function armarPedido(){
+    public function armarPedido(Request $request, $mensaje="") {
         $title = "Armar Pedido";
-        echo $this->twig->render('pedido/armar_pedido.view.twig', [
+        $variables = [
             'nav' => $this->nav,
             'footer' => $this->footer,
-            'title' => $title
-        ]);
+            'title' => $title,
+            "mensaje" => $mensaje
+        ];
+        if ($request->httpMethod()) {
+            $variables['mostrarMensaje'] = true;
+        }
+        echo $this->twig->render('pedido/armar_pedido.view.twig', $variables);
     }
 
     public function armarPedidoFormulario(Request $request){
+        $mensaje = "";
         $formularioDatos = $request->post();
         $pedido = [];
         foreach($formularioDatos as $plato => $cantidad) {
-            if (is_numeric($cantidad) && $cantidad > 0){
+            if (is_numeric($cantidad) && $cantidad > 0) {
                 $pedido[] = [
                     "plato" => $plato,
                     "cantidad" => $cantidad
                 ];
             }
         }
-        $_SESSION["pedido"] = $pedido;
-        $this->confirmarPedido();
+        if (count($pedido) == 0) {
+            $mensaje = "No se seleccionó ningún plato!";
+            $this->armarPedido($request, $mensaje);
+        } else {
+            $_SESSION["pedido"] = $pedido;
+            header("Location: /confirmar_pedido"); 
+        }
     }
 
     public function confirmarPedido($mostrarPost = false, string $mensaje =""){
@@ -115,15 +133,18 @@ class PedidoController extends Controller
         }
     }
 
-    public function elegirLocal($mostrarPost = false, string $mensaje =""){
+    public function elegirLocal(Request $request, string $mensaje = "") {
         $title = "Elegir Local";
-        echo $this->twig->render('pedido/elegir_local.view.twig', [
+        $variables = [
             'nav' => $this->nav,
             'footer' => $this->footer,
             'title' => $title,
-            "mostrarPost" => $mostrarPost,
             "mensaje" => $mensaje
-        ]);
+        ];
+        if ($request->httpMethod()) {
+            $variables['mostrarMensaje'] = true;
+        }
+        echo $this->twig->render('pedido/elegir_local.view.twig', $variables);
     }
 
     public function elegirLocalFormulario(Request $request){
@@ -131,17 +152,16 @@ class PedidoController extends Controller
         $formularioDatos = null;
         if ($request->hasBodyParams(["localidad"])) {
             try {
-                $mensaje = "";
                 $formularioDatos = $request->post();
-                $_SESSION["tipo"] = "llevar";
-                $_SESSION["localidad"] = $formularioDatos["localidad"];
+                $_SESSION["pedido_tipo"] = "llevar";
+                $_SESSION["pedido_localidad"] = $formularioDatos["localidad"];
+                header("Location: /armar_pedido"); 
             } catch (Exception $e) {
                 $mensaje = $e->getMessage();
             }
-            $this->armarPedido();
         } else {
             $mensaje = "No se encontraron los parámetros necesarios";
-            $this-> ingresarDireccion(true, $mensaje);
+            $this-> elegirLocal($request, $mensaje);
         }
     }
 

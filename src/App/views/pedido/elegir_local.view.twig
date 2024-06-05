@@ -3,9 +3,9 @@
 {% block main_class %}main_elegir_local{% endblock %}
 
 {% block content %}
-        <?php if ($mostrarPost) : ?>
-            <h3><?= $mensaje ?></h3>
-        <?php endif ?>
+        {% if mostrarMensaje %}
+            <h3>{{ mensaje }}</h3>
+        {% endif %}
         <form name="form_elegir_local" action="elegir_local" method="post">
             <legend>Elegí el local</legend>
             <fieldset>

@@ -1,11 +1,6 @@
 <?php
 
 use Paw\Core\Router;
-use Twig\Environment;
-use Twig\Loader\FilesystemLoader;
-
-$loader = new FilesystemLoader(__DIR__ . '/App/views');
-$twig = new Environment($loader);
 
 // Instanciar el Router con Twig
 $router = new Router($twig);
@@ -42,13 +37,16 @@ $router->post('/fin_reserva','ReservaController@finReserva');
 $router->post('/seleccion_mesa','ReservaController@seleccionMesa');
 $router->post('/agregar_reserva','ReservaController@agregarReserva');
 $router->get('/seleccion_mesa','ReservaController@seleccionMesa');
-$router->get('/local','ReservaController@local');
-$router->get('/local2','ReservaController@local2');
 $router->get('/reservas_mesa','ReservaController@reservasMesa'); //<---
 
 $router->get('/login','UsuarioController@login');
+$router->post('/login','UsuarioController@loginFormulario');
+$router->get('/logout','UsuarioController@logout');
+$router->get('/verify_user','UsuarioController@verifyUser');
 $router->get('/register','UsuarioController@register');
 $router->post('/register','UsuarioController@registerFormulario');
+$router->get('/usuario_registrado','UsuarioController@usuarioRegistrado');
+$router->get('/cuenta','UsuarioController@cuenta');
 $router->get('/forgot_password','UsuarioController@forgotPassword');
 $router->get('/verification_code','UsuarioController@verificationCode');
 

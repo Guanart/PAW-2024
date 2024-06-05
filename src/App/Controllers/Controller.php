@@ -3,7 +3,6 @@
 namespace Paw\App\Controllers;
 
 use Paw\App\Repositories\Repository;
-use Paw\Core\Database\QueryBuilder;
 
 class Controller
 {  
@@ -14,30 +13,52 @@ class Controller
         [
             "href" => "/",
             "name" => "Inicio",
+            "role" => "user"
         ],
         [
             "href" => "/reservas",
             "name" => "Reservas",
+            "role" => "user"
         ],
         [
             "href" => "/menu",
             "name" => "Menu",
+            "role" => "user"
         ],
         [
             "href" => "/hacer_pedido",
             "name" => "Hacer pedido",
+            "role" => "user"
+        ],
+        [
+            "href" => "/tus_pedidos",
+            "name" => "Tus pedidos",
+            "role" => "user"
         ],
         [
             "href" => "/locales",
             "name" => "Locales",
+            "role" => "user"
         ],
         [
-            "href" => "/login",
-            "name" => "Login",
-        ],
+            "href" => "/admin",
+            "name" => "Admin",
+            "role" => "admin"
+        ],  
         [
             "href" => "/alta_plato",
-            "name" => "Alta plato (admin)",
+            "name" => "Alta plato",
+            "role" => "admin"
+        ],
+        [
+            "href" => "/turnero",
+            "name" => "Turnero",
+            "role" => "admin"
+        ],
+        [
+            "href" => "/gestion_pedidos",
+            "name" => "Gestion de pedidos",
+            "role" => "admin"
         ]
     ];
 
@@ -63,13 +84,10 @@ class Controller
     
     public function __construct(string $repositoryName = null)
     {   
-        global $connection, $log;
+        global $querybuilder;
 
         if (!is_null($repositoryName)) {
-            $qb = new QueryBuilder($connection);
-            $qb->setLogger($log);
-
-            $repository = new $repositoryName($qb);
+            $repository = new $repositoryName($querybuilder);
             $repository->setModel();
             
             $this->setRepository($repository);

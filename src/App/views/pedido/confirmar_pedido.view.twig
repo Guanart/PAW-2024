@@ -1,9 +1,14 @@
 {% extends 'view.twig' %}
 
 {% block content %}
-        <?php if ($mostrarPost) : ?>
-            <h3><?= $mensaje ?></h3>
-        <?php endif ?>
+        {% if mostrarPost %}
+            <h3>{{ mensaje }}</h3>
+        {% endif %}
+
+        <section>
+
+        </section>
+
         <section>
             <h2>Confirme su pedido</h2>
             <article class="confirmar_pedido">
@@ -22,6 +27,7 @@
                 <p>Cantidad: 3</p>
             </article>
         </section>
+
         <form name="form_confirmar_pedido" action="/confirmar_pedido" method="post">
             <fieldset>
                 <label for="input_nombre">A nombre de:</label>

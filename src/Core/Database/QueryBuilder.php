@@ -61,7 +61,7 @@ class QueryBuilder {
      * Perform an insert query on the specified table.
      */
     public function insert(array $data)
-    {
+    {   
         $columnas = implode(", ", array_keys($data));
         $placeholders = implode(", ", array_map(fn ($key) => ":$key", array_keys($data)));
 
@@ -70,6 +70,7 @@ class QueryBuilder {
 
         // Bind parameters to the prepared statement
         foreach ($data as $key => $value) {
+            
             $sentencia->bindValue(":$key", $value);
         }
 
