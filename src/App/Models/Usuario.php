@@ -148,4 +148,17 @@ class Usuario extends Model {
     {
         return $this->fields["role"];
     }
+
+    public function toArray(): array
+    {
+        $data = [];
+        foreach (array_keys($this->fields) as $field) {
+            if ($field !== "id") {
+                $method = "get" . ucfirst($field);
+                $data[$field] = $this->$method();
+            }
+        }
+        return $data;
+    }
+
 }

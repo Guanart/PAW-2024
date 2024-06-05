@@ -9,6 +9,7 @@ use Paw\Core\Exceptions\InvalidValueFormatException;
 use Twig\Environment;
 use Paw\App\Models\Usuario;
 use PDOException;
+use Exception;
 use Paw\App\Validators\InputValidator;
 
 class UsuarioController extends Controller
@@ -104,15 +105,18 @@ class UsuarioController extends Controller
         exit();
     }
 
-    public function register($post = false, $mensaje = '') {
+    public function register(Request $request, $mensaje = null) {
         $title = "Register";
-        echo $this->twig->render('usuario/register.view.twig', [
+        $variables = [
             'nav' => $this->nav,
             'footer' => $this->footer,
             'title' => $title,
-            'post' => $post,
-            'mensaje' => $mensaje,
-        ]);
+            "mensaje" => $mensaje
+        ];
+        // if ($request->isPost()) {
+        //     $variables['mostrarMensaje'] = true;
+        // }
+        echo $this->twig->render('usuario/register.view.twig', $variables);
     }
 
     public function registerFormulario(Request $request) {
@@ -128,7 +132,6 @@ class UsuarioController extends Controller
             }
             else {
                 try {
-                    //$hash = password_hash($pass1, PASSWORD_DEFAULT);
                     $hash = hash('sha256', $pass1);
                     $data = array(
                         "nombre" => $this->validator->sanitizeInput($values["nombre"]),
@@ -141,6 +144,7 @@ class UsuarioController extends Controller
                     $usuario = $this->repository->create($data);
                     $mensaje = "Su usuario fue procesado y subido con éxito";
                     $this->usuarioRegistrado();
+
                     return;
                 } catch (InvalidValueFormatException $e) {
                     $mensaje = $e->getMessage();  // Hay que manejar una exception específica nuestra
@@ -154,12 +158,14 @@ class UsuarioController extends Controller
                             $mensaje = "El correo electrónico ya está en uso";
                         }
                     }
+                } catch (Exception $e) {
+                    $mensaje = "Hubo un error al procesar su solicitud";
                 }
             }
         } else {
             $mensaje = "No se encontraron los parámetros necesarios";
         }
-        $this->register(true, $mensaje);
+        $this->register($request, $mensaje);
     }
 
     public function forgotPassword() {

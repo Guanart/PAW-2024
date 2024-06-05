@@ -57,7 +57,7 @@ class QueryBuilder {
         return $sentencia->fetchAll();
     }
 
-    public function selectPage(string $filter = null, array $params = [], int $limit = null, int $offset = null)
+    public function selectPaginado(string $filter = null, array $params = [], int $limit = null, int $offset = null)
     {
         // $params es necesario para hacer el bind de los valores en el $filter
         $filterQuery = $filter ? "WHERE $filter" : "";
@@ -65,7 +65,7 @@ class QueryBuilder {
         $limitQuery = $limit ? "LIMIT $limit" : "";
         $offsetQuery = $offset ? "OFFSET $offset" : "";
 
-        $query = "SELECT * FROM {$this->table} {$filterQuery} {$limitQuery} {$offsetQuery}";
+        $query = "SELECT * FROM {$this->table} {$filterQuery} ";
         $sentencia = $this->pdo->prepare($query);
 
         // Bind parameters to the prepared statement

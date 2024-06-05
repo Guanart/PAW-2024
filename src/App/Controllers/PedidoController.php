@@ -150,7 +150,7 @@ class PedidoController extends Controller
                 $data["local"] = $_SESSION["pedido"]["localidad"];
             }
             // Guardar el pedido, que repository usar, porque tenemos 3 tipos de pedido ??????????
-            $usuario = $this->repository->create($data);
+            $pedido = $this->repository->create($data);
             header("Location: ". getenv('APP_URL') . "/fin_pedido");
             exit();
         } catch (InvalidValueFormatException $e){
