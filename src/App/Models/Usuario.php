@@ -19,6 +19,7 @@ class Usuario extends Model {
      * @var array
      */
     public array $fields = [
+        "id" => null,
         "nombre" => null,
         "apellido" => null,
         "username" => null,
@@ -132,7 +133,6 @@ class Usuario extends Model {
         return $this->fields["password"];
     }
 
-    /*
     public function setId(int $id) {
         $this->fields["id"] = $id;
     }
@@ -140,7 +140,6 @@ class Usuario extends Model {
     {
         return $this->fields["id"];
     }
-    */
 
     public function setRole(string $role) {
         $this->fields["role"] = $role;

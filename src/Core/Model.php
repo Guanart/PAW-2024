@@ -29,18 +29,6 @@ abstract class Model {
             $this->$method($values[$field]);
         }
     }
-    
-    public function setPedidos(array &$values)
-    {
-        foreach (array_keys($this->fields) as $field) {
-            if (!isset($values[$field])) {
-                continue;
-            }
-            $method = "set" . ucfirst($field);
-            $this->$method($values[$field]);
-            unset($values[$field]);
-        }
-    }
 
     public function toArray(): array
     {

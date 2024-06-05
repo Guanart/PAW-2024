@@ -2,13 +2,13 @@
 
 {% block content %}
         <section>
-            <?php if ($mostrarPost) : ?>
-                <h3><?= $mensaje ?></h3>
-            <?php endif ?>
+            {% if mostrarPost %}
+                <h3>{{mensaje}}</h3>
+            {% endif %}
             <form name="form_ingresar_direccion" action="/ingresar_direccion" method="post">
                 <label for="localidad">Localidad</label>
                 <!-- <input id="localidad" name="localidad" type="com" required> -->
-                <select name="localidad" id="localidad">
+                <select name="localidad" id="localidad" required>
                     <option value="">--Elija una localidad--</option>
                     <option value="Lujan">Luján</option>
                     <option value="Moreno">Moreno</option>

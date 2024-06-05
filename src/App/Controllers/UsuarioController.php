@@ -9,9 +9,11 @@ use Paw\Core\Exceptions\InvalidValueFormatException;
 use Twig\Environment;
 use Paw\App\Models\Usuario;
 use PDOException;
+use Paw\App\Validators\InputValidator;
 
 class UsuarioController extends Controller
 {
+    public $validator;
     //public ?string $repositoryName = UsuarioRepository::class;
     public $repository;
     private $twig;
@@ -19,17 +21,68 @@ class UsuarioController extends Controller
     public function __construct(Environment $twig) {
         parent::__construct(UsuarioRepository::class);
         $this->twig = $twig;
+        $this->validator = new InputValidator();
     }
 
-    public function login($post = false, $mensaje = '') {
+    public function login(Request $request, $mensaje = '') {
+        $this->verificarSesionIniciada();
         $title = "Login";
-        echo $this->twig->render('usuario/login.view.twig', [
+        $variables = [
             'nav' => $this->nav,
             'footer' => $this->footer,
             'title' => $title,
-            'mensaje' => $mensaje,
-            'post' => $post,
-        ]);
+            "mensaje" => $mensaje
+        ];
+        if ($request->isPost()) {
+            $variables['mostrarMensaje'] = true;
+        }
+        echo $this->twig->render('usuario/login.view.twig', $variables);
+    }
+
+    public function verificarSesionIniciada() {
+        if (isset($_SESSION["username"])) {
+            header("Location: ". getenv('APP_URL'));
+            exit();
+        }
+    }
+
+    public function loginFormulario(Request $request) {
+        $mensaje = "";
+        $this->verificarSesionIniciada();
+        if (!$request->hasBodyParams(["email", "password"])) {
+            $mensaje = "No se encontraron los parámetros necesarios";
+            $this->login($request, $mensaje);
+            return;
+        }
+        $values = $request->post();
+        $password = $this->validator->sanitizeInput($values["password"]);
+        $email = $this->validator->sanitizeInput($values["email"]);
+
+        $hash = hash('sha256', $password);
+        $usuario = $this->repository->getByEmail($email);
+
+        if (!$usuario) {
+            $mensaje = "No se encontro un usuario con ese mail";
+            $this->login($request, $mensaje);
+            return;
+        }
+        
+        $passwordUser = $usuario->getPassword();
+        if ($passwordUser !== $hash) {
+            $mensaje = "La contraseña es incorrecta";
+            $this->login($request, $mensaje);
+            return;
+        }
+        
+        $_SESSION["username"] = $usuario->getUsername();
+        $redireccion = $_SESSION["loopback"];
+        if (isset($redireccion)) {
+            unset($_SESSION["loopback"]);
+            header("Location: ". getenv('APP_URL') . $redireccion);
+            exit();
+        }
+        header("Location: ". getenv('APP_URL'));
+        exit();
     }
 
     public function cuenta() {
@@ -51,35 +104,6 @@ class UsuarioController extends Controller
         exit();
     }
 
-    public function loginFormulario(Request $request) {
-        $mensaje = "";
-        if (!$request->hasBodyParams(["email", "password"])) {
-            $mensaje = "No se encontraron los parámetros necesarios";
-            $this->login(true, $mensaje);
-            return;
-        }
-        $values = $request->post();
-        $password = trim($values["password"]);
-        $email = trim($values["email"]);
-        // $hash = password_hash($password, PASSWORD_DEFAULT);
-        $hash = hash('sha256', $password);
-        $usuario = $this->repository->getByEmail($email);
-        if (!$usuario) {
-            $mensaje = "No se encontro un usuario con ese mail";
-            $this->login(true, $mensaje);
-            return;
-        }
-        $passwordUser = $usuario->getPassword();
-        if ($passwordUser !== $hash) {
-            $mensaje = "La contraseña es incorrecta";
-            $this->login(true, $mensaje);
-            return;
-        }
-        $_SESSION["username"] = $usuario->getUsername();
-        header("Location: ". getenv('APP_URL'));
-        exit();
-    }
-
     public function register($post = false, $mensaje = '') {
         $title = "Register";
         echo $this->twig->render('usuario/register.view.twig', [
@@ -95,8 +119,8 @@ class UsuarioController extends Controller
         $mensaje = "";
         if ($request->hasBodyParams(["nombre", "apellido", "email" ,"username","password","repeatPassword"])) {
             $values = $request->post();
-            $pass1 = trim($values["password"]);
-            $pass2 = trim($values["repeatPassword"]);
+            $pass1 = $this->validator->sanitizeInput($values["password"]);
+            $pass2 = $this->validator->sanitizeInput($values["repeatPassword"]);
             if (strlen($pass1) < 8) {
                 $mensaje = "La contraseña debe tener 8 caracteres como mínimo";
             } else if ($pass1 !== $pass2) {
@@ -107,10 +131,10 @@ class UsuarioController extends Controller
                     //$hash = password_hash($pass1, PASSWORD_DEFAULT);
                     $hash = hash('sha256', $pass1);
                     $data = array(
-                        "nombre" => $values["nombre"],
-                        "apellido" => $values["apellido"],
-                        "username" => $values["username"],
-                        "email" => $values["email"],
+                        "nombre" => $this->validator->sanitizeInput($values["nombre"]),
+                        "apellido" => $this->validator->sanitizeInput($values["apellido"]),
+                        "username" => $this->validator->sanitizeInput($values["username"]),
+                        "email" => $this->validator->sanitizeInput($values["email"]),
                         "role" => "user",
                         "password" => $hash,
                     );

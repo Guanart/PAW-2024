@@ -57,6 +57,27 @@ class QueryBuilder {
         return $sentencia->fetchAll();
     }
 
+    public function selectPage(string $filter = null, array $params = [], int $limit = null, int $offset = null)
+    {
+        // $params es necesario para hacer el bind de los valores en el $filter
+        $filterQuery = $filter ? "WHERE $filter" : "";
+
+        $limitQuery = $limit ? "LIMIT $limit" : "";
+        $offsetQuery = $offset ? "OFFSET $offset" : "";
+
+        $query = "SELECT * FROM {$this->table} {$filterQuery} {$limitQuery} {$offsetQuery}";
+        $sentencia = $this->pdo->prepare($query);
+
+        // Bind parameters to the prepared statement
+        foreach ($params as $key => $value) {
+            $sentencia->bindValue($key, $value);
+        }
+
+        $sentencia->setFetchMode(PDO::FETCH_ASSOC);
+        $sentencia->execute();
+        return $sentencia->fetchAll();
+    }
+
     /**
      * Perform an insert query on the specified table.
      */

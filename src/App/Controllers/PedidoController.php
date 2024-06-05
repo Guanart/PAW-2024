@@ -9,30 +9,40 @@ use Paw\App\Models\PedidoDelivery;
 use Paw\App\Repositories\PedidoRepository;
 use Paw\App\Models\PedidoMesa;
 use Paw\Core\Exceptions\InvalidValueFormatException;
+use Paw\App\Validators\InputValidator;
 use Exception;
-
 
 class PedidoController extends Controller
 {
     private $twig;
+    public $validator;
     public $userRepository;
 
     public function __construct(Environment $twig) {
         parent::__construct(PedidoRepository::class);
         $this->twig = $twig;
+        $this->validator = new InputValidator();
     }
 
     public function pedidos() {
         $title = "Tus pedidos";
+
+        /*
         $id_usuario = "123"; 
-        
-        $username = $_SESSION["username"];
-        //$usuario = $this->userRepository->getByUsername($username);
-        
         $pedidos = json_decode(file_get_contents(__DIR__ . '/../pedidos.json'), true);   // Recuperar de la base de datos
         $pedidos_usuario = array_filter($pedidos, function ($pedido) use ($id_usuario) {
             return $pedido["id_usuario"] === $id_usuario && $pedido["estado"] !== "entregado";
         });
+        */
+        if (!isset($_SESSION["username"])) {
+            $_SESSION["loopback"] = "/tus_pedidos";
+            header("Location: ". getenv('APP_URL') . "/login");
+            exit();
+        }
+        $username = $_SESSION["username"];
+        //$usuario = $this->userRepository->getByUsername($username);
+        
+        
 
         echo $this->twig->render('pedido/tus_pedidos.view.twig', [
             'nav' => $this->nav,
@@ -74,7 +84,7 @@ class PedidoController extends Controller
             'title' => $title,
             "mensaje" => $mensaje
         ];
-        if ($request->httpMethod()) {
+        if ($request->isPost()) {
             $variables['mostrarMensaje'] = true;
         }
         echo $this->twig->render('pedido/armar_pedido.view.twig', $variables);
@@ -96,40 +106,56 @@ class PedidoController extends Controller
             $mensaje = "No se seleccionó ningún plato!";
             $this->armarPedido($request, $mensaje);
         } else {
-            $_SESSION["pedido"] = $pedido;
+            $_SESSION["pedido"]["productos"] = $pedido;
             header("Location: /confirmar_pedido"); 
         }
     }
 
-    public function confirmarPedido($mostrarPost = false, string $mensaje =""){
+    public function confirmarPedido(Request $request, string $mensaje =""){
         $title = "Confirmar Pedido";
-        echo $this->twig->render('pedido/confirmar_pedido.view.twig', [
+        $variables = [
             'nav' => $this->nav,
             'footer' => $this->footer,
             'title' => $title,
-            "mostrarPost" => $mostrarPost,
             "mensaje" => $mensaje
-        ]);
+        ];
+        if ($request->isPost()) {
+            $variables['mostrarMensaje'] = true;
+        }
+        echo $this->twig->render('pedido/confirmar_pedido.view.twig', $variables);
     }
 
-    public function confirmarPedidoFormulario(Request $request){
+    public function confirmarPedidoFormulario(Request $request) {
+        if (!isset($_SESSION["username"])) {
+            $_SESSION["loopback"] = "/confirmar_pedido";
+            header("Location: ". getenv('APP_URL') . "/login");
+            exit();
+        }
         $formularioDatos = null;
         $mensaje = "";
         $formularioDatos = $request->post();
         try {
-            if ($_SESSION["tipo"]==="mesa") {
-                $pedidoMesa = new PedidoMesa();
-            } elseif ($_SESSION["tipo"]==="delivery") {
-                $pedidoMesa = new PedidoDelivery();
-            } elseif ($_SESSION["tipo"]==="llevar") {
-                $pedidoMesa = new PedidoLlevar();
-            }
-            // Agregar al JSON un nuevo Pedido
+            $data = [
+                "productos" => $_SESSION["pedido"]["productos"],
+                "username" => $_SESSION["username"],
+            ];
+            if ($_SESSION["pedido"]["tipo"] === "mesa") {
 
-            $this->finPedido($formularioDatos);
+            } elseif ($_SESSION["pedido"]["tipo"]==="delivery") {
+                foreach ($_SESSION["pedido"]["direccion"] as $key => $value) {
+                    $data[$key] = $value;
+                }
+                $pedidoMesa = new PedidoDelivery($data);
+            } elseif ($_SESSION["pedido"]["tipo"]==="llevar") {
+                $data["local"] = $_SESSION["pedido"]["localidad"];
+            }
+            // Guardar el pedido, que repository usar, porque tenemos 3 tipos de pedido ??????????
+            $usuario = $this->repository->create($data);
+            header("Location: ". getenv('APP_URL') . "/fin_pedido");
+            exit();
         } catch (InvalidValueFormatException $e){
             $mensaje = $e->getMessage();
-            $this->confirmarPedido(true, $mensaje, $formularioDatos);
+            $this->confirmarPedido($request, $mensaje);
         }
     }
 
@@ -141,7 +167,7 @@ class PedidoController extends Controller
             'title' => $title,
             "mensaje" => $mensaje
         ];
-        if ($request->httpMethod()) {
+        if ($request->isPost()) {
             $variables['mostrarMensaje'] = true;
         }
         echo $this->twig->render('pedido/elegir_local.view.twig', $variables);
@@ -153,9 +179,10 @@ class PedidoController extends Controller
         if ($request->hasBodyParams(["localidad"])) {
             try {
                 $formularioDatos = $request->post();
-                $_SESSION["pedido_tipo"] = "llevar";
-                $_SESSION["pedido_localidad"] = $formularioDatos["localidad"];
-                header("Location: /armar_pedido"); 
+                $_SESSION["pedido"]["tipo"] = "llevar";
+                $_SESSION["pedido"]["localidad"] = $formularioDatos["localidad"];
+                header("Location: ". getenv('APP_URL') . "/armar_pedido");
+                exit();
             } catch (Exception $e) {
                 $mensaje = $e->getMessage();
             }
@@ -165,15 +192,18 @@ class PedidoController extends Controller
         }
     }
 
-    public function ingresarDireccion($mostrarPost = false, string $mensaje =""){
+    public function ingresarDireccion(Request $request, string $mensaje =""){
         $title = "Ingresar Direccion";
-        echo $this->twig->render('pedido/ingresar_direccion.view.twig', [
+        $variables = [
             'nav' => $this->nav,
             'footer' => $this->footer,
             'title' => $title,
-            "mostrarPost" => $mostrarPost,
             "mensaje" => $mensaje
-        ]);
+        ];
+        if ($request->isPost()) {
+            $variables['mostrarMensaje'] = true;
+        }
+        echo $this->twig->render('pedido/ingresar_direccion.view.twig', $variables);
     }
 
     public function ingresarDireccionFormulario(Request $request){
@@ -182,31 +212,26 @@ class PedidoController extends Controller
         $tipo = "pedido";
         if ($request->hasBodyParams(["localidad", "calle", "altura"])) {
             try {
-                $mensaje = "";
                 $formularioDatos = $request->post();
+                # Reemplazar luego por foreach
+                $_SESSION["pedido"]["tipo"] = "delivery";
+                $_SESSION["pedido"]["direccion"]["localidad"] = $this->validator->sanitizeInput($formularioDatos["localidad"]);
+                $_SESSION["pedido"]["direccion"]["calle"] = $this->validator->sanitizeInput($formularioDatos["calle"]);
+                $_SESSION["pedido"]["direccion"]["altura"] = $this->validator->sanitizeInput($formularioDatos["altura"]);
+                $_SESSION["pedido"]["direccion"]["departamento"] = $this->validator->sanitizeInput($formularioDatos["departamento"]);
+                $_SESSION["pedido"]["direccion"]["descripcion"] = $this->validator->sanitizeInput($formularioDatos["descripcion"]);
+                header("Location: ". getenv('APP_URL') . "/armar_pedido");
+                exit();
             } catch (Exception $e) {
                 $mensaje = $e->getMessage();
             }
-            $_SESSION["tipo"] = "delivery";
-            $_SESSION["localidad"] = $formularioDatos["localidad"];
-            $_SESSION["calle"] = $formularioDatos["calle"];
-            $_SESSION["altura"] = $formularioDatos["altura"];
-            $this->armarPedido();
         } else {
             $mensaje = "No se encontraron los parámetros necesarios";
-            $this-> ingresarDireccion(true, $mensaje);
+            $this-> ingresarDireccion($request, $mensaje);
         }
     }
 
     public function finPedido(Array $formularioDatos){
-        // if ($formularioDatos["tipo"]==="mesa") {
-        //     $pedidoMesa = new PedidoMesa();
-        // } elseif ($formularioDatos["tipo"]==="pedido") {
-        //     $pedidoMesa = new PedidoDelivery();
-        // } elseif ($formularioDatos["tipo"]==="llevar") {
-        //     $pedidoMesa = new PedidoLlevar();
-        // }
-
         $title = "Fin de Pedido";
         echo $this->twig->render('pedido/mensaje_fin_pedido.view.twig', [
             'nav' => $this->nav,
@@ -233,8 +258,8 @@ class PedidoController extends Controller
             try {
                 $mensaje = "";
                 $formularioDatos = $request->post();
-                $_SESSION["tipo"] = "mesa";
-                $_SESSION["mesa"] = $formularioDatos["mesa"];
+                $_SESSION["pedido"]["tipo"] = "mesa";
+                $_SESSION["pedido"]["mesa"] = $this->validator->sanitizeInput($formularioDatos["mesa"]);
             } catch (Exception $e) {
                 $mensaje = $e->getMessage();
             }

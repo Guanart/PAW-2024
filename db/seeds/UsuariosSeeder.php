@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 use Phinx\Seed\AbstractSeed;
 
-class ProductosSeeder extends AbstractSeed
+class UsuariosSeeder extends AbstractSeed
 {
     /**
      * Run Method.
@@ -19,11 +19,19 @@ class ProductosSeeder extends AbstractSeed
         $data = [
             [
                 'username' => 'User',
-                'password' => password_hash('123456', PASSWORD_DEFAULT)
+                'email' => 'user@example.com',
+                'nombre' => 'User',
+                'apellido' => '1',   
+                'password' => hash('sha256', "12345678"),
+                'role' => 'user',
             ],
             [
                 'username' => 'Admin',
-                'password' => password_hash('123456', PASSWORD_DEFAULT)
+                'password' => hash('sha256', "12345678"),
+                'email' => 'admin@example.com',
+                'nombre' => 'Admin',
+                'apellido' => '1',   
+                'role' => 'admin',
             ]
         ];
 

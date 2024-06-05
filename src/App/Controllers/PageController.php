@@ -23,13 +23,17 @@ class PageController extends Controller
             'title' => $title,
         ]);
     }
-    public function menu() {
+    public function menu(Request $request) {
         $title = "Menu";
-        // $products = productRepository(); TODO
+        $get = $request->get();
+        $page = isset($get['page']) ? (int)$get['page'] : 0;
+        $itemsPerPage = 2;
+        $products = $this->repository->getPage($itemsPerPage, $page); 
         echo $this->twig->render('menu.view.twig', [
             'nav' => $this->nav,
             'footer' => $this->footer,
             'title' => $title,
+            'products' => $products
         ]);
     }
 

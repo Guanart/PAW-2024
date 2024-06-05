@@ -86,7 +86,7 @@ class Producto extends Model
      */
     public function setDescripcion(string $descripcion)
     {
-        if (strlen($descripcion) > 60) {
+        if (strlen($descripcion) > 256) {
             throw new InvalidValueFormatException("La descripción del producto no debe ser mayor a 60 caracteres");
         }
         $this->fields["descripcion"] = $descripcion;

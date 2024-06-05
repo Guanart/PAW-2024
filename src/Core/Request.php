@@ -18,7 +18,8 @@ class Request
         global $querybuilder;
         if (!isset($this->user)) {
             $filter = "username = :username";
-            $this->user = new Usuario($querybuilder->table('usuario')->select($filter, [':username' => $_SESSION['username']])[0]);
+            $user = $querybuilder->table('usuario')->select($filter, [':username' => $_SESSION['username']])[0];
+            $this->user = new Usuario($user ?? []);
         }
         return $this->user;
     }

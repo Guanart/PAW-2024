@@ -1,10 +1,11 @@
 <nav>
     <ul>
-        {% for item in nav %}
+        {% if isLoggedIn() %}
+            {% for item in nav %}
 
-            {% if isLoggedIn() %}
+            
                 {% set user = request().user() %}
-                {% if item.role == 'all' or user.getRole() == item.role %} 
+                {% if user.getRole() == item.role %} 
                     <li>
                         <a href="{{ item.href }}" 
                             class="{{ app.request.getPathInfo() == item.href ? 'selected' : '' }}">
@@ -12,12 +13,20 @@
                         </a>
                     </li>
                 {% endif %}
-            {% else %}
-                <li>
-                    <a href="/home">Home</a>
-                </li>
-            {% endif %}
-        {% endfor %}
+            {% endfor %}
+        {% else %}
+            {% for item in nav %}
+                {% if item.role == 'user' %} 
+                    <li>
+                        <a href="{{ item.href }}" 
+                            class="{{ app.request.getPathInfo() == item.href ? 'selected' : '' }}">
+                            {{ item.name }}
+                        </a>
+                    </li>
+                {% endif %}
+            {% endfor %}
+        {% endif %}
+        
     </ul>
 </nav>
 <nav class="account">
