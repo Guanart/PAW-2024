@@ -3,8 +3,8 @@
 {% block content %}
         <h2>Pedidos</h2>
         <a href="/hacer_pedido">Hace un pedido!</a>
-        <?php if ($pedidos_usuario) : ?>
-            <?php foreach ($pedidos_usuario as $pedido) : ?>
+        {% if pedidos_usuario %}
+            {% for $pedido fropedidos_usuario %}
                 <article class='pedido' id=<?= $pedido["id_pedido"]; ?>>
                     <h4>Pedido #<?= $pedido["id_pedido"]; ?></h4>
                     <ul>
@@ -14,7 +14,7 @@
                     </ul>
                     <div class='seguimientoPedido'></div>
                 </article>
-            <?php endforeach; ?>
+            {% endforeach %}
         <?php else : ?>
             <p>No tenés pedidos nuevos.</p>
         <?php endif; ?>

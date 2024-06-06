@@ -1,5 +1,5 @@
 services:
-  postgres-db:
+  paw-2024:
     image: postgres:15.3
     container_name: postgres-paw
     restart: always

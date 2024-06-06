@@ -32,12 +32,22 @@ class ProductosSeeder extends AbstractSeed
                 'descripcion' => 'Hamburguesa con pechuga de pollo, lechuga, tomate y mayonesa',
                 'precio' => 550,
             ],
+            // Bebidas
             [
-                'nombre' => 'Hamburguesa Vegetariana',
-                'descripcion' => 'Hamburguesa con patty de garbanzos, lechuga, tomate y aguacate',
-                'precio' => 450,
+                'nombre' => 'Coca Cola',
+                'descripcion' => 'Refresco de cola',
+                'precio' => 50,
             ],
-            // Agrega más hamburguesas si es necesario
+            [
+                'nombre' => 'Pepsi',
+                'descripcion' => 'Refresco de cola',
+                'precio' => 50,
+            ],
+            [
+                'nombre' => 'Sprite',
+                'descripcion' => 'Refresco de limón',
+                'precio' => 50,
+            ],
         ];
 
         $table = $this->table('producto');
