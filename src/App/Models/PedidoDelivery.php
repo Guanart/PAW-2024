@@ -6,7 +6,7 @@ use Paw\App\Models\Pedido;
 use Paw\Core\Exceptions\InvalidValueFormatException;
 
 class PedidoDelivery extends Pedido {
-    private array $estados = ["aceptado", "preparacion", "finalizado", "despachado", "entregado"];
+    public array $estados = ["aceptado", "preparacion", "finalizado", "despachado", "entregado"];
 
     public function __construct($values) {
         $this->setTipo("delivery");
@@ -21,22 +21,22 @@ class PedidoDelivery extends Pedido {
         if (strlen($localidad) < 1) {
             throw new InvalidValueFormatException("El nombre de la localidad no debe ser vacío");
         }
-        $this->fields["direccion"]["localidad"] = $localidad;
+        $this->fields["localidad"] = $localidad;
     }
 
     public function getLocalidad() {
-        return $this->fields["direccion"]["localidad"];
+        return $this->fields["localidad"];
     }
 
     public function setAltura(int $altura) {
         if ($altura < 0) {
             throw new InvalidValueFormatException("La altura debe ser mayor o igual a 0");
         }
-        $this->fields["direccion"]["altura"] = $altura;
+        $this->fields["altura"] = $altura;
     }
 
     public function getAltura() {
-        return $this->fields["direccion"]["altura"];
+        return $this->fields["altura"];
     }
 
     public function setDepartamento(string $departamento) {
@@ -44,11 +44,11 @@ class PedidoDelivery extends Pedido {
             throw new InvalidValueFormatException("El departamento debe ser mayor a 0");
         }
 
-        $this->fields["direccion"]["departamento"] = $departamento;
+        $this->fields["departamento"] = $departamento;
     }
 
     public function getDepartamento() {
-        return $this->fields["direccion"]["departamento"];
+        return $this->fields["departamento"];
     }
 
     public function setCalle(string $calle) {
@@ -58,21 +58,21 @@ class PedidoDelivery extends Pedido {
         if (strlen($calle) < 1) {
             throw new InvalidValueFormatException("El nombre del producto no debe vacío");
         }
-        $this->fields["direccion"]["calle"] = $calle;
+        $this->fields["calle"] = $calle;
     }
 
     public function getCalle() {
-        return $this->fields["direccion"]["calle"];
+        return $this->fields["calle"];
     }
 
     public function setDescripcion(string $descripcion) {
         if (strlen($descripcion) > 260) {
             throw new InvalidValueFormatException("La descripcion no debe ser mayor a 260 caracteres");
         }
-        $this->fields["direccion"]["descripcion"] = $descripcion;
+        $this->fields["descripcion"] = $descripcion;
     }
 
     public function getDescripcion() {
-        return $this->fields["direccion"]["descripcion"];
+        return $this->fields["descripcion"];
     }
 }

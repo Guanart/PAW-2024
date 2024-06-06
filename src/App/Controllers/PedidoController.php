@@ -148,17 +148,20 @@ class PedidoController extends Controller
                 "productos" => $_SESSION["pedido"]["productos"],
                 "id_usuario" => $request->user()->getId(),
             ];
-
             switch ($_SESSION["pedido"]["tipo"]) {
                 case 'mesa':
+                    $pedido = $this->pedidoMesaRepository->create($data);
                     break;
                 case 'delivery':
                     foreach ($_SESSION["pedido"]["direccion"] as $key => $value) {
                         $data[$key] = $value;
                     }
+                    unset($data["direccion"]);
+                    $pedido = $this->pedidoDeliveryRepository->create($data);
                     break;
                 case 'llevar':
                     $data["localidad"] = $_SESSION["pedido"]["localidad"];
+                    $pedido = $this->pedidoLlevarRepository->create($data);
                     break;
                 default:
                     throw new InvalidValueFormatException("No se pudo determinar el tipo de pedido");
@@ -176,8 +179,6 @@ class PedidoController extends Controller
             // }
             // redirect(getenv('APP_URL') . "/fin_pedido");
             // exit();
-
-            $pedido = $this->pedidoMesaRepository->create($data);
             redirect(getenv('APP_URL') . "/fin_pedido");
             exit();
         } catch (InvalidValueFormatException $e){
