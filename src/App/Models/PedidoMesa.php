@@ -6,10 +6,9 @@ use Paw\App\Models\Pedido;
 use Paw\Core\Exceptions\InvalidValueFormatException;
 
 class PedidoMesa extends Pedido {
-    private array $estados = ["aceptado", "preparacion", "finalizado", "retirar", "entregado"];
+    public array $estados = ["aceptado", "preparacion", "finalizado", "retirar", "entregado"];
 
     public function __construct($values) {
-        $this->fields["estados"] = ["aceptado", "preparacion", "finalizado", "retirar", "entregado"];
         $this->setTipo("mesa");
         $this->set($values);
         $this->fields["estado"] = $this->estados[0];

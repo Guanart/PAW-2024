@@ -42,7 +42,7 @@ class UsuarioController extends Controller
 
     public function verificarSesionIniciada() {
         if (isset($_SESSION["username"])) {
-            header("Location: ". getenv('APP_URL'));
+            redirect(getenv('APP_URL'));
             exit();
         }
     }
@@ -79,10 +79,10 @@ class UsuarioController extends Controller
         $redireccion = $_SESSION["loopback"];
         if (isset($redireccion)) {
             unset($_SESSION["loopback"]);
-            header("Location: ". getenv('APP_URL') . $redireccion);
+            redirect(getenv('APP_URL') . $redireccion);
             exit();
         }
-        header("Location: ". getenv('APP_URL'));
+        redirect(getenv('APP_URL'));
         exit();
     }
 
@@ -101,7 +101,7 @@ class UsuarioController extends Controller
             setcookie(session_name(), '', time() - 10000);
             session_destroy();
         }
-        header("Location: ". getenv('APP_URL'));
+        redirect(getenv('APP_URL'));
         exit();
     }
 

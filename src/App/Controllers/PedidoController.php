@@ -46,7 +46,7 @@ class PedidoController extends Controller
         */
         if (!isset($_SESSION["username"])) {
             $_SESSION["loopback"] = "/tus_pedidos";
-            header("Location: ". getenv('APP_URL') . "/login");
+            redirect(getenv('APP_URL') . "/login");
             exit();
         }
         $username = $_SESSION["username"];
@@ -107,7 +107,7 @@ class PedidoController extends Controller
         foreach($formularioDatos as $plato => $cantidad) {
             if (is_numeric($cantidad) && $cantidad > 0) {
                 $pedido[] = [
-                    "plato" => $plato,
+                    "id_producto" => $plato,
                     "cantidad" => $cantidad
                 ];
             }
@@ -117,7 +117,7 @@ class PedidoController extends Controller
             $this->armarPedido($request, $mensaje);
         } else {
             $_SESSION["pedido"]["productos"] = $pedido;
-            header("Location: /confirmar_pedido"); 
+            redirect("/confirmar_pedido"); 
         }
     }
 
@@ -138,9 +138,10 @@ class PedidoController extends Controller
     public function confirmarPedidoFormulario(Request $request) {
         if (!isset($_SESSION["username"])) {
             $_SESSION["loopback"] = "/confirmar_pedido";
-            header("Location: ". getenv('APP_URL') . "/login");
+            redirect(getenv('APP_URL') . "/login");
             exit();
         }
+        
         $mensaje = "";
         try {
             $data = [
@@ -162,9 +163,6 @@ class PedidoController extends Controller
                 default:
                     throw new InvalidValueFormatException("No se pudo determinar el tipo de pedido");
             }
-            $pedido = $this->pedidoMesaRepository->create($data);
-            header("Location: " . getenv('APP_URL') . "/fin_pedido");
-            exit();
             // if ($_SESSION["pedido"]["tipo"] === "mesa") {
             //     $pedido = $this->pedidoMesaRepository->create($data);
             // } elseif ($_SESSION["pedido"]["tipo"]==="delivery") {
@@ -176,8 +174,12 @@ class PedidoController extends Controller
             //     $data["localidad"] = $_SESSION["pedido"]["localidad"];
             //     $pedido = $this->pedidoLlevarRepository->create($data);
             // }
-            // header("Location: ". getenv('APP_URL') . "/fin_pedido");
+            // redirect(getenv('APP_URL') . "/fin_pedido");
             // exit();
+
+            $pedido = $this->pedidoMesaRepository->create($data);
+            redirect(getenv('APP_URL') . "/fin_pedido");
+            exit();
         } catch (InvalidValueFormatException $e){
             $mensaje = $e->getMessage();
             $this->confirmarPedido($request, $mensaje);
@@ -206,7 +208,7 @@ class PedidoController extends Controller
                 $formularioDatos = $request->post();
                 $_SESSION["pedido"]["tipo"] = "llevar";
                 $_SESSION["pedido"]["localidad"] = $formularioDatos["localidad"];
-                header("Location: ". getenv('APP_URL') . "/armar_pedido");
+                redirect(getenv('APP_URL') . "/armar_pedido");
                 exit();
             } catch (Exception $e) {
                 $mensaje = $e->getMessage();
@@ -245,7 +247,7 @@ class PedidoController extends Controller
                 $_SESSION["pedido"]["direccion"]["altura"] = $this->validator->sanitizeInput($formularioDatos["altura"]);
                 $_SESSION["pedido"]["direccion"]["departamento"] = $this->validator->sanitizeInput($formularioDatos["departamento"]);
                 $_SESSION["pedido"]["direccion"]["descripcion"] = $this->validator->sanitizeInput($formularioDatos["descripcion"]);
-                header("Location: ". getenv('APP_URL') . "/armar_pedido");
+                redirect(getenv('APP_URL') . "/armar_pedido");
                 exit();
             } catch (Exception $e) {
                 $mensaje = $e->getMessage();

@@ -13,6 +13,9 @@ abstract class Pedido extends Model {
      */
     static public string $table = "pedido";
 
+    public array $productos = [];
+    public array $estados = [];
+
     public array $fields = [
         "id" => null,
         "id_usuario" => null,
@@ -31,6 +34,12 @@ abstract class Pedido extends Model {
 
     public function __construct($values) {
         $this->set($values);
+        $this->productos = $values['productos'];      // Este campo no se encuentra en la BD (es una FK a detalle_pedido)
+    }
+
+    public function getEstados()
+    {
+        return $this->estados;
     }
 
     public function setProductos(Array $productos) {
@@ -49,10 +58,6 @@ abstract class Pedido extends Model {
     }
     public function getUsername() {
         return $this->fields["username"];
-    }
-
-    public function getEstados() {
-        return $this->fields["estados"];
     }
 
     public function getTipo() {
