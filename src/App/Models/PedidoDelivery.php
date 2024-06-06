@@ -40,7 +40,7 @@ class PedidoDelivery extends Pedido {
     }
 
     public function setDepartamento(string $departamento) {
-        if ($departamento > 0) {
+        if ($departamento < 0) {
             throw new InvalidValueFormatException("El departamento debe ser mayor a 0");
         }
 

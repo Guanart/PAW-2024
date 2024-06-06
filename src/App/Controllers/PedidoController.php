@@ -182,8 +182,11 @@ class PedidoController extends Controller
             redirect(getenv('APP_URL') . "/fin_pedido");
             exit();
         } catch (InvalidValueFormatException $e){
+            // dd($e);die;
             $mensaje = $e->getMessage();
             $this->confirmarPedido($request, $mensaje);
+        } catch (Exception $e) {
+            // dd($e);die;
         }
     }
 
