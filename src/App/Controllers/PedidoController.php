@@ -145,21 +145,39 @@ class PedidoController extends Controller
         try {
             $data = [
                 "productos" => $_SESSION["pedido"]["productos"],
-                "username" => $_SESSION["username"],
+                "id_usuario" => $request->user()->getId(),
             ];
-            if ($_SESSION["pedido"]["tipo"] === "mesa") {
-                $pedido = $this->pedidoMesaRepository->create($data);
-            } elseif ($_SESSION["pedido"]["tipo"]==="delivery") {
-                foreach ($_SESSION["pedido"]["direccion"] as $key => $value) {
-                    $data[$key] = $value;
-                }
-                $pedido = $this->pedidoDeliveryRepository->create($data);
-            } elseif ($_SESSION["pedido"]["tipo"]==="llevar") {
-                $data["local"] = $_SESSION["pedido"]["localidad"];
-                $pedido = $this->pedidoLlevarRepository->create($data);
+
+            switch ($_SESSION["pedido"]["tipo"]) {
+                case 'mesa':
+                    break;
+                case 'delivery':
+                    foreach ($_SESSION["pedido"]["direccion"] as $key => $value) {
+                        $data[$key] = $value;
+                    }
+                    break;
+                case 'llevar':
+                    $data["localidad"] = $_SESSION["pedido"]["localidad"];
+                    break;
+                default:
+                    throw new InvalidValueFormatException("No se pudo determinar el tipo de pedido");
             }
-            header("Location: ". getenv('APP_URL') . "/fin_pedido");
+            $pedido = $this->pedidoMesaRepository->create($data);
+            header("Location: " . getenv('APP_URL') . "/fin_pedido");
             exit();
+            // if ($_SESSION["pedido"]["tipo"] === "mesa") {
+            //     $pedido = $this->pedidoMesaRepository->create($data);
+            // } elseif ($_SESSION["pedido"]["tipo"]==="delivery") {
+            //     foreach ($_SESSION["pedido"]["direccion"] as $key => $value) {
+            //         $data[$key] = $value;
+            //     }
+            //     $pedido = $this->pedidoDeliveryRepository->create($data);
+            // } elseif ($_SESSION["pedido"]["tipo"]==="llevar") {
+            //     $data["localidad"] = $_SESSION["pedido"]["localidad"];
+            //     $pedido = $this->pedidoLlevarRepository->create($data);
+            // }
+            // header("Location: ". getenv('APP_URL') . "/fin_pedido");
+            // exit();
         } catch (InvalidValueFormatException $e){
             $mensaje = $e->getMessage();
             $this->confirmarPedido($request, $mensaje);

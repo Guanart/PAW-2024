@@ -9,7 +9,7 @@ abstract class Model {
     
     static public string $table;
     
-    protected array $fields = [];
+    public array $fields = [];
     
     
     /**
@@ -20,7 +20,7 @@ abstract class Model {
      */
     
     public function set(array $values)
-    {
+    {   
         foreach (array_keys($this->fields) as $field) {
             if (!isset($values[$field])) {
                 continue;

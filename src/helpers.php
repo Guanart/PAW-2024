@@ -11,6 +11,13 @@ function view($view, $data = []) {
     require $viewFile;
 }
 
+function dd($obj) {
+    echo "<pre>";
+    var_dump($obj);
+    echo "</pre>";
+    die;
+}
+
 /*
 class Request {
     private $data;

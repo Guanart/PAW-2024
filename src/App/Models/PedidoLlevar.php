@@ -6,11 +6,12 @@ use Paw\App\Models\Pedido;
 use Paw\Core\Exceptions\InvalidValueFormatException;
 
 class PedidoLlevar extends Pedido {
-
+    private array $estados = ["aceptado", "preparacion", "finalizado", "retirar", "entregado"];
+    
     public function __construct($values) {
-        $this->fields["estados"] = ["aceptado", "preparacion", "finalizado", "retirar", "entregado"];
-        $this->fields["tipo"] = "llevar";
+        $this->setTipo("llevar");
         $this->set($values);
+        $this->fields["estado"] = $this->estados[0];
     }
 
     public function setLocal(string $local) {
@@ -23,7 +24,7 @@ class PedidoLlevar extends Pedido {
         $this->fields["local"] = $local;
     }
 
-    public function getLocal(string $local) {
+    public function getLocal() {
         return $this->fields["local"];
     }
 }

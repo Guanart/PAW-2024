@@ -22,6 +22,7 @@ abstract class Repository
     public function __construct(QueryBuilder $queryBuilder)
     {
         $this->queryBuilder = $queryBuilder;
+        $this->setModel();
     }
 
     /**
@@ -93,8 +94,7 @@ abstract class Repository
     public function create(array $data)
     {
         // TODO: validar parametros, por ejemplo, usando el Model
-        $class = $this->model();
-        $model = new $class($data);
+        $model = new $this->model($data);
         if ($model) {
             $id = $this->queryBuilder->table($this->table())->insert($model->toArray());
         }

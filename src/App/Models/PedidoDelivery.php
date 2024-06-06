@@ -2,15 +2,16 @@
 
 namespace Paw\App\Models;
 
-use Paw\Core\Models\Pedido;
+use Paw\App\Models\Pedido;
 use Paw\Core\Exceptions\InvalidValueFormatException;
 
 class PedidoDelivery extends Pedido {
+    private array $estados = ["aceptado", "preparacion", "finalizado", "despachado", "entregado"];
 
     public function __construct($values) {
-        $this->fields["estados"] = ["aceptado", "preparacion", "finalizado", "despachado", "entregado"];
-        $this->fields["tipo"] = "delivery";
+        $this->setTipo("delivery");
         $this->set($values);
+        $this->fields["estado"] = $this->estados[0];
     }
     
     public function setLocalidad(string $localidad) {
@@ -38,7 +39,7 @@ class PedidoDelivery extends Pedido {
         return $this->fields["direccion"]["altura"];
     }
 
-    public function setDepartamento(int $departamento) {
+    public function setDepartamento(string $departamento) {
         if ($departamento > 0) {
             throw new InvalidValueFormatException("El departamento debe ser mayor a 0");
         }
