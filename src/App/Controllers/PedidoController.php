@@ -10,18 +10,28 @@ use Paw\App\Repositories\PedidoRepository;
 use Paw\App\Models\PedidoMesa;
 use Paw\Core\Exceptions\InvalidValueFormatException;
 use Paw\App\Validators\InputValidator;
+use Paw\App\Repositories\PedidoDeliveryRepository;
+use Paw\App\Repositories\PedidoLlevarRepository;
+use Paw\App\Repositories\PedidoMesaRepository;
 use Exception;
 
 class PedidoController extends Controller
 {
     private $twig;
     public $validator;
-    public $userRepository;
+    public PedidoDeliveryRepository $pedidoDeliveryRepository;
+    public PedidoLlevarRepository $pedidoLlevarRepository;
+    public PedidoMesaRepository $pedidoMesaRepository;
 
     public function __construct(Environment $twig) {
+        global $querybuilder;
         parent::__construct(PedidoRepository::class);
+        $this->pedidoDeliveryRepository = new PedidoDeliveryRepository($querybuilder);
+        $this->pedidoLlevarRepository = new PedidoLlevarRepository($querybuilder);
+        $this->pedidoMesaRepository = new PedidoMesaRepository($querybuilder);
         $this->twig = $twig;
         $this->validator = new InputValidator();
+        
     }
 
     public function pedidos() {
@@ -131,26 +141,23 @@ class PedidoController extends Controller
             header("Location: ". getenv('APP_URL') . "/login");
             exit();
         }
-        $formularioDatos = null;
         $mensaje = "";
-        $formularioDatos = $request->post();
         try {
             $data = [
                 "productos" => $_SESSION["pedido"]["productos"],
                 "username" => $_SESSION["username"],
             ];
             if ($_SESSION["pedido"]["tipo"] === "mesa") {
-
+                $pedido = $this->pedidoMesaRepository->create($data);
             } elseif ($_SESSION["pedido"]["tipo"]==="delivery") {
                 foreach ($_SESSION["pedido"]["direccion"] as $key => $value) {
                     $data[$key] = $value;
                 }
-                $pedidoMesa = new PedidoDelivery($data);
+                $pedido = $this->pedidoDeliveryRepository->create($data);
             } elseif ($_SESSION["pedido"]["tipo"]==="llevar") {
                 $data["local"] = $_SESSION["pedido"]["localidad"];
+                $pedido = $this->pedidoLlevarRepository->create($data);
             }
-            // Guardar el pedido, que repository usar, porque tenemos 3 tipos de pedido ??????????
-            $pedido = $this->repository->create($data);
             header("Location: ". getenv('APP_URL') . "/fin_pedido");
             exit();
         } catch (InvalidValueFormatException $e){
@@ -231,7 +238,7 @@ class PedidoController extends Controller
         }
     }
 
-    public function finPedido(Array $formularioDatos){
+    public function finPedido(Request $request) {
         $title = "Fin de Pedido";
         echo $this->twig->render('pedido/mensaje_fin_pedido.view.twig', [
             'nav' => $this->nav,
@@ -263,7 +270,7 @@ class PedidoController extends Controller
             } catch (Exception $e) {
                 $mensaje = $e->getMessage();
             }
-            $this->armarPedido();
+            //this->armarPedido();
         } else {
             $mensaje = "No se encontraron los parámetros necesarios";
             $this-> seleccionarMesa(true, $mensaje);

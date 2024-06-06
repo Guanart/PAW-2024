@@ -11,7 +11,7 @@ abstract class Pedido extends Model {
      *
      * @var string
      */
-    protected static string $table = "pedido";
+    static public string $table = "pedido";
 
     public function __construct($values) {
         $this->set($values);

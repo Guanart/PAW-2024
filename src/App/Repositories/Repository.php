@@ -93,7 +93,8 @@ abstract class Repository
     public function create(array $data)
     {
         // TODO: validar parametros, por ejemplo, usando el Model
-        $model = new $this->model($data);
+        $class = $this->model();
+        $model = new $class($data);
         if ($model) {
             $id = $this->queryBuilder->table($this->table())->insert($model->toArray());
         }
@@ -113,7 +114,8 @@ abstract class Repository
     public function update(int $id, array $data)
     {
         // Validar parámetros utilizando el modelo
-        $model = new $this->model($data);
+        $class = $this->model;
+        $model = new $class($data);
         if ($model) {
             $filter = "id = :id";
             $params = [':id' => $id];

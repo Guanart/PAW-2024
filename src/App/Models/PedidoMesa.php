@@ -9,7 +9,7 @@ class PedidoMesa extends Pedido {
 
     public function __construct($values) {
         $this->fields["estados"] = ["aceptado", "preparacion", "finalizado", "retirar", "entregado"];
-        $this->fiedls["tipo"] = "mesa";
+        $this->fields["tipo"] = "mesa";
         $this->set($values);
     }
 
