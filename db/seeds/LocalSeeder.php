@@ -18,10 +18,10 @@ class LocalSeeder extends AbstractSeed
     {
         // id (son los nombres, Chivilcoy, Lujan, Rodriguez, Moreno), direccion, telefono y altura
         $data = [
-            ['id' => 'Chivilcoy', 'direccion' => 'Av. Sarmiento 1000', 'telefono' => '02346-42-0000', 'altura' => 1000],
-            ['id' => 'Lujan', 'direccion' => 'Av. Rivadavia 1000', 'telefono' => '02323-42-0000', 'altura' => 1000],
-            ['id' => 'Rodriguez', 'direccion' => 'Av. Rivadavia 1000', 'telefono' => '02323-42-0000', 'altura' => 1000],
-            ['id' => 'Moreno', 'direccion' => 'Av. Rivadavia 1000', 'telefono' => '02323-42-0000', 'altura' => 1000],
+            ['id' => 'chivilcoy', 'direccion' => 'Av. Sarmiento 1000', 'telefono' => '02346-42-0000', 'altura' => 1000],
+            ['id' => 'lujan', 'direccion' => 'Av. Rivadavia 1000', 'telefono' => '02323-42-0000', 'altura' => 1000],
+            ['id' => 'rodriguez', 'direccion' => 'Av. Rivadavia 1000', 'telefono' => '02323-42-0000', 'altura' => 1000],
+            ['id' => 'moreno', 'direccion' => 'Av. Rivadavia 1000', 'telefono' => '02323-42-0000', 'altura' => 1000],
         ];
 
         

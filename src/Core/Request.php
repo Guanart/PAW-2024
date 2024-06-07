@@ -56,7 +56,7 @@ class Request
         }
     }
 
-    public function post($key = null): array
+    public function post($key = null)
     {
         if (is_null($key)) {
             return $_POST;

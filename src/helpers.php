@@ -74,7 +74,6 @@ function dd($data, $title = "", $background = "#EEEEEE", $color = "#000000")
     echo    "<h2>$title</h2>";
     var_dump($data);
     echo "</pre>";
-    die;
 }
 
 

@@ -169,7 +169,7 @@ class ReservationPlan {
             }
             //console.log(idMesa + " " + idLocal + " " + fechaHora.toISOString());
             
-            this.enviarReserva(idMesa, idLocal, this.fechaSeleccionada, this.horarioSeleccionado);
+            //this.enviarReserva(idMesa, idLocal, this.fechaSeleccionada, this.horarioSeleccionado);
             console.log("El botón de reserva fue presionado.");
         });
     }

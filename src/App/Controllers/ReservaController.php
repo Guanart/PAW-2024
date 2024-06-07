@@ -3,6 +3,7 @@
 namespace Paw\App\Controllers;
 
 use Paw\Core\Request;
+use Paw\App\Repositories\ReservaRepository;
 use Twig\Environment;
 
 class ReservaController extends Controller
@@ -10,6 +11,7 @@ class ReservaController extends Controller
     private $twig;
 
     public function __construct(Environment $twig) {
+        parent::__construct(ReservaRepository::class);
         $this->twig = $twig;
     }
 
@@ -17,6 +19,8 @@ class ReservaController extends Controller
         $input = $request->get('local');
         $local = ucwords($input);
         $title = "Seleccion de Mesa";
+        $_SESSION["reserva_local"] = $input;
+
         echo $this->twig->render('reserva/seleccion_mesa.view.twig', [
             'nav' => $this->nav,
             'footer' => $this->footer,
@@ -25,18 +29,31 @@ class ReservaController extends Controller
         ]);
     }
 
-    public function reservasMesa() {
-        echo $this->twig->render('reserva/reservasMesa.view.twig', [
-            'nav' => $this->nav,
-            'footer' => $this->footer,
-        ]);
+    public function reservasMesa(Request $request) {
+        header('Content-Type: application/json');
+        // 1. Recupera 
+        $idLocal = $_GET['idLocal'];
+        $fecha = $_GET['fecha'];
+        $hora = $_GET['hora'];
+
     }
 
-    public function agregarReserva() {
-        echo $this->twig->render('reserva/agregar_reserva.view.twig', [
-            'nav' => $this->nav,
-            'footer' => $this->footer,
-        ]);
+    public function agregarReserva(Request $request) {
+        // dd($request->post());
+        $data = [
+            'id_usuario' => $request->user()->getId(),
+            'mesa' => $request->post('idMesa'),
+            'fecha' => $request->post('fecha'),
+            'hora' => $request->post('hora'),
+            'local' => $_SESSION["reserva_local"],
+        ];
+
+        // dd($data);die;
+        $reserva = $this->repository->create($data);
+        // dd($reserva);
+
+        redirect(getenv('APP_URL') . "/fin_reserva");
+        exit();
     }
 
     public function reservas() {
