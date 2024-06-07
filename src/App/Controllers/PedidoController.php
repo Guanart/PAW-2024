@@ -37,13 +37,13 @@ class PedidoController extends Controller
     public function pedidos() {
         $title = "Tus pedidos";
 
-        /*
+        
         $id_usuario = "123"; 
         $pedidos = json_decode(file_get_contents(__DIR__ . '/../pedidos.json'), true);   // Recuperar de la base de datos
         $pedidos_usuario = array_filter($pedidos, function ($pedido) use ($id_usuario) {
             return $pedido["id_usuario"] === $id_usuario && $pedido["estado"] !== "entregado";
         });
-        */
+        
         if (!isset($_SESSION["username"])) {
             $_SESSION["loopback"] = "/tus_pedidos";
             redirect(getenv('APP_URL') . "/login");

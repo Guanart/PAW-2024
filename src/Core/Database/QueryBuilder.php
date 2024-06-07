@@ -65,7 +65,7 @@ class QueryBuilder {
         $limitQuery = $limit ? "LIMIT $limit" : "";
         $offsetQuery = $offset ? "OFFSET $offset" : "";
 
-        $query = "SELECT * FROM {$this->table} {$filterQuery} ";
+        $query = "SELECT * FROM {$this->table} {$filterQuery}  {$limitQuery} {$offsetQuery}";
         $sentencia = $this->pdo->prepare($query);
 
         // Bind parameters to the prepared statement

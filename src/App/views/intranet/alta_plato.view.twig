@@ -22,7 +22,7 @@
 
             <input type="submit" value="Subir" class="submit">
         </form>
-        <?php if ($post) : ?>
-            <h3><?= $mensaje ?></h3>
-        <?php endif ?>
+        {% if post %}
+            <h3>{{ mensaje }}</h3>
+        {% endif %}
 {% endblock %}

@@ -4,18 +4,18 @@
         <h2>Pedidos</h2>
         <a href="/hacer_pedido">Hace un pedido!</a>
         {% if pedidos_usuario %}
-            {% for $pedido fropedidos_usuario %}
-                <article class='pedido' id=<?= $pedido["id_pedido"]; ?>>
-                    <h4>Pedido #<?= $pedido["id_pedido"]; ?></h4>
+            {% for pedido in pedidos_usuario %}
+                <article class='pedido' id={{pedido["id_pedido"]}}>
+                    <h4> Pedido #{{pedido["id_pedido"]}} </h4>
                     <ul>
-                        <?php foreach ($pedido["productos"] as $producto) : ?>
-                            <li><?= $producto["nombre"]; ?></li>
-                        <?php endforeach; ?>
+                        {% for producto in pedido["productos"] %}
+                            <li> {{producto["nombre"]}} </li>
+                        {% endfor %}
                     </ul>
                     <div class='seguimientoPedido'></div>
                 </article>
-            {% endforeach %}
-        <?php else : ?>
+            {% endfor %}
+        {% else %}
             <p>No tenés pedidos nuevos.</p>
-        <?php endif; ?>
+        {% endif %}
 {% endblock %}

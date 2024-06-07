@@ -25,7 +25,7 @@ class ProductoRepository extends Repository
 
     public function getPage(int $itemsPerPage, int $page){
         $offset = $itemsPerPage * $page;
-        $results = $this->queryBuilder->table($this->table())->selectPage(null, [], $itemsPerPage, $offset);
+        $results = $this->queryBuilder->table($this->table())->selectPaginado(null, [], $itemsPerPage, $offset);
         if ($results) {
             $result_models = [];
             foreach ($results as $result){

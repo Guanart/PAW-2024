@@ -18,10 +18,13 @@ if (!in_array($tipo, ["llevar", "delivery", "local"])) {
 
 header('Content-Type: application/json');
 if ($tipo === "llevar") {
-    echo json_encode(PedidoLlevar::getEstados());
+    // echo json_encode(PedidoLlevar::getEstados());
+    echo json_encode(["aceptado", "preparacion", "finalizado", "retirar", "entregado"]);
 } else if ($tipo === "delivery") {
-    echo json_encode(PedidoDelivery::getEstados());
+    // echo json_encode(PedidoDelivery::getEstados());
+    echo json_encode(["aceptado", "preparacion", "finalizado", "despachado", "entregado"]);
 } else {
-    echo json_encode(PedidoMesa::getEstados());
+    // echo json_encode(PedidoMesa::getEstados());
+    echo json_encode(["aceptado", "preparacion", "finalizado", "retirar", "entregado"]);
 }
 ?>
