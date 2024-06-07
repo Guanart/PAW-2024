@@ -15,7 +15,12 @@ class PedidoRepository extends Repository
         // 1.1. Crear un pedido
         $pedido = new $this->model($data);
         if ($pedido) {
-            // dd($pedido);
+            $total = 0;
+            foreach ($data['productos'] as $producto) {
+                $producto_db = $this->queryBuilder->table('producto')->select("id = :id", [':id' => $producto['id_producto']])[0];
+                $total += $producto_db['precio'] * intval($producto['cantidad']);
+            }
+            $pedido->setTotal($total);
             $id = $this->queryBuilder->table($this->table())->insert($pedido->toArray());
         }
         if ($id) {
@@ -36,9 +41,6 @@ class PedidoRepository extends Repository
                 }
             }
         }
-
-        // 3. Verificar que están todos los pedidos cargados
-        dd($detalle_pedido);
     }
 
     public function getPedidosbyUsername($username) {

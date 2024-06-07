@@ -72,9 +72,21 @@ class PedidoController extends Controller
         require $endpoint;
     }
     
-    public function getPedidosId() {
-        $endpoint = __DIR__ . "/../views/pedido/get_pedidos.php";
-        require $endpoint;
+    public function getPedidosId(Request $request) {
+        header('Content-Type: application/json');
+        $idPedido = $request->get('id');
+
+        if ($idPedido === null) {
+            $pedidos = $this->repository->fetchAll();
+            echo json_encode($pedidos);
+        } else if (is_numeric($idPedido)){
+            $pedido = $this->repository->getById($idPedido);
+            if ($pedido) {
+                $pedidoToArray = $pedido->toArray();
+                echo json_encode($pedidoToArray);
+            }
+        }
+        exit;
     }
 
     public function hacerPedido() {
@@ -147,6 +159,7 @@ class PedidoController extends Controller
             $data = [
                 "productos" => $_SESSION["pedido"]["productos"],
                 "id_usuario" => $request->user()->getId(),
+                "fecha" => date("Y-m-d")
             ];
             switch ($_SESSION["pedido"]["tipo"]) {
                 case 'mesa':
@@ -166,19 +179,6 @@ class PedidoController extends Controller
                 default:
                     throw new InvalidValueFormatException("No se pudo determinar el tipo de pedido");
             }
-            // if ($_SESSION["pedido"]["tipo"] === "mesa") {
-            //     $pedido = $this->pedidoMesaRepository->create($data);
-            // } elseif ($_SESSION["pedido"]["tipo"]==="delivery") {
-            //     foreach ($_SESSION["pedido"]["direccion"] as $key => $value) {
-            //         $data[$key] = $value;
-            //     }
-            //     $pedido = $this->pedidoDeliveryRepository->create($data);
-            // } elseif ($_SESSION["pedido"]["tipo"]==="llevar") {
-            //     $data["localidad"] = $_SESSION["pedido"]["localidad"];
-            //     $pedido = $this->pedidoLlevarRepository->create($data);
-            // }
-            // redirect(getenv('APP_URL') . "/fin_pedido");
-            // exit();
             redirect(getenv('APP_URL') . "/fin_pedido");
             exit();
         } catch (InvalidValueFormatException $e){

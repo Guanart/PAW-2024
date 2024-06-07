@@ -25,7 +25,7 @@ final class CreatePedido extends AbstractMigration
         $table = $this->table('pedido');
         $table->addColumn('id_usuario', 'integer')
             ->addColumn('tipo', 'string', ['limit' => 20])
-            ->addColumn('fecha', 'datetime')
+            ->addColumn('fecha', 'date')
             ->addColumn('total', 'decimal', ['precision' => 10, 'scale' => 2])
             ->addColumn('estado', 'string', ['limit' => 20])
             ->addColumn('localidad', 'string', ['limit' => 50, 'null' => true])

@@ -40,6 +40,12 @@ class PedidoDelivery extends Pedido {
     }
 
     public function setDepartamento(string $departamento) {
+        if ($departamento == "") {
+            $departamento = null;
+        } else {
+            $departamento = intval($departamento);
+        }
+
         if ($departamento < 0) {
             throw new InvalidValueFormatException("El departamento debe ser mayor a 0");
         }
@@ -69,6 +75,11 @@ class PedidoDelivery extends Pedido {
         if (strlen($descripcion) > 260) {
             throw new InvalidValueFormatException("La descripcion no debe ser mayor a 260 caracteres");
         }
+        
+        if ($descripcion == "") {
+            $descripcion = null;
+        }
+
         $this->fields["descripcion"] = $descripcion;
     }
 

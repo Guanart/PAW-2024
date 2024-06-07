@@ -12,26 +12,26 @@ abstract class Pedido extends Model {
      * @var string
      */
     static public string $table = "pedido";
-
+    
     public array $productos = [];
     public array $estados = [];
-
+    
     public array $fields = [
         "id" => null,
         "id_usuario" => null,
         "tipo" => null,
         "fecha" => null,
-        "total" => null,
         "estado" => null,
         "localidad" => null,
         "calle" => null,
         "altura" => null,
         "departamento" => null,
+        "total" => null,
         "descripcion" => null,
         "mesa" => null,
         "local" => null,
-    ];
-
+        ];
+        
     public function __construct($values) {
         $this->set($values);
         $this->productos = $values['productos'];      // Este campo no se encuentra en la BD (es una FK a detalle_pedido)
@@ -48,7 +48,7 @@ abstract class Pedido extends Model {
         }
         $this->fields["productos"] = $productos;
     }
-    
+
     public function getProductos() {
         return $this->fields["productos"];
     }
