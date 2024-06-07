@@ -1,8 +1,15 @@
 {% extends 'view.twig' %}
 
 {% block content %}
-        <h3 class="titulo1">Elija las mesas a reservar</h3>
-        <form class="form_seleccion_mesa" name="form_seleccion_mesa" action="/agregar_reserva" method="POST" required>
+        {% if mostrarMensaje %}
+            <h3>{{ mensaje }}</h3>
+        {% endif %}
+        <h3 class="titulo1">Elija la mesa a reservar</h3>
+        <form class="form_seleccion_mesa" name="form_seleccion_mesa" action="/seleccion_mesa" method="POST" required>
+            {% set hoy = "now"|date("Y-m-d") %}
+            <label for="fecha">Seleccione un día:</label>
+            <input type="date" class="input-fecha" name="fecha" required min="{{ hoy }}">
+
             <select class="select-hora" name="hora">
                 <option value="09:00">09:00</option>
                 <option value="10:30">10:30</option>
@@ -15,8 +22,6 @@
                 <option value="21:00">21:00</option>
                 <option value="22:30">22:30</option>
             </select>
-            <label for="fecha">Seleccione un día:</label>
-            <input type="date" class="input-fecha" name="fecha" required>
 
             <label for="localInput" class="labelLocalReserva">Mesa a reservar</label>
             <input type="text" id="localInput" name="local" class="inputLocalReserva" required value="{{ local }}">
@@ -27,5 +32,4 @@
 
             <input type="submit" value="Hacer reserva" class="submit">
         </form>
-        <a href="./local.html" class="left_arrow">Volver</a>
 {% endblock %}

@@ -5,7 +5,7 @@ namespace Paw\App\Models;
 use Paw\Core\Model;
 use Paw\Core\Exceptions\InvalidValueFormatException;
 
-abstract class Pedido extends Model {
+class Pedido extends Model {
     /**
      * The name of the database table associated with the model.
      *
@@ -14,7 +14,7 @@ abstract class Pedido extends Model {
     static public string $table = "pedido";
     
     public array $productos = [];
-    public array $estados = [];
+    public static array $estados = [];
     
     public array $fields = [
         "id" => null,
@@ -37,9 +37,9 @@ abstract class Pedido extends Model {
         $this->productos = $values['productos'];      // Este campo no se encuentra en la BD (es una FK a detalle_pedido)
     }
 
-    public function getEstados()
+    public static function getEstados()
     {
-        return $this->estados;
+        return self::$estados;
     }
 
     public function setProductos(Array $productos) {

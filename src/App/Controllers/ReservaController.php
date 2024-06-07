@@ -5,6 +5,8 @@ namespace Paw\App\Controllers;
 use Paw\Core\Request;
 use Paw\App\Repositories\ReservaRepository;
 use Twig\Environment;
+use Paw\Core\Exceptions\InvalidValueFormatException;
+use DateTime;
 
 class ReservaController extends Controller
 {
@@ -15,45 +17,65 @@ class ReservaController extends Controller
         $this->twig = $twig;
     }
 
-    public function seleccionMesa(Request $request){
+    public function seleccionMesa(Request $request, $mensaje="") {
         $input = $request->get('local');
         $local = ucwords($input);
         $title = "Seleccion de Mesa";
         $_SESSION["reserva_local"] = $input;
-
-        echo $this->twig->render('reserva/seleccion_mesa.view.twig', [
+        $variables = [
             'nav' => $this->nav,
             'footer' => $this->footer,
             'title' => $title,
             'local' => $local,
-        ]);
+            "mensaje" => $mensaje,
+        ];
+        if ($request->isPost()) {
+            $variables['mostrarMensaje'] = true;
+        }
+        echo $this->twig->render('reserva/seleccion_mesa.view.twig', $variables);
     }
 
-    public function reservasMesa(Request $request) {
-        header('Content-Type: application/json');
-        // 1. Recupera 
-        $idLocal = $_GET['idLocal'];
-        $fecha = $_GET['fecha'];
-        $hora = $_GET['hora'];
+    public function seleccionMesaFormulario(Request $request) {
 
-    }
+        if (!$request->post('idMesa')) {
+            $mensaje = "Debe ingresar una mesa";
+            $this->seleccionMesa($request, $mensaje);
+            return;
+        }
 
-    public function agregarReserva(Request $request) {
-        // dd($request->post());
+        $dateTime = new DateTime("{$request->post('fecha')} {$request->post('hora')}");
+        $formattedDateTime = $dateTime->format('Y-m-d H:i:s');
+
+        $reservaPrevia = $this->repository->getByFechaMesaLocal($formattedDateTime, $request->post('idMesa'), $_SESSION["reserva_local"]);
+        if ($reservaPrevia) {
+            $mensaje = "Esa mesa ya se encuentra reservada para esa hora";
+            $this->seleccionMesa($request, $mensaje);
+            return;
+        }
+        
         $data = [
             'id_usuario' => $request->user()->getId(),
             'mesa' => $request->post('idMesa'),
-            'fecha' => $request->post('fecha'),
-            'hora' => $request->post('hora'),
+            'fecha' =>  $formattedDateTime,
             'local' => $_SESSION["reserva_local"],
         ];
+        try {
+            $reserva = $this->repository->create($data);
+            redirect(getenv('APP_URL') . "/fin_reserva");
+            exit();
+        } catch (InvalidValueFormatException $e) {
+            $mensaje = $e->getMessage();
+            $this->seleccionMesa($request, $mensaje);
+        }
+    }
 
-        // dd($data);die;
-        $reserva = $this->repository->create($data);
-        // dd($reserva);
-
-        redirect(getenv('APP_URL') . "/fin_reserva");
-        exit();
+    // Arreglar
+    public function reservasMesa(Request $request) {
+        $dateTime = new DateTime("{$request->get('fecha')} {$request->get('hora')}");
+        $formattedDateTime = $dateTime->format('Y-m-d H:i:s');
+        $local = $_SESSION["reserva_local"];
+        $reservas = $this->repository->getByFechaLocal($formattedDateTime, $local);
+        echo json_encode($reservas);
     }
 
     public function reservas() {
@@ -88,18 +110,6 @@ class ReservaController extends Controller
         $local = ucwords($input);
         $title = $local;
         echo $this->twig->render('reserva/local.view.twig', [
-            'nav' => $this->nav,
-            'footer' => $this->footer,
-            'local' => $local,
-            'title' => $local,
-        ]);
-    }
-
-    public function local2(Request $request) {
-        $input = $request->get('local');
-        $local = ucwords($input);
-        $title = $local;
-        echo $this->twig->render('reserva/local2.view.twig', [
             'nav' => $this->nav,
             'footer' => $this->footer,
             'local' => $local,

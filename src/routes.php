@@ -30,12 +30,12 @@ $router->get('/tus_pedidos','PedidoController@pedidos');
 $router->get('/estado_pedido', 'PedidoController@estadoPedido');
 $router->post('/estado_pedido', 'PedidoController@actualizarEstadoPedido');
 $router->get('/get_pedidos', 'PedidoController@getPedidosId');
+$router->get('/estados', 'PedidoController@estadosPedidos');
 
 $router->get('/reservas','ReservaController@reservas');
 $router->get('/locales','ReservaController@locales');
-$router->post('/fin_reserva','ReservaController@finReserva');
-$router->post('/seleccion_mesa','ReservaController@seleccionMesa');
-$router->post('/agregar_reserva','ReservaController@agregarReserva');
+$router->get('/fin_reserva','ReservaController@finReserva');
+$router->post('/seleccion_mesa','ReservaController@seleccionMesaFormulario');
 $router->get('/seleccion_mesa','ReservaController@seleccionMesa');
 $router->get('/reservas_mesa','ReservaController@reservasMesa'); //<---
 
@@ -54,4 +54,4 @@ $router->get('/alta_plato', 'IntranetController@altaPlato');
 $router->post('/alta_plato', 'IntranetController@altaPlatoProcesado');
 $router->get('/turnero', 'IntranetController@turnero');
 $router->get('/gestion_pedidos', 'IntranetController@gestionPedidos');
-$router->get('/estados', 'IntranetController@estadosPedidos');
+

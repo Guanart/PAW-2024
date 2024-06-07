@@ -6,7 +6,7 @@ use Paw\App\Models\Pedido;
 use Paw\Core\Exceptions\InvalidValueFormatException;
 
 class PedidoDelivery extends Pedido {
-    public array $estados = ["aceptado", "preparacion", "finalizado", "despachado", "entregado"];
+    public static array $estados = ["aceptado", "preparacion", "finalizado", "despachado", "entregado"];
 
     public function __construct($values) {
         $this->setTipo("delivery");

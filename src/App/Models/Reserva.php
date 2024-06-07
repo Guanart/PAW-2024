@@ -5,6 +5,7 @@ namespace Paw\App\Models;
 use Paw\Core\Model;
 use Paw\Core\Exceptions\InvalidValueFormatException;
 use DateTime;
+use DateTimeZone;
 
 class Reserva extends Model {
     /**
@@ -25,7 +26,6 @@ class Reserva extends Model {
         "local" => null,
         "mesa" => null,
         "fecha" => null,
-        "hora" => null,
     ];
 
     public function __construct(array $values) {
@@ -76,31 +76,21 @@ class Reserva extends Model {
     }
 
     public function setFecha(string $fecha) {
-        // Capaz esto no funciona, para el input date del HTML creo que sí, para lo que viene de la BD no se
-        if (!preg_match("/^\d{4}-\d{2}-\d{2}$/", $fecha)) {
-            throw new InvalidValueFormatException("Ingrese una fecha valida");
+
+        $timezoneArgentina = new DateTimeZone('America/Argentina/Buenos_Aires');
+        $dateTimeNow = new DateTime('now', $timezoneArgentina);
+
+        if ($fecha < $dateTimeNow->format('Y-m-d H:i:s')) {
+            throw new InvalidValueFormatException("La fecha y hora proporcionada es anterior a la actual.");
         }
+
+        $dateTime = new DateTime("{$fecha}");
+        $hora = $dateTime->format('H:i');
+        $validHours = ['09:00', '10:30', '12:00', '13:30', '15:00', '16:30', '18:00', '19:30', '21:00', '22:30'];
+        if (!in_array($hora, $validHours)) {
+            throw new InvalidValueFormatException("Ese horario no está disponible, seleccione un horario válido.");
+        } 
+        
         $this->fields["fecha"] = $fecha;
-    }
-
-    public function getHora(): ?string {
-        return $this->fields["hora"];
-    }
-
-    public function setHora(string $hora) {
-        dd(DateTime::createFromFormat('H:i:s', $hora . ":00"));
-        $hora = DateTime::createFromFormat('H:i:s', $hora . ":00")->format('H:i:s');
-        if (!in_array($hora, ["09:00:00", "10:30:00", "12:00:00", "13:30:00", "15:00:00", "16:30:00", "18:00:00", "19:30:00", "21:00:00", "22:30:00"])) {
-            throw new InvalidValueFormatException("Ingrese una hora valida");
-        }
-        $this->fields["hora"] = $hora;
-    }
-    
-    public function getHoraFinal(): ?string {
-        return $this->fields["horaFinal"];
-    }
-
-    public function setHoraFinal(string $hora) {
-        $this->fields["horaFinal"] = $hora;
     }
 }

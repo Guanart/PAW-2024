@@ -16,10 +16,9 @@ class ReservationPlan {
         this.agregarListeners(elementosMesa);
 
         this.fechaSeleccionada = null;
-        this.horarioSeleccionado = null;
+        this.horarioSeleccionado = document.querySelector('.select-hora').value;
 
         this.listenersFechaYHora();
-        this.listenerSubmit();
 
         // Actualizar cada 10 segundos
         setInterval(() => {
@@ -35,7 +34,7 @@ class ReservationPlan {
         const idLocal = inputLocal.value.toLowerCase();
 
         // Hago la consulta al backend
-        const url = `${window.location.origin}/reservas_mesa?idLocal=${idLocal}&fecha=${this.fechaSeleccionada}&hora=${this.horarioSeleccionado}`;
+        const url = `${window.location.origin}/reservas_mesa?local=${idLocal}&fecha=${this.fechaSeleccionada}&hora=${this.horarioSeleccionado}`;
         try {
             const response = await fetch(url);
             if (!response.ok) {
@@ -50,11 +49,13 @@ class ReservationPlan {
     }
 
     encontrarReservaPorNumero(datosReservas) {
-        //Obtengo los id de las mesas reservadas a partir de la entrada
+        // Obtengo los id de las mesas reservadas a partir de la entrada
         let mesasReservadasId = [];
-        if (datosReservas && datosReservas.mesasReservadas) {
-            for (const reserva of datosReservas.mesasReservadas) {
-                mesasReservadasId.push(reserva.mesa);
+        if (datosReservas && Array.isArray(datosReservas)) {
+            for (const reserva of datosReservas) {
+                if (reserva.fields && reserva.fields.mesa) {
+                    mesasReservadasId.push(reserva.fields.mesa);
+                }
             }
         }
         return mesasReservadasId;
@@ -108,6 +109,44 @@ class ReservationPlan {
 
         inputFecha.addEventListener('change', () => {
             this.fechaSeleccionada = inputFecha.value;
+
+            const hoy = new Date().toISOString().split('T')[0];
+
+            const fechaSeleccionada = inputFecha.value;
+            const ahora = new Date();
+            const horaActual = `${ahora.getHours().toString().padStart(2, '0')}:${ahora.getMinutes().toString().padStart(2, '0')}`;
+
+            // Reiniciar las opciones
+            Array.from(selectHorario.options).forEach(option => {
+                if (option.value) {
+                    option.disabled = false;
+                }
+            });
+
+            if (fechaSeleccionada === hoy) {
+                Array.from(selectHorario.options).forEach(option => {
+                    if (option.value && option.value <= horaActual) {
+                        option.disabled = true;
+                    }
+                });
+            }
+
+            let primeraHoraValidaEncontrada = false;
+            
+            // Seleccionar la primera hora válida disponible
+            Array.from(selectHorario.options).forEach(option => {
+                if (!option.disabled && option.value) {
+                    option.selected = true;
+                    primeraHoraValidaEncontrada = true;
+                    return false; // Romper el bucle una vez encontrada la primera opción válida
+                }
+            });
+
+            // Si no hay ninguna hora válida, resetear el select
+            if (!primeraHoraValidaEncontrada) {
+                selectHorario.value = "";
+            }
+
             if (this.horarioSeleccionado) {
                 this.flujoActualizacion();
             }
@@ -154,55 +193,5 @@ class ReservationPlan {
                 */
             });
         });
-    }
-
-    listenerSubmit() {
-        const botonReserva = document.querySelector(".submit");
-        botonReserva.addEventListener("click", (event) => {
-            const idMesa = document.forms["form_seleccion_mesa"]["mesaInput"].value;
-            const idLocal = document.forms["form_seleccion_mesa"]["localInput"].value;
-    
-            if (idMesa === "" || idLocal === "") {
-                alert("Debes seleccionar una mesa para continuar.");
-                event.preventDefault();
-                return false;
-            }
-            //console.log(idMesa + " " + idLocal + " " + fechaHora.toISOString());
-            
-            //this.enviarReserva(idMesa, idLocal, this.fechaSeleccionada, this.horarioSeleccionado);
-            console.log("El botón de reserva fue presionado.");
-        });
-    }
-
-    async enviarReserva(idMesa, idLocal, fecha, hora) {
-        let url = 'http://localhost:8888/agregar_reserva';
-        let datos = {
-            idMesa: idMesa,
-            idLocal: idLocal,
-            fecha: fecha,
-            hora: hora,
-        };
-        try {
-            const response = await fetch(url, {
-                method: 'POST',
-                headers: {'Content-type': 'application/json'},
-                body: JSON.stringify(datos)
-            });
-    
-            if (!response.ok) {
-                const errorData = await response.json();
-                throw new Error('Error al registrar la reserva. ' + errorData.error);
-            }
-    
-            const data = await response.json();
-            if (data.hasOwnProperty('error')) {
-                throw new Error("Error llega de data: " + data.error);
-            }
-    
-            return data;
-        } catch (error) {
-            console.error("Hubo un error al registrar la reserva:", error);
-            return null;
-        }
     }
 }

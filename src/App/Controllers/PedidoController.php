@@ -34,25 +34,16 @@ class PedidoController extends Controller
         
     }
 
-    public function pedidos() {
-        $title = "Tus pedidos";
-
-        
-        $id_usuario = "123"; 
-        $pedidos = json_decode(file_get_contents(__DIR__ . '/../pedidos.json'), true);   // Recuperar de la base de datos
-        $pedidos_usuario = array_filter($pedidos, function ($pedido) use ($id_usuario) {
-            return $pedido["id_usuario"] === $id_usuario && $pedido["estado"] !== "entregado";
-        });
-        
+    public function pedidos(Request $request) {
         if (!isset($_SESSION["username"])) {
             $_SESSION["loopback"] = "/tus_pedidos";
             redirect(getenv('APP_URL') . "/login");
             exit();
         }
-        $username = $_SESSION["username"];
-        //$usuario = $this->userRepository->getByUsername($username);
-        
-        
+        $title = "Tus pedidos";
+        $id_usuario = $request->user()->getId();
+        $pedidos_usuario = $this->repository->getByIdUsuario($id_usuario);
+
 
         echo $this->twig->render('pedido/tus_pedidos.view.twig', [
             'nav' => $this->nav,
@@ -71,11 +62,31 @@ class PedidoController extends Controller
         $endpoint = __DIR__ . "/../views/pedido/actualizar_estado_pedido.php";
         require $endpoint;
     }
+
+    public function estadosPedidos(Request $request) {
+        $tipo = $request->get("tipo");
+        if (!$tipo) {
+            echo json_encode(['error' => 'Se debe pasar un tipo de pedido']);
+            exit;
+        }
+        header('Content-Type: application/json');
+        if ($tipo == "llevar") {
+            echo json_encode(PedidoLlevar::getEstados());
+        } else if ($tipo == "delivery") {
+            echo json_encode(PedidoDelivery::getEstados());
+        } else if ($tipo == "mesa"){
+            echo json_encode(PedidoMesa::getEstados());
+        } else {
+            echo json_encode(['error' => 'No es un tipo válido']);
+        }
+    }
     
     public function getPedidosId(Request $request) {
         header('Content-Type: application/json');
         $idPedido = $request->get('id');
 
+        
+        
         if ($idPedido === null) {
             $pedidos = $this->repository->fetchAll();
             echo json_encode($pedidos);

@@ -22,8 +22,7 @@ final class CreateReserva extends AbstractMigration
         $tableReserva = $this->table("reserva");
         $tableReserva ->addColumn('mesa', 'string', ['limit' => 20])
         ->addColumn('local', 'string', ['limit' => 20])
-        ->addColumn('hora', 'time')
-        ->addColumn('fecha', 'date')
+        ->addColumn('fecha', 'datetime')
         ->addColumn('id_usuario', 'integer')
         ->addForeignKey('id_usuario', 'usuario', 'id', ['update' => 'NO_ACTION'])
         ->addForeignKey('local', 'local', 'id', ['update' => 'NO_ACTION', 'delete' => 'CASCADE'])

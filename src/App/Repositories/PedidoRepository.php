@@ -4,6 +4,7 @@ namespace Paw\App\Repositories;
 
 use Paw\App\Repositories\Repository;
 use Paw\App\Models\Pedido;
+use Paw\App\Models\Producto;
 
 class PedidoRepository extends Repository
 {
@@ -43,12 +44,47 @@ class PedidoRepository extends Repository
         }
     }
 
-    public function getPedidosbyUsername($username) {
-        $filter = "username = :username";
-        $result = $this->queryBuilder->table($this->table())->select($filter, [':username' => $username]);
-        if ($result) {
-            return new $this->model($result[0]);
+    /*
+    public function getByIdUsuario($idUsuario) {
+        $filter = "id_usuario = :id_usuario and estado != :estado" ;
+        $results = $this->queryBuilder->table($this->table())->select($filter, [':id_usuario' => $idUsuario, ':estado' => 'entregado']);
+        $models = [];
+        if ($results) {
+            foreach($results as $result)
+            $models[] = new $this->model($result);
         }
-        return null;
+        return $models;
+    }
+    */
+
+    public function getByIdUsuario($id_usuario) {
+        // 1. Obtener todos los pedidos del usuario
+        $pedidos = $this->queryBuilder->table($this->table())->select("id_usuario = :id_usuario", [':id_usuario' => $id_usuario]);
+        
+        // 2. Para cada pedido, obtener los detalles y los productos
+        $result = [];
+        foreach ($pedidos as $pedido) {
+            $id_pedido = $pedido['id'];
+            
+            // Obtener detalles del pedido
+            $detalles_pedido = $this->queryBuilder->table('detalle_pedido')->select("id_pedido = :id_pedido", [':id_pedido' => $id_pedido]);
+            $productos = [];
+            // Obtener los productos y agregar la información al detalle del pedido
+            foreach ($detalles_pedido as &$detalle) {
+                $prodResult = $this->queryBuilder->table('producto')->select("id = :id", [':id' => $detalle['id_producto']]);
+                //$detalle['producto'] = $producto;
+                $producto["producto"] =  new Producto($prodResult[0]);
+                $producto["cantidad"] =  &$detalle["cantidad"];
+                $productos[] = $producto;
+            }
+            
+            // Agregar los detalles al pedido
+            $pedido['productos'] = $productos;
+            
+            // Convertir el array del pedido a un objeto del modelo correspondiente
+            $result[] = new $this->model($pedido);
+        }
+        
+        return $result;
     }
 }

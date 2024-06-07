@@ -5,11 +5,11 @@
         <a href="/hacer_pedido">Hace un pedido!</a>
         {% if pedidos_usuario %}
             {% for pedido in pedidos_usuario %}
-                <article class='pedido' id={{pedido["id_pedido"]}}>
-                    <h4> Pedido #{{pedido["id_pedido"]}} </h4>
+                <article class='pedido' id={{pedido.fields.id}}>
+                    <h4> Pedido #{{pedido.fields.id}} </h4>
                     <ul>
-                        {% for producto in pedido["productos"] %}
-                            <li> {{producto["nombre"]}} </li>
+                        {% for producto in pedido.productos %}
+                            <li> {{producto.producto.fields.nombre}}: {{producto.cantidad}} </li>
                         {% endfor %}
                     </ul>
                     <div class='seguimientoPedido'></div>

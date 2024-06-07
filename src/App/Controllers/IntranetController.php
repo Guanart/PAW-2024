@@ -41,7 +41,6 @@ class IntranetController extends Controller {
                 try {
                     $data['path_img'] = $this->saveImage($img);
                     $plato = $this->repository->create($data);
-                    var_dump($plato);
                     $mensaje = "Su plato fue procesado y subido con éxito";
                 } catch (InvalidImageException $e) {  // Esta seria la exception de la imagen
                     $mensaje = "La imágen no es válida. " .  $e->getMessage();
@@ -87,11 +86,6 @@ class IntranetController extends Controller {
             'footer' => $this->footer,
             'title' => $title
         ]);
-    }
-
-    public function estadosPedidos() {
-        $endpoint = __DIR__ . "/../views/intranet/get_estados.php";
-        require $endpoint;
     }
 
 }
