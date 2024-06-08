@@ -3,17 +3,17 @@
 {% block main_class %}menu{% endblock %}
 
 {% block content %}
+    <h2 class="h2_index">Nuestro Menú</h2>
         {% for item in products %}
             <article class="armar_pedido">
                 <picture>
-                    <img src= "{{item.pathImg}}" >
+                    <source srcset="../images/productos/{{ item.path_img }}-L.png" media="(min-width: 1024px)">
+                    <source srcset="../images/productos/{{ item.path_img }}-M.png" media="(min-width: 481px) and (max-width: 1023px)">
+                    <source srcset="../images/productos/{{ item.path_img }}-S.png" media="(max-width: 480px)">
+                    <img src="../images/productos/{{ item.path_img }}-L.png">
                 </picture>
-                <h3>{{item.nombre}}</h3>
-                <p> 
-                    {{item.descripcion}}
-                    <br>
-                    {{item.precio}}
-                </p>
+                <h3>{{ item.nombre }}</h3>
+                <p>{{ item.descripcion }} - ${{ item.precio }}</p>
             </article>
         {% endfor %}
         <div class="loading" id="loading"> loading... </div>

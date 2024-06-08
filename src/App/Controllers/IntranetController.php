@@ -72,13 +72,20 @@ class IntranetController extends Controller {
         if (!$fullDir && !is_dir($realDir) && !mkdir($realDir)) {
             die("Error creating folder {$realDir}");
         }
-
-        $filename = uniqid() . '.' . pathinfo($img['name'], PATHINFO_EXTENSION);
-        $relativePath = $this->imagesDir . $this->imagesProductosDir . $filename;
+        
+        // El filename es "hamburguesa-S.png", donde S es el tamaño. Puede ser S, M o L. por lo tanto, guarda 3 veces la imagen, con distintos tamaños (3 archivos agregando -S, -M y -L al final del nombre del archivo)
+        $filename = uniqid();
         $absolutePath = $realDir .'/'. $filename;
         
-        if (move_uploaded_file($img['tmp_name'], $absolutePath)) {
-            return $relativePath;
+        $ok = move_uploaded_file($img['tmp_name'], $absolutePath);
+        if ($ok) {
+            for ($i = 0; $i < 3; $i++) {
+                copy($absolutePath, $absolutePath . '-' . ['S', 'M', 'L'][$i] . '.' . pathinfo($img['name'], PATHINFO_EXTENSION));
+            }
+        }
+
+        if ($ok) {
+            return $filename;
         } else {
             throw new InvalidImageException("Error al subir la imagen");
         }
