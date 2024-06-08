@@ -14,6 +14,12 @@ class PedidoMesa extends Pedido {
         $this->fields["estado"] = self::$estados[0];
     }
 
+    public static function getEstados()
+    {
+        return self::$estados;
+    }
+
+
     public function setMesa(string $mesa) {
         if (strlen($mesa) > 20) {
             throw new InvalidValueFormatException("El id de mesa debe ser menor de 20 caracteres");

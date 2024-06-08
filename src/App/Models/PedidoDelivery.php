@@ -14,6 +14,12 @@ class PedidoDelivery extends Pedido {
         $this->fields["estado"] = self::$estados[0];
     }
     
+    public static function getEstados()
+    {
+        return self::$estados;
+    }
+
+
     public function setLocalidad(string $localidad) {
         if (strlen($localidad) > 80) {
             throw new InvalidValueFormatException("El nombre de la localidad no debe ser mayor a 80 caracteres");

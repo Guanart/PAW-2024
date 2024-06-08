@@ -7,7 +7,7 @@ class BuscadorNuevosPedidos {
     }
 
     async getPedidos() {
-        let url = 'http://localhost:8888/get_pedidos';
+        let url = `${window.location.origin}/get_pedidos`;
         if (this.maxId) {
             url = url + '?id=' + encodeURIComponent(this.maxId);
         }
@@ -30,10 +30,10 @@ class BuscadorNuevosPedidos {
     }
 
     buscarMaxId() {
-        this.maxId = this.pedidos[0].id_pedido;
+        this.maxId = this.pedidos[0].fields.id;
         this.pedidos.forEach(pedido => {
-            if (pedido.id_pedido > this.maxId) {
-                this.maxId = pedido.id_pedido;
+            if (pedido.fields.id > this.maxId) {
+                this.maxId = pedido.fields.id;
             }
         });
     }

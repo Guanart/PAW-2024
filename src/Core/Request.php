@@ -56,6 +56,12 @@ class Request
         }
     }
 
+    public function getBody()
+    {
+        $body = file_get_contents("php://input");
+        return $body;
+    }
+
     public function post($key = null)
     {
         if (is_null($key)) {

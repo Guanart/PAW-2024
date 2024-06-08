@@ -43,14 +43,10 @@ class PedidoController extends Controller
             redirect(getenv('APP_URL') . "/login");
             exit();
         }
-        $_SESSION["pedido"]["productos"] = $pedido;
         
-        //$this->productoRepository-;
         $title = "Tus pedidos";
         $id_usuario = $request->user()->getId();
         $pedidos_usuario = $this->repository->getByIdUsuario($id_usuario);
-
-
         echo $this->twig->render('pedido/tus_pedidos.view.twig', [
             'nav' => $this->nav,
             'footer' => $this->footer,
@@ -74,10 +70,36 @@ class PedidoController extends Controller
         echo json_encode(['estado' => $estado]);
     }
 
-    public function actualizarEstadoPedido() {
-        $endpoint = __DIR__ . "/../views/pedido/actualizar_estado_pedido.php";
-        require $endpoint;
+    public function actualizarEstadoPedido(Request $request) {
+        if (!$request->isPost()) {
+            http_response_code(405); 
+            echo json_encode(['error' => 'Método no permitido. Use POST.']);
+            exit;
+        }
+        // en el body viene un json con id y estado
+        $body = $request->getBody();
+        $data = json_decode($body, true);
+        $idPedido = intval($data["id"]);
+        $estado = $data["estado"];
+
+        if (!$idPedido || !$estado) {
+            echo json_encode(['error' => 'Debe enviar un ID y un estado para actualizar el estado del pedido']);
+            exit;
+        }
+
+        // Hacer update
+        $pedido = $this->repository->updateEstadoById($idPedido, $estado);
+
+        if (is_null($pedido)) {
+            http_response_code(404); // No encontrado
+            echo json_encode(['error' => 'Pedido no encontrado']);
+            exit;
+        }
+        // Solicitud exitosa
+        header('Content-Type: application/json');
+        echo json_encode(['success' => 'Estado del pedido actualizado']);
     }
+
 
     public function estadosPedidos(Request $request) {
         $tipo = $request->get("tipo");
@@ -85,6 +107,7 @@ class PedidoController extends Controller
             echo json_encode(['error' => 'Se debe pasar un tipo de pedido']);
             exit;
         }
+
         header('Content-Type: application/json');
         if ($tipo == "llevar") {
             echo json_encode(PedidoLlevar::getEstados());
@@ -101,14 +124,13 @@ class PedidoController extends Controller
         header('Content-Type: application/json');
         $idPedido = $request->get('id');
         if ($idPedido === null) {
-            $pedidos = $this->repository->getAll();
-            
-        } else if (is_numeric($idPedido)){
-            $pedido = $this->repository->getById($idPedido);
-            if ($pedido) {
-                $pedidoToArray = $pedido->toArray();
-                echo json_encode($pedidoToArray);
+            $pedidos = $this->repository->getAllDetalleProductos();
+            if ($pedidos) {
+                echo json_encode($pedidos);
             }
+        } else if (is_numeric($idPedido)){
+            $pedido = $this->repository->getAllDetalleProductosMayorId($idPedido);
+            echo json_encode($pedido);
         }
         exit;
     }

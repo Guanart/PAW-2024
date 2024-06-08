@@ -4,7 +4,7 @@ class AdminPedidos extends BuscadorNuevosPedidos {
         this.estados = {
             "llevar": null,
             "delivery": null,
-            "local": null
+            "mesa": null
         };
         this.buscarEstadosPosibles();
     }
@@ -12,13 +12,13 @@ class AdminPedidos extends BuscadorNuevosPedidos {
     async buscarEstadosPosibles() {
         this.estados["llevar"] = await this.getEstados("llevar");
         this.estados["delivery"] = await this.getEstados("delivery");
-        this.estados["local"] = await this.getEstados("local");
+        this.estados["mesa"] = await this.getEstados("mesa");
         console.log(this.estados);
         this.buscarPedidos();
     }
 
     async getEstados(tipo) {
-        let url = 'http://localhost:8888/estados?tipo=' + tipo;
+        let url = `${window.location.origin}/estados?tipo=${tipo}`;
         try {
             const response = await fetch(url);
             if (!response.ok) {
@@ -38,7 +38,7 @@ class AdminPedidos extends BuscadorNuevosPedidos {
     }
 
     async postEstado(id, estado) {
-        let url = 'http://localhost:8888/estado_pedido';
+        let url = `${window.location.origin}/estado_pedido`;
         let datos = {
             id: id,
             estado: estado
@@ -81,15 +81,38 @@ class AdminPedidos extends BuscadorNuevosPedidos {
         let main = document.querySelector("main");
         this.articles = [];
         this.pedidos.forEach(pedido => {
-            const num_pedido = tools.nuevoElemento("h4", "Pedido " + pedido.id_pedido);
-            const num_usuario = tools.nuevoElemento("h4", "Usario " + pedido.id_usuario);
+            //const num_pedido = tools.nuevoElemento("h4", "Pedido " + pedido.id_pedido);
+            //const num_usuario = tools.nuevoElemento("h4", "Usario " + pedido.id_usuario);
+            //const lista_productos = tools.nuevoElemento("ul", "");
+            const num_pedido = tools.nuevoElemento("h4", "Pedido " + pedido.fields.id);
+            const num_usuario = tools.nuevoElemento("h4", "Usuario " + pedido.fields.id_usuario);
             const lista_productos = tools.nuevoElemento("ul", "");
+
             pedido.productos.forEach(producto => {
-                            const li = tools.nuevoElemento("li", producto.nombre);
+                            //const li = tools.nuevoElemento("li", producto.nombre);
+                            //lista_productos.appendChild(li);
+
+                            const pedidoArticle = tools.nuevoElemento("article", "");
+                            const nombre = tools.nuevoElemento("p", producto.producto.fields.nombre);
+                            const descripcion = tools.nuevoElemento("p", producto.producto.fields.descripcion);
+                            const cantidad = tools.nuevoElemento("p", "Cantidad: " + producto.cantidad);
+                            pedidoArticle.appendChild(nombre);
+                            pedidoArticle.appendChild(descripcion);
+                            pedidoArticle.appendChild(cantidad);
+                            console.log(pedidoArticle);
+                            const li = tools.nuevoElemento("li","");
+                            li.appendChild(pedidoArticle);
                             lista_productos.appendChild(li);
                         });
-            const estado_pedido = tools.nuevoElemento("h4", "aceptado", {class: "estado"});
-            const siguiente_estado = this.estados[pedido.tipo][1];
+
+
+            //const estado_pedido = tools.nuevoElemento("h4", "aceptado", {class: "estado"});
+            const estado_pedido = tools.nuevoElemento("h4", pedido.fields.estado, {class: "estado"});
+            // const siguiente_estado = this.estados[pedido.fields.tipo][1];       
+            const estados = this.estados[pedido.fields.tipo];
+            const siguiente_estado = estados[estados.indexOf(pedido.fields.estado) + 1];
+            
+            
             const boton_estado = tools.nuevoElemento("button", "Pasar estado a: " + siguiente_estado);
 
             // AGREGAR EVENT LISTENER AL BOTON
@@ -113,7 +136,8 @@ class AdminPedidos extends BuscadorNuevosPedidos {
                 console.log(post);
             })
 
-            const article = tools.nuevoElemento("article", "", {class: "pedido " + pedido.tipo , id: pedido.id_pedido});
+            //const article = tools.nuevoElemento("article", "", {class: "pedido " + pedido.tipo , id: pedido.id_pedido});
+            const article = tools.nuevoElemento("article", "", {class: "pedido " + pedido.fields.tipo , id: pedido.fields.id});
             article.appendChild(num_pedido);
             article.appendChild(num_usuario);
             article.appendChild(lista_productos);

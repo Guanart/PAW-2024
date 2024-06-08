@@ -14,7 +14,6 @@ class Pedido extends Model {
     static public string $table = "pedido";
     
     public array $productos = [];
-    public static array $estados = [];
     
     public array $fields = [
         "id" => null,
@@ -35,11 +34,6 @@ class Pedido extends Model {
     public function __construct($values) {
         $this->set($values);
         $this->productos = $values['productos'];      // Este campo no se encuentra en la BD (es una FK a detalle_pedido)
-    }
-
-    public static function getEstados()
-    {
-        return self::$estados;
     }
 
     public function setProductos(Array $productos) {

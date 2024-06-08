@@ -84,4 +84,47 @@ class PedidoRepository extends Repository
         }
         return null;
     }
+
+    public function getDetalleProductosById($id) {
+        $pedido = $this->queryBuilder->table($this->table())->select("id = :id", [':id' => $id])[0];
+        $detalles_pedido = $this->queryBuilder->table('detalle_pedido')->select("id_pedido = :id_pedido", [':id_pedido' => $id]);
+        $productos = [];
+        foreach ($detalles_pedido as &$detalle) {
+            $prodResult = $this->queryBuilder->table('producto')->select("id = :id", [':id' => $detalle['id_producto']]);
+            $productos[] = [
+                "producto" => new Producto($prodResult[0]),
+                "cantidad" => &$detalle["cantidad"]
+            ];
+        }
+        $pedido['productos'] = $productos;
+        $result = new $this->model($pedido);
+        return $result;
+    }
+
+    public function getAllDetalleProductos() {   
+        $pedidos = $this->queryBuilder->table($this->table())->select();
+        $models = [];
+        foreach ($pedidos as $pedido) {
+            $models[] = $this->getDetalleProductosById($pedido["id"]);
+        }
+        return $models;
+    }
+
+    public function getAllDetalleProductosMayorId($id) {   
+        $pedidos = $this->queryBuilder->table($this->table())->select("id > :id", [':id' => $id]);
+        $models = [];
+        foreach ($pedidos as $pedido) {
+            $models[] = $this->getDetalleProductosById($pedido["id"]);
+        }
+        return $models;
+    }
+
+    public function updateEstadoById(int $id, string $estado) {
+        $pedido = $this->getDetalleProductosById($id);
+        $filter = "id = :id";
+        if ($pedido) {
+            return $this->queryBuilder->table($this->table())->update(['estado' => $estado], $filter, [':id' => $id]);
+        }    
+    }
+
 }

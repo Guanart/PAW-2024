@@ -27,4 +27,10 @@ class PedidoLlevar extends Pedido {
     public function getLocal() {
         return $this->fields["local"];
     }
+
+    public static function getEstados()
+    {
+        return self::$estados;
+    }
+
 }
