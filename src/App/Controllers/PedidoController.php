@@ -53,9 +53,19 @@ class PedidoController extends Controller
         ]);
     }
 
-    public function estadoPedido() {
-        $endpoint = __DIR__ . "/../views/pedido/estado_pedido.php";
-        require $endpoint;
+    public function estadoPedido(Request $request) {
+        $idPedido = intval($request->get("id"));
+        if (!$idPedido) {
+            echo json_encode(['error' => 'Debe enviar un ID para consultar el estado del pedido']);
+            exit;
+        }
+        $estado = $this->repository->getEstadoById($idPedido);
+        if (!$estado) {
+            echo json_encode(['error' => 'No se encontró un pedido con ese ID']);
+            exit;
+        }
+        header('Content-Type: application/json');
+        echo json_encode(['estado' => $estado]);
     }
 
     public function actualizarEstadoPedido() {

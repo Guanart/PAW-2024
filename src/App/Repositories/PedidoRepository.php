@@ -87,4 +87,14 @@ class PedidoRepository extends Repository
         
         return $result;
     }
+
+    public function getEstadoById($id)
+    {
+        $filter = "id = :id";
+        $result = $this->queryBuilder->table($this->table())->select($filter, [':id' => $id]);
+        if ($result) {
+            return $result[0]["estado"];
+        }
+        return null;
+    }
 }
