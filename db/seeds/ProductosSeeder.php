@@ -21,38 +21,38 @@ class ProductosSeeder extends AbstractSeed
                 'nombre' => 'Hamburguesa Clásica',
                 'descripcion' => 'Hamburguesa con carne de res, lechuga, tomate y queso',
                 'precio' => 500,
-                'path_img' => 'public/images/productos/hamburguesa_clasica.png'
+                'path_img' => 'hamburguesa_clasica'
             ],
             [
                 'nombre' => 'Hamburguesa BBQ',
                 'descripcion' => 'Hamburguesa con carne de res, salsa BBQ, cebolla frita y queso cheddar',
                 'precio' => 600,
-                'path_img' => 'public/images/productos/hamburguesa_bbq.png'
+                'path_img' => 'hamburguesa_bbq'
             ],
             [
                 'nombre' => 'Hamburguesa de Pollo',
                 'descripcion' => 'Hamburguesa con pechuga de pollo, lechuga, tomate y mayonesa',
                 'precio' => 550,
-                'path_img' => 'public/images/productos/hamburguesa_pollo.png'
+                'path_img' => 'hamburguesa_pollo'
             ],
             // Bebidas
             [
                 'nombre' => 'Coca Cola',
                 'descripcion' => 'Refresco de cola',
                 'precio' => 50,
-                'path_img' => 'public/images/productos/coca_cola.png'
+                'path_img' => 'coca_cola'
             ],
             // [
             //     'nombre' => 'Pepsi',
             //     'descripcion' => 'Refresco de cola',
             //     'precio' => 50,
-            //     'path_img' => 'public/images/productos/pepsi.png'
+            //     'path_img' => 'pepsi'
             // ],
             [
                 'nombre' => 'Sprite',
                 'descripcion' => 'Refresco de limón',
                 'precio' => 50,
-                'path_img' => 'public/images/productos/sprite.png'
+                'path_img' => 'sprite'
             ],
         ];
 

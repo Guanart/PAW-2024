@@ -7,8 +7,8 @@ postgres/
 ngrok.exe
 
 # Imagenes Seeders
-!public/images/productos/coca_cola.png
-!public/images/productos/sprite.png
-!public/images/productos/hamburguesa_pollo.png
-!public/images/productos/hamburguesa_bbq.png
-!public/images/productos/hamburguesa_clasica.png
+!public/images/productos/*coca_cola*
+!public/images/productos/*sprite*
+!public/images/productos/*hamburguesa_pollo*
+!public/images/productos/*hamburguesa_bbq*
+!public/images/productos/*hamburguesa_clasica*
