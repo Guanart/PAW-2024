@@ -8,8 +8,8 @@
                 <article class='pedido' id={{pedido.fields.id}}>
                     <h4> Pedido #{{pedido.fields.id}} </h4>
                     <ul>
-                        {% for producto in pedido.productos %}
-                            <li> {{producto.producto.fields.nombre}}: {{producto.cantidad}} </li>
+                        {% for productoCant in pedido.productos %}
+                            <li> {{productoCant.producto.fields.nombre}}: {{productoCant.cantidad}} </li>
                         {% endfor %}
                     </ul>
                     <div class='seguimientoPedido'></div>

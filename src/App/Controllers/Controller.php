@@ -39,12 +39,7 @@ class Controller
             "href" => "/locales",
             "name" => "Locales",
             "role" => "user"
-        ],
-        [
-            "href" => "/admin",
-            "name" => "Admin",
-            "role" => "admin"
-        ],  
+        ], 
         [
             "href" => "/alta_plato",
             "name" => "Alta plato",
