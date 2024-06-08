@@ -17,7 +17,7 @@
                         <img src="../images/productos/{{ producto.path_img }}-L.png">
                     </picture>
                     <h4>{{ producto.nombre }}</h4>
-                    <p>{{ producto.descripcion }} - {{ producto.precio }}$</p>
+                    <p>{{ producto.descripcion }} - ${{ producto.precio }}</p>
                     <label for="{{ producto.id }}">
                         Cantidad:<input id="{{ producto.id }}" name="{{ producto.id }}" type="number" value="0" min="0" max="20" step="1.0">
                     </label>
