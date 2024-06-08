@@ -19,12 +19,9 @@ Enlaces adicionales:
 * ```cp .env.example .env``` # Editar el ```.env``` con los valores deseados
 * ```docker compose up -d```
 * ```./vendor/robmorgan/phinx/bin/phinx migrate -e development```
-* ```./vendor/robmorgan/phinx/bin/phinx seed:run -s ProductosSeeder```
+* ```./vendor/robmorgan/phinx/bin/phinx seed:run```
 * Ejecutar: ```php -S localhost:8888 -t public/```
 
 ## Posibles problemas al levantar el proyecto
 ### Phinx migrate
 Para ejecutar los migrations en Linux, es necesario tener instalada esta librería: ```sudo apt install php-pgsql```
-
-## TODO
-- Decidir cómo vamos a persistir las imagenes (en BD, o en FileSystem)
