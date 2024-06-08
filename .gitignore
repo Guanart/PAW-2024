@@ -5,4 +5,10 @@ logs/
 .vscode/settings.json
 postgres/
 ngrok.exe
-public/images/productos/*
+
+# Imagenes Seeders
+!public/images/productos/coca_cola.png
+!public/images/productos/sprite.png
+!public/images/productos/hamburguesa_pollo.png
+!public/images/productos/hamburguesa_bbq.png
+!public/images/productos/hamburguesa_clasica.png
