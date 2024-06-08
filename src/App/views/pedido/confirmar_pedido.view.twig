@@ -1,28 +1,21 @@
 {% extends 'view.twig' %}
 
 {% block content %}
-        {% if mostrarMensaje %}
-            <h3>{{ mensaje }}</h3>
-        {% endif %}
+    {% if mostrarMensaje %}
+        <h3>{{ mensaje }}</h3>
+    {% endif %}
 
-        <section>
-
-        </section>
-
-        <section>
-            <h2>Confirme su pedido</h2>
-            <article class="confirmar_pedido">
-                <h3>Hamburguesa BBQ</h3>
-                <p>Descripción 1</p>
-                <p>Cantidad: 1</p>
+    <section>
+        {% for item in productos_pedido %}
+            <article>
+                <h3>{{ item.producto.fields.nombre }}</h3>
+                <p>Precio por unidad: ${{ item.producto.fields.precio }}</p>
+                <p>Cantidad: {{ item.cantidad }}</p>
             </article>
-            <article class="confirmar_pedido">
-                <h3>Coca cola</h3>
-                <p>Cantidad: 1</p>
-            </article>
-        </section>
+        {% endfor %}
+    </section>
 
-        <form name="form_confirmar_pedido" action="/confirmar_pedido" method="post">
-            <input type="submit" value="Confirmar" class="submit">
-        </form>
+    <form name="form_confirmar_pedido" action="/confirmar_pedido" method="post">
+        <input type="submit" value="Confirmar" class="submit">
+    </form>
 {% endblock %}
