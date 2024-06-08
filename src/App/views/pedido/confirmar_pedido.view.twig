@@ -4,15 +4,24 @@
     {% if mostrarMensaje %}
         <h3>{{ mensaje }}</h3>
     {% endif %}
-
+    <h2 class="h2_index">Confirmar Pedido</h2>
     <section>
         {% for item in productos_pedido %}
-            <article>
-                <h3>{{ item.producto.fields.nombre }}</h3>
-                <p>Precio por unidad: ${{ item.producto.fields.precio }}</p>
+            <article class="armar_pedido">
+                <picture>
+                    <source srcset="../images/productos/{{ item.producto.fields.path_img }}-L.png" media="(min-width: 1024px)">
+                    <source srcset="../images/productos/{{ item.producto.fields.path_img }}-M.png" media="(min-width: 481px) and (max-width: 1023px)">
+                    <source srcset="../images/productos/{{ item.producto.fields.path_img }}-S.png" media="(max-width: 480px)">
+                    <img src="../images/productos/{{ item.producto.fields.path_img }}-L.png">
+                </picture>
+                <h4>{{ item.producto.fields.nombre }}</h4>
+                <p>{{ item.producto.fields.descripcion }} - ${{ item.producto.fields.precio }}</p>
                 <p>Cantidad: {{ item.cantidad }}</p>
             </article>
         {% endfor %}
+    </section>
+    <section>
+        <h3>Total: ${{ total }}</h3>
     </section>
 
     <form name="form_confirmar_pedido" action="/confirmar_pedido" method="post">

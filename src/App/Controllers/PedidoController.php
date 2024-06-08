@@ -184,7 +184,10 @@ class PedidoController extends Controller
             'footer' => $this->footer,
             'title' => $title,
             'mensaje' => $mensaje,
-            'productos_pedido' => $productosPedido
+            'productos_pedido' => $productosPedido,
+            'total' => array_reduce($productosPedido, function($acc, $producto) {
+                return $acc + $producto['producto']->getPrecio() * $producto['cantidad'];
+            }, 0)
         ];
     
         if ($request->isPost()) {
