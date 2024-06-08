@@ -7,6 +7,7 @@ $router = new Router($twig);
 
 $router->get('/','PageController@index');
 $router->get('/menu','PageController@menu');
+$router->get("/menu_page","PageController@menuPage");
 
 $router->get('/politicas_privacidad','InformacionController@politicasPrivacidad');
 $router->get('/acerca_de_nosotros','InformacionController@acercaDeNosotros');

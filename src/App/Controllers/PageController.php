@@ -25,8 +25,7 @@ class PageController extends Controller
     }
     public function menu(Request $request) {
         $title = "Menu";
-        $get = $request->get();
-        $page = isset($get['page']) ? (int)$get['page'] : 0;
+        $page = 0;
         $itemsPerPage = 2;
         $products = $this->repository->getPage($itemsPerPage, $page); 
         echo $this->twig->render('menu.view.twig', [
@@ -37,4 +36,13 @@ class PageController extends Controller
         ]);
     }
 
+    public function menuPage(Request $request){
+        $get = $request->get();
+        $page = isset($get['page']) ? (int)$get['page'] : 0;
+        $itemsPerPage = 2;
+        $products = $this->repository->getPage($itemsPerPage, $page);
+
+        header('Content-Type: application/json');
+        echo json_encode($products);
+    }
 }

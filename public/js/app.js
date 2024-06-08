@@ -75,6 +75,14 @@ class appPAW {
                 });
             });
         }
+
+        if (currentUrl === "/menu"){
+            document.addEventListener("DOMContentLoaded", () => {
+                tools.cargarScript("seguimientoPedido", "js/components/scrollInfinito.js", () => {
+                    let menu = new ScrollInfinito();
+                });
+            });
+        }
     }
 }
 
