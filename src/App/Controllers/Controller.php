@@ -8,7 +8,7 @@ class Controller
 {  
     public ?string $repositoryName = null;
     public $repository;
-    public string $imagesDir = __DIR__ . "/../../../public/images/";
+    public string $imagesDir = "public/images/";
     public array $nav = [
         [
             "href" => "/",

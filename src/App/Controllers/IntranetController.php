@@ -11,7 +11,7 @@ use Paw\App\Validators\ImageValidator;
 use Twig\Environment;
 
 class IntranetController extends Controller {
-    
+    private $imagesProductosDir = 'productos/';
     public $repository;
     private $twig;
 
@@ -33,7 +33,7 @@ class IntranetController extends Controller {
     
     public function altaPlatoProcesado(Request $request) {
         $data = $request->post();
-        $img = $_FILES["imagen"];   // Esto se puede hacer mas lindo después
+        $img = $request->file("imagen");
         
         if ($img["error"] === 0) {
             if ($request->hasBodyParams(["nombre", "descripcion", "precio"])
@@ -65,9 +65,23 @@ class IntranetController extends Controller {
     private function saveImage(array $img): string
     {
         ImageValidator::validateImage($img);
-        $path = $this->imagesDir . 'images/productos/' . uniqid() . '.' . pathinfo($img['name'], PATHINFO_EXTENSION);
-        move_uploaded_file($img['tmp_name'], $path);
-        return $path;
+        $dir = $this->imagesDir . $this->imagesProductosDir;
+        $fullDir = __DIR__ . '/../../../' . $dir;
+        $realDir = realpath($fullDir);
+
+        if (!$fullDir && !is_dir($realDir) && !mkdir($realDir)) {
+            die("Error creating folder {$realDir}");
+        }
+
+        $filename = uniqid() . '.' . pathinfo($img['name'], PATHINFO_EXTENSION);
+        $relativePath = $this->imagesDir . $this->imagesProductosDir . $filename;
+        $absolutePath = $realDir .'/'. $filename;
+        
+        if (move_uploaded_file($img['tmp_name'], $absolutePath)) {
+            return $relativePath;
+        } else {
+            throw new InvalidImageException("Error al subir la imagen");
+        }
     }
 
     public function turnero() {
