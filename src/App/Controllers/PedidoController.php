@@ -128,17 +128,21 @@ class PedidoController extends Controller
             'nav' => $this->nav,
             'footer' => $this->footer,
             'title' => $title,
-            "mensaje" => $mensaje
+            "mensaje" => $mensaje,
+            "productos" => $this->productoRepository->getAll()
         ];
+
         if ($request->isPost()) {
             $variables['mostrarMensaje'] = true;
         }
+
         echo $this->twig->render('pedido/armar_pedido.view.twig', $variables);
     }
 
     public function armarPedidoFormulario(Request $request){
         $mensaje = "";
         $formularioDatos = $request->post();
+        // dd($formularioDatos);die;
         $pedido = [];
         foreach($formularioDatos as $plato => $cantidad) {
             if (is_numeric($cantidad) && $cantidad > 0) {

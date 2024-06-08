@@ -20,6 +20,7 @@ class Producto extends Model
      * @var array
      */
     public array $fields = [
+        "id" => null,
         "nombre" => null,
         "precio" => null,
         "descripcion" => null,
@@ -31,6 +32,27 @@ class Producto extends Model
         $this->set($values);
     }
 
+    /**
+     * Set the id field of the model.
+     *
+     * @param int $id The id value to set.
+     * @throws InvalidValueFormatException If the id value is negative.
+     * @return void
+     */
+    public function setId(int $id)
+    {
+        $this->fields["id"] = $id;
+    }
+
+    /**
+     * Get the id field of the model.
+     *
+     * @return int|null
+     */
+    public function getId(): ?int
+    {
+        return $this->fields["id"];
+    }
     /**
      * Set the path_img field of the model.
      *
