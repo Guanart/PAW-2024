@@ -37,7 +37,7 @@ class Producto extends Model
      * @param string $path_img The path_img value to set.
      * @return void
      */
-    public function setPathImg(string $path_img)
+    public function setPath_img(string $path_img)
     {
         $this->fields["path_img"] = $path_img;
     }
@@ -47,7 +47,7 @@ class Producto extends Model
      *
      * @return string|null
      */
-    public function getPathImg(): ?string
+    public function getPath_img(): ?string
     {
         return $this->fields["path_img"];
     }

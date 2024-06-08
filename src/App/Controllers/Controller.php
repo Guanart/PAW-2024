@@ -8,7 +8,7 @@ class Controller
 {  
     public ?string $repositoryName = null;
     public $repository;
-    public string $imagesDir = __DIR__ . "/../../../public/images/";
+    public string $imagesDir = "public/images/";
     public array $nav = [
         [
             "href" => "/",
@@ -39,12 +39,7 @@ class Controller
             "href" => "/locales",
             "name" => "Locales",
             "role" => "user"
-        ],
-        [
-            "href" => "/admin",
-            "name" => "Admin",
-            "role" => "admin"
-        ],  
+        ], 
         [
             "href" => "/alta_plato",
             "name" => "Alta plato",

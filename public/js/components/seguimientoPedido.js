@@ -20,7 +20,6 @@ class SeguimientoPedido {
 
         this.consulta_automatica = setInterval(async () => {
             await this.actualizar();
-            //this.notifyUser();
         }, 10000);
     }
 

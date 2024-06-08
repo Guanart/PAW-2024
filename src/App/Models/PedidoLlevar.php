@@ -11,7 +11,7 @@ class PedidoLlevar extends Pedido {
     public function __construct($values) {
         $this->setTipo("llevar");
         $this->set($values);
-        $this->fields["estado"] = $this->estados[0];
+        $this->fields["estado"] = self::$estados[0];
     }
 
     public function setLocal(string $local) {

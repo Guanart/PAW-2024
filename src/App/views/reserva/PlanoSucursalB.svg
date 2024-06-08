@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" width="9373px" height="8847px" version="1.1"
+  viewBox="0 0 9087.19 8577.52" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <defs>
+  <style type="text/css">
+    <![CDATA[
+    .texto {font-weight:bold;font-size:100px; font-family: Arial, Helvetica, sans-serif;}
+    .escalera {stroke:#333;stroke-width:2.07;fill: #fff;}
+    .puerta {stroke:#333;stroke-width:2.07; fill: #333;}
+    .cantero {fill:#0A5;stroke:black; stroke-width: 3px;}
+    .terraza {fill:#999; stroke:black; stroke-width: 3px;}
+    .piso {fill:#FFF; stroke:black; stroke-width: 3px;}
+    .mesa {fill:#FFF; stroke:black; stroke-width: 3px;}
+    .silla {fill:#333;}
+    ]]>
+  </style>
+  </defs>
+  <g id="PlantaBaja">
+    <polygon id="pB" class="piso"
+      points="2675.11,4327.93 8695.33,4327.93 8695.33,7637.53 7783.33,8572.98 2675.11,8572.98 " />
+    <g id="mesa-141">
+      <rect class="silla" transform="matrix(2.64845E-14 1 -1 2.64845E-14 3961.2 6041.25)" width="309.63"
+        height="309.63" />
+      <rect class="silla" transform="matrix(2.64845E-14 1 -1 2.64845E-14 3961.2 7124.05)" width="309.63"
+        height="309.63" />
+      <polygon class="mesa"
+        points="4154.54,7085.6 4850.81,7085.6 4850.81,6389.3 4154.54,6389.3 3458.23,6389.3 3458.23,7085.6 " />
+      <rect class="silla" transform="matrix(2.64845E-14 1 -1 2.64845E-14 4657.48 6041.25)" width="309.63"
+        height="309.63" />
+      <rect class="silla" transform="matrix(2.64845E-14 1 -1 2.64845E-14 4657.48 7124.05)" width="309.63"
+        height="309.63" />
+    </g>
+    <g id="mesa-125">
+      <rect class="mesa" transform="matrix(2.38519E-14 0.900597 -0.657579 1.74157E-14 8694.06 6389.33)"
+        width="773.16" height="1058.86" />
+      <rect class="silla" transform="matrix(-2.64845E-14 -1 -1 2.64845E-14 8500.73 6350.92)" width="309.63"
+        height="309.63" />
+      <rect class="silla" transform="matrix(-2.64845E-14 -1 -1 2.64845E-14 8500.73 7433.68)" width="309.63"
+        height="309.63" />
+    </g>
+    <g id="mesa-124">
+      <rect class="mesa" transform="matrix(2.38519E-14 0.900597 -0.657579 1.74157E-14 7596.09 6389.33)"
+        width="773.16" height="1058.86" />
+      <rect class="silla" transform="matrix(-2.64845E-14 -1 -1 2.64845E-14 7402.76 6350.92)" width="309.63"
+        height="309.63" />
+      <rect class="silla" transform="matrix(-2.64845E-14 -1 -1 2.64845E-14 7402.76 7433.68)" width="309.63"
+        height="309.63" />
+    </g>
+    <g id="mesa-123">
+      <rect class="mesa" transform="matrix(2.38519E-14 0.900597 -0.657579 1.74157E-14 6498.09 6389.33)"
+        width="773.16" height="1058.86" />
+      <rect class="silla" transform="matrix(-2.64845E-14 -1 -1 2.64845E-14 6304.78 6350.92)" width="309.63"
+        height="309.63" />
+      <rect class="silla" transform="matrix(-2.64845E-14 -1 -1 2.64845E-14 6304.78 7433.68)" width="309.63"
+        height="309.63" />
+    </g>
+    <g id="mesa-122">
+      <rect class="mesa" x="5694.64" y="7876.67" width="696.3" height="696.3" />
+      <rect class="silla" x="5346.59" y="8070.01" width="309.63" height="309.63" />
+      <rect class="silla" x="6429.35" y="8070.01" width="309.63" height="309.63" />
+    </g>
+    <g id="mesa-121">
+      <rect class="mesa" x="3931.2" y="7876.67" width="696.3" height="696.3" />
+      <rect class="silla" x="3583.15" y="8070.01" width="309.63" height="309.63" />
+      <rect class="silla" x="4665.95" y="8070.01" width="309.63" height="309.63" />
+    </g>
+    <g transform="matrix(1 0 0 1 -1960.92 394.037)">
+      <text x="4686.5" y="4246.5" id="nombrePlantaBaja" class="texto">Planta Baja</text>
+    </g>
+      <path id="puertaEntrada" class="puerta"
+        d="M8495.54 7687.91l9.24 -9.27 156.8 156.83 -18.45 18.48 -156.83 -156.83 9.24 -9.21 0 0zm-553.53 691.85l622.72 -622.72 18.42 18.48 -622.66 622.69 -18.48 -18.45zm-69.16 -69.19l9.24 -9.24 156.8 156.83 -18.45 18.45 -156.8 -156.83 9.21 -9.21z" />
+    <g id="EscaleraPB">
+      <rect class="mesa" x="2675.11" y="7839.84" width="783.13" height="733.14" />
+      <g>
+        <rect class="mesa" x="2675.11" y="5285.88" width="783.13" height="170.01" />
+        <rect class="mesa" x="2675.11" y="5455.89" width="783.13" height="170.01" />
+        <rect class="mesa" x="2675.11" y="5625.84" width="783.13" height="170.01" />
+        <rect class="mesa" x="2675.11" y="5795.85" width="783.13" height="170.01" />
+        <rect class="mesa" x="2675.11" y="5965.86" width="783.13" height="170.01" />
+        <rect class="mesa" x="2675.11" y="6135.87" width="783.13" height="170.01" />
+        <rect class="mesa" x="2675.11" y="6305.84" width="783.13" height="170.01" />
+        <rect class="mesa" x="2675.11" y="6475.85" width="783.13" height="170.01" />
+        <rect class="mesa" x="2675.11" y="6645.86" width="783.13" height="170.01" />
+        <rect class="mesa" x="2675.11" y="6815.87" width="783.13" height="170.01" />
+        <rect class="mesa" x="2675.11" y="6985.82" width="783.13" height="170.01" />
+        <rect class="mesa" x="2675.11" y="7325.84" width="783.13" height="170.01" />
+        <rect class="mesa" x="2675.11" y="7155.83" width="783.13" height="170.01" />
+        <rect class="mesa" x="2675.11" y="7495.85" width="783.13" height="170.01" />
+        <rect class="mesa" x="2675.11" y="7665.86" width="783.13" height="170.01" />
+        <rect class="mesa" x="2675.11" y="5115.87" width="783.13" height="170.01" />
+      </g>
+    </g>
+    <g id="BarraPB">
+      <rect class="mesa" transform="matrix(3.15403E-14 1 -1.19089 2.64845E-14 8695.89 4879.31)" width="519.33"
+        height="3028.9" />
+      <g id="sillasbarra">
+        <rect class="silla" transform="matrix(2.64845E-14 1 -1 2.64845E-14 8509.86 5440.05)" width="309.63"
+          height="309.63" />
+        <rect class="silla" transform="matrix(2.64845E-14 1 -1 2.64845E-14 7923.1 5440.05)" width="309.63"
+          height="309.63" />
+        <rect class="silla" transform="matrix(2.64845E-14 1 -1 2.64845E-14 7336.3 5440.05)" width="309.63"
+          height="309.63" />
+        <rect class="silla" transform="matrix(2.64845E-14 1 -1 2.64845E-14 5575.9 5440.05)"
+          width="309.63" height="309.63" />
+        <rect class="silla" transform="matrix(2.64845E-14 1 -1 2.64845E-14 6749.48 5440.05)" width="309.63"
+          height="309.63" />
+        <rect class="silla" transform="matrix(2.64845E-14 1 -1 2.64845E-14 6162.66 5440.05)" width="309.63"
+          height="309.63" />
+      </g>
+    </g>
+  </g>
+  <g id="PlantaAlta">
+    <rect id="terraza" class="piso" x="3458.23" y="14.65" width="5361.37" height="3686.67" />
+    <path id="plantaAlta" class="mesa"
+      d="M541.43 14.65l2916.8 0 0 3949.78 -2916.8 0 -536.89 0c0,-1790.45 0,-2556.79 0,-3949.78l536.89 0z" />
+      <path id="puertaTerraza" class="puerta"
+        d="M3347.36 225.21l0 -13.06 221.75 0 0 26.14 -221.75 0 0 -13.08zm97.82 880.61l0 -880.61 26.11 0 0 880.61 -26.11 0zm-97.82 0l0 -13.06 221.75 0 0 26.12 -221.75 0 0 -13.06 0 0z" />
+    <g transform="matrix(1 0 0 1 -2778.48 -3913.57)">
+      <text x="4686.5" y="4246.5" id="nombre1erPiso" class="texto">1er Piso</text>
+    </g>
+    <g id="barra-323">
+      <rect class="silla" x="7839.87" y="2708.32" width="309.63" height="309.63" />
+      <rect class="silla" x="7839.87" y="3280.7" width="309.63" height="309.63" />
+      <rect class="mesa" x="8190.88" y="2537.23" width="519.33" height="1164.1" />
+    </g>
+    <g id="barra-322">
+      <rect class="silla" x="7839.87" y="1959.31" width="309.63" height="309.63" />
+      <rect class="silla" x="7839.87" y="1386.94" width="309.63" height="309.63" />
+      <rect class="mesa" x="8190.88" y="1275.94" width="519.33" height="1164.1" />
+    </g>
+    <g id="barra-321">
+      <rect class="mesa" x="8190.88" y="14.65" width="519.33" height="1164.1" />
+      <rect class="silla" x="7839.87" y="717.35" width="309.63" height="309.63" />
+      <rect class="silla" x="7839.87" y="144.98" width="309.63" height="309.63" />
+    </g>
+    <g id="mesa-342">
+      <rect class="silla" x="6082.02" y="904.26" width="309.63" height="309.63" />
+      <rect class="silla" x="7164.78" y="904.26" width="309.63" height="309.63" />
+      <polygon class="mesa"
+        points="7126.37,710.96 7126.37,14.65 6430.03,14.65 6430.03,710.96 6430.03,1407.23 7126.37,1407.23 " />
+      <rect class="silla" x="6082.02" y="207.99" width="309.63" height="309.63" />
+      <rect class="silla" x="7164.78" y="207.99" width="309.63" height="309.63" />
+    </g>
+    <g id="mesa-341">
+      <rect class="silla" x="4320.47" y="904.26" width="309.63" height="309.63" />
+      <rect class="silla" x="5403.23" y="904.26" width="309.63" height="309.63" />
+      <polygon class="mesa"
+        points="5364.82,710.96 5364.82,14.65 4668.48,14.65 4668.48,710.96 4668.48,1407.23 5364.82,1407.23 " />
+      <rect class="silla" x="4320.47" y="207.99" width="309.63" height="309.63" />
+      <rect class="silla" x="5403.23" y="207.99" width="309.63" height="309.63" />
+    </g>
+    <g id="mesa-322">
+      <rect class="mesa" transform="matrix(2.38519E-14 0.900597 -0.657579 1.74157E-14 7518.42 2546.1)"
+        width="773.16" height="1058.86" />
+      <rect class="silla" transform="matrix(-2.64845E-14 -1 -1 2.64845E-14 7325.05 2507.67)" width="309.63"
+        height="309.63" />
+      <rect class="silla" transform="matrix(-2.64845E-14 -1 -1 2.64845E-14 7325.05 3590.45)" width="309.63"
+        height="309.63" />
+    </g>
+    <g id="mesa-321">
+      <rect class="mesa" transform="matrix(2.38519E-14 0.900597 -0.657579 1.74157E-14 6501.76 2546.1)"
+        width="773.16" height="1058.86" />
+      <rect class="silla" transform="matrix(-2.64845E-14 -1 -1 2.64845E-14 6308.4 2507.67)" width="309.63"
+        height="309.63" />
+      <rect class="silla" transform="matrix(-2.64845E-14 -1 -1 2.64845E-14 6308.4 3590.45)" width="309.63"
+        height="309.63" />
+    </g>
+    <g id="mesa-361">
+      <circle class="mesa" cx="4486.8" cy="2730.13" r="538.99" />
+      <rect class="silla" x="4332" y="1877.57" width="309.63" height="309.63" />
+      <rect class="silla" transform="matrix(-0.5 -0.866025 -0.866025 0.5 5302.55 2437.93)" width="309.63"
+        height="309.63" />
+      <rect class="silla" transform="matrix(0.5 -0.866025 -0.866025 -0.5 5147.75 3290.5)" width="309.63"
+        height="309.63" />
+      <rect class="silla" x="4332" y="3273.12" width="309.63" height="309.63" />
+      <rect class="silla" transform="matrix(0.5 0.866025 0.866025 -0.5 3671.04 3022.37)" width="309.63"
+        height="309.63" />
+      <rect class="silla" transform="matrix(-0.5 0.866025 0.866025 0.5 3825.85 2169.79)" width="309.63"
+        height="309.63" />
+    </g>
+    <g id="mesa-261">
+      <circle class="mesa" cx="920.95" cy="2967.23" r="538.99" />
+      <rect class="silla" x="766.14" y="2114.67" width="309.63" height="309.63" />
+      <rect class="silla" transform="matrix(-0.5 -0.866025 -0.866025 0.5 1736.72 2675.03)" width="309.63"
+        height="309.63" />
+      <rect class="silla" transform="matrix(0.5 -0.866025 -0.866025 -0.5 1581.91 3527.6)" width="309.63"
+        height="309.63" />
+      <rect class="silla" x="766.14" y="3510.21" width="309.63" height="309.63" />
+      <rect class="silla" transform="matrix(0.5 0.866025 0.866025 -0.5 105.212 3259.47)" width="309.63"
+        height="309.63" />
+      <rect class="silla" transform="matrix(-0.5 0.866025 0.866025 0.5 260.02 2406.89)" width="309.63"
+        height="309.63" />
+    </g>
+    <g id="mesa-241">
+      <polygon class="mesa"
+        points="1210.81,700.85 1210.81,4.54 514.53,4.54 514.53,700.85 514.53,1397.12 1210.81,1397.12 " />
+      <rect class="silla" x="166.52" y="894.18" width="309.63" height="309.63" />
+      <rect class="silla" x="1249.28" y="894.18" width="309.63" height="309.63" />
+      <rect class="silla" x="166.52" y="197.88" width="309.63" height="309.63" />
+      <rect class="silla" x="1249.28" y="197.88" width="309.63" height="309.63" />
+    </g>
+    <g id="mesa-222">
+      <rect class="mesa" transform="matrix(2.38519E-14 0.900597 -0.657579 1.74157E-14 2672.09 1599.31)"
+        width="773.16" height="1058.86" />
+      <rect class="silla" transform="matrix(-2.64845E-14 -1 -1 2.64845E-14 2478.75 1560.88)" width="309.63"
+        height="309.63" />
+      <rect class="silla" transform="matrix(-2.64845E-14 -1 -1 2.64845E-14 2478.75 2643.64)" width="309.63"
+        height="309.63" />
+    </g>
+    <g id="mesa-221">
+      <rect class="mesa" x="2256.25" y="3259.85" width="696.31" height="696.29" />
+      <rect class="silla" x="1908.19" y="3453.19" width="309.63" height="309.63" />
+      <rect class="silla" x="2990.95" y="3453.19" width="309.63" height="309.63" />
+    </g>
+    <polygon id="cantero" class="cantero"
+      points="9082.65,14.65 8726.71,14.65 8726.71,3701.33 3458.24,3701.33 3458.24,3964.43 9082.65,3964.43 9082.65,3701.33 " />
+    <g transform="matrix(1 0 0 1 3200.27 -291.763)">
+      <text x="4686.5" y="4246.5" id="nombreTerraza" class="texto">Terraza</text>
+    </g>
+    <g id="escalera1P">
+      <g id="escaleraPlantaAlta">
+        <rect class="mesa" x="2675.11" y="2835.59" width="783.13" height="165.28" />
+        <rect class="mesa" x="2675.11" y="2670.31" width="783.13" height="165.28" />
+        <rect class="mesa" x="2675.11" y="2504.99" width="783.13" height="165.28" />
+        <rect class="mesa" x="2675.11" y="2339.71" width="783.13" height="165.28" />
+        <rect class="mesa" x="2675.11" y="2174.42" width="783.13" height="165.28" />
+        <rect class="mesa" x="2675.11" y="2009.11" width="783.13" height="165.28" />
+        <rect class="mesa" x="2675.11" y="1678.51" width="783.13" height="165.28" />
+        <rect class="mesa" x="2675.11" y="1843.83" width="783.13" height="165.28" />
+        <rect class="mesa" x="2675.11" y="1513.23" width="783.13" height="165.28" />
+        <rect class="mesa" x="2675.11" y="1347.89" width="783.13" height="165.28" />
+      </g>
+    </g>
+  </g>
+
+</svg>

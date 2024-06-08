@@ -13,6 +13,7 @@ use Paw\App\Validators\InputValidator;
 use Paw\App\Repositories\PedidoDeliveryRepository;
 use Paw\App\Repositories\PedidoLlevarRepository;
 use Paw\App\Repositories\PedidoMesaRepository;
+use Paw\App\Repositories\ProductoRepository;
 use Exception;
 
 class PedidoController extends Controller
@@ -22,6 +23,7 @@ class PedidoController extends Controller
     public PedidoDeliveryRepository $pedidoDeliveryRepository;
     public PedidoLlevarRepository $pedidoLlevarRepository;
     public PedidoMesaRepository $pedidoMesaRepository;
+    public ProductoRepository $productoRepository;
 
     public function __construct(Environment $twig) {
         global $querybuilder;
@@ -29,6 +31,7 @@ class PedidoController extends Controller
         $this->pedidoDeliveryRepository = new PedidoDeliveryRepository($querybuilder);
         $this->pedidoLlevarRepository = new PedidoLlevarRepository($querybuilder);
         $this->pedidoMesaRepository = new PedidoMesaRepository($querybuilder);
+        $this->productoRepository = new ProductoRepository($querybuilder);
         $this->twig = $twig;
         $this->validator = new InputValidator();
         
@@ -40,6 +43,9 @@ class PedidoController extends Controller
             redirect(getenv('APP_URL') . "/login");
             exit();
         }
+        $_SESSION["pedido"]["productos"] = $pedido;
+        
+        //$this->productoRepository-;
         $title = "Tus pedidos";
         $id_usuario = $request->user()->getId();
         $pedidos_usuario = $this->repository->getByIdUsuario($id_usuario);
@@ -53,9 +59,19 @@ class PedidoController extends Controller
         ]);
     }
 
-    public function estadoPedido() {
-        $endpoint = __DIR__ . "/../views/pedido/estado_pedido.php";
-        require $endpoint;
+    public function estadoPedido(Request $request) {
+        $idPedido = intval($request->get("id"));
+        if (!$idPedido) {
+            echo json_encode(['error' => 'Debe enviar un ID para consultar el estado del pedido']);
+            exit;
+        }
+        $estado = $this->repository->getEstadoById($idPedido);
+        if (!$estado) {
+            echo json_encode(['error' => 'No se encontró un pedido con ese ID']);
+            exit;
+        }
+        header('Content-Type: application/json');
+        echo json_encode(['estado' => $estado]);
     }
 
     public function actualizarEstadoPedido() {
@@ -84,12 +100,9 @@ class PedidoController extends Controller
     public function getPedidosId(Request $request) {
         header('Content-Type: application/json');
         $idPedido = $request->get('id');
-
-        
-        
         if ($idPedido === null) {
-            $pedidos = $this->repository->fetchAll();
-            echo json_encode($pedidos);
+            $pedidos = $this->repository->getAll();
+            
         } else if (is_numeric($idPedido)){
             $pedido = $this->repository->getById($idPedido);
             if ($pedido) {
@@ -131,7 +144,7 @@ class PedidoController extends Controller
             if (is_numeric($cantidad) && $cantidad > 0) {
                 $pedido[] = [
                     "id_producto" => $plato,
-                    "cantidad" => $cantidad
+                    "cantidad" => intval($cantidad)
                 ];
             }
         }
@@ -144,14 +157,32 @@ class PedidoController extends Controller
         }
     }
 
-    public function confirmarPedido(Request $request, string $mensaje =""){
+    public function confirmarPedido(Request $request, string $mensaje = "") {
+        if (!isset($_SESSION["pedido"]["productos"])) {
+            redirect(getenv('APP_URL'));
+            exit();
+        }
+    
+        $productos = $_SESSION["pedido"]["productos"];
+    
+        $productosPedido = [];
+        foreach($productos as $productoCantidad) {
+            $modelProducto = $this->productoRepository->getById($productoCantidad["id_producto"]);
+            $productosPedido[] = [
+                'producto' => $modelProducto,
+                'cantidad' => intval($productoCantidad["cantidad"])
+            ];
+        }
+    
         $title = "Confirmar Pedido";
         $variables = [
             'nav' => $this->nav,
             'footer' => $this->footer,
             'title' => $title,
-            "mensaje" => $mensaje
+            'mensaje' => $mensaje,
+            'productos_pedido' => $productosPedido
         ];
+    
         if ($request->isPost()) {
             $variables['mostrarMensaje'] = true;
         }
@@ -190,6 +221,7 @@ class PedidoController extends Controller
                 default:
                     throw new InvalidValueFormatException("No se pudo determinar el tipo de pedido");
             }
+            unset($_SESSION["pedido"]);
             redirect(getenv('APP_URL') . "/fin_pedido");
             exit();
         } catch (InvalidValueFormatException $e){
