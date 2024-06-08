@@ -21,7 +21,7 @@ class Controller
             "role" => "user"
         ],
         [
-            "href" => "/menu?page=0",
+            "href" => "/menu",
             "name" => "Menu",
             "role" => "user"
         ],
